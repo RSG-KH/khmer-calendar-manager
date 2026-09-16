@@ -19,10 +19,10 @@ export function WorkspaceBackupPanel({ snapshot, dirty, busy, perform, restored,
     download(`manager-workspace-r${value.workspace.revision}.json`, JSON.stringify(value, null, 2) + '\n');
   }
   return <section className="panel padded">
-    <div className="section-heading"><h2>Workspace backups</h2><p>Your saved catalog and history stay in this browser. Download a workspace copy to keep it on disk or move it to another browser. Clearing site data removes browser saves.</p></div>
+    <p>Your saved catalog and history stay in this browser. Keep a downloaded copy before clearing site data or moving to another browser.</p>
     <button disabled={busy || dirty} onClick={() => void perform(() => downloadSaved())}>Download workspace</button>
     {dirty && <p className="muted">Save your draft first, or use Download draft to keep unsaved changes.</p>}
-    {!!previous.length && <div className="form-grid"><label>Previous saved revision<select aria-label="Previous saved revision" value={selected} onChange={e => setSelected(e.target.value)}><option value="">Choose a backup</option>{previous.map((item, index) => <option key={index} value={index}>Revision {item.revision} · {item.history.at(-1)?.note ?? 'Empty workspace'}</option>)}</select></label><button disabled={busy || selected === ''} onClick={() => void perform(() => downloadSaved(previous[Number(selected)]))}>Download previous revision</button></div>}
+    {!!previous.length && <div className="backup-revision"><label className="field">Previous saved revision<select aria-label="Previous saved revision" value={selected} onChange={e => setSelected(e.target.value)}><option value="">Choose a backup</option>{previous.map((item, index) => <option key={index} value={index}>Revision {item.revision} · {item.history.at(-1)?.note ?? 'Empty workspace'}</option>)}</select></label><button disabled={busy || selected === ''} onClick={() => void perform(() => downloadSaved(previous[Number(selected)]))}>Download previous revision</button></div>}
     <label className="field">Open workspace backup<input type="file" aria-label="Open workspace backup" accept=".json,application/json" disabled={busy || dirty} onChange={e => {
       const file = e.target.files?.[0]; e.target.value = ''; setBackup(null); setAccepted(false);
       if (file) void perform(async () => { if (file.size > 8 * 1024 * 1024) throw new Error('Choose a backup smaller than 8 MB'); setBackup(validateBackup(JSON.parse(await file.text()))); });

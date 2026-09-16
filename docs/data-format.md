@@ -37,6 +37,16 @@ A correction replaces one recurring event's complete occurrence list for an **an
 
 An official holiday requires government sources, dates within its calendar year, and `status: "active"` or `"cancelled"`. A cancelled holiday retains its dates and requires an explanatory `note`. Linking an `eventId` is optional and does not turn calculated dates into official leave.
 
+## Generate and review a year
+
+**Generate year** evaluates the manager's modern holiday patterns through the shared engine and creates a yearly list with `coverage: "partial"`. Each entry starts with `status: "draft"` and empty `sourceIds`. This draft-only status is accepted in saved workspaces and catalog backups, but **blocks app export**. A calendar may omit government sources only while all its records are drafts; empty unsourced calendars also block export.
+
+Developers edit the generated dates, remove unwanted suggestions and add new records while comparing the government's PDF or photo. The preview file is temporary; its URL or document reference belongs in a source record. **Confirm reviewed year** attaches the selected government source to the remaining draft entries and marks them active. Already reviewed and cancelled entries retain their status and sources. Confirmation does not regenerate dates or restore removed entries.
+
+The starter in `src/generate-year.ts` contains 16 holiday patterns based on the [LRC 2026 calendar](https://lrc.gov.kh/en/annual-holiday-calendar-2026/) and is offered for years 2026–2200. These are proposed recurring patterns, not future government designations. All calendar arithmetic stays in the engine. Historical official lists remain available through manual entry or import. A year with existing records cannot be regenerated, protecting corrections and removals.
+
+Exported schema version 1 remains unchanged: app bundles contain only active/cancelled official records with government sources, never draft holiday entries.
+
 ## Yearly JSON import
 
 Use this shape for a publication or amendment. **The example below is illustrative, not an actual government record.** Replace the authority, locator and holiday data with reviewed material.
@@ -71,7 +81,7 @@ Import entries inherit the publication's source ID. Optional holiday fields are 
 - **Complete:** replace the year's entire holiday list. Omitted IDs appear as removals in the review.
 - Changed existing IDs and removals require explicit acceptance in the import review. The import enters the draft first; saving is a separate step.
 - Source metadata conflicts appear in the same before/after review.
-- A full catalog import replaces the catalog after the same review. Import the catalog itself, not the `{ revision, data, history }` workspace wrapper. The local server restores that wrapper on disk; the hosted page provides workspace restoration under **Review & export**.
+- A full catalog import replaces the catalog after the same review. Import the catalog itself, not the `{ revision, data, history }` workspace wrapper. The local server restores that wrapper on disk; the hosted page provides workspace restoration under **Review & save → Workspace backups**.
 
 ### Browser workspace backups
 

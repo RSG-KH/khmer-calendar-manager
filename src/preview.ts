@@ -33,7 +33,7 @@ export function preview(data: Catalog, selectedYear: number): { rows: PreviewRow
     for (const [date, detail] of dates) rows.push({ date, id: event.id, ...event.names, kind: event.kind, ...detail });
   }
   for (const calendar of data.holidayCalendars.filter(c => c.year === selectedYear)) for (const h of calendar.holidays) {
-    for (const date of h.dates) rows.push({ date, id: h.id, ...h.names, kind: 'official', basis: h.status === 'active' ? 'Official holiday' : 'Cancelled holiday', sourceIds: h.sourceIds, cancelled: h.status === 'cancelled' });
+    for (const date of h.dates) rows.push({ date, id: h.id, ...h.names, kind: h.status === 'draft' ? 'draft' : 'official', basis: h.status === 'draft' ? 'Awaiting review' : h.status === 'active' ? 'Official holiday' : 'Cancelled holiday', sourceIds: h.sourceIds, cancelled: h.status === 'cancelled' });
   }
   rows.sort((a, b) => a.date < b.date ? -1 : a.date > b.date ? 1 : a.id < b.id ? -1 : a.id > b.id ? 1 : a.kind < b.kind ? -1 : a.kind > b.kind ? 1 : 0);
   return { rows, issues };

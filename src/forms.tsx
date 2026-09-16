@@ -1,7 +1,8 @@
-import { cloneElement, isValidElement, useId, useState, type FormEvent, type ReactElement, type ReactNode, type SelectHTMLAttributes } from 'react';
+import { cloneElement, isValidElement, useId, useState, type FormEvent, type ReactElement, type ReactNode } from 'react';
 import type { RuleInput } from 'khmer-calendar-engine';
 import { dateRange } from './imports.ts';
 import type { Catalog, Event, Holiday, Override, Source } from './model.ts';
+import { SourceControl, type SaveSource } from './SourceControl.tsx';
 
 export function Field({ label, help, children }: { label: string; help?: string; children: ReactNode }) {
   const id = useId();
@@ -16,25 +17,19 @@ export function parseDates(value: string): string[] {
   });
 }
 function submit(handler: (form: FormData) => void, attempt: (fn: () => void) => void) {
-  return (event: FormEvent<HTMLFormElement>) => { event.preventDefault(); const data = new FormData(event.currentTarget); attempt(() => handler(data)); };
+  return (event: FormEvent<HTMLFormElement>) => { event.preventDefault(); event.stopPropagation(); const data = new FormData(event.currentTarget); attempt(() => handler(data)); };
 }
-export function SourceSelect({ sources, value, government = false, name = 'sourceId', multiple = false, ...attributes }: { sources: Source[]; value?: string | string[]; government?: boolean; name?: string; multiple?: boolean } & SelectHTMLAttributes<HTMLSelectElement>) {
-  return <select {...attributes} name={name} required multiple={multiple} size={multiple ? 3 : undefined} defaultValue={value ?? (multiple ? [] : '')}>
-    {!multiple && <option value="">Choose a source</option>}
-    {sources.filter(s => !government || s.kind === 'government').map(s => <option key={s.id} value={s.id}>{s.title}</option>)}
-  </select>;
-}
-type Actions = { attempt: (fn: () => void) => void; cancel: () => void };
-function FormActions({ edit, cancel }: { edit?: boolean; cancel: () => void }) {
-  return <div className="form-actions"><button className="primary" type="submit">{edit ? 'Update draft' : 'Add to draft'}</button><button type="button" onClick={cancel}>Cancel</button></div>;
+type Actions = { attempt: (fn: () => void) => void; cancel: () => void; remove?: () => void };
+function FormActions({ edit, cancel, remove }: { edit?: boolean; cancel: () => void; remove?: () => void }) {
+  return <div className="form-actions"><button className="primary" type="submit">{edit ? 'Update draft' : 'Add to draft'}</button><button type="button" onClick={cancel}>Cancel</button>{remove && <button type="button" className="text-danger remove-record" onClick={remove}>Remove record</button>}</div>;
 }
 
-export function SourceForm({ item, save, attempt, cancel }: Actions & { item?: Source; save: (item: Source) => void }) {
+export function SourceForm({ item, save, attempt, cancel, government = false }: Actions & { item?: Source; government?: boolean; save: (item: Source) => void }) {
   return <form className="editor" onSubmit={submit(f => save({ id: text(f, 'id'), title: text(f, 'title'), publisher: text(f, 'publisher'), kind: text(f, 'kind') as Source['kind'], ...optional('url', text(f, 'url')), ...optional('reference', text(f, 'reference')), ...optional('publishedOn', text(f, 'publishedOn')), ...optional('notes', text(f, 'notes')) }), attempt)}>
-    <div className="section-heading"><h2>{item ? 'Edit source' : 'Add a source'}</h2><p>Record the publication that supports your dates or event information.</p></div>
+    <div className="section-heading"><h2>{item ? 'Edit reference' : 'Add reference'}</h2></div>
     <div className="form-grid">
       <Field label="Source ID" help="Stable lowercase ID; it stays the same when wording changes."><input name="id" required readOnly={!!item} defaultValue={item?.id} placeholder="government-holidays-2026" /></Field>
-      <Field label="Source kind"><select name="kind" defaultValue={item?.kind ?? 'government'}><option value="government">Government publication</option><option value="calendar">Calendar / almanac</option><option value="historical">Historical reference</option><option value="other">Other reference</option></select></Field>
+      <Field label="Source kind"><select name="kind" defaultValue={item?.kind ?? (government ? 'government' : 'other')}><option value="government">Government publication</option>{!government && <><option value="calendar">Calendar / almanac</option><option value="historical">Historical reference</option><option value="other">Other reference</option></>}</select></Field>
       <Field label="Publication title"><input name="title" required defaultValue={item?.title} /></Field>
       <Field label="Issuing authority / publisher"><input name="publisher" required defaultValue={item?.publisher} /></Field>
       <Field label="Public URL"><input name="url" type="url" defaultValue={item?.url} placeholder="https://…" /></Field>
@@ -46,7 +41,7 @@ export function SourceForm({ item, save, attempt, cancel }: Actions & { item?: S
   </form>;
 }
 
-export function EventForm({ item, data, save, attempt, cancel }: Actions & { item?: Event; data: Catalog; save: (item: Event) => void }) {
+export function EventForm({ item, data, save, attempt, cancel, saveSource, remove, children }: Actions & { item?: Event; data: Catalog; saveSource: SaveSource; children?: ReactNode; save: (item: Event) => void }) {
   const [mode, setMode] = useState(item?.rule?.type ?? 'explicit');
   const [kind, setKind] = useState<Event['kind']>(item?.kind ?? 'observance');
   const rule = item?.rule as any;
@@ -70,7 +65,7 @@ export function EventForm({ item, data, save, attempt, cancel }: Actions & { ite
       <Field label="Event kind"><select value={kind} onChange={e => setKind(e.target.value as Event['kind'])}><option value="observance">Observance</option><option value="traditional">Traditional festival</option><option value="historical">Historical event</option></select></Field>
       <Field label="English name"><input name="en" defaultValue={item?.names.en} /></Field>
       <Field label="Khmer name"><input lang="km" name="km" defaultValue={item?.names.km} /></Field>
-      <Field label="Sources" help="Choose one or more supporting publications."><SourceSelect sources={data.sources} name="sourceIds" multiple value={item?.sourceIds} /></Field>
+      <Field label="Sources"><SourceControl data={data} saveSource={saveSource} multiple value={item?.sourceIds} /></Field>
       <Field label="Original historical date" help="Retained separately from annual commemorations."><input type="date" name="originalDate" required={kind === 'historical'} defaultValue={item?.originalDate} onChange={e => { if (kind === 'historical' && e.target.value) setFirstYear(String(Math.max(Number(firstYear), 1800, Number(e.target.value.slice(0, 4))))); }} /></Field>
     </div>
     <Field label="Date method"><select value={mode} onChange={e => setMode(e.target.value)}><option value="explicit">Explicit dates / one-time event</option><option value="solar">Annual Gregorian date</option><option value="khmer_lunar">Khmer lunar recurrence</option><option value="solar_nth_weekday">Nth weekday of a month</option><option value="new_year_first">Khmer New Year — first day</option><option value="new_year_middle">Khmer New Year — middle day(s)</option><option value="new_year_last">Khmer New Year — last day</option></select></Field>
@@ -94,39 +89,45 @@ export function EventForm({ item, data, save, attempt, cancel }: Actions & { ite
       </div>
     </div>}
     <div className="form-grid"><Field label="English description"><textarea name="descriptionEn" rows={3} defaultValue={item?.description?.en} /></Field><Field label="Khmer description"><textarea name="descriptionKm" lang="km" rows={3} defaultValue={item?.description?.km} /></Field></div>
-    <FormActions edit={!!item} cancel={cancel} />
+    {children}
+    <FormActions edit={!!item} cancel={cancel} remove={remove} />
   </form>;
 }
 
-export function HolidayForm({ item, data, selectedYear, save, attempt, cancel }: Actions & { item?: Holiday; data: Catalog; selectedYear: number; save: (item: Holiday, coverage: 'partial' | 'complete') => void }) {
-  const [status, setStatus] = useState(item?.status ?? 'active');
+export function HolidayForm({ item, data, selectedYear, save, attempt, cancel, saveSource, remove }: Actions & { item?: Holiday; data: Catalog; selectedYear: number; saveSource: SaveSource; save: (item: Holiday, coverage: 'partial' | 'complete') => void }) {
+  const [status, setStatus] = useState(item?.status ?? 'draft');
+  const [sourceIds, setSourceIds] = useState(item?.sourceIds ?? []);
   const current = data.holidayCalendars.find(c => c.year === selectedYear);
   return <form className="editor" onSubmit={submit(f => save({ id: text(f, 'id'), names: { en: text(f, 'en'), km: text(f, 'km') }, dates: parseDates(text(f, 'dates')), status, sourceIds: f.getAll('sourceIds').map(String), ...optional('eventId', text(f, 'eventId')), ...optional('note', text(f, 'note')) }, text(f, 'coverage') as 'partial' | 'complete'), attempt)}>
-    <div className="section-heading"><h2>{item ? 'Edit official holiday' : 'Add official holiday'} · {selectedYear}</h2><p>Enter the designated dates from the government publication.</p></div>
+    <div className="section-heading"><h2>{item ? 'Edit holiday' : 'Add holiday'} · {selectedYear}</h2></div>
     <div className="form-grid">
-      <Field label="Holiday ID"><input name="id" required readOnly={!!item} defaultValue={item?.id} placeholder="stable-holiday-id" /></Field>
-      <Field label="Yearly coverage"><select name="coverage" defaultValue={current?.coverage ?? 'partial'}><option value="partial">Partial list / amendment</option><option value="complete">Complete yearly list</option></select></Field>
       <Field label="English name"><input name="en" defaultValue={item?.names.en} /></Field>
       <Field label="Khmer name"><input name="km" lang="km" defaultValue={item?.names.km} /></Field>
-      <Field label="Government sources"><SourceSelect sources={data.sources} government multiple name="sourceIds" value={item?.sourceIds} /></Field>
-      <Field label="Linked event (optional)"><select name="eventId" defaultValue={item?.eventId ?? ''}><option value="">Independent holiday record</option>{data.events.map(e => <option value={e.id} key={e.id}>{e.names.en || e.names.km}</option>)}</select></Field>
     </div>
-    <Field label="Official dates" help={`All dates must be in ${selectedYear}. Use one date per line or start..end.`}><textarea name="dates" required rows={3} defaultValue={item?.dates.join('\n')} placeholder={`${selectedYear}-04-14..${selectedYear}-04-16`} /></Field>
-    <div className="form-grid"><Field label="Status"><select value={status} onChange={e => setStatus(e.target.value as Holiday['status'])}><option value="active">Designated holiday</option><option value="cancelled">Cancelled by publication</option></select></Field><Field label="Amendment / cancellation note"><textarea name="note" rows={2} required={status === 'cancelled'} defaultValue={item?.note} /></Field></div>
-    <FormActions edit={!!item} cancel={cancel} />
+    <Field label="Holiday dates" help={`All dates must be in ${selectedYear}. Use one date per line or start..end.`}><textarea name="dates" required rows={3} defaultValue={item?.dates.join('\n')} placeholder={`${selectedYear}-04-14..${selectedYear}-04-16`} /></Field>
+    {!item && <Field label="Holiday ID" help="A stable ID for future updates."><input name="id" required placeholder="stable-holiday-id" /></Field>}
+    <Field label="Status"><select value={status} onChange={e => setStatus(e.target.value as Holiday['status'])}><option value="draft">Awaiting review</option><option value="active">Designated holiday</option><option value="cancelled">Cancelled by publication</option></select></Field>
+    {status !== 'draft' && <Field label="Government sources"><SourceControl data={data} saveSource={saveSource} government multiple value={sourceIds} onValueChange={setSourceIds} /></Field>}
+    <details className="disclosure" open={status === 'cancelled' ? true : undefined}><summary>Sources & other details</summary>
+      {item && <Field label="Holiday ID"><input name="id" readOnly defaultValue={item.id} /></Field>}
+      {status === 'draft' && <Field label="Government sources"><SourceControl data={data} saveSource={saveSource} government multiple value={sourceIds} required={false} onValueChange={setSourceIds} /></Field>}
+      <div className="form-grid"><Field label="Yearly coverage"><select name="coverage" defaultValue={current?.coverage ?? 'partial'}><option value="partial">Partial list / amendment</option><option value="complete">Complete yearly list</option></select></Field><Field label="Linked event (optional)"><select name="eventId" defaultValue={item?.eventId ?? ''}><option value="">Independent holiday record</option>{data.events.map(e => <option value={e.id} key={e.id}>{e.names.en || e.names.km}</option>)}</select></Field></div>
+      <Field label="Amendment / cancellation note"><textarea name="note" rows={2} required={status === 'cancelled'} defaultValue={item?.note} /></Field>
+    </details>
+    <FormActions edit={!!item} cancel={cancel} remove={remove} />
   </form>;
 }
 
-export function OverrideForm({ item, data, selectedYear, save, attempt, cancel }: Actions & { item?: Override; data: Catalog; selectedYear: number; save: (item: Override) => void }) {
+export function OverrideForm({ item, data, selectedYear, save, attempt, cancel, saveSource, eventId, remove }: Actions & { item?: Override; data: Catalog; selectedYear: number; eventId: string; saveSource: SaveSource; save: (item: Override) => void }) {
   return <form className="editor" onSubmit={submit(f => save({ eventId: text(f, 'eventId'), year: Number(text(f, 'year')), dates: parseDates(text(f, 'dates')), sourceId: text(f, 'sourceId'), reason: text(f, 'reason') }), attempt)}>
-    <div className="section-heading"><h2>{item ? 'Edit correction' : 'Add a correction'}</h2><p>Replace a recurring event’s dates for one anchor year. Leave replacement dates empty to cancel its occurrences.</p></div>
+    <div className="section-heading"><h2>Change dates for one year</h2><p>{data.events.find(e => e.id === eventId)?.names.en || eventId}. Other years keep the usual calculation. Leave dates empty to cancel this year.</p></div>
+    <input type="hidden" name="eventId" value={eventId} />
     <div className="form-grid">
-      <Field label="Recurring event"><select name="eventId" required defaultValue={item?.eventId ?? ''}><option value="">Choose an event</option>{data.events.filter(e => e.rule).map(e => <option value={e.id} key={e.id}>{e.names.en || e.names.km}</option>)}</select></Field>
       <Field label="Anchor year"><input name="year" type="number" required min={1800} max={2200} defaultValue={item?.year ?? selectedYear} /></Field>
-      <Field label="Supporting source"><SourceSelect sources={data.sources} value={item?.sourceId} /></Field>
+      <Field label="Supporting source"><SourceControl data={data} saveSource={saveSource} name="sourceId" value={item ? [item.sourceId] : []} /></Field>
     </div>
     <Field label="Replacement dates" help="These replace the entire occurrence list for the anchor year."><textarea name="dates" rows={3} defaultValue={item?.dates.join('\n')} placeholder="Empty means cancelled" /></Field>
     <Field label="Reason"><textarea name="reason" required rows={3} defaultValue={item?.reason} /></Field>
-    <FormActions edit={!!item} cancel={cancel} />
+    <FormActions edit={!!item} cancel={cancel} remove={remove} />
   </form>;
 }

@@ -1,3 +1,4 @@
+import { navigate, openSection } from './ui-helpers.mjs';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile, mkdir } from 'node:fs/promises';
@@ -7,20 +8,25 @@ import { catalog } from './fixtures.ts';
 import { buildExport } from '../server/store.ts';
 
 async function importDraft(page, data) {
-  await page.getByRole('navigation').getByRole('button', { name: 'Import data' }).click();
+  await navigate(page, 'Calendar');
+  await page.getByRole('button', { name: 'Import', exact: true }).click();
   await page.getByLabel('Import content', { exact: true }).fill(JSON.stringify(data));
   await page.getByRole('button', { name: 'Review import', exact: true }).click();
   const review = page.getByRole('checkbox', { name: /I reviewed the replacements/ });
   if (await review.count()) await review.check();
-  await page.getByRole('button', { name: 'Apply import to draft', exact: true }).click();
-  await page.getByRole('navigation').getByRole('button', { name: /^Review & export/ }).click();
+  await page.getByRole('button', { name: 'Apply import', exact: true }).click();
+  await navigate(page, 'Review & save');
   await page.getByLabel('Change note', { exact: true }).fill('Synthetic Pages verification');
 }
 async function downloadJson(page, name) {
+  if (['Download manifest', 'Download data JSON'].includes(name)) await navigate(page, 'Export');
+  else { await navigate(page, 'Review & save'); await openSection(page, 'Workspace backups'); }
   const [file] = await Promise.all([page.waitForEvent('download'), page.getByRole('button', { name, exact: true }).click()]);
   return JSON.parse(await readFile(await file.path(), 'utf8'));
 }
 async function chooseBackup(page, data) {
+  await navigate(page, 'Review & save');
+  await openSection(page, 'Workspace backups');
   await page.getByLabel('Open workspace backup', { exact: true }).setInputFiles({ name: 'workspace.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(data)) });
 }
 
@@ -41,26 +47,31 @@ test('Pages preserves browser saves, concurrent edits, backup history and immuta
     const installed = JSON.parse(await readFile('node_modules/khmer-calendar-engine/package.json', 'utf8'));
     assert.equal(record.version, installed.version);
     await Promise.all([importDraft(left, catalog()), importDraft(right, catalog())]);
-    await Promise.all([left, right].map(page => page.getByRole('button', { name: 'Save reviewed changes', exact: true }).click()));
+    await Promise.all([left, right].map(page => page.getByRole('button', { name: 'Save changes', exact: true }).click()));
     await Promise.race([left, right].map(page => page.getByText('Saved · revision 1', { exact: true }).waitFor()));
     const winner = await left.getByText('Saved · revision 1', { exact: true }).count() ? left : right;
     const stale = winner === left ? right : left;
     await stale.getByRole('alert').filter({ hasText: 'changed in another tab' }).waitFor();
+    await openSection(stale, 'Draft & recovery tools');
     await stale.getByRole('button', { name: 'Discard draft', exact: true }).click();
     await stale.getByRole('button', { name: 'Reload saved workspace', exact: true }).click();
     await stale.getByText('Saved · revision 1', { exact: true }).waitFor();
 
+    await navigate(winner, 'Export');
     await winner.getByRole('button', { name: 'Prepare export', exact: true }).click();
     const manifest = await downloadJson(winner, 'Download manifest');
     assert.deepEqual(manifest, buildExport(catalog()).manifest, 'Browser and local server export identical content and manifests');
+    await navigate(winner, 'Review & save');
+    await openSection(winner, 'Workspace backups');
     const backup = await downloadJson(winner, 'Download workspace');
     assert.equal(backup.workspace.revision, 1);
     assert.deepEqual(backup.exports, [manifest]);
 
     const changed = catalog(); changed.events[0].names.en = 'Changed synthetic name';
     await importDraft(winner, changed);
-    await winner.getByRole('button', { name: 'Save reviewed changes', exact: true }).click();
+    await winner.getByRole('button', { name: 'Save changes', exact: true }).click();
     await winner.getByText('Saved · revision 2', { exact: true }).waitFor();
+    await navigate(winner, 'Export');
     await winner.getByRole('button', { name: 'Prepare export', exact: true }).click();
     await winner.getByRole('alert').filter({ hasText: 'already exported' }).waitFor();
 
@@ -81,11 +92,12 @@ test('Pages preserves browser saves, concurrent edits, backup history and immuta
     const fresh = await browser.newContext(), restored = await fresh.newPage();
     await restored.goto(app.url);
     await restored.getByText('Saved · revision 0', { exact: true }).waitFor();
-    await restored.getByRole('navigation').getByRole('button', { name: /^Review & export/ }).click();
+    await navigate(restored, 'Review & save');
     await chooseBackup(restored, backup);
     await restored.getByRole('checkbox', { name: /I reviewed this backup/ }).check();
     await restored.getByRole('button', { name: 'Restore workspace', exact: true }).click();
     await restored.getByText('Saved · revision 1', { exact: true }).waitFor();
+    await navigate(restored, 'Export');
     await restored.getByRole('button', { name: 'Prepare export', exact: true }).click();
     assert.deepEqual(await downloadJson(restored, 'Download manifest'), manifest);
 
@@ -114,6 +126,6 @@ test('Pages reports unavailable browser storage without claiming a save', { time
     await page.goto(app.url);
     await page.getByRole('alert').filter({ hasText: 'Browser storage is unavailable' }).waitFor();
     await page.getByRole('heading', { name: 'Workspace unavailable' }).waitFor();
-    assert.equal(await page.getByRole('button', { name: 'Download draft', exact: true }).isDisabled(), true);
+    assert.equal(await page.getByRole('button', { name: 'Import', exact: true }).count(), 0);
   } finally { await browser.close(); await app.close(); }
 });

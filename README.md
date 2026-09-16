@@ -6,10 +6,15 @@ A developer web app for maintaining events, historical facts, translations, sour
 
 ## Status
 
-**0.1.0 — local and GitHub Pages versions.** The catalog starts empty. Add reviewed publications and data through the manager; existing application archives have not been migrated yet.
+**0.1.0 — local and GitHub Pages versions.** The saved catalog starts empty. Generate a year to prepare editable holiday dates, then review them against the government announcement. Existing application archives have not been migrated yet.
 
 Implemented:
 
+- A compact header overview and three stages below it: **Calendar → Review & save → Export**.
+- One calendar workspace with search, holiday/event filters, calculated dates and an always-visible announcement panel. **Import** opens a popup on that page.
+- Generate a modern holiday year through the engine, then correct, add or remove entries while checking a PDF or photo beside the list.
+- Save unfinished holiday drafts and confirm reviewed dates against a government publication before export.
+- Add/edit popups with references created or edited in context, preserving the parent form. An event can be started before its reference exists. Year-specific date changes are available inside the recurring event's editor.
 - Source records with authority, publication date, document reference, URL and review notes.
 - Bilingual event editing, explicit dates, historical original dates and optional annual commemorations.
 - Engine-backed recurrence previews and individual-year corrections or cancellations.
@@ -22,7 +27,7 @@ Implemented:
 
 The hosted page saves each browser's workspace in IndexedDB. Catalogs are private to that browser profile; editing does not upload event data or commit it to GitHub. After the page has loaded, editing, calculations and downloads work without API requests. Reopening the site requires a network connection; offline app installation is not implemented.
 
-Under **Review & export**, use **Download workspace** to keep a copy of the saved catalog, history and export-version records. Use **Open workspace backup**, review its contents, and confirm **Restore workspace** to restore it in this or another browser. The last 20 saved revisions are available for download. Clearing site data or ending a private-browsing session can remove browser saves, so retain downloaded copies on disk. Unsaved changes can be kept with **Download draft** and restored through **Import data**.
+Under **Review & save → Workspace backups**, use **Download workspace** to keep a copy of the saved catalog, history and export-version records. Use **Open workspace backup**, review its contents, and confirm **Restore workspace** to restore it in this or another browser. The last 20 saved revisions are available for download. Clearing site data or ending a private-browsing session can remove browser saves, so retain downloaded copies on disk. Unsaved changes can be kept with **Draft & recovery tools → Download draft** and restored through **Calendar → Import**.
 
 The **Deploy manager to Pages** workflow runs on pushes to `main` and through **Actions → Deploy manager to Pages → Run workflow**:
 
@@ -57,12 +62,23 @@ The optional `PORT` and `MANAGER_DATA_DIR` environment variables select a differ
 
 ## Working with data
 
-1. Add the supporting source or import JSON containing its source record.
-2. Add events or enter/import a government's official dates for a selected year.
-3. Inspect the engine preview. Historical facts and their commemorations retain the original date; government holiday status always comes from explicit records.
-4. Review draft changes, supply a change note, and save.
-5. Complete both Khmer and English names, choose a data version, and prepare an export.
-6. Download the data JSON and its manifest; commit reviewed source-data changes in Git and explicitly adopt the bundle in consuming applications.
+### Prepare a new official holiday year
+
+1. In **Calendar**, select a year and click **Generate year**. No JSON or CSV preparation is needed.
+2. Choose the government's PDF or photo in **Announcement**. Compare it beside the dates; edit differences, remove holidays not listed, and add new ones. Removing a record is available inside its edit popup. The preview file stays open while you edit, filter, import, or visit another stage; it is temporary and is not included in backups.
+3. Open **Review & save** and click **Confirm [year]**. Choose an existing publication or use **Add reference** in that popup to record its authority and URL/document number. Select the coverage, acknowledge the review, and **Confirm reviewed year**. Generated entries remain **Awaiting review** until confirmed.
+4. Choose a data version, enter a change note, and **Save changes**. Unfinished work can also be saved and resumed; export remains blocked until review is complete.
+5. Open **Export**, prepare the bundle, and download its data JSON and manifest. Commit reviewed source-data changes and explicitly adopt the bundle in consuming applications. On the hosted page, also download a workspace backup from **Review & save**.
+
+The starting list covers 16 usual holiday occasions, based on the [LRC's 2026 calendar](https://lrc.gov.kh/en/annual-holiday-calendar-2026/), and is offered for 2026 onward. Fixed dates and lunar festivals are recalculated through the shared engine; Khmer New Year uses the engine's full three/four-day festival. The starting list is a proposal for review, not a government announcement for another year. It does not infer weekend substitute leave or carry a prior year's official status forward. Generation is disabled once a year has records so corrections and removals are preserved. Historical lists can be entered manually or imported.
+
+### Other editing and optional imports
+
+Use **Add event** on the calendar for historical facts, traditional festivals and recurring observances. Select a reference or add it directly from that editor; typed event fields stay intact. The **Events** filter shows these definitions, including records with no dates in the selected year. Calculations appear directly in the list.
+
+For an exception, edit the recurring event and expand **Change dates for a specific year**. Enter replacement dates and their reference, or leave the dates empty to cancel that year's occurrences. Other years keep the engine calculation. Changing official holiday dates does not change the engine's festival calculation.
+
+The calendar's **Import** button opens a JSON/CSV popup with a change review before applying. CSV references can be added within the popup. These are optional developer conveniences; government announcements can be reviewed directly as PDFs or photos.
 
 **Partial imports preserve unlisted holidays. Complete imports replace the selected yearly list and expose removals for review.** Repeating an identical import produces no changes. Existing IDs are retained across wording and date corrections.
 
@@ -117,7 +133,7 @@ npm run build:pages
 npm run test:pages
 ```
 
-Browser tests require installed Google Chrome, or set `CHROME_BIN` to a Chromium executable. The suite covers 14 data/storage tests, the full browser workflow in both local-server and static Pages modes, and browser-storage conflict, backup, export and failure scenarios. Desktop and mobile layouts are checked; screenshots are written to ignored `build/verification/`. Test publications and events are synthetic and never enter the default catalog.
+Browser tests require installed Google Chrome, or set `CHROME_BIN` to a Chromium executable. Tests cover year generation, preserved corrections, unconfirmed export rejection, data/storage validation, both browser workflows in local-server and static Pages modes, and browser-storage conflict, backup, export and failure scenarios. Desktop and mobile layouts are checked; screenshots are written to ignored `build/verification/`. Test publications and events are synthetic and never enter the default catalog.
 
 ## License
 

@@ -1,140 +1,105 @@
 import { useEffect, useMemo, useState } from 'react';
-import { changes, emptyCatalog, ENGINE_VERSION, normalize, publicationIssues, validateCatalog, year, type Catalog, type Change, type Snapshot } from './model.ts';
-import { planImport, type ImportPlan } from './imports.ts';
-import { preview } from './preview.ts';
-import { EventForm, Field, HolidayForm, OverrideForm, SourceForm } from './forms.tsx';
+import { changes, emptyCatalog, engine, ENGINE_VERSION, normalize, publicationIssues, validateCatalog, type Catalog, type Snapshot } from './model.ts';
+import { EventForm, Field, HolidayForm, OverrideForm } from './forms.tsx';
 import { api, browserMode } from './storage.ts';
 import { WorkspaceBackupPanel } from './WorkspaceBackupPanel.tsx';
+import { confirmYear, generateYear } from './generate-year.ts';
+import { YearReview } from './YearTools.tsx';
+import { EditorDialog } from './EditorDialog.tsx';
+import { CalendarWorkspace } from './CalendarWorkspace.tsx';
+import { ImportDialog } from './ImportDialog.tsx';
+import { ChangeList, download, Empty } from './ReviewParts.tsx';
+import type { SaveSource } from './SourceControl.tsx';
 
-type View = 'overview' | 'holidays' | 'events' | 'sources' | 'corrections' | 'import' | 'review';
-const navigation: [View, string, string][] = [
-  ['overview', 'Overview', '◫'], ['holidays', 'Official holidays', '▦'], ['events', 'Events', '◇'],
-  ['sources', 'Sources', '▤'], ['corrections', 'Corrections', '↳'], ['import', 'Import data', '↓'], ['review', 'Review & export', '✓'],
-];
-const subtitles: Record<View, string> = {
-  overview: 'Maintain the events, publications and yearly decisions behind the calendar.',
-  holidays: 'The dates designated by government publications, organized by year.',
-  events: 'Historical facts, traditional festivals and observances, with explicit dates or shared calculation rules.',
-  sources: 'Keep the publication, authority and review notes behind every record.',
-  corrections: 'Source-backed replacements and cancellations for recurring events.',
-  import: 'Bring in a yearly holiday publication or restore a complete catalog.',
-  review: 'Inspect the changes, save the catalog and export a reproducible data version.',
-};
-function download(filename: string, content: string, type = 'application/json') {
-  const url = URL.createObjectURL(new Blob([content], { type }));
-  const link = document.createElement('a'); link.href = url; link.download = filename; link.click();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
-}
-function record(data: Catalog, change: Change): unknown {
-  if (change.section === 'Version') return data.dataVersion;
-  if (change.section === 'Source') return data.sources.find(s => s.id === change.id);
-  if (change.section === 'Event') return data.events.find(s => s.id === change.id);
-  if (change.section === 'Calendar') { const c = data.holidayCalendars.find(c => String(c.year) === change.id); return c && { year: c.year, coverage: c.coverage, sourceIds: c.sourceIds }; }
-  const [first, second] = change.id.split('/');
-  if (change.section === 'Holiday') return data.holidayCalendars.find(c => c.year === Number(first))?.holidays.find(h => h.id === second);
-  return data.overrides.find(o => o.eventId === first && o.year === Number(second));
-}
-function ChangeList({ before, after, list }: { before: Catalog; after: Catalog; list: Change[] }) {
-  const [limit, setLimit] = useState(50);
-  return <div className="change-list">{list.slice(0, limit).map(c => <details key={`${c.section}/${c.id}`}>
-    <summary><span className={`badge ${c.action}`}>{c.action}</span><span>{c.section}</span><strong>{c.id}</strong></summary>
-    <div className="diff"><div><h4>Before</h4><pre>{JSON.stringify(record(before, c) ?? null, null, 2)}</pre></div><div><h4>After</h4><pre>{JSON.stringify(record(after, c) ?? null, null, 2)}</pre></div></div>
-  </details>)}{list.length > limit && <button onClick={() => setLimit(limit + 100)}>Show more changes ({list.length - limit} remaining)</button>}</div>;
-}
-function Empty({ title, children }: { title: string; children: React.ReactNode }) {
-  return <div className="empty"><div className="empty-icon" aria-hidden>▦</div><h3>{title}</h3><p>{children}</p></div>;
-}
-function YearPreview({ data, selectedYear }: { data: Catalog; selectedYear: number }) {
-  const [filter, setFilter] = useState('all'), [query, setQuery] = useState(''), [page, setPage] = useState(0);
-  const result = useMemo(() => preview(data, selectedYear), [data, selectedYear]);
-  const rows = result.rows.filter(r => (filter === 'all' || (filter === 'official' ? r.kind === 'official' : r.kind !== 'official')) && `${r.en} ${r.km} ${r.date} ${r.id}`.toLowerCase().includes(query.toLowerCase()));
-  const pages = Math.max(1, Math.ceil(rows.length / 100)), currentPage = Math.min(page, pages - 1);
-  const calendar = data.holidayCalendars.find(c => c.year === selectedYear);
-  return <section className="panel">
-    <div className="panel-title"><div><span className="eyebrow">ENGINE PREVIEW</span><h2>{selectedYear} calendar</h2></div><span className="badge neutral">{calendar ? `${calendar.coverage} holiday list` : 'No official list recorded'}</span></div>
-    <div className="table-tools"><input aria-label="Search preview" placeholder="Search dates or events…" value={query} onChange={e => { setQuery(e.target.value); setPage(0); }} /><select aria-label="Preview category" value={filter} onChange={e => { setFilter(e.target.value); setPage(0); }}><option value="all">All records</option><option value="events">Events</option><option value="official">Official holidays</option></select><span>{rows.length} date records</span></div>
-    {result.issues.length > 0 && <div className="notice error" role="alert">{result.issues.map(i => <p key={i}>{i}</p>)}</div>}
-    {!rows.length ? <Empty title="No dates to preview yet">Add an event or import an official holiday list for {selectedYear}.</Empty> : <div className="table-scroll"><table><thead><tr><th>Date</th><th>Event / holiday</th><th>Basis</th><th>Sources</th></tr></thead><tbody>{rows.slice(currentPage * 100, (currentPage + 1) * 100).map((r, i) => <tr key={`${r.kind}/${r.id}/${r.date}/${i}`} className={r.cancelled ? 'cancelled' : ''}><td className="date-cell"><time>{r.date}</time></td><td><strong>{r.en || r.km}</strong>{r.km && r.en && <span className="khmer" lang="km">{r.km}</span>}</td><td><span className={`badge ${r.kind === 'official' ? r.cancelled ? 'removed' : 'official' : 'neutral'}`}>{r.basis}</span></td><td className="muted small">{r.sourceIds.map(id => data.sources.find(s => s.id === id)?.title ?? id).join('; ')}</td></tr>)}</tbody></table></div>}
-    {pages > 1 && <div className="pagination"><button disabled={!currentPage} onClick={() => setPage(currentPage - 1)}>Previous</button><span>Page {currentPage + 1} / {pages}</span><button disabled={currentPage + 1 >= pages} onClick={() => setPage(currentPage + 1)}>Next</button></div>}
-    <p className="panel-footnote">Calculated events and government holiday designations remain separate records.</p>
-  </section>;
-}
+type Step = 'calendar' | 'review' | 'export';
+type Editor = { kind: 'holiday' | 'event'; id?: string };
+const steps: [Step, string][] = [['calendar', 'Calendar'], ['review', 'Review & save'], ['export', 'Export']];
+const calendarYears = Array.from({ length: engine.maxYear - engine.minYear + 1 }, (_, index) => engine.minYear + index);
 
 export function App() {
   const [snapshot, setSnapshot] = useState<Snapshot | null>(null), [draft, setDraft] = useState<Catalog>(emptyCatalog);
-  const [view, setView] = useState<View>('overview'), [editing, setEditing] = useState<string | null>(null);
+  const [step, setStep] = useState<Step>('calendar'), [editing, setEditing] = useState<Editor | null>(null);
+  const [adjusting, setAdjusting] = useState<{ eventId: string; year: number } | null>(null);
+  const [reviewingYear, setReviewingYear] = useState<number | null>(null), [importing, setImporting] = useState(false);
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear()), [busy, setBusy] = useState(false);
   const [message, setMessage] = useState<{ text: string; error?: boolean } | null>(null);
-  const [content, setContent] = useState(''), [format, setFormat] = useState<'json' | 'csv'>('json');
-  const [importSource, setImportSource] = useState(''), [coverage, setCoverage] = useState<'partial' | 'complete'>('partial');
-  const [plan, setPlan] = useState<ImportPlan | null>(null), [acknowledged, setAcknowledged] = useState(false);
+  const [adjustmentError, setAdjustmentError] = useState<string>();
   const [note, setNote] = useState(''), [bundle, setBundle] = useState<any>(null);
   const diff = useMemo(() => snapshot ? changes(snapshot.workspace.data, draft) : [], [snapshot, draft]);
   const dirty = diff.length > 0, issues = publicationIssues(draft);
-  function attempt(fn: () => void) { try { fn(); } catch (error) { setMessage({ text: error instanceof Error ? error.message : String(error), error: true }); } }
+  const pendingYears = draft.holidayCalendars.filter(c => c.holidays.some(h => h.status === 'draft'));
+  function attempt(fn: () => void) { try { setMessage(null); fn(); } catch (error) { setMessage({ text: error instanceof Error ? error.message : String(error), error: true }); } }
   async function perform(fn: () => Promise<void>) { setBusy(true); try { await fn(); } catch (error) { setMessage({ text: error instanceof Error ? error.message : String(error), error: true }); } finally { setBusy(false); } }
-  async function load() { await perform(async () => { const value = await api('workspace') as Snapshot; setSnapshot(value); setDraft(value.workspace.data); setEditing(null); setBundle(null); setMessage(null); }); }
+  async function load() { await perform(async () => {
+    const value = await api('workspace') as Snapshot;
+    if (!snapshot && value.workspace.data.holidayCalendars.length) setSelectedYear(value.workspace.data.holidayCalendars.at(-1)!.year);
+    setSnapshot(value); setDraft(value.workspace.data); setEditing(null); setBundle(null); setMessage(null);
+  }); }
   useEffect(() => { void load(); }, []);
-  useEffect(() => { setPlan(null); setAcknowledged(false); setBundle(null); }, [draft, content, format, importSource, coverage, selectedYear]);
+  useEffect(() => setBundle(null), [draft]);
   useEffect(() => { const handler = (e: BeforeUnloadEvent) => { if (dirty) e.preventDefault(); }; window.addEventListener('beforeunload', handler); return () => window.removeEventListener('beforeunload', handler); }, [dirty]);
-  function navigate(next: View) { setView(next); setEditing(null); }
-  function apply(change: (data: Catalog) => void, description: string) {
-    const next = structuredClone(draft); change(next); setDraft(normalize(validateCatalog(next))); setEditing(null); setNote(description); setMessage({ text: `${description}. Review and save when ready.` });
+  useEffect(() => { if (message && !message.error) { const timer = setTimeout(() => setMessage(null), 4500); return () => clearTimeout(timer); } }, [message]);
+  function navigate(next: Step) { setStep(next); setMessage(null); }
+  function update(change: (data: Catalog) => void, description: string) {
+    const next = structuredClone(draft); change(next); setDraft(normalize(validateCatalog(next))); setNote(description); setMessage({ text: description });
   }
-  function checkNew(id: string, exists: boolean) { if (editing === '__new__' && exists) throw new Error(`“${id}” already exists. Edit the existing record to keep its identity.`); }
-  const holidayCalendar = draft.holidayCalendars.find(c => c.year === selectedYear);
-  const activeTitle = navigation.find(n => n[0] === view)![1];
-  return <div className="app-shell">
-    <aside className="sidebar"><a className="brand" href="#" onClick={e => { e.preventDefault(); navigate('overview'); }}><img className="brand-mark" src={`${import.meta.env.BASE_URL}icons/khmer-calendar.png`} width="43" height="43" alt="" /><span>KHMER CALENDAR<strong>Event manager</strong></span></a><span className="workspace-label">WORKSPACE</span><nav aria-label="Main navigation">{navigation.map(([id, title, icon]) => <button key={id} className={view === id ? 'selected' : ''} aria-current={view === id ? 'page' : undefined} onClick={() => navigate(id)}><span className="nav-icon" aria-hidden>{icon}</span>{title}{id === 'review' && dirty && <span className="nav-count">{diff.length}</span>}</button>)}</nav><div className="sidebar-footer"><span className="local-dot" /> {browserMode ? 'Saved in this browser' : 'Local developer tool'}<small>Engine {ENGINE_VERSION}<br />Data {draft.dataVersion}</small></div></aside>
-    <div className="workspace">
-      <header className="topbar"><div className="status"><span className={`status-dot ${dirty ? 'dirty' : ''}`} />{snapshot ? dirty ? `${diff.length} draft changes` : `Saved · revision ${snapshot.workspace.revision}` : 'Opening workspace…'}</div><div className="topbar-actions"><button disabled={!snapshot || busy} onClick={() => download(`draft-${draft.dataVersion}.json`, JSON.stringify(normalize(draft), null, 2) + '\n')}>Download draft</button><button className="primary" disabled={!snapshot || busy || !dirty} onClick={() => navigate('review')}>Review & save{dirty ? ` (${diff.length})` : ''}</button></div></header>
-      <main>
-        <div className="page-heading"><div><span className="eyebrow">CALENDAR DATA</span><h1>{activeTitle}</h1><p>{subtitles[view]}</p></div>{['overview', 'holidays', 'import'].includes(view) && <form className="year-picker" onSubmit={e => { e.preventDefault(); const selected = Number(new FormData(e.currentTarget).get('year')); attempt(() => { year(selected, 'Year'); setSelectedYear(selected); setEditing(null); }); }}><label>Year<input key={selectedYear} name="year" aria-label="Selected year" type="number" min={1800} max={2200} defaultValue={selectedYear} required /></label><button type="submit">View</button></form>}</div>
-        {message && <div className={`notice ${message.error ? 'error' : 'success'}`} role={message.error ? 'alert' : 'status'}><span>{message.text}</span><button aria-label="Dismiss message" onClick={() => setMessage(null)}>×</button></div>}
-        {!snapshot ? <section className="panel"><Empty title={busy ? 'Opening the catalog…' : 'Workspace unavailable'}>{busy ? 'Loading saved records.' : <button onClick={() => void load()}>Retry connection</button>}</Empty></section> : <>
-          {view === 'overview' && <>
-            <div className="metrics"><button onClick={() => navigate('sources')}><span>Source publications</span><strong>{draft.sources.length}</strong><small>Evidence behind the records ↗</small></button><button onClick={() => navigate('events')}><span>Event definitions</span><strong>{draft.events.length}</strong><small>Historical, traditional & recurring ↗</small></button><button onClick={() => navigate('holidays')}><span>Official calendar years</span><strong>{draft.holidayCalendars.length}</strong><small>Government designations ↗</small></button></div>
-            {!draft.sources.length && <section className="getting-started"><div><span className="eyebrow">START YOUR CATALOG</span><h2>Begin with the publication.</h2><p>Add a source, record or import its dates, then review the calendar before saving.</p></div><button className="primary" onClick={() => { navigate('sources'); setEditing('__new__'); }}>Add first source <span aria-hidden>→</span></button></section>}
-            <YearPreview data={draft} selectedYear={selectedYear} />
-          </>}
-          {view === 'sources' && <>
-            <div className="section-toolbar"><span>{draft.sources.length} publications</span><button className="primary" onClick={() => setEditing('__new__')}>+ Add source</button></div>
-            {editing !== null && <SourceForm key={editing} item={draft.sources.find(s => s.id === editing)} attempt={attempt} cancel={() => setEditing(null)} save={item => { checkNew(item.id, draft.sources.some(s => s.id === item.id)); apply(d => { d.sources = [...d.sources.filter(s => s.id !== item.id), item]; }, `Updated source ${item.id}`); }} />}
-            <section className="panel">{!draft.sources.length ? <Empty title="No sources yet">Add the government publication, calendar or historical reference you will work from.</Empty> : <div className="record-list">{draft.sources.map(s => <article key={s.id}><div><span className="badge neutral">{s.kind}</span><h3>{s.title}</h3><p>{s.publisher}{s.publishedOn ? ` · ${s.publishedOn}` : ''}</p>{s.reference && <p className="small">{s.reference}</p>}{s.url && <a href={s.url} target="_blank" rel="noreferrer">Open publication ↗</a>}<code>{s.id}</code></div><div className="row-actions"><button onClick={() => setEditing(s.id)}>Edit</button><button className="text-danger" onClick={() => attempt(() => apply(d => { d.sources = d.sources.filter(v => v.id !== s.id); }, `Removed source ${s.id}`))}>Remove</button></div></article>)}</div>}</section>
-          </>}
-          {view === 'events' && <>
-            <div className="section-toolbar"><span>{draft.events.length} event definitions</span><button className="primary" disabled={!draft.sources.length} onClick={() => setEditing('__new__')}>+ Add event</button></div>
-            {!draft.sources.length && <div className="notice info">Add a supporting source before creating an event. <button onClick={() => navigate('sources')}>Go to sources</button></div>}
-            {editing !== null && <EventForm key={editing} data={draft} item={draft.events.find(e => e.id === editing)} attempt={attempt} cancel={() => setEditing(null)} save={item => { checkNew(item.id, draft.events.some(e => e.id === item.id)); apply(d => { d.events = [...d.events.filter(e => e.id !== item.id), item]; }, `Updated event ${item.id}`); }} />}
-            <section className="panel">{!draft.events.length ? <Empty title="An event starts with a fact">Add a one-time historical event, explicit dates, or a recurrence rule evaluated by the shared engine.</Empty> : <div className="record-list">{draft.events.map(e => <article key={e.id}><div><span className="badge neutral">{e.kind}</span><h3>{e.names.en || e.names.km}</h3><p lang="km">{e.names.km}</p><p className="small">{e.rule ? `Rule: ${e.rule.type}` : `${e.dates!.length} explicit date(s)`}{e.originalDate ? ` · Original date ${e.originalDate}` : ''}</p>{(!e.names.en || !e.names.km) && <span className="badge changed">Translation incomplete</span>}<code>{e.id}</code></div><div className="row-actions"><button onClick={() => setEditing(e.id)}>Edit</button><button className="text-danger" onClick={() => attempt(() => apply(d => { d.events = d.events.filter(v => v.id !== e.id); }, `Removed event ${e.id}`))}>Remove</button></div></article>)}</div>}</section>
-          </>}
-          {view === 'holidays' && <>
-            <div className="section-toolbar"><div><span className="badge neutral">{holidayCalendar?.coverage ?? 'No list recorded'}</span> <span>{holidayCalendar?.holidays.length ?? 0} holiday records in {selectedYear}</span></div><div className="row-actions"><button onClick={() => navigate('import')}>Import yearly list</button><button className="primary" disabled={!draft.sources.some(s => s.kind === 'government')} onClick={() => setEditing('__new__')}>+ Add holiday</button></div></div>
-            {!draft.sources.some(s => s.kind === 'government') && <div className="notice info">Add a government source to record official holiday dates. <button onClick={() => navigate('sources')}>Go to sources</button></div>}
-            {editing !== null && <HolidayForm key={`${selectedYear}/${editing}`} item={holidayCalendar?.holidays.find(h => h.id === editing)} data={draft} selectedYear={selectedYear} attempt={attempt} cancel={() => setEditing(null)} save={(item, newCoverage) => { checkNew(item.id, !!holidayCalendar?.holidays.some(h => h.id === item.id)); apply(d => { const c = d.holidayCalendars.find(c => c.year === selectedYear) ?? { year: selectedYear, coverage: newCoverage, sourceIds: [], holidays: [] }; c.holidays = [...c.holidays.filter(h => h.id !== item.id), item]; c.coverage = newCoverage; c.sourceIds = [...new Set([...c.sourceIds, ...item.sourceIds])]; d.holidayCalendars = [...d.holidayCalendars.filter(c => c.year !== selectedYear), c]; }, `Updated ${selectedYear} holiday ${item.id}`); }} />}
-            <section className="panel">{!holidayCalendar?.holidays.length ? <Empty title={`No official holidays recorded for ${selectedYear}`}>Import a yearly list or add dates from a government publication. A calculated festival alone does not establish official leave.</Empty> : <div className="record-list">{holidayCalendar.holidays.map(h => <article key={h.id} className={h.status === 'cancelled' ? 'cancelled' : ''}><div><span className={`badge ${h.status === 'active' ? 'official' : 'removed'}`}>{h.status === 'active' ? 'Official holiday' : 'Cancelled'}</span><h3>{h.names.en || h.names.km}</h3><p lang="km">{h.names.km}</p><p className="date-list">{h.dates.join(' · ')}</p>{h.note && <p>{h.note}</p>}<code>{h.id}</code></div><div className="row-actions"><button onClick={() => setEditing(h.id)}>Edit</button><button className="text-danger" onClick={() => attempt(() => apply(d => { d.holidayCalendars.find(c => c.year === selectedYear)!.holidays = holidayCalendar.holidays.filter(v => v.id !== h.id); }, `Removed ${selectedYear} holiday ${h.id}`))}>Remove</button></div></article>)}</div>}</section>
-          </>}
-          {view === 'corrections' && <>
-            <div className="section-toolbar"><span>{draft.overrides.length} date corrections</span><button className="primary" disabled={!draft.events.some(e => e.rule)} onClick={() => setEditing('__new__')}>+ Add correction</button></div>
-            {editing !== null && <OverrideForm key={editing} item={draft.overrides.find(o => `${o.eventId}/${o.year}` === editing)} data={draft} selectedYear={selectedYear} attempt={attempt} cancel={() => setEditing(null)} save={item => { const key = `${item.eventId}/${item.year}`; if (key !== editing && draft.overrides.some(o => `${o.eventId}/${o.year}` === key)) throw new Error('A correction already exists for this event and year. Edit that record.'); apply(d => { d.overrides = [...d.overrides.filter(o => `${o.eventId}/${o.year}` !== editing), item]; }, `Updated correction ${key}`); }} />}
-            <section className="panel">{!draft.overrides.length ? <Empty title="Corrections keep their evidence">Add a recurring event first. Then record a replacement or cancellation with its supporting source and reason.</Empty> : <div className="record-list">{draft.overrides.map(o => <article key={`${o.eventId}/${o.year}`}><div><span className={`badge ${o.dates.length ? 'changed' : 'removed'}`}>{o.dates.length ? 'Replacement' : 'Cancellation'}</span><h3>{o.eventId} · {o.year}</h3><p>{o.dates.join(' · ') || 'All occurrences cancelled for this anchor year'}</p><p>{o.reason}</p><code>{o.sourceId}</code></div><div className="row-actions"><button onClick={() => setEditing(`${o.eventId}/${o.year}`)}>Edit</button><button className="text-danger" onClick={() => attempt(() => apply(d => { d.overrides = d.overrides.filter(v => !(v.eventId === o.eventId && v.year === o.year)); }, `Removed correction ${o.eventId}/${o.year}`))}>Remove</button></div></article>)}</div>}</section>
-          </>}
-          {view === 'import' && <>
-            <section className="panel padded"><div className="section-heading"><h2>Import a publication’s dates</h2><p>Use structured JSON or CSV transcribed from the publication. Review every change before it enters the draft.</p></div><div className="form-grid"><Field label="Import format"><select value={format} onChange={e => setFormat(e.target.value as 'json' | 'csv')}><option value="json">JSON — yearly import or full catalog</option><option value="csv">CSV — yearly official holidays</option></select></Field><Field label="Choose file"><input type="file" accept=".json,.csv" onChange={e => { const file = e.target.files?.[0]; if (file) void perform(async () => { if (file.size > 8 * 1024 * 1024) throw new Error('Choose a file smaller than 8 MB'); setContent(await file.text()); setFormat(file.name.toLowerCase().endsWith('.csv') ? 'csv' : 'json'); }); }} /></Field></div>
-              {format === 'csv' && <div className="form-grid"><Field label="Government source for CSV"><select value={importSource} onChange={e => setImportSource(e.target.value)}><option value="">Choose a source</option>{draft.sources.filter(s => s.kind === 'government').map(s => <option key={s.id} value={s.id}>{s.title}</option>)}</select></Field><Field label="CSV coverage"><select value={coverage} onChange={e => setCoverage(e.target.value as 'partial' | 'complete')}><option value="partial">Partial update — preserve unlisted holidays</option><option value="complete">Complete list — replace this year</option></select></Field></div>}
-              <Field label="Import content"><textarea className="code-input" rows={10} value={content} onChange={e => setContent(e.target.value)} placeholder={format === 'json' ? 'Paste JSON or choose a file…' : 'id,en,km,start,end,status,eventId,note'} /></Field>
-              <div className="form-actions"><button className="primary" disabled={!content.trim()} onClick={() => attempt(() => { const source = draft.sources.find(s => s.id === importSource); if (format === 'csv' && !source) throw new Error('Choose a government source for the CSV'); setPlan(planImport(draft, content, format, source ? { source, year: selectedYear, coverage } : undefined)); setAcknowledged(false); })}>Review import</button><button onClick={() => download('holidays-template.csv', 'id,en,km,start,end,status,eventId,note\n', 'text/csv')}>CSV template</button><button onClick={() => download('holidays-template.json', JSON.stringify({ schemaVersion: 1, type: 'official-holidays', year: selectedYear, coverage: 'partial', source: { id: '', kind: 'government', title: '', publisher: '', url: '', reference: '' }, holidays: [] }, null, 2))}>JSON template</button></div>
-            </section>
-            {plan && <section className="panel padded"><div className="section-heading"><h2>{plan.changes.length ? `${plan.changes.length} changes to review` : 'Already up to date'}</h2><p>{plan.description}</p></div><ChangeList before={draft} after={plan.data} list={plan.changes} />{(plan.conflicts.length > 0 || plan.destructive) && <label className="checkbox"><input type="checkbox" checked={acknowledged} onChange={e => setAcknowledged(e.target.checked)} />I reviewed the replacements and removals and want to use the imported values.</label>}<button className="primary" disabled={!plan.changes.length || ((plan.conflicts.length > 0 || plan.destructive) && !acknowledged)} onClick={() => { setDraft(plan.data); setPlan(null); setNote(`Imported ${plan.description}`); setMessage({ text: 'Import applied to the draft. Review and save the catalog when ready.' }); }}>Apply import to draft</button></section>}
-          </>}
-          {view === 'review' && <>
-            <section className="panel padded"><div className="panel-title"><div><h2>{dirty ? `${diff.length} changes in this draft` : 'Your catalog is saved'}</h2><p>{browserMode ? 'Save keeps this catalog in your browser and retains the last 20 revisions as backups.' : 'Save writes the canonical file and preserves its previous revision as a backup.'}</p></div><span className="badge neutral">Revision {snapshot.workspace.revision}</span></div><div className="form-grid"><Field label="Data version" help="Increase the version before exporting changed data."><input value={draft.dataVersion} onChange={e => setDraft({ ...draft, dataVersion: e.target.value })} /></Field><Field label="Change note"><input value={note} onChange={e => setNote(e.target.value)} placeholder="What changed and why?" /></Field></div><ChangeList before={snapshot.workspace.data} after={draft} list={diff} /><div className="form-actions"><button className="primary" disabled={busy || !dirty || !note.trim()} onClick={() => void perform(async () => { const saved = await api('save', { data: draft, expected: snapshot.etag, note }) as Snapshot; setSnapshot(saved); setDraft(saved.workspace.data); setNote(''); setMessage({ text: `Saved revision ${saved.workspace.revision}. Previous data is backed up.` }); })}>{busy ? 'Working…' : 'Save reviewed changes'}</button><button disabled={busy || !dirty} onClick={() => { setDraft(snapshot.workspace.data); setNote(''); setMessage({ text: 'Draft discarded. Showing the last loaded revision.' }); }}>Discard draft</button><button disabled={busy || dirty} onClick={() => void load()}>{browserMode ? 'Reload saved workspace' : 'Reload saved file'}</button></div></section>
-            <section className="panel padded"><div className="section-heading"><h2>Export for the apps</h2><p>Download the event data and its manifest with the engine version and SHA-256 checksum.</p></div>{issues.length > 0 && <div className="notice info"><div><strong>Before export</strong><ul>{issues.slice(0, 20).map(i => <li key={i}>{i}</li>)}</ul>{issues.length > 20 && <span>And {issues.length - 20} more translation issues.</span>}</div></div>}{dirty && <p className="muted">Save your draft before generating an export.</p>}<button className="primary" disabled={busy || dirty || !!issues.length} onClick={() => void perform(async () => { setBundle(await api('export', { expected: snapshot.etag })); setMessage({ text: `Export ${draft.dataVersion} prepared from the saved catalog.` }); })}>Prepare export</button>{bundle && <div className="export-result"><div><span className="badge official">Ready to download</span><h3>{bundle.filename}</h3><code>SHA-256 {bundle.manifest.sha256}</code></div><div className="row-actions"><button onClick={() => download(bundle.filename, bundle.content)}>Download data JSON</button><button onClick={() => download(bundle.filename.replace('.json', '.manifest.json'), JSON.stringify(bundle.manifest, null, 2) + '\n')}>Download manifest</button></div></div>}</section>
-            {browserMode && <WorkspaceBackupPanel snapshot={snapshot} dirty={dirty} busy={busy} perform={perform} download={download} error={error => setMessage({ text: String(error), error: true })} restored={value => { setSnapshot(value); setDraft(value.workspace.data); setNote(''); setBundle(null); setMessage({ text: `Restored workspace revision ${value.workspace.revision}. Previous data is backed up.` }); }} />}
-            <section className="panel padded"><h2>Saved history</h2>{!snapshot.workspace.history.length ? <p className="muted">Your first save will appear here.</p> : <ol className="history">{[...snapshot.workspace.history].reverse().map(h => <li key={h.revision}><span className="history-number">{h.revision}</span><div><strong>{h.note}</strong><p>{h.at} · {h.changes.length} changes</p></div></li>)}</ol>}</section>
-          </>}
+  function openEditor(kind: Editor['kind'], id?: string) { setMessage(null); setEditing({ kind, id }); }
+  const saveSource: SaveSource = (source, existingId) => {
+    if (!existingId && draft.sources.some(s => s.id === source.id)) throw new Error(`Reference “${source.id}” already exists. Choose it from the list.`);
+    update(d => { d.sources = [...d.sources.filter(s => s.id !== source.id), source]; }, `${existingId ? 'Updated' : 'Added'} reference ${source.id}`);
+  };
+  const calendar = draft.holidayCalendars.find(c => c.year === selectedYear);
+  const event = editing?.kind === 'event' ? draft.events.find(e => e.id === editing.id) : undefined;
+  const holiday = editing?.kind === 'holiday' ? calendar?.holidays.find(h => h.id === editing.id) : undefined;
+  const adjustment = adjusting ? draft.overrides.find(o => o.eventId === adjusting.eventId && o.year === adjusting.year) : undefined;
+  return <div className="workspace">
+    <header className="app-header"><div className="header-main">
+      <a className="brand" href="#" onClick={e => { e.preventDefault(); navigate('calendar'); }}><img className="brand-mark" src={`${import.meta.env.BASE_URL}icons/khmer-calendar.png`} width="40" height="40" alt="" /><span>Khmer Calendar<strong>Event manager</strong></span></a>
+      <div className="header-summary">
+        <dl className="header-overview" aria-label="Workspace overview"><div><dt>Holiday years</dt><dd>{draft.holidayCalendars.length}</dd></div><div><dt>Events</dt><dd>{draft.events.length}</dd></div><div><dt>References</dt><dd>{draft.sources.length}</dd></div></dl>
+        <span className="status header-status"><span className={`status-dot ${dirty ? 'dirty' : ''}`} />{snapshot ? dirty ? `${diff.length} unsaved changes` : `Saved · revision ${snapshot.workspace.revision}` : 'Opening workspace…'}</span>
+      </div>
+      <div className="year-picker"><label>Year<select aria-label="Selected year" value={selectedYear} onChange={e => { setSelectedYear(Number(e.target.value)); setMessage(null); }}>{calendarYears.map(value => <option key={value} value={value}>{value}</option>)}</select></label></div>
+    </div></header>
+    <main>
+      <nav className="workflow" aria-label="Progress"><ol>{steps.map(([id, label], index) => <li key={id}><button aria-current={step === id ? 'step' : undefined} onClick={() => navigate(id)}><span className="step-number" aria-hidden>{index + 1}</span><span>{label}</span></button></li>)}</ol></nav>
+      {message && !(message.error && (editing || reviewingYear !== null)) && <div className={`notice ${message.error ? 'error' : 'success'}`} role={message.error ? 'alert' : 'status'}><span>{message.text}</span><button aria-label="Dismiss message" onClick={() => setMessage(null)}>×</button></div>}
+      {!snapshot ? <section className="panel"><Empty title={busy ? 'Opening the catalog…' : 'Workspace unavailable'}>{busy ? 'Loading saved records.' : <button onClick={() => void load()}>Retry connection</button>}</Empty></section> : <>
+        <CalendarWorkspace data={draft} selectedYear={selectedYear} hidden={step !== 'calendar'} edit={openEditor} importData={() => setImporting(true)} generate={() => attempt(() => update(d => { d.holidayCalendars = generateYear(d, selectedYear).holidayCalendars; }, `Generated ${selectedYear} holidays for review`))} />
+        {step === 'review' && <>
+          {pendingYears.length > 0 && <section className="panel review-years">{pendingYears.map(c => <div key={c.year}><div><strong>{c.year} holidays</strong><p>{c.holidays.filter(h => h.status === 'draft').length} awaiting review against the announcement</p></div><button onClick={() => { setMessage(null); setReviewingYear(c.year); }}>Confirm {c.year}</button></div>)}</section>}
+          <section className="panel padded"><div className="section-heading"><h2>{dirty ? `${diff.length} changes to save` : 'Your catalog is saved'}</h2>{dirty && <p>You can save unfinished work and confirm the holidays later.</p>}</div>
+            <div className="form-grid"><Field label="Data version" help="Increase before exporting changed data."><input value={draft.dataVersion} onChange={e => setDraft({ ...draft, dataVersion: e.target.value })} /></Field>{dirty && <Field label="Change note"><input value={note} onChange={e => setNote(e.target.value)} placeholder="What changed?" /></Field>}</div>
+            {dirty && <><details className="disclosure"><summary>Inspect {diff.length} changes</summary><ChangeList before={snapshot.workspace.data} after={draft} list={diff} /></details><div className="form-actions"><button className="primary" disabled={busy || !note.trim()} onClick={() => void perform(async () => { const saved = await api('save', { data: draft, expected: snapshot.etag, note }) as Snapshot; setSnapshot(saved); setDraft(saved.workspace.data); setNote(''); setMessage({ text: `Saved revision ${saved.workspace.revision}.` }); })}>Save changes</button></div></>}
+            <details className="disclosure"><summary>Draft & recovery tools</summary><div className="row-actions"><button disabled={busy} onClick={() => download(`draft-${draft.dataVersion}.json`, JSON.stringify(normalize(draft), null, 2) + '\n')}>Download draft</button><button disabled={busy || !dirty} onClick={() => { setDraft(snapshot.workspace.data); setNote(''); setMessage(null); }}>Discard draft</button><button disabled={busy || dirty} onClick={() => void load()}>{browserMode ? 'Reload saved workspace' : 'Reload saved file'}</button></div></details>
+          </section>
+          {browserMode && <details className="panel disclosure-panel"><summary>Workspace backups</summary><WorkspaceBackupPanel snapshot={snapshot} dirty={dirty} busy={busy} perform={perform} download={download} error={error => setMessage({ text: String(error), error: true })} restored={value => { setSnapshot(value); setDraft(value.workspace.data); setNote(''); setBundle(null); setMessage({ text: `Restored workspace revision ${value.workspace.revision}.` }); }} /></details>}
+          <details className="panel disclosure-panel"><summary>Saved history</summary><div className="disclosure-body">{!snapshot.workspace.history.length ? <p>No saves yet.</p> : <ol className="history">{[...snapshot.workspace.history].reverse().map(h => <li key={h.revision}><span className="history-number">{h.revision}</span><div><strong>{h.note}</strong><p>{h.at} · {h.changes.length} changes</p></div></li>)}</ol>}</div></details>
         </>}
-      </main><footer className="page-footer">Khmer Calendar Manager <span>Shared calculations · Versioned event data · Local review</span></footer>
-    </div>
+        {step === 'export' && <section className="panel padded"><div className="section-heading"><h2>Export for the apps</h2><p>Download the reviewed data and its manifest.</p></div>
+          {(dirty || issues.length > 0) && <div className="export-issues"><p>{dirty ? 'Save your changes before exporting.' : 'Finish reviewing these records before exporting.'}</p><button onClick={() => navigate('review')}>Go to review & save</button>{issues.length > 0 && <details className="disclosure"><summary>Show {issues.length} items to resolve</summary><ul>{issues.map(i => <li key={i}>{i}</li>)}</ul></details>}</div>}
+          <button className="primary" disabled={busy || dirty || !!issues.length} onClick={() => void perform(async () => { setBundle(await api('export', { expected: snapshot.etag })); setMessage(null); })}>Prepare export</button>
+          {bundle && <div className="export-result"><div><h3>{bundle.filename}</h3><code>SHA-256 {bundle.manifest.sha256}</code></div><div className="row-actions"><button onClick={() => download(bundle.filename, bundle.content)}>Download data JSON</button><button onClick={() => download(bundle.filename.replace('.json', '.manifest.json'), JSON.stringify(bundle.manifest, null, 2) + '\n')}>Download manifest</button></div></div>}
+        </section>}
+      </>}
+      {editing && <EditorDialog title={`${editing.id ? 'Edit' : 'Add'} ${editing.kind}`} error={message?.error ? message.text : undefined} close={() => setEditing(null)}>
+        {editing.kind === 'holiday' ? <HolidayForm key={`holiday/${editing.id ?? 'new'}`} item={holiday} data={draft} selectedYear={selectedYear} saveSource={saveSource} attempt={attempt} cancel={() => setEditing(null)} remove={holiday ? () => attempt(() => { update(d => { d.holidayCalendars.find(c => c.year === selectedYear)!.holidays = calendar!.holidays.filter(h => h.id !== holiday.id); }, `Removed ${holiday.names.en || holiday.id}`); setEditing(null); }) : undefined} save={(item, coverage) => {
+          if (!editing.id && calendar?.holidays.some(h => h.id === item.id)) throw new Error(`Holiday “${item.id}” already exists.`);
+          update(d => { const c = d.holidayCalendars.find(c => c.year === selectedYear) ?? { year: selectedYear, coverage, sourceIds: [], holidays: [] }; c.holidays = [...c.holidays.filter(h => h.id !== item.id), item]; c.coverage = coverage; c.sourceIds = [...new Set([...c.sourceIds, ...item.sourceIds])]; d.holidayCalendars = [...d.holidayCalendars.filter(c => c.year !== selectedYear), c]; }, `Updated ${selectedYear} holiday ${item.id}`); setEditing(null);
+        }} /> : <EventForm key={`event/${editing.id ?? 'new'}`} item={event} data={draft} saveSource={saveSource} attempt={attempt} cancel={() => setEditing(null)} remove={event ? () => attempt(() => { update(d => { d.events = d.events.filter(e => e.id !== event.id); }, `Removed event ${event.id}`); setEditing(null); }) : undefined} save={item => {
+          if (!editing.id && draft.events.some(e => e.id === item.id)) throw new Error(`Event “${item.id}” already exists.`);
+          update(d => { d.events = [...d.events.filter(e => e.id !== item.id), item]; }, `Updated event ${item.id}`); setEditing(null);
+        }}>
+          {event?.rule && <details className="disclosure"><summary>Change dates for a specific year</summary><p>Use the usual calculation for other years.</p><div className="row-actions"><button type="button" onClick={() => { setAdjustmentError(undefined); setAdjusting({ eventId: event.id, year: selectedYear }); }}>Change {selectedYear} dates</button>{draft.overrides.filter(o => o.eventId === event.id && o.year !== selectedYear).map(o => <button type="button" key={o.year} onClick={() => { setAdjustmentError(undefined); setAdjusting({ eventId: event.id, year: o.year }); }}>Edit {o.year} dates</button>)}</div></details>}
+        </EventForm>}
+      </EditorDialog>}
+      {adjusting && <EditorDialog title="Change event dates" error={adjustmentError} close={() => setAdjusting(null)}><OverrideForm item={adjustment} eventId={adjusting.eventId} selectedYear={adjusting.year} data={draft} saveSource={saveSource} cancel={() => setAdjusting(null)} attempt={fn => { try { fn(); } catch (e) { setAdjustmentError(e instanceof Error ? e.message : String(e)); } }} remove={adjustment ? () => { update(d => { d.overrides = d.overrides.filter(o => !(o.eventId === adjusting.eventId && o.year === adjusting.year)); }, `Restored calculation for ${adjusting.year}`); setAdjusting(null); } : undefined} save={item => {
+        if (item.year !== adjusting.year && draft.overrides.some(o => o.eventId === item.eventId && o.year === item.year)) throw new Error('This year already has changed dates. Edit that entry.');
+        update(d => { d.overrides = [...d.overrides.filter(o => !(o.eventId === adjusting.eventId && o.year === adjusting.year)), item]; }, `Changed ${item.year} dates for ${item.eventId}`); setAdjusting(null);
+      }} /></EditorDialog>}
+      {reviewingYear !== null && <EditorDialog title="Confirm year" error={message?.error ? message.text : undefined} close={() => setReviewingYear(null)}><YearReview data={draft} selectedYear={reviewingYear} saveSource={saveSource} cancel={() => setReviewingYear(null)} confirm={(sourceId, coverage) => attempt(() => { update(d => { d.holidayCalendars = confirmYear(d, reviewingYear, sourceId, coverage).holidayCalendars; }, `Confirmed ${reviewingYear} holidays`); setReviewingYear(null); })} /></EditorDialog>}
+      {importing && <ImportDialog data={draft} selectedYear={selectedYear} saveSource={saveSource} close={() => setImporting(false)} apply={plan => { setDraft(plan.data); setNote(`Imported ${plan.description}`); setMessage({ text: 'Import applied.' }); setImporting(false); }} />}
+    </main>
+    <footer className="page-footer"><span>{browserMode ? 'Saved in this browser' : 'Local workspace'}</span><span>Engine {ENGINE_VERSION} · Data {draft.dataVersion}</span></footer>
   </div>;
 }

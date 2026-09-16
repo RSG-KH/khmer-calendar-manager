@@ -14,7 +14,7 @@ export type Event = {
   dates?: string[]; rule?: RuleInput;
 };
 export type Holiday = {
-  id: string; names: Names; dates: string[]; status: 'active' | 'cancelled';
+  id: string; names: Names; dates: string[]; status: 'draft' | 'active' | 'cancelled';
   sourceIds: string[]; eventId?: string; note?: string;
 };
 export type HolidayCalendar = {
@@ -101,8 +101,8 @@ export function validateCatalog(input: unknown): Catalog {
   unique(v.sources.map((s: Source) => s.id), 'sources');
   const sources = new Map<string, Source>(v.sources.map((s: Source) => [s.id, s]));
   const eventIds = new Set<string>(v.events.map((e: Event) => e?.id));
-  function sourceIds(value: unknown, path: string, government = false) {
-    array(value, path); if (!value.length) fail(path, 'at least one source is required'); unique(value, path);
+  function sourceIds(value: unknown, path: string, government = false, allowEmpty = false) {
+    array(value, path); if (!value.length && !allowEmpty) fail(path, 'at least one source is required'); unique(value, path);
     for (const sourceId of value) {
       id(sourceId, path);
       const source = sources.get(sourceId);
@@ -138,12 +138,13 @@ export function validateCatalog(input: unknown): Catalog {
     const p = `holidayCalendars[${i}]`, c = object(input, p, ['year', 'coverage', 'sourceIds', 'holidays']);
     year(c.year, `${p}.year`);
     if (!['complete', 'partial'].includes(c.coverage)) fail(p, 'coverage must be complete or partial');
-    sourceIds(c.sourceIds, `${p}.sourceIds`, true); array(c.holidays, `${p}.holidays`);
+    array(c.holidays, `${p}.holidays`);
+    sourceIds(c.sourceIds, `${p}.sourceIds`, true, c.holidays.every(h => (h as Holiday | null)?.status === 'draft'));
     c.holidays.forEach((input: unknown, j: number) => {
       const hp = `${p}.holidays[${j}]`, h = object(input, hp, ['id', 'names', 'dates', 'status', 'sourceIds', 'eventId', 'note']);
       id(h.id, `${hp}.id`); names(h.names, `${hp}.names`); dates(h.dates, `${hp}.dates`, false, c.year);
-      sourceIds(h.sourceIds, `${hp}.sourceIds`, true); optionalText(h, 'note', hp);
-      if (!['active', 'cancelled'].includes(h.status)) fail(hp, 'status must be active or cancelled');
+      sourceIds(h.sourceIds, `${hp}.sourceIds`, true, h.status === 'draft'); optionalText(h, 'note', hp);
+      if (!['draft', 'active', 'cancelled'].includes(h.status)) fail(hp, 'status must be draft, active or cancelled');
       if (h.status === 'cancelled' && !h.note?.trim()) fail(hp, 'a cancellation needs an explanation');
       if (h.eventId !== undefined && !eventIds.has(h.eventId)) fail(hp, `linked event “${h.eventId}” does not exist`);
     });
@@ -165,8 +166,10 @@ export function validateCatalog(input: unknown): Catalog {
 
 export function publicationIssues(data: Catalog): string[] {
   const issues: string[] = [];
+  for (const c of data.holidayCalendars) if (!c.sourceIds.length) issues.push(`Add the reviewed government publication for ${c.year} before exporting.`);
   for (const e of data.events) if (!e.names.en.trim() || !e.names.km.trim()) issues.push(`Complete both names for event “${e.id}”.`);
   for (const c of data.holidayCalendars) for (const h of c.holidays) {
+    if (h.status === 'draft') issues.push(`Review ${c.year} holiday “${h.id}” against the publication before exporting.`);
     if (!h.names.en.trim() || !h.names.km.trim()) issues.push(`Complete both names for ${c.year} holiday “${h.id}”.`);
   }
   if (!data.events.length && !data.holidayCalendars.length) issues.push('Add events or an official calendar before exporting.');
