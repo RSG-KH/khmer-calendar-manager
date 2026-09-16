@@ -36,7 +36,7 @@ test('Pages preserves browser saves, concurrent edits, backup history and immuta
   try {
     await Promise.all([left.goto(app.url), right.goto(app.url)]);
     await Promise.all([left, right].map(page => page.getByText('Saved · revision 0', { exact: true }).waitFor()));
-    assert.equal(await left.locator('.brand-mark').evaluate(image => image.complete && image.naturalWidth === 512), true);
+    assert.equal(await left.locator('.brand-mark').evaluate(async image => { await image.decode(); return image.naturalWidth === 512; }), true);
     const record = await (await context.request.get(app.url + 'engine-release.json')).json();
     const installed = JSON.parse(await readFile('node_modules/khmer-calendar-engine/package.json', 'utf8'));
     assert.equal(record.version, installed.version);
