@@ -1,0 +1,42 @@
+import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { readFile, writeFile, appendFile } from 'node:fs/promises';
+import { spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+
+const root = fileURLToPath(new URL('../', import.meta.url));
+const repository = 'RSG-KH/khmer-calendar-engine';
+const requested = process.argv[2] ?? 'latest';
+if (process.argv.length > 3 || (requested !== 'latest' && !/^v?\d+\.\d+\.\d+(?:-[a-zA-Z0-9.-]+)?$/.test(requested))) throw new Error('Use npm run engine:update -- latest (or a version such as v0.1.0)');
+async function get(url, json = false) {
+  const headers = { 'User-Agent': 'khmer-calendar-manager', Accept: json ? 'application/vnd.github+json' : 'application/octet-stream' };
+  if (url.startsWith('https://api.github.com/') && process.env.GITHUB_TOKEN) headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
+  const response = await fetch(url, { headers, signal: AbortSignal.timeout(60000) });
+  if (!response.ok) throw new Error(`Download failed (${response.status}): ${url}`);
+  return json ? response.json() : Buffer.from(await response.arrayBuffer());
+}
+const selector = requested === 'latest' ? 'latest' : `tags/${requested.startsWith('v') ? requested : `v${requested}`}`;
+const release = await get(`https://api.github.com/repos/${repository}/releases/${selector}`, true);
+assert.ok(!release.draft && (requested !== 'latest' || !release.prerelease), 'Expected a published stable release');
+assert.match(release.tag_name, /^v\d+\.\d+\.\d+(?:-[a-zA-Z0-9.-]+)?$/);
+const version = release.tag_name.slice(1), name = `khmer-calendar-engine-${version}.tgz`;
+const url = `https://github.com/${repository}/releases/download/${release.tag_name}/${name}`;
+assert.ok(release.assets.some(asset => asset.name === name && asset.browser_download_url === url), 'Release has no matching JavaScript package');
+const [archive, sums] = await Promise.all([get(url), get(`https://github.com/${repository}/releases/download/${release.tag_name}/SHA256SUMS`)]);
+const matches = sums.toString('utf8').split(/\r?\n/).map(line => line.trim().split(/\s+/)).filter(([, filename]) => filename === name);
+assert.equal(matches.length, 1, 'Expected exactly one package checksum');
+const sha256 = createHash('sha256').update(archive).digest('hex');
+assert.equal(sha256, matches[0][0], 'Engine release checksum mismatch');
+assert.ok(process.env.npm_execpath, 'Run this helper through npm run engine:update');
+const install = spawnSync(process.execPath, [process.env.npm_execpath, 'install', '--save-exact', '--ignore-scripts', url], { cwd: root, stdio: 'inherit' });
+if (install.error) throw install.error;
+if (install.status !== 0) throw new Error(`npm install failed (${install.status})`);
+const lock = JSON.parse(await readFile(new URL('../package-lock.json', import.meta.url), 'utf8'));
+const dependency = lock.packages['node_modules/khmer-calendar-engine'];
+assert.equal(dependency.resolved, url);
+assert.equal(dependency.version, version);
+assert.equal(dependency.integrity, 'sha512-' + createHash('sha512').update(archive).digest('base64'), 'Installed package differs from the verified release');
+const record = { version, tag: release.tag_name, release: release.html_url, package: url, sha256 };
+await writeFile(new URL('../public/engine-release.json', import.meta.url), JSON.stringify(record, null, 2) + '\n');
+if (process.env.GITHUB_STEP_SUMMARY) await appendFile(process.env.GITHUB_STEP_SUMMARY, `### Engine selected for this build\n\n[${record.tag}](${record.release})\n\nSHA-256: \`${sha256}\`\n`);
+console.log(`Engine ${version} installed and verified. Run the manager tests before adopting it.`);

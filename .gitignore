@@ -1,0 +1,11 @@
+node_modules/
+dist/
+dist-pages/
+build/
+.manager/
+*.tsbuildinfo
+*.log
+data/.backups/
+data/.exports/
+data/.write.lock
+data/*.tmp

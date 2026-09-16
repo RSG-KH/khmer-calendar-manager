@@ -1,0 +1,32 @@
+{
+  "name": "khmer-calendar-manager",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "node server/index.ts --dev",
+    "start": "node server/index.ts",
+    "build": "tsc --noEmit && vite build",
+    "build:pages": "tsc --noEmit && vite build --mode pages",
+    "engine:update": "node tools/update-engine.mjs",
+    "test": "node --test tests/*.test.ts",
+    "test:browser": "node --test tests/browser.test.mjs",
+    "test:pages": "node tools/test-pages.mjs"
+  },
+  "dependencies": {
+    "khmer-calendar-engine": "https://github.com/RSG-KH/khmer-calendar-engine/releases/download/v0.1.0/khmer-calendar-engine-0.1.0.tgz",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.1",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "playwright-core": "1.63.0",
+    "typescript": "5.9.3",
+    "vite": "6.4.3"
+  }
+}

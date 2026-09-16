@@ -1,0 +1,74 @@
+name: Deploy manager to Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      engine_version:
+        description: 'Engine release: latest stable, or an exact tag for rollback'
+        required: true
+        default: latest
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: manager-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '26'
+          cache: npm
+      - run: npm ci
+      - name: Select and verify the engine release
+        env:
+          ENGINE_VERSION: ${{ inputs.engine_version || 'latest' }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: npm run engine:update -- "$ENGINE_VERSION"
+      - run: npm test
+      - run: npm run build
+      - run: npm run test:browser
+      - name: Build the browser workspace for Pages
+        env:
+          PAGES_BASE_PATH: /${{ github.event.repository.name }}/
+        run: npm run build:pages
+      - name: Verify the static page and browser storage
+        run: npm run test:pages
+      - name: Save the exact engine and dependency records
+        uses: actions/upload-artifact@v7
+        with:
+          name: manager-build-record
+          path: |
+            package.json
+            package-lock.json
+            public/engine-release.json
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist-pages
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/configure-pages@v5
+      - name: Deploy verified manager
+        id: deployment
+        uses: actions/deploy-pages@v4
