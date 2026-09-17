@@ -1,5 +1,5 @@
 {
-  "revision": 4,
+  "revision": 5,
   "data": {
     "schemaVersion": 2,
     "dataVersion": "0.2.0",
@@ -11,7 +11,7 @@
         "kind": "calendar",
         "url": "https://khmer-lunar-calendar.com/",
         "reference": "Captured 10 September 2026",
-        "notes": "Imported from calendar-events.tsv SHA-256 3770e0290bd2131c35140bb68a0264cc5adfe5b313a137b66d2b726c0eb6fa8c; recurrence rules SHA-256 6396ba90d6d36af1b1c756a156860a053c260351c6e9babdfbb3b771121a18f5; translation catalog SHA-256 1f8e24a3e53290c4bb3d1024c37fcb0fed2f17d420b11e3fb4ef81c27d4fed77. The capture records what the website displayed; it is not a government holiday designation."
+        "notes": "Historical calendar capture of traditional observances and dates (2000–2030)."
       },
       {
         "id": "lrc-annual-holiday-calendar-2026",
@@ -2964,221 +2964,334 @@
         ],
         "holidays": [
           {
-            "id": "constitution",
+            "id": "2020_new_year_day",
             "names": {
-              "en": "Constitution Day",
-              "km": "ទិវាប្រកាសរដ្ឋធម្មនុញ្ញ"
+              "en": "New Year's Day",
+              "km": "ទិវា​ចូល​ឆ្នាំ​សាកល"
             },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-112-ankr-bk-2020"
-            ],
-            "dates": [
-              "2020-09-24"
-            ]
-          },
-          {
-            "id": "coronation",
-            "names": {
-              "en": "King Norodom Sihamoni’s Coronation Day",
-              "km": "ព្រះរាជពិធីគ្រងព្រះបរមរាជសម្បត្តិ ព្រះករុណាព្រះបាទសម្ដេចព្រះបរមនាថ នរោត្តម សីហមុនី"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-112-ankr-bk-2020"
-            ],
-            "dates": [
-              "2020-10-29"
-            ]
-          },
-          {
-            "id": "independence",
-            "names": {
-              "en": "Independence Day",
-              "km": "ពិធីបុណ្យឯករាជ្យជាតិ"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-112-ankr-bk-2020"
-            ],
-            "dates": [
-              "2020-11-09"
-            ]
-          },
-          {
-            "id": "khmer-new-year",
-            "names": {
-              "en": "Khmer New Year",
-              "km": "ពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-112-ankr-bk-2020"
-            ],
-            "dates": [
-              "2020-04-13",
-              "2020-04-14",
-              "2020-04-15",
-              "2020-04-16"
-            ]
-          },
-          {
-            "id": "king-birthday",
-            "names": {
-              "en": "King Norodom Sihamoni’s Birthday",
-              "km": "ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម ព្រះករុណាព្រះបាទសម្ដេចព្រះបរមនាថ នរោត្តម សីហមុនី"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-112-ankr-bk-2020"
-            ],
-            "dates": [
-              "2020-05-14"
-            ]
-          },
-          {
-            "id": "king-father",
-            "names": {
-              "en": "King Father’s Commemoration Day",
-              "km": "ទិវាប្រារព្ធពិធីគោរពព្រះវិញ្ញាណក្ខន្ធ ព្រះបរមរតនកោដ្ឋ"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-112-ankr-bk-2020"
-            ],
-            "dates": [
-              "2020-10-15"
-            ]
-          },
-          {
-            "id": "labour",
-            "names": {
-              "en": "International Labour Day",
-              "km": "ទិវាពលកម្មអន្តរជាតិ"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-112-ankr-bk-2020"
-            ],
-            "dates": [
-              "2020-05-01"
-            ]
-          },
-          {
-            "id": "new-year",
-            "names": {
-              "en": "International New Year’s Day",
-              "km": "ទិវាចូលឆ្នាំសកល"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-112-ankr-bk-2020"
-            ],
             "dates": [
               "2020-01-01"
-            ]
-          },
-          {
-            "id": "pchum",
-            "names": {
-              "en": "Pchum Ben Festival",
-              "km": "ពិធីបុណ្យភ្ជុំបិណ្ឌ"
-            },
+            ],
             "status": "active",
             "sourceIds": [
               "subdecree-112-ankr-bk-2020"
             ],
-            "dates": [
-              "2020-09-16",
-              "2020-09-17",
-              "2020-09-18"
-            ]
+            "eventId": "new_year_day"
           },
           {
-            "id": "ploughing",
+            "id": "2020_victory_over_genocide",
             "names": {
-              "en": "Royal Ploughing Ceremony",
-              "km": "ព្រះរាជពិធីច្រត់ព្រះនង្គ័ល"
+              "en": "Victory Over Genocide Day",
+              "km": "ទិវា​ជ័យ​ជម្នះ​លើ​របប​ប្រល័យ​ពូជ​សាសន៍ ខួបលើកទី{anniversary}"
             },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-112-ankr-bk-2020"
-            ],
-            "dates": [
-              "2020-05-10"
-            ]
-          },
-          {
-            "id": "queen-birthday",
-            "names": {
-              "en": "Queen Mother’s Birthday",
-              "km": "ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម សម្ដេចព្រះមហាក្សត្រី នរោត្តម មុនិនាថ សីហនុ"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-112-ankr-bk-2020"
-            ],
-            "dates": [
-              "2020-06-18"
-            ]
-          },
-          {
-            "id": "victory",
-            "names": {
-              "en": "Victory Day over Genocide",
-              "km": "ទិវាជ័យជម្នះលើរបបប្រល័យពូជសាសន៍"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-112-ankr-bk-2020"
-            ],
             "dates": [
               "2020-01-07"
-            ]
-          },
-          {
-            "id": "visak",
-            "names": {
-              "en": "Visak Bochea",
-              "km": "ពិធីបុណ្យវិសាខបូជា"
-            },
+            ],
             "status": "active",
             "sourceIds": [
               "subdecree-112-ankr-bk-2020"
             ],
-            "dates": [
-              "2020-05-06"
-            ]
+            "eventId": "victory_over_genocide"
           },
           {
-            "id": "water",
+            "id": "2020_international_women_day",
             "names": {
-              "en": "Water Festival",
-              "km": "ព្រះរាជពិធីបុណ្យអុំទូក បណ្ដែតប្រទីប និងសំពះព្រះខែ អកអំបុក"
+              "en": "International Women's Day",
+              "km": "ទិវា​នារី​អន្តរជាតិ ខួបលើកទី{anniversary}"
             },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-112-ankr-bk-2020"
-            ],
-            "dates": [
-              "2020-10-30",
-              "2020-10-31",
-              "2020-11-01"
-            ]
-          },
-          {
-            "id": "women",
-            "names": {
-              "en": "International Women’s Day",
-              "km": "ទិវាអន្តរជាតិនារី"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-112-ankr-bk-2020"
-            ],
             "dates": [
               "2020-03-08"
-            ]
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-112-ankr-bk-2020"
+            ],
+            "eventId": "international_women_day"
+          },
+          {
+            "id": "2020_khmer_new_year_1",
+            "names": {
+              "en": "Khmer New Year – Moha Sankranta",
+              "km": "ពិធី​បុណ្យ​ចូល​ឆ្នាំ​ថ្មី ប្រពៃណី​ជាតិ – មហា​សង្ក្រាន្ត"
+            },
+            "dates": [
+              "2020-04-13"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-112-ankr-bk-2020"
+            ],
+            "eventId": "khmer_new_year_1"
+          },
+          {
+            "id": "2020_khmer_new_year_2_1",
+            "names": {
+              "en": "Khmer New Year - Veareak Vanabat",
+              "km": "ពិធី​បុណ្យ​ចូល​ឆ្នាំ​ថ្មី ប្រពៃណី​ជាតិ - វារៈ​វ័ន​បត"
+            },
+            "dates": [
+              "2020-04-14"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-112-ankr-bk-2020"
+            ],
+            "eventId": "khmer_new_year_2"
+          },
+          {
+            "id": "2020_khmer_new_year_2_2",
+            "names": {
+              "en": "Khmer New Year - Veareak Vanabat",
+              "km": "ពិធី​បុណ្យ​ចូល​ឆ្នាំ​ថ្មី ប្រពៃណី​ជាតិ - វារៈ​វ័ន​បត"
+            },
+            "dates": [
+              "2020-04-15"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-112-ankr-bk-2020"
+            ],
+            "eventId": "khmer_new_year_2"
+          },
+          {
+            "id": "2020_khmer_new_year_3",
+            "names": {
+              "en": "Khmer New Year - Veareak Laeung Sak",
+              "km": "ពិធី​បុណ្យ​ចូល​ឆ្នាំ​ថ្មី ប្រពៃណី​ជាតិ - ថ្ងៃ​ឡើង​ស័ក"
+            },
+            "dates": [
+              "2020-04-16"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-112-ankr-bk-2020"
+            ],
+            "eventId": "khmer_new_year_3"
+          },
+          {
+            "id": "2020_international_labor_day",
+            "names": {
+              "en": "International Labor Day",
+              "km": "ទិវា​ពលកម្ម​អន្តរជាតិ ខួបលើកទី{anniversary}"
+            },
+            "dates": [
+              "2020-05-01"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-112-ankr-bk-2020"
+            ],
+            "eventId": "international_labor_day"
+          },
+          {
+            "id": "2020_visak_bochea",
+            "names": {
+              "en": "Visak Bochea",
+              "km": "ពិធី​បុណ្យ​វិសាខ​បូជា"
+            },
+            "dates": [
+              "2020-05-06"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-112-ankr-bk-2020"
+            ],
+            "eventId": "visak_bochea"
+          },
+          {
+            "id": "2020_royal_ploughing_ceremony",
+            "names": {
+              "en": "Royal Ploughing Ceremony",
+              "km": "ព្រះ​រាជ​ពិធី​ច្រត់​ព្រះ​នង្គ័ល"
+            },
+            "dates": [
+              "2020-05-10"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-112-ankr-bk-2020"
+            ],
+            "eventId": "royal_ploughing_ceremony"
+          },
+          {
+            "id": "2020_king_sihamoni_birthday",
+            "names": {
+              "en": "King Sihamoni's Birthday",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​ចម្រើន​ព្រះ​ជន្ម ព្រះ​ករុណា​ព្រះ​បាទ​សម្តេច​ព្រះ​បរម​នាថ នរោត្តម សីហមុនី ព្រះ​មហាក្សត្រ​នៃ​ព្រះរាជាណាចក្រ​កម្ពុជា"
+            },
+            "dates": [
+              "2020-05-14"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-112-ankr-bk-2020"
+            ],
+            "eventId": "king_sihamoni_birthday"
+          },
+          {
+            "id": "2020_queen_mother_birthday",
+            "names": {
+              "en": "Queen Mother's Birthday",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​ចម្រើន​ព្រះ​ជន្ម សម្តេច​ព្រះ​មហាក្សត្រី នរោត្តម មុនិនាថ សីហនុ ព្រះ​វររាជ​មាតា​ជាតិ​ខ្មែរ ក្នុង​សេរីភាព សេចក្តីថ្លៃថ្នូរ និង​សុភមង្គល"
+            },
+            "dates": [
+              "2020-06-18"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-112-ankr-bk-2020"
+            ],
+            "eventId": "queen_mother_birthday"
+          },
+          {
+            "id": "2020_pchum_ben_festival_1",
+            "names": {
+              "en": "Pchum Ben Festival",
+              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+            },
+            "dates": [
+              "2020-09-16"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-112-ankr-bk-2020"
+            ],
+            "eventId": "pchum_ben_festival"
+          },
+          {
+            "id": "2020_pchum_ben_festival_2",
+            "names": {
+              "en": "Pchum Ben Festival",
+              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+            },
+            "dates": [
+              "2020-09-17"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-112-ankr-bk-2020"
+            ],
+            "eventId": "pchum_ben_festival"
+          },
+          {
+            "id": "2020_pchum_ben_festival_3",
+            "names": {
+              "en": "Pchum Ben Festival",
+              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+            },
+            "dates": [
+              "2020-09-18"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-112-ankr-bk-2020"
+            ],
+            "eventId": "pchum_ben_festival"
+          },
+          {
+            "id": "2020_constitution_day",
+            "names": {
+              "en": "Constitution Day",
+              "km": "ទិវា​ប្រកាស​រដ្ឋ​ធម្មនុញ្ញ ខួបលើកទី{anniversary}"
+            },
+            "dates": [
+              "2020-09-24"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-112-ankr-bk-2020"
+            ],
+            "eventId": "constitution_day"
+          },
+          {
+            "id": "2020_king_father_commemoration",
+            "names": {
+              "en": "King Father's Commemoration Day",
+              "km": "ទិវា​ប្រារព្ធ​ពិធី​គោរព​ព្រះវិញ្ញាណក្ខន្ធ ព្រះករុណា​ព្រះបាទ​សម្តេច​ព្រះ នរោត្តម សីហនុ ព្រះមហាវីរក្សត្រ ព្រះ​វររាជ​បិតា​ឯករាជ្យ បូរណភាព​ទឹកដី និង​ឯកភាព​ជាតិ​ខ្មែរ"
+            },
+            "dates": [
+              "2020-10-15"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-112-ankr-bk-2020"
+            ],
+            "eventId": "king_father_commemoration"
+          },
+          {
+            "id": "2020_king_coronation_day",
+            "names": {
+              "en": "King's Coronation Day",
+              "km": "ព្រះ​រាជ​ពិធី​គ្រង​ព្រះ​បរម​រាជ​សម្បត្តិ ព្រះ​ករុណា​ព្រះ​បាទ​សម្តេច​ព្រះ​បរមនាថ នរោត្តម សីហមុនី ព្រះ​មហាក្សត្រ​នៃ​ព្រះរាជាណាចក្រ​កម្ពុជា"
+            },
+            "dates": [
+              "2020-10-29"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-112-ankr-bk-2020"
+            ],
+            "eventId": "king_coronation_day"
+          },
+          {
+            "id": "2020_water_festival_1",
+            "names": {
+              "en": "Water Festival",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​អុំ​ទូក បណ្ដែត​ប្រទីប និង​សំពះ​ព្រះ​ខែ អកអំបុក"
+            },
+            "dates": [
+              "2020-10-30"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-112-ankr-bk-2020"
+            ],
+            "eventId": "water_festival"
+          },
+          {
+            "id": "2020_water_festival_2",
+            "names": {
+              "en": "Water Festival",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​អុំ​ទូក បណ្ដែត​ប្រទីប និង​សំពះ​ព្រះ​ខែ អកអំបុក"
+            },
+            "dates": [
+              "2020-10-31"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-112-ankr-bk-2020"
+            ],
+            "eventId": "water_festival"
+          },
+          {
+            "id": "2020_water_festival_3",
+            "names": {
+              "en": "Water Festival",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​អុំ​ទូក បណ្ដែត​ប្រទីប និង​សំពះ​ព្រះ​ខែ អកអំបុក"
+            },
+            "dates": [
+              "2020-11-01"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-112-ankr-bk-2020"
+            ],
+            "eventId": "water_festival"
+          },
+          {
+            "id": "2020_independence_day",
+            "names": {
+              "en": "Independence Day",
+              "km": "ពិធី​បុណ្យ​ឯករាជ្យ​ជាតិ ខួបលើកទី{anniversary}"
+            },
+            "dates": [
+              "2020-11-09"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-112-ankr-bk-2020"
+            ],
+            "eventId": "independence_day"
           }
         ]
       },
@@ -3190,220 +3303,319 @@
         ],
         "holidays": [
           {
-            "id": "constitution",
+            "id": "2021_new_year_day",
             "names": {
-              "en": "Constitution Day",
-              "km": "ទិវាប្រកាសរដ្ឋធម្មនុញ្ញ"
+              "en": "New Year's Day",
+              "km": "ទិវា​ចូល​ឆ្នាំ​សាកល"
             },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-131-ankr-bk-2021"
-            ],
-            "dates": [
-              "2021-09-24"
-            ]
-          },
-          {
-            "id": "coronation",
-            "names": {
-              "en": "King Norodom Sihamoni’s Coronation Day",
-              "km": "ព្រះរាជពិធីគ្រងព្រះបរមរាជសម្បត្តិ ព្រះករុណាព្រះបាទសម្ដេចព្រះបរមនាថ នរោត្តម សីហមុនី"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-131-ankr-bk-2021"
-            ],
-            "dates": [
-              "2021-10-29"
-            ]
-          },
-          {
-            "id": "independence",
-            "names": {
-              "en": "Independence Day",
-              "km": "ពិធីបុណ្យឯករាជ្យជាតិ"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-131-ankr-bk-2021"
-            ],
-            "dates": [
-              "2021-11-09"
-            ]
-          },
-          {
-            "id": "khmer-new-year",
-            "names": {
-              "en": "Khmer New Year",
-              "km": "ពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-131-ankr-bk-2021"
-            ],
-            "dates": [
-              "2021-04-14",
-              "2021-04-15",
-              "2021-04-16"
-            ]
-          },
-          {
-            "id": "king-birthday",
-            "names": {
-              "en": "King Norodom Sihamoni’s Birthday",
-              "km": "ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម ព្រះករុណាព្រះបាទសម្ដេចព្រះបរមនាថ នរោត្តម សីហមុនី"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-131-ankr-bk-2021"
-            ],
-            "dates": [
-              "2021-05-14"
-            ]
-          },
-          {
-            "id": "king-father",
-            "names": {
-              "en": "King Father’s Commemoration Day",
-              "km": "ទិវាប្រារព្ធពិធីគោរពព្រះវិញ្ញាណក្ខន្ធ ព្រះបរមរតនកោដ្ឋ"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-131-ankr-bk-2021"
-            ],
-            "dates": [
-              "2021-10-15"
-            ]
-          },
-          {
-            "id": "labour",
-            "names": {
-              "en": "International Labour Day",
-              "km": "ទិវាពលកម្មអន្តរជាតិ"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-131-ankr-bk-2021"
-            ],
-            "dates": [
-              "2021-05-01"
-            ]
-          },
-          {
-            "id": "new-year",
-            "names": {
-              "en": "International New Year’s Day",
-              "km": "ទិវាចូលឆ្នាំសកល"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-131-ankr-bk-2021"
-            ],
             "dates": [
               "2021-01-01"
-            ]
-          },
-          {
-            "id": "pchum",
-            "names": {
-              "en": "Pchum Ben Festival",
-              "km": "ពិធីបុណ្យភ្ជុំបិណ្ឌ"
-            },
+            ],
             "status": "active",
             "sourceIds": [
               "subdecree-131-ankr-bk-2021"
             ],
-            "dates": [
-              "2021-10-05",
-              "2021-10-06",
-              "2021-10-07"
-            ]
+            "eventId": "new_year_day"
           },
           {
-            "id": "ploughing",
+            "id": "2021_victory_over_genocide",
             "names": {
-              "en": "Royal Ploughing Ceremony",
-              "km": "ព្រះរាជពិធីច្រត់ព្រះនង្គ័ល"
+              "en": "Victory Over Genocide Day",
+              "km": "ទិវា​ជ័យ​ជម្នះ​លើ​របប​ប្រល័យ​ពូជ​សាសន៍ ខួបលើកទី{anniversary}"
             },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-131-ankr-bk-2021"
-            ],
-            "dates": [
-              "2021-04-30"
-            ]
-          },
-          {
-            "id": "queen-birthday",
-            "names": {
-              "en": "Queen Mother’s Birthday",
-              "km": "ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម សម្ដេចព្រះមហាក្សត្រី នរោត្តម មុនិនាថ សីហនុ"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-131-ankr-bk-2021"
-            ],
-            "dates": [
-              "2021-06-18"
-            ]
-          },
-          {
-            "id": "victory",
-            "names": {
-              "en": "Victory Day over Genocide",
-              "km": "ទិវាជ័យជម្នះលើរបបប្រល័យពូជសាសន៍"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-131-ankr-bk-2021"
-            ],
             "dates": [
               "2021-01-07"
-            ]
-          },
-          {
-            "id": "visak",
-            "names": {
-              "en": "Visak Bochea",
-              "km": "ពិធីបុណ្យវិសាខបូជា"
-            },
+            ],
             "status": "active",
             "sourceIds": [
               "subdecree-131-ankr-bk-2021"
             ],
-            "dates": [
-              "2021-04-26"
-            ]
+            "eventId": "victory_over_genocide"
           },
           {
-            "id": "water",
+            "id": "2021_international_women_day",
             "names": {
-              "en": "Water Festival",
-              "km": "ព្រះរាជពិធីបុណ្យអុំទូក បណ្ដែតប្រទីប និងសំពះព្រះខែ អកអំបុក"
+              "en": "International Women's Day",
+              "km": "ទិវា​នារី​អន្តរជាតិ ខួបលើកទី{anniversary}"
             },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-131-ankr-bk-2021"
-            ],
-            "dates": [
-              "2021-11-18",
-              "2021-11-19",
-              "2021-11-20"
-            ]
-          },
-          {
-            "id": "women",
-            "names": {
-              "en": "International Women’s Day",
-              "km": "ទិវាអន្តរជាតិនារី"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-131-ankr-bk-2021"
-            ],
             "dates": [
               "2021-03-08"
-            ]
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-131-ankr-bk-2021"
+            ],
+            "eventId": "international_women_day"
+          },
+          {
+            "id": "2021_khmer_new_year_1",
+            "names": {
+              "en": "Khmer New Year – Moha Sankranta",
+              "km": "ពិធី​បុណ្យ​ចូល​ឆ្នាំ​ថ្មី ប្រពៃណី​ជាតិ – មហា​សង្ក្រាន្ត"
+            },
+            "dates": [
+              "2021-04-14"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-131-ankr-bk-2021"
+            ],
+            "eventId": "khmer_new_year_1"
+          },
+          {
+            "id": "2021_khmer_new_year_2",
+            "names": {
+              "en": "Khmer New Year - Veareak Vanabat",
+              "km": "ពិធី​បុណ្យ​ចូល​ឆ្នាំ​ថ្មី ប្រពៃណី​ជាតិ - វារៈ​វ័ន​បត"
+            },
+            "dates": [
+              "2021-04-15"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-131-ankr-bk-2021"
+            ],
+            "eventId": "khmer_new_year_2"
+          },
+          {
+            "id": "2021_khmer_new_year_3",
+            "names": {
+              "en": "Khmer New Year - Veareak Laeung Sak",
+              "km": "ពិធី​បុណ្យ​ចូល​ឆ្នាំ​ថ្មី ប្រពៃណី​ជាតិ - ថ្ងៃ​ឡើង​ស័ក"
+            },
+            "dates": [
+              "2021-04-16"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-131-ankr-bk-2021"
+            ],
+            "eventId": "khmer_new_year_3"
+          },
+          {
+            "id": "2021_visak_bochea",
+            "names": {
+              "en": "Visak Bochea",
+              "km": "ពិធី​បុណ្យ​វិសាខ​បូជា"
+            },
+            "dates": [
+              "2021-04-26"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-131-ankr-bk-2021"
+            ],
+            "eventId": "visak_bochea"
+          },
+          {
+            "id": "2021_royal_ploughing_ceremony",
+            "names": {
+              "en": "Royal Ploughing Ceremony",
+              "km": "ព្រះ​រាជ​ពិធី​ច្រត់​ព្រះ​នង្គ័ល"
+            },
+            "dates": [
+              "2021-04-30"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-131-ankr-bk-2021"
+            ],
+            "eventId": "royal_ploughing_ceremony"
+          },
+          {
+            "id": "2021_international_labor_day",
+            "names": {
+              "en": "International Labor Day",
+              "km": "ទិវា​ពលកម្ម​អន្តរជាតិ ខួបលើកទី{anniversary}"
+            },
+            "dates": [
+              "2021-05-01"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-131-ankr-bk-2021"
+            ],
+            "eventId": "international_labor_day"
+          },
+          {
+            "id": "2021_king_sihamoni_birthday",
+            "names": {
+              "en": "King Sihamoni's Birthday",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​ចម្រើន​ព្រះ​ជន្ម ព្រះ​ករុណា​ព្រះ​បាទ​សម្តេច​ព្រះ​បរម​នាថ នរោត្តម សីហមុនី ព្រះ​មហាក្សត្រ​នៃ​ព្រះរាជាណាចក្រ​កម្ពុជា"
+            },
+            "dates": [
+              "2021-05-14"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-131-ankr-bk-2021"
+            ],
+            "eventId": "king_sihamoni_birthday"
+          },
+          {
+            "id": "2021_queen_mother_birthday",
+            "names": {
+              "en": "Queen Mother's Birthday",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​ចម្រើន​ព្រះ​ជន្ម សម្តេច​ព្រះ​មហាក្សត្រី នរោត្តម មុនិនាថ សីហនុ ព្រះ​វររាជ​មាតា​ជាតិ​ខ្មែរ ក្នុង​សេរីភាព សេចក្តីថ្លៃថ្នូរ និង​សុភមង្គល"
+            },
+            "dates": [
+              "2021-06-18"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-131-ankr-bk-2021"
+            ],
+            "eventId": "queen_mother_birthday"
+          },
+          {
+            "id": "2021_constitution_day",
+            "names": {
+              "en": "Constitution Day",
+              "km": "ទិវា​ប្រកាស​រដ្ឋ​ធម្មនុញ្ញ ខួបលើកទី{anniversary}"
+            },
+            "dates": [
+              "2021-09-24"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-131-ankr-bk-2021"
+            ],
+            "eventId": "constitution_day"
+          },
+          {
+            "id": "2021_pchum_ben_festival_1",
+            "names": {
+              "en": "Pchum Ben Festival",
+              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+            },
+            "dates": [
+              "2021-10-05"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-131-ankr-bk-2021"
+            ],
+            "eventId": "pchum_ben_festival"
+          },
+          {
+            "id": "2021_pchum_ben_festival_2",
+            "names": {
+              "en": "Pchum Ben Festival",
+              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+            },
+            "dates": [
+              "2021-10-06"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-131-ankr-bk-2021"
+            ],
+            "eventId": "pchum_ben_festival"
+          },
+          {
+            "id": "2021_pchum_ben_festival_3",
+            "names": {
+              "en": "Pchum Ben Festival",
+              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+            },
+            "dates": [
+              "2021-10-07"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-131-ankr-bk-2021"
+            ],
+            "eventId": "pchum_ben_festival"
+          },
+          {
+            "id": "2021_king_father_commemoration",
+            "names": {
+              "en": "King Father's Commemoration Day",
+              "km": "ទិវា​ប្រារព្ធ​ពិធី​គោរព​ព្រះវិញ្ញាណក្ខន្ធ ព្រះករុណា​ព្រះបាទ​សម្តេច​ព្រះ នរោត្តម សីហនុ ព្រះមហាវីរក្សត្រ ព្រះ​វររាជ​បិតា​ឯករាជ្យ បូរណភាព​ទឹកដី និង​ឯកភាព​ជាតិ​ខ្មែរ"
+            },
+            "dates": [
+              "2021-10-15"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-131-ankr-bk-2021"
+            ],
+            "eventId": "king_father_commemoration"
+          },
+          {
+            "id": "2021_king_coronation_day",
+            "names": {
+              "en": "King's Coronation Day",
+              "km": "ព្រះ​រាជ​ពិធី​គ្រង​ព្រះ​បរម​រាជ​សម្បត្តិ ព្រះ​ករុណា​ព្រះ​បាទ​សម្តេច​ព្រះ​បរមនាថ នរោត្តម សីហមុនី ព្រះ​មហាក្សត្រ​នៃ​ព្រះរាជាណាចក្រ​កម្ពុជា"
+            },
+            "dates": [
+              "2021-10-29"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-131-ankr-bk-2021"
+            ],
+            "eventId": "king_coronation_day"
+          },
+          {
+            "id": "2021_independence_day",
+            "names": {
+              "en": "Independence Day",
+              "km": "ពិធី​បុណ្យ​ឯករាជ្យ​ជាតិ ខួបលើកទី{anniversary}"
+            },
+            "dates": [
+              "2021-11-09"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-131-ankr-bk-2021"
+            ],
+            "eventId": "independence_day"
+          },
+          {
+            "id": "2021_water_festival_1",
+            "names": {
+              "en": "Water Festival",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​អុំ​ទូក បណ្ដែត​ប្រទីប និង​សំពះ​ព្រះ​ខែ អកអំបុក"
+            },
+            "dates": [
+              "2021-11-18"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-131-ankr-bk-2021"
+            ],
+            "eventId": "water_festival"
+          },
+          {
+            "id": "2021_water_festival_2",
+            "names": {
+              "en": "Water Festival",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​អុំ​ទូក បណ្ដែត​ប្រទីប និង​សំពះ​ព្រះ​ខែ អកអំបុក"
+            },
+            "dates": [
+              "2021-11-19"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-131-ankr-bk-2021"
+            ],
+            "eventId": "water_festival"
+          },
+          {
+            "id": "2021_water_festival_3",
+            "names": {
+              "en": "Water Festival",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​អុំ​ទូក បណ្ដែត​ប្រទីប និង​សំពះ​ព្រះ​ខែ អកអំបុក"
+            },
+            "dates": [
+              "2021-11-20"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-131-ankr-bk-2021"
+            ],
+            "eventId": "water_festival"
           }
         ]
       },
@@ -3415,220 +3627,319 @@
         ],
         "holidays": [
           {
-            "id": "constitution",
+            "id": "2022_new_year_day",
             "names": {
-              "en": "Constitution Day",
-              "km": "ទិវាប្រកាសរដ្ឋធម្មនុញ្ញ"
+              "en": "New Year's Day",
+              "km": "ទិវា​ចូល​ឆ្នាំ​សាកល"
             },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-145-ankr-bk-2022"
-            ],
-            "dates": [
-              "2022-09-24"
-            ]
-          },
-          {
-            "id": "coronation",
-            "names": {
-              "en": "King Norodom Sihamoni’s Coronation Day",
-              "km": "ព្រះរាជពិធីគ្រងព្រះបរមរាជសម្បត្តិ ព្រះករុណាព្រះបាទសម្ដេចព្រះបរមនាថ នរោត្តម សីហមុនី"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-145-ankr-bk-2022"
-            ],
-            "dates": [
-              "2022-10-29"
-            ]
-          },
-          {
-            "id": "independence",
-            "names": {
-              "en": "Independence Day",
-              "km": "ពិធីបុណ្យឯករាជ្យជាតិ"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-145-ankr-bk-2022"
-            ],
-            "dates": [
-              "2022-11-09"
-            ]
-          },
-          {
-            "id": "khmer-new-year",
-            "names": {
-              "en": "Khmer New Year",
-              "km": "ពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-145-ankr-bk-2022"
-            ],
-            "dates": [
-              "2022-04-14",
-              "2022-04-15",
-              "2022-04-16"
-            ]
-          },
-          {
-            "id": "king-birthday",
-            "names": {
-              "en": "King Norodom Sihamoni’s Birthday",
-              "km": "ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម ព្រះករុណាព្រះបាទសម្ដេចព្រះបរមនាថ នរោត្តម សីហមុនី"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-145-ankr-bk-2022"
-            ],
-            "dates": [
-              "2022-05-14"
-            ]
-          },
-          {
-            "id": "king-father",
-            "names": {
-              "en": "King Father’s Commemoration Day",
-              "km": "ទិវាប្រារព្ធពិធីគោរពព្រះវិញ្ញាណក្ខន្ធ ព្រះបរមរតនកោដ្ឋ"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-145-ankr-bk-2022"
-            ],
-            "dates": [
-              "2022-10-15"
-            ]
-          },
-          {
-            "id": "labour",
-            "names": {
-              "en": "International Labour Day",
-              "km": "ទិវាពលកម្មអន្តរជាតិ"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-145-ankr-bk-2022"
-            ],
-            "dates": [
-              "2022-05-01"
-            ]
-          },
-          {
-            "id": "new-year",
-            "names": {
-              "en": "International New Year’s Day",
-              "km": "ទិវាចូលឆ្នាំសកល"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-145-ankr-bk-2022"
-            ],
             "dates": [
               "2022-01-01"
-            ]
-          },
-          {
-            "id": "pchum",
-            "names": {
-              "en": "Pchum Ben Festival",
-              "km": "ពិធីបុណ្យភ្ជុំបិណ្ឌ"
-            },
+            ],
             "status": "active",
             "sourceIds": [
               "subdecree-145-ankr-bk-2022"
             ],
-            "dates": [
-              "2022-09-24",
-              "2022-09-25",
-              "2022-09-26"
-            ]
+            "eventId": "new_year_day"
           },
           {
-            "id": "ploughing",
+            "id": "2022_victory_over_genocide",
             "names": {
-              "en": "Royal Ploughing Ceremony",
-              "km": "ព្រះរាជពិធីច្រត់ព្រះនង្គ័ល"
+              "en": "Victory Over Genocide Day",
+              "km": "ទិវា​ជ័យ​ជម្នះ​លើ​របប​ប្រល័យ​ពូជ​សាសន៍ ខួបលើកទី{anniversary}"
             },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-145-ankr-bk-2022"
-            ],
-            "dates": [
-              "2022-05-19"
-            ]
-          },
-          {
-            "id": "queen-birthday",
-            "names": {
-              "en": "Queen Mother’s Birthday",
-              "km": "ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម សម្ដេចព្រះមហាក្សត្រី នរោត្តម មុនិនាថ សីហនុ"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-145-ankr-bk-2022"
-            ],
-            "dates": [
-              "2022-06-18"
-            ]
-          },
-          {
-            "id": "victory",
-            "names": {
-              "en": "Victory Day over Genocide",
-              "km": "ទិវាជ័យជម្នះលើរបបប្រល័យពូជសាសន៍"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-145-ankr-bk-2022"
-            ],
             "dates": [
               "2022-01-07"
-            ]
-          },
-          {
-            "id": "visak",
-            "names": {
-              "en": "Visak Bochea",
-              "km": "ពិធីបុណ្យវិសាខបូជា"
-            },
+            ],
             "status": "active",
             "sourceIds": [
               "subdecree-145-ankr-bk-2022"
             ],
-            "dates": [
-              "2022-05-15"
-            ]
+            "eventId": "victory_over_genocide"
           },
           {
-            "id": "water",
+            "id": "2022_international_women_day",
             "names": {
-              "en": "Water Festival",
-              "km": "ព្រះរាជពិធីបុណ្យអុំទូក បណ្ដែតប្រទីប និងសំពះព្រះខែ អកអំបុក"
+              "en": "International Women's Day",
+              "km": "ទិវា​នារី​អន្តរជាតិ ខួបលើកទី{anniversary}"
             },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-145-ankr-bk-2022"
-            ],
-            "dates": [
-              "2022-11-07",
-              "2022-11-08",
-              "2022-11-09"
-            ]
-          },
-          {
-            "id": "women",
-            "names": {
-              "en": "International Women’s Day",
-              "km": "ទិវាអន្តរជាតិនារី"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-145-ankr-bk-2022"
-            ],
             "dates": [
               "2022-03-08"
-            ]
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-145-ankr-bk-2022"
+            ],
+            "eventId": "international_women_day"
+          },
+          {
+            "id": "2022_khmer_new_year_1",
+            "names": {
+              "en": "Khmer New Year – Moha Sankranta",
+              "km": "ពិធី​បុណ្យ​ចូល​ឆ្នាំ​ថ្មី ប្រពៃណី​ជាតិ – មហា​សង្ក្រាន្ត"
+            },
+            "dates": [
+              "2022-04-14"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-145-ankr-bk-2022"
+            ],
+            "eventId": "khmer_new_year_1"
+          },
+          {
+            "id": "2022_khmer_new_year_2",
+            "names": {
+              "en": "Khmer New Year - Veareak Vanabat",
+              "km": "ពិធី​បុណ្យ​ចូល​ឆ្នាំ​ថ្មី ប្រពៃណី​ជាតិ - វារៈ​វ័ន​បត"
+            },
+            "dates": [
+              "2022-04-15"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-145-ankr-bk-2022"
+            ],
+            "eventId": "khmer_new_year_2"
+          },
+          {
+            "id": "2022_khmer_new_year_3",
+            "names": {
+              "en": "Khmer New Year - Veareak Laeung Sak",
+              "km": "ពិធី​បុណ្យ​ចូល​ឆ្នាំ​ថ្មី ប្រពៃណី​ជាតិ - ថ្ងៃ​ឡើង​ស័ក"
+            },
+            "dates": [
+              "2022-04-16"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-145-ankr-bk-2022"
+            ],
+            "eventId": "khmer_new_year_3"
+          },
+          {
+            "id": "2022_international_labor_day",
+            "names": {
+              "en": "International Labor Day",
+              "km": "ទិវា​ពលកម្ម​អន្តរជាតិ ខួបលើកទី{anniversary}"
+            },
+            "dates": [
+              "2022-05-01"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-145-ankr-bk-2022"
+            ],
+            "eventId": "international_labor_day"
+          },
+          {
+            "id": "2022_king_sihamoni_birthday",
+            "names": {
+              "en": "King Sihamoni's Birthday",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​ចម្រើន​ព្រះ​ជន្ម ព្រះ​ករុណា​ព្រះ​បាទ​សម្តេច​ព្រះ​បរម​នាថ នរោត្តម សីហមុនី ព្រះ​មហាក្សត្រ​នៃ​ព្រះរាជាណាចក្រ​កម្ពុជា"
+            },
+            "dates": [
+              "2022-05-14"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-145-ankr-bk-2022"
+            ],
+            "eventId": "king_sihamoni_birthday"
+          },
+          {
+            "id": "2022_visak_bochea",
+            "names": {
+              "en": "Visak Bochea",
+              "km": "ពិធី​បុណ្យ​វិសាខ​បូជា"
+            },
+            "dates": [
+              "2022-05-15"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-145-ankr-bk-2022"
+            ],
+            "eventId": "visak_bochea"
+          },
+          {
+            "id": "2022_royal_ploughing_ceremony",
+            "names": {
+              "en": "Royal Ploughing Ceremony",
+              "km": "ព្រះ​រាជ​ពិធី​ច្រត់​ព្រះ​នង្គ័ល"
+            },
+            "dates": [
+              "2022-05-19"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-145-ankr-bk-2022"
+            ],
+            "eventId": "royal_ploughing_ceremony"
+          },
+          {
+            "id": "2022_queen_mother_birthday",
+            "names": {
+              "en": "Queen Mother's Birthday",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​ចម្រើន​ព្រះ​ជន្ម សម្តេច​ព្រះ​មហាក្សត្រី នរោត្តម មុនិនាថ សីហនុ ព្រះ​វររាជ​មាតា​ជាតិ​ខ្មែរ ក្នុង​សេរីភាព សេចក្តីថ្លៃថ្នូរ និង​សុភមង្គល"
+            },
+            "dates": [
+              "2022-06-18"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-145-ankr-bk-2022"
+            ],
+            "eventId": "queen_mother_birthday"
+          },
+          {
+            "id": "2022_constitution_day",
+            "names": {
+              "en": "Constitution Day",
+              "km": "ទិវា​ប្រកាស​រដ្ឋ​ធម្មនុញ្ញ ខួបលើកទី{anniversary}"
+            },
+            "dates": [
+              "2022-09-24"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-145-ankr-bk-2022"
+            ],
+            "eventId": "constitution_day"
+          },
+          {
+            "id": "2022_pchum_ben_festival_1",
+            "names": {
+              "en": "Pchum Ben Festival",
+              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+            },
+            "dates": [
+              "2022-09-24"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-145-ankr-bk-2022"
+            ],
+            "eventId": "pchum_ben_festival"
+          },
+          {
+            "id": "2022_pchum_ben_festival_2",
+            "names": {
+              "en": "Pchum Ben Festival",
+              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+            },
+            "dates": [
+              "2022-09-25"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-145-ankr-bk-2022"
+            ],
+            "eventId": "pchum_ben_festival"
+          },
+          {
+            "id": "2022_pchum_ben_festival_3",
+            "names": {
+              "en": "Pchum Ben Festival",
+              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+            },
+            "dates": [
+              "2022-09-26"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-145-ankr-bk-2022"
+            ],
+            "eventId": "pchum_ben_festival"
+          },
+          {
+            "id": "2022_king_father_commemoration",
+            "names": {
+              "en": "King Father's Commemoration Day",
+              "km": "ទិវា​ប្រារព្ធ​ពិធី​គោរព​ព្រះវិញ្ញាណក្ខន្ធ ព្រះករុណា​ព្រះបាទ​សម្តេច​ព្រះ នរោត្តម សីហនុ ព្រះមហាវីរក្សត្រ ព្រះ​វររាជ​បិតា​ឯករាជ្យ បូរណភាព​ទឹកដី និង​ឯកភាព​ជាតិ​ខ្មែរ"
+            },
+            "dates": [
+              "2022-10-15"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-145-ankr-bk-2022"
+            ],
+            "eventId": "king_father_commemoration"
+          },
+          {
+            "id": "2022_king_coronation_day",
+            "names": {
+              "en": "King's Coronation Day",
+              "km": "ព្រះ​រាជ​ពិធី​គ្រង​ព្រះ​បរម​រាជ​សម្បត្តិ ព្រះ​ករុណា​ព្រះ​បាទ​សម្តេច​ព្រះ​បរមនាថ នរោត្តម សីហមុនី ព្រះ​មហាក្សត្រ​នៃ​ព្រះរាជាណាចក្រ​កម្ពុជា"
+            },
+            "dates": [
+              "2022-10-29"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-145-ankr-bk-2022"
+            ],
+            "eventId": "king_coronation_day"
+          },
+          {
+            "id": "2022_water_festival_1",
+            "names": {
+              "en": "Water Festival",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​អុំ​ទូក បណ្ដែត​ប្រទីប និង​សំពះ​ព្រះ​ខែ អកអំបុក"
+            },
+            "dates": [
+              "2022-11-07"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-145-ankr-bk-2022"
+            ],
+            "eventId": "water_festival"
+          },
+          {
+            "id": "2022_water_festival_2",
+            "names": {
+              "en": "Water Festival",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​អុំ​ទូក បណ្ដែត​ប្រទីប និង​សំពះ​ព្រះ​ខែ អកអំបុក"
+            },
+            "dates": [
+              "2022-11-08"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-145-ankr-bk-2022"
+            ],
+            "eventId": "water_festival"
+          },
+          {
+            "id": "2022_independence_day",
+            "names": {
+              "en": "Independence Day",
+              "km": "ពិធី​បុណ្យ​ឯករាជ្យ​ជាតិ ខួបលើកទី{anniversary}"
+            },
+            "dates": [
+              "2022-11-09"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-145-ankr-bk-2022"
+            ],
+            "eventId": "independence_day"
+          },
+          {
+            "id": "2022_water_festival_3",
+            "names": {
+              "en": "Water Festival",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​អុំ​ទូក បណ្ដែត​ប្រទីប និង​សំពះ​ព្រះ​ខែ អកអំបុក"
+            },
+            "dates": [
+              "2022-11-09"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-145-ankr-bk-2022"
+            ],
+            "eventId": "water_festival"
           }
         ]
       },
@@ -3640,220 +3951,319 @@
         ],
         "holidays": [
           {
-            "id": "constitution",
+            "id": "2023_new_year_day",
             "names": {
-              "en": "Constitution Day",
-              "km": "ទិវាប្រកាសរដ្ឋធម្មនុញ្ញ"
+              "en": "New Year's Day",
+              "km": "ទិវា​ចូល​ឆ្នាំ​សាកល"
             },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-166-ankr-bk-2023"
-            ],
-            "dates": [
-              "2023-09-24"
-            ]
-          },
-          {
-            "id": "coronation",
-            "names": {
-              "en": "King Norodom Sihamoni’s Coronation Day",
-              "km": "ព្រះរាជពិធីគ្រងព្រះបរមរាជសម្បត្តិ ព្រះករុណាព្រះបាទសម្ដេចព្រះបរមនាថ នរោត្តម សីហមុនី"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-166-ankr-bk-2023"
-            ],
-            "dates": [
-              "2023-10-29"
-            ]
-          },
-          {
-            "id": "independence",
-            "names": {
-              "en": "Independence Day",
-              "km": "ពិធីបុណ្យឯករាជ្យជាតិ"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-166-ankr-bk-2023"
-            ],
-            "dates": [
-              "2023-11-09"
-            ]
-          },
-          {
-            "id": "khmer-new-year",
-            "names": {
-              "en": "Khmer New Year",
-              "km": "ពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-166-ankr-bk-2023"
-            ],
-            "dates": [
-              "2023-04-14",
-              "2023-04-15",
-              "2023-04-16"
-            ]
-          },
-          {
-            "id": "king-birthday",
-            "names": {
-              "en": "King Norodom Sihamoni’s Birthday",
-              "km": "ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម ព្រះករុណាព្រះបាទសម្ដេចព្រះបរមនាថ នរោត្តម សីហមុនី"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-166-ankr-bk-2023"
-            ],
-            "dates": [
-              "2023-05-14"
-            ]
-          },
-          {
-            "id": "king-father",
-            "names": {
-              "en": "King Father’s Commemoration Day",
-              "km": "ទិវាប្រារព្ធពិធីគោរពព្រះវិញ្ញាណក្ខន្ធ ព្រះបរមរតនកោដ្ឋ"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-166-ankr-bk-2023"
-            ],
-            "dates": [
-              "2023-10-15"
-            ]
-          },
-          {
-            "id": "labour",
-            "names": {
-              "en": "International Labour Day",
-              "km": "ទិវាពលកម្មអន្តរជាតិ"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-166-ankr-bk-2023"
-            ],
-            "dates": [
-              "2023-05-01"
-            ]
-          },
-          {
-            "id": "new-year",
-            "names": {
-              "en": "International New Year’s Day",
-              "km": "ទិវាចូលឆ្នាំសកល"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-166-ankr-bk-2023"
-            ],
             "dates": [
               "2023-01-01"
-            ]
-          },
-          {
-            "id": "pchum",
-            "names": {
-              "en": "Pchum Ben Festival",
-              "km": "ពិធីបុណ្យភ្ជុំបិណ្ឌ"
-            },
+            ],
             "status": "active",
             "sourceIds": [
               "subdecree-166-ankr-bk-2023"
             ],
-            "dates": [
-              "2023-10-13",
-              "2023-10-14",
-              "2023-10-15"
-            ]
+            "eventId": "new_year_day"
           },
           {
-            "id": "ploughing",
+            "id": "2023_victory_over_genocide",
             "names": {
-              "en": "Royal Ploughing Ceremony",
-              "km": "ព្រះរាជពិធីច្រត់ព្រះនង្គ័ល"
+              "en": "Victory Over Genocide Day",
+              "km": "ទិវា​ជ័យ​ជម្នះ​លើ​របប​ប្រល័យ​ពូជ​សាសន៍ ខួបលើកទី{anniversary}"
             },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-166-ankr-bk-2023"
-            ],
-            "dates": [
-              "2023-05-08"
-            ]
-          },
-          {
-            "id": "queen-birthday",
-            "names": {
-              "en": "Queen Mother’s Birthday",
-              "km": "ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម សម្ដេចព្រះមហាក្សត្រី នរោត្តម មុនិនាថ សីហនុ"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-166-ankr-bk-2023"
-            ],
-            "dates": [
-              "2023-06-18"
-            ]
-          },
-          {
-            "id": "victory",
-            "names": {
-              "en": "Victory Day over Genocide",
-              "km": "ទិវាជ័យជម្នះលើរបបប្រល័យពូជសាសន៍"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-166-ankr-bk-2023"
-            ],
             "dates": [
               "2023-01-07"
-            ]
-          },
-          {
-            "id": "visak",
-            "names": {
-              "en": "Visak Bochea",
-              "km": "ពិធីបុណ្យវិសាខបូជា"
-            },
+            ],
             "status": "active",
             "sourceIds": [
               "subdecree-166-ankr-bk-2023"
             ],
-            "dates": [
-              "2023-05-04"
-            ]
+            "eventId": "victory_over_genocide"
           },
           {
-            "id": "water",
+            "id": "2023_international_women_day",
             "names": {
-              "en": "Water Festival",
-              "km": "ព្រះរាជពិធីបុណ្យអុំទូក បណ្ដែតប្រទីប និងសំពះព្រះខែ អកអំបុក"
+              "en": "International Women's Day",
+              "km": "ទិវា​នារី​អន្តរជាតិ ខួបលើកទី{anniversary}"
             },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-166-ankr-bk-2023"
-            ],
-            "dates": [
-              "2023-11-26",
-              "2023-11-27",
-              "2023-11-28"
-            ]
-          },
-          {
-            "id": "women",
-            "names": {
-              "en": "International Women’s Day",
-              "km": "ទិវាអន្តរជាតិនារី"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-166-ankr-bk-2023"
-            ],
             "dates": [
               "2023-03-08"
-            ]
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-166-ankr-bk-2023"
+            ],
+            "eventId": "international_women_day"
+          },
+          {
+            "id": "2023_khmer_new_year_1",
+            "names": {
+              "en": "Khmer New Year – Moha Sankranta",
+              "km": "ពិធី​បុណ្យ​ចូល​ឆ្នាំ​ថ្មី ប្រពៃណី​ជាតិ – មហា​សង្ក្រាន្ត"
+            },
+            "dates": [
+              "2023-04-14"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-166-ankr-bk-2023"
+            ],
+            "eventId": "khmer_new_year_1"
+          },
+          {
+            "id": "2023_khmer_new_year_2",
+            "names": {
+              "en": "Khmer New Year - Veareak Vanabat",
+              "km": "ពិធី​បុណ្យ​ចូល​ឆ្នាំ​ថ្មី ប្រពៃណី​ជាតិ - វារៈ​វ័ន​បត"
+            },
+            "dates": [
+              "2023-04-15"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-166-ankr-bk-2023"
+            ],
+            "eventId": "khmer_new_year_2"
+          },
+          {
+            "id": "2023_khmer_new_year_3",
+            "names": {
+              "en": "Khmer New Year - Veareak Laeung Sak",
+              "km": "ពិធី​បុណ្យ​ចូល​ឆ្នាំ​ថ្មី ប្រពៃណី​ជាតិ - ថ្ងៃ​ឡើង​ស័ក"
+            },
+            "dates": [
+              "2023-04-16"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-166-ankr-bk-2023"
+            ],
+            "eventId": "khmer_new_year_3"
+          },
+          {
+            "id": "2023_international_labor_day",
+            "names": {
+              "en": "International Labor Day",
+              "km": "ទិវា​ពលកម្ម​អន្តរជាតិ ខួបលើកទី{anniversary}"
+            },
+            "dates": [
+              "2023-05-01"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-166-ankr-bk-2023"
+            ],
+            "eventId": "international_labor_day"
+          },
+          {
+            "id": "2023_visak_bochea",
+            "names": {
+              "en": "Visak Bochea",
+              "km": "ពិធី​បុណ្យ​វិសាខ​បូជា"
+            },
+            "dates": [
+              "2023-05-04"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-166-ankr-bk-2023"
+            ],
+            "eventId": "visak_bochea"
+          },
+          {
+            "id": "2023_royal_ploughing_ceremony",
+            "names": {
+              "en": "Royal Ploughing Ceremony",
+              "km": "ព្រះ​រាជ​ពិធី​ច្រត់​ព្រះ​នង្គ័ល"
+            },
+            "dates": [
+              "2023-05-08"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-166-ankr-bk-2023"
+            ],
+            "eventId": "royal_ploughing_ceremony"
+          },
+          {
+            "id": "2023_king_sihamoni_birthday",
+            "names": {
+              "en": "King Sihamoni's Birthday",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​ចម្រើន​ព្រះ​ជន្ម ព្រះ​ករុណា​ព្រះ​បាទ​សម្តេច​ព្រះ​បរម​នាថ នរោត្តម សីហមុនី ព្រះ​មហាក្សត្រ​នៃ​ព្រះរាជាណាចក្រ​កម្ពុជា"
+            },
+            "dates": [
+              "2023-05-14"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-166-ankr-bk-2023"
+            ],
+            "eventId": "king_sihamoni_birthday"
+          },
+          {
+            "id": "2023_queen_mother_birthday",
+            "names": {
+              "en": "Queen Mother's Birthday",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​ចម្រើន​ព្រះ​ជន្ម សម្តេច​ព្រះ​មហាក្សត្រី នរោត្តម មុនិនាថ សីហនុ ព្រះ​វររាជ​មាតា​ជាតិ​ខ្មែរ ក្នុង​សេរីភាព សេចក្តីថ្លៃថ្នូរ និង​សុភមង្គល"
+            },
+            "dates": [
+              "2023-06-18"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-166-ankr-bk-2023"
+            ],
+            "eventId": "queen_mother_birthday"
+          },
+          {
+            "id": "2023_constitution_day",
+            "names": {
+              "en": "Constitution Day",
+              "km": "ទិវា​ប្រកាស​រដ្ឋ​ធម្មនុញ្ញ ខួបលើកទី{anniversary}"
+            },
+            "dates": [
+              "2023-09-24"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-166-ankr-bk-2023"
+            ],
+            "eventId": "constitution_day"
+          },
+          {
+            "id": "2023_pchum_ben_festival_1",
+            "names": {
+              "en": "Pchum Ben Festival",
+              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+            },
+            "dates": [
+              "2023-10-13"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-166-ankr-bk-2023"
+            ],
+            "eventId": "pchum_ben_festival"
+          },
+          {
+            "id": "2023_pchum_ben_festival_2",
+            "names": {
+              "en": "Pchum Ben Festival",
+              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+            },
+            "dates": [
+              "2023-10-14"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-166-ankr-bk-2023"
+            ],
+            "eventId": "pchum_ben_festival"
+          },
+          {
+            "id": "2023_king_father_commemoration",
+            "names": {
+              "en": "King Father's Commemoration Day",
+              "km": "ទិវា​ប្រារព្ធ​ពិធី​គោរព​ព្រះវិញ្ញាណក្ខន្ធ ព្រះករុណា​ព្រះបាទ​សម្តេច​ព្រះ នរោត្តម សីហនុ ព្រះមហាវីរក្សត្រ ព្រះ​វររាជ​បិតា​ឯករាជ្យ បូរណភាព​ទឹកដី និង​ឯកភាព​ជាតិ​ខ្មែរ"
+            },
+            "dates": [
+              "2023-10-15"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-166-ankr-bk-2023"
+            ],
+            "eventId": "king_father_commemoration"
+          },
+          {
+            "id": "2023_pchum_ben_festival_3",
+            "names": {
+              "en": "Pchum Ben Festival",
+              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+            },
+            "dates": [
+              "2023-10-15"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-166-ankr-bk-2023"
+            ],
+            "eventId": "pchum_ben_festival"
+          },
+          {
+            "id": "2023_king_coronation_day",
+            "names": {
+              "en": "King's Coronation Day",
+              "km": "ព្រះ​រាជ​ពិធី​គ្រង​ព្រះ​បរម​រាជ​សម្បត្តិ ព្រះ​ករុណា​ព្រះ​បាទ​សម្តេច​ព្រះ​បរមនាថ នរោត្តម សីហមុនី ព្រះ​មហាក្សត្រ​នៃ​ព្រះរាជាណាចក្រ​កម្ពុជា"
+            },
+            "dates": [
+              "2023-10-29"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-166-ankr-bk-2023"
+            ],
+            "eventId": "king_coronation_day"
+          },
+          {
+            "id": "2023_independence_day",
+            "names": {
+              "en": "Independence Day",
+              "km": "ពិធី​បុណ្យ​ឯករាជ្យ​ជាតិ ខួបលើកទី{anniversary}"
+            },
+            "dates": [
+              "2023-11-09"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-166-ankr-bk-2023"
+            ],
+            "eventId": "independence_day"
+          },
+          {
+            "id": "2023_water_festival_1",
+            "names": {
+              "en": "Water Festival",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​អុំ​ទូក បណ្ដែត​ប្រទីប និង​សំពះ​ព្រះ​ខែ អកអំបុក"
+            },
+            "dates": [
+              "2023-11-26"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-166-ankr-bk-2023"
+            ],
+            "eventId": "water_festival"
+          },
+          {
+            "id": "2023_water_festival_2",
+            "names": {
+              "en": "Water Festival",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​អុំ​ទូក បណ្ដែត​ប្រទីប និង​សំពះ​ព្រះ​ខែ អកអំបុក"
+            },
+            "dates": [
+              "2023-11-27"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-166-ankr-bk-2023"
+            ],
+            "eventId": "water_festival"
+          },
+          {
+            "id": "2023_water_festival_3",
+            "names": {
+              "en": "Water Festival",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​អុំ​ទូក បណ្ដែត​ប្រទីប និង​សំពះ​ព្រះ​ខែ អកអំបុក"
+            },
+            "dates": [
+              "2023-11-28"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-166-ankr-bk-2023"
+            ],
+            "eventId": "water_festival"
           }
         ]
       },
@@ -3865,221 +4275,334 @@
         ],
         "holidays": [
           {
-            "id": "constitution",
+            "id": "2024_new_year_day",
             "names": {
-              "en": "Constitution Day",
-              "km": "ទិវាប្រកាសរដ្ឋធម្មនុញ្ញ"
+              "en": "New Year's Day",
+              "km": "ទិវា​ចូល​ឆ្នាំ​សាកល"
             },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-230-ankr-bk-2024"
-            ],
-            "dates": [
-              "2024-09-24"
-            ]
-          },
-          {
-            "id": "coronation",
-            "names": {
-              "en": "King Norodom Sihamoni’s Coronation Day",
-              "km": "ព្រះរាជពិធីគ្រងព្រះបរមរាជសម្បត្តិ ព្រះករុណាព្រះបាទសម្ដេចព្រះបរមនាថ នរោត្តម សីហមុនី"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-230-ankr-bk-2024"
-            ],
-            "dates": [
-              "2024-10-29"
-            ]
-          },
-          {
-            "id": "independence",
-            "names": {
-              "en": "Independence Day",
-              "km": "ពិធីបុណ្យឯករាជ្យជាតិ"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-230-ankr-bk-2024"
-            ],
-            "dates": [
-              "2024-11-09"
-            ]
-          },
-          {
-            "id": "khmer-new-year",
-            "names": {
-              "en": "Khmer New Year",
-              "km": "ពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-230-ankr-bk-2024"
-            ],
-            "dates": [
-              "2024-04-13",
-              "2024-04-14",
-              "2024-04-15",
-              "2024-04-16"
-            ]
-          },
-          {
-            "id": "king-birthday",
-            "names": {
-              "en": "King Norodom Sihamoni’s Birthday",
-              "km": "ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម ព្រះករុណាព្រះបាទសម្ដេចព្រះបរមនាថ នរោត្តម សីហមុនី"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-230-ankr-bk-2024"
-            ],
-            "dates": [
-              "2024-05-14"
-            ]
-          },
-          {
-            "id": "king-father",
-            "names": {
-              "en": "King Father’s Commemoration Day",
-              "km": "ទិវាប្រារព្ធពិធីគោរពព្រះវិញ្ញាណក្ខន្ធ ព្រះបរមរតនកោដ្ឋ"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-230-ankr-bk-2024"
-            ],
-            "dates": [
-              "2024-10-15"
-            ]
-          },
-          {
-            "id": "labour",
-            "names": {
-              "en": "International Labour Day",
-              "km": "ទិវាពលកម្មអន្តរជាតិ"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-230-ankr-bk-2024"
-            ],
-            "dates": [
-              "2024-05-01"
-            ]
-          },
-          {
-            "id": "new-year",
-            "names": {
-              "en": "International New Year’s Day",
-              "km": "ទិវាចូលឆ្នាំសកល"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-230-ankr-bk-2024"
-            ],
             "dates": [
               "2024-01-01"
-            ]
-          },
-          {
-            "id": "pchum",
-            "names": {
-              "en": "Pchum Ben Festival",
-              "km": "ពិធីបុណ្យភ្ជុំបិណ្ឌ"
-            },
+            ],
             "status": "active",
             "sourceIds": [
               "subdecree-230-ankr-bk-2024"
             ],
-            "dates": [
-              "2024-10-01",
-              "2024-10-02",
-              "2024-10-03"
-            ]
+            "eventId": "new_year_day"
           },
           {
-            "id": "ploughing",
+            "id": "2024_victory_over_genocide",
             "names": {
-              "en": "Royal Ploughing Ceremony",
-              "km": "ព្រះរាជពិធីច្រត់ព្រះនង្គ័ល"
+              "en": "Victory Over Genocide Day",
+              "km": "ទិវា​ជ័យ​ជម្នះ​លើ​របប​ប្រល័យ​ពូជ​សាសន៍ ខួបលើកទី{anniversary}"
             },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-230-ankr-bk-2024"
-            ],
-            "dates": [
-              "2024-05-26"
-            ]
-          },
-          {
-            "id": "queen-birthday",
-            "names": {
-              "en": "Queen Mother’s Birthday",
-              "km": "ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម សម្ដេចព្រះមហាក្សត្រី នរោត្តម មុនិនាថ សីហនុ"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-230-ankr-bk-2024"
-            ],
-            "dates": [
-              "2024-06-18"
-            ]
-          },
-          {
-            "id": "victory",
-            "names": {
-              "en": "Victory Day over Genocide",
-              "km": "ទិវាជ័យជម្នះលើរបបប្រល័យពូជសាសន៍"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-230-ankr-bk-2024"
-            ],
             "dates": [
               "2024-01-07"
-            ]
-          },
-          {
-            "id": "visak",
-            "names": {
-              "en": "Visak Bochea",
-              "km": "ពិធីបុណ្យវិសាខបូជា"
-            },
+            ],
             "status": "active",
             "sourceIds": [
               "subdecree-230-ankr-bk-2024"
             ],
-            "dates": [
-              "2024-05-22"
-            ]
+            "eventId": "victory_over_genocide"
           },
           {
-            "id": "water",
+            "id": "2024_international_women_day",
             "names": {
-              "en": "Water Festival",
-              "km": "ព្រះរាជពិធីបុណ្យអុំទូក បណ្ដែតប្រទីប និងសំពះព្រះខែ អកអំបុក"
+              "en": "International Women's Day",
+              "km": "ទិវា​នារី​អន្តរជាតិ ខួបលើកទី{anniversary}"
             },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-230-ankr-bk-2024"
-            ],
-            "dates": [
-              "2024-11-14",
-              "2024-11-15",
-              "2024-11-16"
-            ]
-          },
-          {
-            "id": "women",
-            "names": {
-              "en": "International Women’s Day",
-              "km": "ទិវាអន្តរជាតិនារី"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-230-ankr-bk-2024"
-            ],
             "dates": [
               "2024-03-08"
-            ]
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-230-ankr-bk-2024"
+            ],
+            "eventId": "international_women_day"
+          },
+          {
+            "id": "2024_khmer_new_year_1",
+            "names": {
+              "en": "Khmer New Year – Moha Sankranta",
+              "km": "ពិធី​បុណ្យ​ចូល​ឆ្នាំ​ថ្មី ប្រពៃណី​ជាតិ – មហា​សង្ក្រាន្ត"
+            },
+            "dates": [
+              "2024-04-13"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-230-ankr-bk-2024"
+            ],
+            "eventId": "khmer_new_year_1"
+          },
+          {
+            "id": "2024_khmer_new_year_2_1",
+            "names": {
+              "en": "Khmer New Year - Veareak Vanabat",
+              "km": "ពិធី​បុណ្យ​ចូល​ឆ្នាំ​ថ្មី ប្រពៃណី​ជាតិ - វារៈ​វ័ន​បត"
+            },
+            "dates": [
+              "2024-04-14"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-230-ankr-bk-2024"
+            ],
+            "eventId": "khmer_new_year_2"
+          },
+          {
+            "id": "2024_khmer_new_year_2_2",
+            "names": {
+              "en": "Khmer New Year - Veareak Vanabat",
+              "km": "ពិធី​បុណ្យ​ចូល​ឆ្នាំ​ថ្មី ប្រពៃណី​ជាតិ - វារៈ​វ័ន​បត"
+            },
+            "dates": [
+              "2024-04-15"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-230-ankr-bk-2024"
+            ],
+            "eventId": "khmer_new_year_2"
+          },
+          {
+            "id": "2024_khmer_new_year_3",
+            "names": {
+              "en": "Khmer New Year - Veareak Laeung Sak",
+              "km": "ពិធី​បុណ្យ​ចូល​ឆ្នាំ​ថ្មី ប្រពៃណី​ជាតិ - ថ្ងៃ​ឡើង​ស័ក"
+            },
+            "dates": [
+              "2024-04-16"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-230-ankr-bk-2024"
+            ],
+            "eventId": "khmer_new_year_3"
+          },
+          {
+            "id": "2024_international_labor_day",
+            "names": {
+              "en": "International Labor Day",
+              "km": "ទិវា​ពលកម្ម​អន្តរជាតិ ខួបលើកទី{anniversary}"
+            },
+            "dates": [
+              "2024-05-01"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-230-ankr-bk-2024"
+            ],
+            "eventId": "international_labor_day"
+          },
+          {
+            "id": "2024_king_sihamoni_birthday",
+            "names": {
+              "en": "King Sihamoni's Birthday",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​ចម្រើន​ព្រះ​ជន្ម ព្រះ​ករុណា​ព្រះ​បាទ​សម្តេច​ព្រះ​បរម​នាថ នរោត្តម សីហមុនី ព្រះ​មហាក្សត្រ​នៃ​ព្រះរាជាណាចក្រ​កម្ពុជា"
+            },
+            "dates": [
+              "2024-05-14"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-230-ankr-bk-2024"
+            ],
+            "eventId": "king_sihamoni_birthday"
+          },
+          {
+            "id": "2024_visak_bochea",
+            "names": {
+              "en": "Visak Bochea",
+              "km": "ពិធី​បុណ្យ​វិសាខ​បូជា"
+            },
+            "dates": [
+              "2024-05-22"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-230-ankr-bk-2024"
+            ],
+            "eventId": "visak_bochea"
+          },
+          {
+            "id": "2024_royal_ploughing_ceremony",
+            "names": {
+              "en": "Royal Ploughing Ceremony",
+              "km": "ព្រះ​រាជ​ពិធី​ច្រត់​ព្រះ​នង្គ័ល"
+            },
+            "dates": [
+              "2024-05-26"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-230-ankr-bk-2024"
+            ],
+            "eventId": "royal_ploughing_ceremony"
+          },
+          {
+            "id": "2024_queen_mother_birthday",
+            "names": {
+              "en": "Queen Mother's Birthday",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​ចម្រើន​ព្រះ​ជន្ម សម្តេច​ព្រះ​មហាក្សត្រី នរោត្តម មុនិនាថ សីហនុ ព្រះ​វររាជ​មាតា​ជាតិ​ខ្មែរ ក្នុង​សេរីភាព សេចក្តីថ្លៃថ្នូរ និង​សុភមង្គល"
+            },
+            "dates": [
+              "2024-06-18"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-230-ankr-bk-2024"
+            ],
+            "eventId": "queen_mother_birthday"
+          },
+          {
+            "id": "2024_constitution_day",
+            "names": {
+              "en": "Constitution Day",
+              "km": "ទិវា​ប្រកាស​រដ្ឋ​ធម្មនុញ្ញ ខួបលើកទី{anniversary}"
+            },
+            "dates": [
+              "2024-09-24"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-230-ankr-bk-2024"
+            ],
+            "eventId": "constitution_day"
+          },
+          {
+            "id": "2024_pchum_ben_festival_1",
+            "names": {
+              "en": "Pchum Ben Festival",
+              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+            },
+            "dates": [
+              "2024-10-01"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-230-ankr-bk-2024"
+            ],
+            "eventId": "pchum_ben_festival"
+          },
+          {
+            "id": "2024_pchum_ben_festival_2",
+            "names": {
+              "en": "Pchum Ben Festival",
+              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+            },
+            "dates": [
+              "2024-10-02"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-230-ankr-bk-2024"
+            ],
+            "eventId": "pchum_ben_festival"
+          },
+          {
+            "id": "2024_pchum_ben_festival_3",
+            "names": {
+              "en": "Pchum Ben Festival",
+              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+            },
+            "dates": [
+              "2024-10-03"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-230-ankr-bk-2024"
+            ],
+            "eventId": "pchum_ben_festival"
+          },
+          {
+            "id": "2024_king_father_commemoration",
+            "names": {
+              "en": "King Father's Commemoration Day",
+              "km": "ទិវា​ប្រារព្ធ​ពិធី​គោរព​ព្រះវិញ្ញាណក្ខន្ធ ព្រះករុណា​ព្រះបាទ​សម្តេច​ព្រះ នរោត្តម សីហនុ ព្រះមហាវីរក្សត្រ ព្រះ​វររាជ​បិតា​ឯករាជ្យ បូរណភាព​ទឹកដី និង​ឯកភាព​ជាតិ​ខ្មែរ"
+            },
+            "dates": [
+              "2024-10-15"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-230-ankr-bk-2024"
+            ],
+            "eventId": "king_father_commemoration"
+          },
+          {
+            "id": "2024_king_coronation_day",
+            "names": {
+              "en": "King's Coronation Day",
+              "km": "ព្រះ​រាជ​ពិធី​គ្រង​ព្រះ​បរម​រាជ​សម្បត្តិ ព្រះ​ករុណា​ព្រះ​បាទ​សម្តេច​ព្រះ​បរមនាថ នរោត្តម សីហមុនី ព្រះ​មហាក្សត្រ​នៃ​ព្រះរាជាណាចក្រ​កម្ពុជា"
+            },
+            "dates": [
+              "2024-10-29"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-230-ankr-bk-2024"
+            ],
+            "eventId": "king_coronation_day"
+          },
+          {
+            "id": "2024_independence_day",
+            "names": {
+              "en": "Independence Day",
+              "km": "ពិធី​បុណ្យ​ឯករាជ្យ​ជាតិ ខួបលើកទី{anniversary}"
+            },
+            "dates": [
+              "2024-11-09"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-230-ankr-bk-2024"
+            ],
+            "eventId": "independence_day"
+          },
+          {
+            "id": "2024_water_festival_1",
+            "names": {
+              "en": "Water Festival",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​អុំ​ទូក បណ្ដែត​ប្រទីប និង​សំពះ​ព្រះ​ខែ អកអំបុក"
+            },
+            "dates": [
+              "2024-11-14"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-230-ankr-bk-2024"
+            ],
+            "eventId": "water_festival"
+          },
+          {
+            "id": "2024_water_festival_2",
+            "names": {
+              "en": "Water Festival",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​អុំ​ទូក បណ្ដែត​ប្រទីប និង​សំពះ​ព្រះ​ខែ អកអំបុក"
+            },
+            "dates": [
+              "2024-11-15"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-230-ankr-bk-2024"
+            ],
+            "eventId": "water_festival"
+          },
+          {
+            "id": "2024_water_festival_3",
+            "names": {
+              "en": "Water Festival",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​អុំ​ទូក បណ្ដែត​ប្រទីប និង​សំពះ​ព្រះ​ខែ អកអំបុក"
+            },
+            "dates": [
+              "2024-11-16"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-230-ankr-bk-2024"
+            ],
+            "eventId": "water_festival"
           }
         ]
       },
@@ -4092,7 +4615,7 @@
         ],
         "holidays": [
           {
-            "id": "044de815ad22b26de5ec0daf",
+            "id": "2025_new_year_day",
             "names": {
               "en": "New Year's Day",
               "km": "ទិវា​ចូល​ឆ្នាំ​សាកល"
@@ -4108,151 +4631,7 @@
             "eventId": "new_year_day"
           },
           {
-            "id": "05eea7301b347a9a9b8cc4c9",
-            "names": {
-              "en": "Water Festival",
-              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​អុំ​ទូក បណ្ដែត​ប្រទីប និង​សំពះ​ព្រះ​ខែ អកអំបុក"
-            },
-            "dates": [
-              "2025-11-06"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "mef-holiday-calendar-2025",
-              "subdecree-204-ankr-bk-2025"
-            ],
-            "eventId": "water_festival"
-          },
-          {
-            "id": "0efb4c8ff3fd3f9d66507ce5",
-            "names": {
-              "en": "Khmer New Year - Veareak Laeung Sak",
-              "km": "ពិធី​បុណ្យ​ចូល​ឆ្នាំ​ថ្មី ប្រពៃណី​ជាតិ - ថ្ងៃ​ឡើង​ស័ក"
-            },
-            "dates": [
-              "2025-04-16"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "mef-holiday-calendar-2025",
-              "subdecree-204-ankr-bk-2025"
-            ],
-            "eventId": "khmer_new_year_3"
-          },
-          {
-            "id": "117a3e9df3f589246a137ac3",
-            "names": {
-              "en": "Khmer New Year - Moha Sankranta at 04:48 AM",
-              "km": "ពិធី​បុណ្យ​ចូល​ឆ្នាំ​ថ្មី ប្រពៃណី​ជាតិ - មហា​សង្រ្កាន្ត ម៉ោង ០៤:៤៨ AM"
-            },
-            "dates": [
-              "2025-04-14"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "mef-holiday-calendar-2025",
-              "subdecree-204-ankr-bk-2025"
-            ],
-            "eventId": "khmer_new_year_1"
-          },
-          {
-            "id": "19946d6d630b946ad1eb1145",
-            "names": {
-              "en": "Pchum Ben Festival",
-              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
-            },
-            "dates": [
-              "2025-09-23"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "mef-holiday-calendar-2025",
-              "subdecree-204-ankr-bk-2025"
-            ],
-            "eventId": "pchum_ben_festival"
-          },
-          {
-            "id": "3b9fbd70df58a86bc8161913",
-            "names": {
-              "en": "King Father's Commemoration Day",
-              "km": "ទិវា​ប្រារព្ធ​ពិធី​គោរព​ព្រះវិញ្ញាណក្ខន្ធ ព្រះករុណា​ព្រះបាទ​សម្តេច​ព្រះ នរោត្តម សីហនុ ព្រះមហាវីរក្សត្រ ព្រះ​វររាជ​បិតា​ឯករាជ្យ បូរណភាព​ទឹកដី និង​ឯកភាព​ជាតិ​ខ្មែរ"
-            },
-            "dates": [
-              "2025-10-15"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "mef-holiday-calendar-2025",
-              "subdecree-204-ankr-bk-2025"
-            ],
-            "eventId": "king_father_commemoration"
-          },
-          {
-            "id": "3f5502e6527ae0c1c5849932",
-            "names": {
-              "en": "Water Festival",
-              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​អុំ​ទូក បណ្ដែត​ប្រទីប និង​សំពះ​ព្រះ​ខែ អកអំបុក"
-            },
-            "dates": [
-              "2025-11-04"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "mef-holiday-calendar-2025",
-              "subdecree-204-ankr-bk-2025"
-            ],
-            "eventId": "water_festival"
-          },
-          {
-            "id": "4bdc7ee2232076c8707c65cf",
-            "names": {
-              "en": "International Labor Day",
-              "km": "ទិវា​ពលកម្ម​អន្តរជាតិ ខួបលើកទី១៣៩"
-            },
-            "dates": [
-              "2025-05-01"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "mef-holiday-calendar-2025",
-              "subdecree-204-ankr-bk-2025"
-            ],
-            "eventId": "international_labor_day"
-          },
-          {
-            "id": "51efc9afdecc960d4993ff99",
-            "names": {
-              "en": "Queen Mother's Birthday",
-              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​ចម្រើន​ព្រះ​ជន្ម សម្តេច​ព្រះ​មហាក្សត្រី នរោត្តម មុនិនាថ សីហនុ ព្រះ​វររាជ​មាតា​ជាតិ​ខ្មែរ ក្នុង​សេរីភាព សេចក្តីថ្លៃថ្នូរ និង​សុភមង្គល"
-            },
-            "dates": [
-              "2025-06-18"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "mef-holiday-calendar-2025",
-              "subdecree-204-ankr-bk-2025"
-            ],
-            "eventId": "queen_mother_birthday"
-          },
-          {
-            "id": "5e6632a09def045e804f650e",
-            "names": {
-              "en": "Peace Day in Cambodia",
-              "km": "ទិវា​សន្តិ​ភាព​នៅ​កម្ពុជា"
-            },
-            "dates": [
-              "2025-12-29"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "mef-holiday-calendar-2025",
-              "subdecree-204-ankr-bk-2025"
-            ],
-            "eventId": "peace_day_cambodia"
-          },
-          {
-            "id": "6223ca9171fc548d6617ec5b",
+            "id": "2025_victory_over_genocide",
             "names": {
               "en": "Victory Over Genocide Day",
               "km": "ទិវា​ជ័យ​ជម្នះ​លើ​របប​ប្រល័យ​ពូជ​សាសន៍ ខួបលើកទី៤៦"
@@ -4268,151 +4647,7 @@
             "eventId": "victory_over_genocide"
           },
           {
-            "id": "6ee83e074b504483af5c96aa",
-            "names": {
-              "en": "Pchum Ben Festival",
-              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
-            },
-            "dates": [
-              "2025-09-21"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "mef-holiday-calendar-2025",
-              "subdecree-204-ankr-bk-2025"
-            ],
-            "eventId": "pchum_ben_festival"
-          },
-          {
-            "id": "765a3385e1a21431e435f9b4",
-            "names": {
-              "en": "Constitution Day",
-              "km": "ទិវា​ប្រកាស​រដ្ឋ​ធម្មនុញ្ញ ខួបលើកទី៣២"
-            },
-            "dates": [
-              "2025-09-24"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "mef-holiday-calendar-2025",
-              "subdecree-204-ankr-bk-2025"
-            ],
-            "eventId": "constitution_day"
-          },
-          {
-            "id": "7be6b6626d090074be85e7b0",
-            "names": {
-              "en": "Khmer New Year - Veareak Vanabat",
-              "km": "ពិធី​បុណ្យ​ចូល​ឆ្នាំ​ថ្មី ប្រពៃណី​ជាតិ - វារ:​វ័ន​បត"
-            },
-            "dates": [
-              "2025-04-15"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "mef-holiday-calendar-2025",
-              "subdecree-204-ankr-bk-2025"
-            ],
-            "eventId": "khmer_new_year_2"
-          },
-          {
-            "id": "932c96a38ea4ea03aad41d66",
-            "names": {
-              "en": "Pchum Ben Festival",
-              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
-            },
-            "dates": [
-              "2025-09-22"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "mef-holiday-calendar-2025",
-              "subdecree-204-ankr-bk-2025"
-            ],
-            "eventId": "pchum_ben_festival"
-          },
-          {
-            "id": "93b03d14ce5222129030556d",
-            "names": {
-              "en": "Independence Day",
-              "km": "ពិធី​បុណ្យ​ឯករាជ្យ​ជាតិ ខួបលើកទី៧២"
-            },
-            "dates": [
-              "2025-11-09"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "mef-holiday-calendar-2025",
-              "subdecree-204-ankr-bk-2025"
-            ],
-            "eventId": "independence_day"
-          },
-          {
-            "id": "970ead4bdf2ec02e5e2d4352",
-            "names": {
-              "en": "Royal Ploughing Ceremony",
-              "km": "ព្រះ​រាជ​ពិធី​ច្រត់​ព្រះ​នង្គ័ល"
-            },
-            "dates": [
-              "2025-05-15"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "mef-holiday-calendar-2025",
-              "subdecree-204-ankr-bk-2025"
-            ],
-            "eventId": "royal_ploughing_ceremony"
-          },
-          {
-            "id": "b67bd91f786a6604b54f503f",
-            "names": {
-              "en": "King Sihamoni's Birthday",
-              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​ចម្រើន​ព្រះ​ជន្ម ព្រះ​ករុណា​ព្រះ​បាទ​សម្តេច​ព្រះ​បរម​នាថ នរោត្តម សីហមុនី ព្រះ​មហាក្សត្រ​នៃ​ព្រះរាជាណាចក្រ​កម្ពុជា"
-            },
-            "dates": [
-              "2025-05-14"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "mef-holiday-calendar-2025",
-              "subdecree-204-ankr-bk-2025"
-            ],
-            "eventId": "king_sihamoni_birthday"
-          },
-          {
-            "id": "e8042d78fce534b5048c2503",
-            "names": {
-              "en": "King's Coronation Day",
-              "km": "ព្រះ​រាជ​ពិធី​គ្រង​ព្រះ​បរម​រាជ​សម្បត្តិ​របស់​ ព្រះ​ករុណា​ព្រះ​បាទ​សម្តេច​ព្រះ​បរមនាថ នរោត្តម សីហមុនី ព្រះ​មហាក្សត្រ​នៃ​ព្រះរាជាណាចក្រ​កម្ពុជា"
-            },
-            "dates": [
-              "2025-10-29"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "mef-holiday-calendar-2025",
-              "subdecree-204-ankr-bk-2025"
-            ],
-            "eventId": "king_coronation_day"
-          },
-          {
-            "id": "e93ca8cd19ab53c7053c75b2",
-            "names": {
-              "en": "Visak Bochea",
-              "km": "ពិធី​បុណ្យ​វិសាខ​បូជា"
-            },
-            "dates": [
-              "2025-05-11"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "mef-holiday-calendar-2025",
-              "subdecree-204-ankr-bk-2025"
-            ],
-            "eventId": "visak_bochea"
-          },
-          {
-            "id": "ea2ad367a614f67bed401247",
+            "id": "2025_international_women_day",
             "names": {
               "en": "International Women's Day",
               "km": "ទិវា​នារី​អន្តរជាតិ ខួបលើកទី១១៤"
@@ -4428,7 +4663,247 @@
             "eventId": "international_women_day"
           },
           {
-            "id": "f3723a32cc8625bac207fa2b",
+            "id": "2025_khmer_new_year_1",
+            "names": {
+              "en": "Khmer New Year - Moha Sankranta at 04:48 AM",
+              "km": "ពិធី​បុណ្យ​ចូល​ឆ្នាំ​ថ្មី ប្រពៃណី​ជាតិ - មហា​សង្រ្កាន្ត ម៉ោង ០៤:៤៨ AM"
+            },
+            "dates": [
+              "2025-04-14"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "mef-holiday-calendar-2025",
+              "subdecree-204-ankr-bk-2025"
+            ],
+            "eventId": "khmer_new_year_1"
+          },
+          {
+            "id": "2025_khmer_new_year_2",
+            "names": {
+              "en": "Khmer New Year - Veareak Vanabat",
+              "km": "ពិធី​បុណ្យ​ចូល​ឆ្នាំ​ថ្មី ប្រពៃណី​ជាតិ - វារ:​វ័ន​បត"
+            },
+            "dates": [
+              "2025-04-15"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "mef-holiday-calendar-2025",
+              "subdecree-204-ankr-bk-2025"
+            ],
+            "eventId": "khmer_new_year_2"
+          },
+          {
+            "id": "2025_khmer_new_year_3",
+            "names": {
+              "en": "Khmer New Year - Veareak Laeung Sak",
+              "km": "ពិធី​បុណ្យ​ចូល​ឆ្នាំ​ថ្មី ប្រពៃណី​ជាតិ - ថ្ងៃ​ឡើង​ស័ក"
+            },
+            "dates": [
+              "2025-04-16"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "mef-holiday-calendar-2025",
+              "subdecree-204-ankr-bk-2025"
+            ],
+            "eventId": "khmer_new_year_3"
+          },
+          {
+            "id": "2025_international_labor_day",
+            "names": {
+              "en": "International Labor Day",
+              "km": "ទិវា​ពលកម្ម​អន្តរជាតិ ខួបលើកទី១៣៩"
+            },
+            "dates": [
+              "2025-05-01"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "mef-holiday-calendar-2025",
+              "subdecree-204-ankr-bk-2025"
+            ],
+            "eventId": "international_labor_day"
+          },
+          {
+            "id": "2025_visak_bochea",
+            "names": {
+              "en": "Visak Bochea",
+              "km": "ពិធី​បុណ្យ​វិសាខ​បូជា"
+            },
+            "dates": [
+              "2025-05-11"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "mef-holiday-calendar-2025",
+              "subdecree-204-ankr-bk-2025"
+            ],
+            "eventId": "visak_bochea"
+          },
+          {
+            "id": "2025_king_sihamoni_birthday",
+            "names": {
+              "en": "King Sihamoni's Birthday",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​ចម្រើន​ព្រះ​ជន្ម ព្រះ​ករុណា​ព្រះ​បាទ​សម្តេច​ព្រះ​បរម​នាថ នរោត្តម សីហមុនី ព្រះ​មហាក្សត្រ​នៃ​ព្រះរាជាណាចក្រ​កម្ពុជា"
+            },
+            "dates": [
+              "2025-05-14"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "mef-holiday-calendar-2025",
+              "subdecree-204-ankr-bk-2025"
+            ],
+            "eventId": "king_sihamoni_birthday"
+          },
+          {
+            "id": "2025_royal_ploughing_ceremony",
+            "names": {
+              "en": "Royal Ploughing Ceremony",
+              "km": "ព្រះ​រាជ​ពិធី​ច្រត់​ព្រះ​នង្គ័ល"
+            },
+            "dates": [
+              "2025-05-15"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "mef-holiday-calendar-2025",
+              "subdecree-204-ankr-bk-2025"
+            ],
+            "eventId": "royal_ploughing_ceremony"
+          },
+          {
+            "id": "2025_queen_mother_birthday",
+            "names": {
+              "en": "Queen Mother's Birthday",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​ចម្រើន​ព្រះ​ជន្ម សម្តេច​ព្រះ​មហាក្សត្រី នរោត្តម មុនិនាថ សីហនុ ព្រះ​វររាជ​មាតា​ជាតិ​ខ្មែរ ក្នុង​សេរីភាព សេចក្តីថ្លៃថ្នូរ និង​សុភមង្គល"
+            },
+            "dates": [
+              "2025-06-18"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "mef-holiday-calendar-2025",
+              "subdecree-204-ankr-bk-2025"
+            ],
+            "eventId": "queen_mother_birthday"
+          },
+          {
+            "id": "2025_pchum_ben_festival_2",
+            "names": {
+              "en": "Pchum Ben Festival",
+              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+            },
+            "dates": [
+              "2025-09-21"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "mef-holiday-calendar-2025",
+              "subdecree-204-ankr-bk-2025"
+            ],
+            "eventId": "pchum_ben_festival"
+          },
+          {
+            "id": "2025_pchum_ben_festival_3",
+            "names": {
+              "en": "Pchum Ben Festival",
+              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+            },
+            "dates": [
+              "2025-09-22"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "mef-holiday-calendar-2025",
+              "subdecree-204-ankr-bk-2025"
+            ],
+            "eventId": "pchum_ben_festival"
+          },
+          {
+            "id": "2025_pchum_ben_festival",
+            "names": {
+              "en": "Pchum Ben Festival",
+              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+            },
+            "dates": [
+              "2025-09-23"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "mef-holiday-calendar-2025",
+              "subdecree-204-ankr-bk-2025"
+            ],
+            "eventId": "pchum_ben_festival"
+          },
+          {
+            "id": "2025_constitution_day",
+            "names": {
+              "en": "Constitution Day",
+              "km": "ទិវា​ប្រកាស​រដ្ឋ​ធម្មនុញ្ញ ខួបលើកទី៣២"
+            },
+            "dates": [
+              "2025-09-24"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "mef-holiday-calendar-2025",
+              "subdecree-204-ankr-bk-2025"
+            ],
+            "eventId": "constitution_day"
+          },
+          {
+            "id": "2025_king_father_commemoration",
+            "names": {
+              "en": "King Father's Commemoration Day",
+              "km": "ទិវា​ប្រារព្ធ​ពិធី​គោរព​ព្រះវិញ្ញាណក្ខន្ធ ព្រះករុណា​ព្រះបាទ​សម្តេច​ព្រះ នរោត្តម សីហនុ ព្រះមហាវីរក្សត្រ ព្រះ​វររាជ​បិតា​ឯករាជ្យ បូរណភាព​ទឹកដី និង​ឯកភាព​ជាតិ​ខ្មែរ"
+            },
+            "dates": [
+              "2025-10-15"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "mef-holiday-calendar-2025",
+              "subdecree-204-ankr-bk-2025"
+            ],
+            "eventId": "king_father_commemoration"
+          },
+          {
+            "id": "2025_king_coronation_day",
+            "names": {
+              "en": "King's Coronation Day",
+              "km": "ព្រះ​រាជ​ពិធី​គ្រង​ព្រះ​បរម​រាជ​សម្បត្តិ​របស់​ ព្រះ​ករុណា​ព្រះ​បាទ​សម្តេច​ព្រះ​បរមនាថ នរោត្តម សីហមុនី ព្រះ​មហាក្សត្រ​នៃ​ព្រះរាជាណាចក្រ​កម្ពុជា"
+            },
+            "dates": [
+              "2025-10-29"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "mef-holiday-calendar-2025",
+              "subdecree-204-ankr-bk-2025"
+            ],
+            "eventId": "king_coronation_day"
+          },
+          {
+            "id": "2025_water_festival_2",
+            "names": {
+              "en": "Water Festival",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​អុំ​ទូក បណ្ដែត​ប្រទីប និង​សំពះ​ព្រះ​ខែ អកអំបុក"
+            },
+            "dates": [
+              "2025-11-04"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "mef-holiday-calendar-2025",
+              "subdecree-204-ankr-bk-2025"
+            ],
+            "eventId": "water_festival"
+          },
+          {
+            "id": "2025_water_festival_3",
             "names": {
               "en": "Water Festival",
               "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​អុំ​ទូក បណ្ដែត​ប្រទីប និង​សំពះ​ព្រះ​ខែ អកអំបុក"
@@ -4442,6 +4917,54 @@
               "subdecree-204-ankr-bk-2025"
             ],
             "eventId": "water_festival"
+          },
+          {
+            "id": "2025_water_festival",
+            "names": {
+              "en": "Water Festival",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​អុំ​ទូក បណ្ដែត​ប្រទីប និង​សំពះ​ព្រះ​ខែ អកអំបុក"
+            },
+            "dates": [
+              "2025-11-06"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "mef-holiday-calendar-2025",
+              "subdecree-204-ankr-bk-2025"
+            ],
+            "eventId": "water_festival"
+          },
+          {
+            "id": "2025_independence_day",
+            "names": {
+              "en": "Independence Day",
+              "km": "ពិធី​បុណ្យ​ឯករាជ្យ​ជាតិ ខួបលើកទី៧២"
+            },
+            "dates": [
+              "2025-11-09"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "mef-holiday-calendar-2025",
+              "subdecree-204-ankr-bk-2025"
+            ],
+            "eventId": "independence_day"
+          },
+          {
+            "id": "2025_peace_day_cambodia",
+            "names": {
+              "en": "Peace Day in Cambodia",
+              "km": "ទិវា​សន្តិ​ភាព​នៅ​កម្ពុជា"
+            },
+            "dates": [
+              "2025-12-29"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "mef-holiday-calendar-2025",
+              "subdecree-204-ankr-bk-2025"
+            ],
+            "eventId": "peace_day_cambodia"
           }
         ]
       },
@@ -4454,39 +4977,7 @@
         ],
         "holidays": [
           {
-            "id": "05e553fe681e578aee93b9eb",
-            "names": {
-              "en": "Khmer New Year - Veareak Vanabat",
-              "km": "ពិធី​បុណ្យ​ចូល​ឆ្នាំ​ថ្មី ប្រពៃណី​ជាតិ - វារ:​វ័ន​បត"
-            },
-            "dates": [
-              "2026-04-15"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "lrc-annual-holiday-calendar-2026",
-              "subdecree-167-ankr-bk-2026"
-            ],
-            "eventId": "khmer_new_year_2"
-          },
-          {
-            "id": "09d23f9cf685cfedda6e0f90",
-            "names": {
-              "en": "King Sihamoni's Birthday",
-              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​ចម្រើន​ព្រះ​ជន្ម ព្រះ​ករុណា​ព្រះ​បាទ​សម្តេច​ព្រះ​បរម​នាថ នរោត្តម សីហមុនី ព្រះ​មហាក្សត្រ​នៃ​ព្រះរាជាណាចក្រ​កម្ពុជា"
-            },
-            "dates": [
-              "2026-05-14"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "lrc-annual-holiday-calendar-2026",
-              "subdecree-167-ankr-bk-2026"
-            ],
-            "eventId": "king_sihamoni_birthday"
-          },
-          {
-            "id": "11304c90a867ad45fdd896dd",
+            "id": "2026_new_year_day",
             "names": {
               "en": "New Year's Day",
               "km": "ទិវា​ចូល​ឆ្នាំ​សាកល"
@@ -4502,279 +4993,7 @@
             "eventId": "new_year_day"
           },
           {
-            "id": "20afb6b65db3575b2bdbf5e8",
-            "names": {
-              "en": "Water Festival",
-              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​អុំ​ទូក បណ្ដែត​ប្រទីប និង​សំពះ​ព្រះ​ខែ អកអំបុក"
-            },
-            "dates": [
-              "2026-11-25"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "lrc-annual-holiday-calendar-2026",
-              "subdecree-167-ankr-bk-2026"
-            ],
-            "eventId": "water_festival"
-          },
-          {
-            "id": "3beb3087fc1eea2687b19cd4",
-            "names": {
-              "en": "Constitution Day",
-              "km": "ទិវា​ប្រកាស​រដ្ឋ​ធម្មនុញ្ញ ខួបលើកទី៣៣"
-            },
-            "dates": [
-              "2026-09-24"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "lrc-annual-holiday-calendar-2026",
-              "subdecree-167-ankr-bk-2026"
-            ],
-            "eventId": "constitution_day"
-          },
-          {
-            "id": "4218bb99020bda4180553145",
-            "names": {
-              "en": "Royal Ploughing Ceremony",
-              "km": "ព្រះ​រាជ​ពិធី​ច្រត់​ព្រះ​នង្គ័ល"
-            },
-            "dates": [
-              "2026-05-05"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "lrc-annual-holiday-calendar-2026",
-              "subdecree-167-ankr-bk-2026"
-            ],
-            "eventId": "royal_ploughing_ceremony"
-          },
-          {
-            "id": "43d6e963218cd3ed44bf3af2",
-            "names": {
-              "en": "King's Coronation Day",
-              "km": "ព្រះ​រាជ​ពិធី​គ្រង​ព្រះ​បរម​រាជ​សម្បត្តិ​របស់​ ព្រះ​ករុណា​ព្រះ​បាទ​សម្តេច​ព្រះ​បរមនាថ នរោត្តម សីហមុនី ព្រះ​មហាក្សត្រ​នៃ​ព្រះរាជាណាចក្រ​កម្ពុជា"
-            },
-            "dates": [
-              "2026-10-29"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "lrc-annual-holiday-calendar-2026",
-              "subdecree-167-ankr-bk-2026"
-            ],
-            "eventId": "king_coronation_day"
-          },
-          {
-            "id": "4bae776da92f018b622b8776",
-            "names": {
-              "en": "Pchum Ben Festival",
-              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
-            },
-            "dates": [
-              "2026-10-10"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "lrc-annual-holiday-calendar-2026",
-              "subdecree-167-ankr-bk-2026"
-            ],
-            "eventId": "pchum_ben_festival"
-          },
-          {
-            "id": "5189375c2912884a17913e7d",
-            "names": {
-              "en": "International Women's Day",
-              "km": "ទិវា​នារី​អន្តរជាតិ ខួបលើកទី១១៥"
-            },
-            "dates": [
-              "2026-03-08"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "lrc-annual-holiday-calendar-2026",
-              "subdecree-167-ankr-bk-2026"
-            ],
-            "eventId": "international_women_day"
-          },
-          {
-            "id": "54149503db7e2d93b829a7f7",
-            "names": {
-              "en": "Water Festival",
-              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​អុំ​ទូក បណ្ដែត​ប្រទីប និង​សំពះ​ព្រះ​ខែ អកអំបុក"
-            },
-            "dates": [
-              "2026-11-23"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "lrc-annual-holiday-calendar-2026",
-              "subdecree-167-ankr-bk-2026"
-            ],
-            "eventId": "water_festival"
-          },
-          {
-            "id": "6324e65e33953311b2510d6d",
-            "names": {
-              "en": "Khmer New Year - Moha Sankranta at 10:48 AM",
-              "km": "ពិធី​បុណ្យ​ចូល​ឆ្នាំ​ថ្មី ប្រពៃណី​ជាតិ - មហា​សង្រ្កាន្ត ម៉ោង ១០:៤៨ AM"
-            },
-            "dates": [
-              "2026-04-14"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "lrc-annual-holiday-calendar-2026",
-              "subdecree-167-ankr-bk-2026"
-            ],
-            "eventId": "khmer_new_year_1"
-          },
-          {
-            "id": "6dd48964e3b23b1eb89e1c96",
-            "names": {
-              "en": "Water Festival",
-              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​អុំ​ទូក បណ្ដែត​ប្រទីប និង​សំពះ​ព្រះ​ខែ អកអំបុក"
-            },
-            "dates": [
-              "2026-11-24"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "lrc-annual-holiday-calendar-2026",
-              "subdecree-167-ankr-bk-2026"
-            ],
-            "eventId": "water_festival"
-          },
-          {
-            "id": "7bd31d377830babaed82c013",
-            "names": {
-              "en": "Pchum Ben Festival",
-              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
-            },
-            "dates": [
-              "2026-10-12"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "lrc-annual-holiday-calendar-2026",
-              "subdecree-167-ankr-bk-2026"
-            ],
-            "eventId": "pchum_ben_festival"
-          },
-          {
-            "id": "8750847a3aeb47efe5f64c8f",
-            "names": {
-              "en": "King Father's Commemoration Day",
-              "km": "ទិវា​ប្រារព្ធ​ពិធី​គោរព​ព្រះវិញ្ញាណក្ខន្ធ ព្រះករុណា​ព្រះបាទ​សម្តេច​ព្រះ នរោត្តម សីហនុ ព្រះមហាវីរក្សត្រ ព្រះ​វររាជ​បិតា​ឯករាជ្យ បូរណភាព​ទឹកដី និង​ឯកភាព​ជាតិ​ខ្មែរ"
-            },
-            "dates": [
-              "2026-10-15"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "lrc-annual-holiday-calendar-2026",
-              "subdecree-167-ankr-bk-2026"
-            ],
-            "eventId": "king_father_commemoration"
-          },
-          {
-            "id": "8e03db47f05787cd1b8bf18a",
-            "names": {
-              "en": "International Labor Day",
-              "km": "ទិវា​ពលកម្ម​អន្តរជាតិ ខួបលើកទី១៤០"
-            },
-            "dates": [
-              "2026-05-01"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "lrc-annual-holiday-calendar-2026",
-              "subdecree-167-ankr-bk-2026"
-            ],
-            "eventId": "international_labor_day"
-          },
-          {
-            "id": "9997ac9431a4871c96448b05",
-            "names": {
-              "en": "Visak Bochea",
-              "km": "ពិធី​បុណ្យ​វិសាខ​បូជា"
-            },
-            "dates": [
-              "2026-05-01"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "lrc-annual-holiday-calendar-2026",
-              "subdecree-167-ankr-bk-2026"
-            ],
-            "eventId": "visak_bochea"
-          },
-          {
-            "id": "9aa975578c30c9e727708f5b",
-            "names": {
-              "en": "Peace Day in Cambodia",
-              "km": "ទិវា​សន្តិ​ភាព​នៅ​កម្ពុជា"
-            },
-            "dates": [
-              "2026-12-29"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "lrc-annual-holiday-calendar-2026",
-              "subdecree-167-ankr-bk-2026"
-            ],
-            "eventId": "peace_day_cambodia"
-          },
-          {
-            "id": "adb38ed3bc5f4e73037ba56e",
-            "names": {
-              "en": "Independence Day",
-              "km": "ពិធី​បុណ្យ​ឯករាជ្យ​ជាតិ ខួបលើកទី៧៣"
-            },
-            "dates": [
-              "2026-11-09"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "lrc-annual-holiday-calendar-2026",
-              "subdecree-167-ankr-bk-2026"
-            ],
-            "eventId": "independence_day"
-          },
-          {
-            "id": "b1f209137d3e158566436af9",
-            "names": {
-              "en": "Queen Mother's Birthday",
-              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​ចម្រើន​ព្រះ​ជន្ម សម្តេច​ព្រះ​មហាក្សត្រី នរោត្តម មុនិនាថ សីហនុ ព្រះ​វររាជ​មាតា​ជាតិ​ខ្មែរ ក្នុង​សេរីភាព សេចក្តីថ្លៃថ្នូរ និង​សុភមង្គល"
-            },
-            "dates": [
-              "2026-06-18"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "lrc-annual-holiday-calendar-2026",
-              "subdecree-167-ankr-bk-2026"
-            ],
-            "eventId": "queen_mother_birthday"
-          },
-          {
-            "id": "d507aa1cc5fd3b3dcc83bbdc",
-            "names": {
-              "en": "Khmer New Year - Veareak Laeung Sak",
-              "km": "ពិធី​បុណ្យ​ចូល​ឆ្នាំ​ថ្មី ប្រពៃណី​ជាតិ - ថ្ងៃ​ឡើង​ស័ក"
-            },
-            "dates": [
-              "2026-04-16"
-            ],
-            "status": "active",
-            "sourceIds": [
-              "lrc-annual-holiday-calendar-2026",
-              "subdecree-167-ankr-bk-2026"
-            ],
-            "eventId": "khmer_new_year_3"
-          },
-          {
-            "id": "e0f9270a8c1c2700e7c21c44",
+            "id": "2026_victory_over_genocide",
             "names": {
               "en": "Victory Over Genocide Day",
               "km": "ទិវា​ជ័យ​ជម្នះ​លើ​របប​ប្រល័យ​ពូជ​សាសន៍ ខួបលើកទី៤៧"
@@ -4790,7 +5009,183 @@
             "eventId": "victory_over_genocide"
           },
           {
-            "id": "e5c37d4874f7009412fd98c4",
+            "id": "2026_international_women_day",
+            "names": {
+              "en": "International Women's Day",
+              "km": "ទិវា​នារី​អន្តរជាតិ ខួបលើកទី១១៥"
+            },
+            "dates": [
+              "2026-03-08"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "lrc-annual-holiday-calendar-2026",
+              "subdecree-167-ankr-bk-2026"
+            ],
+            "eventId": "international_women_day"
+          },
+          {
+            "id": "2026_khmer_new_year_1",
+            "names": {
+              "en": "Khmer New Year - Moha Sankranta at 10:48 AM",
+              "km": "ពិធី​បុណ្យ​ចូល​ឆ្នាំ​ថ្មី ប្រពៃណី​ជាតិ - មហា​សង្រ្កាន្ត ម៉ោង ១០:៤៨ AM"
+            },
+            "dates": [
+              "2026-04-14"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "lrc-annual-holiday-calendar-2026",
+              "subdecree-167-ankr-bk-2026"
+            ],
+            "eventId": "khmer_new_year_1"
+          },
+          {
+            "id": "2026_khmer_new_year_2",
+            "names": {
+              "en": "Khmer New Year - Veareak Vanabat",
+              "km": "ពិធី​បុណ្យ​ចូល​ឆ្នាំ​ថ្មី ប្រពៃណី​ជាតិ - វារ:​វ័ន​បត"
+            },
+            "dates": [
+              "2026-04-15"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "lrc-annual-holiday-calendar-2026",
+              "subdecree-167-ankr-bk-2026"
+            ],
+            "eventId": "khmer_new_year_2"
+          },
+          {
+            "id": "2026_khmer_new_year_3",
+            "names": {
+              "en": "Khmer New Year - Veareak Laeung Sak",
+              "km": "ពិធី​បុណ្យ​ចូល​ឆ្នាំ​ថ្មី ប្រពៃណី​ជាតិ - ថ្ងៃ​ឡើង​ស័ក"
+            },
+            "dates": [
+              "2026-04-16"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "lrc-annual-holiday-calendar-2026",
+              "subdecree-167-ankr-bk-2026"
+            ],
+            "eventId": "khmer_new_year_3"
+          },
+          {
+            "id": "2026_international_labor_day",
+            "names": {
+              "en": "International Labor Day",
+              "km": "ទិវា​ពលកម្ម​អន្តរជាតិ ខួបលើកទី១៤០"
+            },
+            "dates": [
+              "2026-05-01"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "lrc-annual-holiday-calendar-2026",
+              "subdecree-167-ankr-bk-2026"
+            ],
+            "eventId": "international_labor_day"
+          },
+          {
+            "id": "2026_visak_bochea",
+            "names": {
+              "en": "Visak Bochea",
+              "km": "ពិធី​បុណ្យ​វិសាខ​បូជា"
+            },
+            "dates": [
+              "2026-05-01"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "lrc-annual-holiday-calendar-2026",
+              "subdecree-167-ankr-bk-2026"
+            ],
+            "eventId": "visak_bochea"
+          },
+          {
+            "id": "2026_royal_ploughing_ceremony",
+            "names": {
+              "en": "Royal Ploughing Ceremony",
+              "km": "ព្រះ​រាជ​ពិធី​ច្រត់​ព្រះ​នង្គ័ល"
+            },
+            "dates": [
+              "2026-05-05"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "lrc-annual-holiday-calendar-2026",
+              "subdecree-167-ankr-bk-2026"
+            ],
+            "eventId": "royal_ploughing_ceremony"
+          },
+          {
+            "id": "2026_king_sihamoni_birthday",
+            "names": {
+              "en": "King Sihamoni's Birthday",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​ចម្រើន​ព្រះ​ជន្ម ព្រះ​ករុណា​ព្រះ​បាទ​សម្តេច​ព្រះ​បរម​នាថ នរោត្តម សីហមុនី ព្រះ​មហាក្សត្រ​នៃ​ព្រះរាជាណាចក្រ​កម្ពុជា"
+            },
+            "dates": [
+              "2026-05-14"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "lrc-annual-holiday-calendar-2026",
+              "subdecree-167-ankr-bk-2026"
+            ],
+            "eventId": "king_sihamoni_birthday"
+          },
+          {
+            "id": "2026_queen_mother_birthday",
+            "names": {
+              "en": "Queen Mother's Birthday",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​ចម្រើន​ព្រះ​ជន្ម សម្តេច​ព្រះ​មហាក្សត្រី នរោត្តម មុនិនាថ សីហនុ ព្រះ​វររាជ​មាតា​ជាតិ​ខ្មែរ ក្នុង​សេរីភាព សេចក្តីថ្លៃថ្នូរ និង​សុភមង្គល"
+            },
+            "dates": [
+              "2026-06-18"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "lrc-annual-holiday-calendar-2026",
+              "subdecree-167-ankr-bk-2026"
+            ],
+            "eventId": "queen_mother_birthday"
+          },
+          {
+            "id": "2026_constitution_day",
+            "names": {
+              "en": "Constitution Day",
+              "km": "ទិវា​ប្រកាស​រដ្ឋ​ធម្មនុញ្ញ ខួបលើកទី៣៣"
+            },
+            "dates": [
+              "2026-09-24"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "lrc-annual-holiday-calendar-2026",
+              "subdecree-167-ankr-bk-2026"
+            ],
+            "eventId": "constitution_day"
+          },
+          {
+            "id": "2026_pchum_ben_festival",
+            "names": {
+              "en": "Pchum Ben Festival",
+              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+            },
+            "dates": [
+              "2026-10-10"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "lrc-annual-holiday-calendar-2026",
+              "subdecree-167-ankr-bk-2026"
+            ],
+            "eventId": "pchum_ben_festival"
+          },
+          {
+            "id": "2026_pchum_ben_festival_3",
             "names": {
               "en": "Pchum Ben Festival",
               "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
@@ -4804,6 +5199,134 @@
               "subdecree-167-ankr-bk-2026"
             ],
             "eventId": "pchum_ben_festival"
+          },
+          {
+            "id": "2026_pchum_ben_festival_2",
+            "names": {
+              "en": "Pchum Ben Festival",
+              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+            },
+            "dates": [
+              "2026-10-12"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "lrc-annual-holiday-calendar-2026",
+              "subdecree-167-ankr-bk-2026"
+            ],
+            "eventId": "pchum_ben_festival"
+          },
+          {
+            "id": "2026_king_father_commemoration",
+            "names": {
+              "en": "King Father's Commemoration Day",
+              "km": "ទិវា​ប្រារព្ធ​ពិធី​គោរព​ព្រះវិញ្ញាណក្ខន្ធ ព្រះករុណា​ព្រះបាទ​សម្តេច​ព្រះ នរោត្តម សីហនុ ព្រះមហាវីរក្សត្រ ព្រះ​វររាជ​បិតា​ឯករាជ្យ បូរណភាព​ទឹកដី និង​ឯកភាព​ជាតិ​ខ្មែរ"
+            },
+            "dates": [
+              "2026-10-15"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "lrc-annual-holiday-calendar-2026",
+              "subdecree-167-ankr-bk-2026"
+            ],
+            "eventId": "king_father_commemoration"
+          },
+          {
+            "id": "2026_king_coronation_day",
+            "names": {
+              "en": "King's Coronation Day",
+              "km": "ព្រះ​រាជ​ពិធី​គ្រង​ព្រះ​បរម​រាជ​សម្បត្តិ​របស់​ ព្រះ​ករុណា​ព្រះ​បាទ​សម្តេច​ព្រះ​បរមនាថ នរោត្តម សីហមុនី ព្រះ​មហាក្សត្រ​នៃ​ព្រះរាជាណាចក្រ​កម្ពុជា"
+            },
+            "dates": [
+              "2026-10-29"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "lrc-annual-holiday-calendar-2026",
+              "subdecree-167-ankr-bk-2026"
+            ],
+            "eventId": "king_coronation_day"
+          },
+          {
+            "id": "2026_independence_day",
+            "names": {
+              "en": "Independence Day",
+              "km": "ពិធី​បុណ្យ​ឯករាជ្យ​ជាតិ ខួបលើកទី៧៣"
+            },
+            "dates": [
+              "2026-11-09"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "lrc-annual-holiday-calendar-2026",
+              "subdecree-167-ankr-bk-2026"
+            ],
+            "eventId": "independence_day"
+          },
+          {
+            "id": "2026_water_festival_2",
+            "names": {
+              "en": "Water Festival",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​អុំ​ទូក បណ្ដែត​ប្រទីប និង​សំពះ​ព្រះ​ខែ អកអំបុក"
+            },
+            "dates": [
+              "2026-11-23"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "lrc-annual-holiday-calendar-2026",
+              "subdecree-167-ankr-bk-2026"
+            ],
+            "eventId": "water_festival"
+          },
+          {
+            "id": "2026_water_festival_3",
+            "names": {
+              "en": "Water Festival",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​អុំ​ទូក បណ្ដែត​ប្រទីប និង​សំពះ​ព្រះ​ខែ អកអំបុក"
+            },
+            "dates": [
+              "2026-11-24"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "lrc-annual-holiday-calendar-2026",
+              "subdecree-167-ankr-bk-2026"
+            ],
+            "eventId": "water_festival"
+          },
+          {
+            "id": "2026_water_festival",
+            "names": {
+              "en": "Water Festival",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​អុំ​ទូក បណ្ដែត​ប្រទីប និង​សំពះ​ព្រះ​ខែ អកអំបុក"
+            },
+            "dates": [
+              "2026-11-25"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "lrc-annual-holiday-calendar-2026",
+              "subdecree-167-ankr-bk-2026"
+            ],
+            "eventId": "water_festival"
+          },
+          {
+            "id": "2026_peace_day_cambodia",
+            "names": {
+              "en": "Peace Day in Cambodia",
+              "km": "ទិវា​សន្តិ​ភាព​នៅ​កម្ពុជា"
+            },
+            "dates": [
+              "2026-12-29"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "lrc-annual-holiday-calendar-2026",
+              "subdecree-167-ankr-bk-2026"
+            ],
+            "eventId": "peace_day_cambodia"
           }
         ]
       },
@@ -4815,234 +5338,334 @@
         ],
         "holidays": [
           {
-            "id": "constitution",
+            "id": "2027_new_year_day",
             "names": {
-              "en": "Constitution Day",
-              "km": "ទិវាប្រកាសរដ្ឋធម្មនុញ្ញ"
+              "en": "New Year's Day",
+              "km": "ទិវា​ចូល​ឆ្នាំ​សាកល"
             },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-198-ankr-bk-2027"
-            ],
-            "dates": [
-              "2027-09-24"
-            ]
-          },
-          {
-            "id": "coronation",
-            "names": {
-              "en": "King Norodom Sihamoni’s Coronation Day",
-              "km": "ព្រះរាជពិធីគ្រងព្រះបរមរាជសម្បត្តិ ព្រះករុណាព្រះបាទសម្ដេចព្រះបរមនាថ នរោត្តម សីហមុនី"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-198-ankr-bk-2027"
-            ],
-            "dates": [
-              "2027-10-29"
-            ]
-          },
-          {
-            "id": "independence",
-            "names": {
-              "en": "Independence Day",
-              "km": "ពិធីបុណ្យឯករាជ្យជាតិ"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-198-ankr-bk-2027"
-            ],
-            "dates": [
-              "2027-11-09"
-            ]
-          },
-          {
-            "id": "khmer-new-year",
-            "names": {
-              "en": "Khmer New Year",
-              "km": "ពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-198-ankr-bk-2027"
-            ],
-            "dates": [
-              "2027-04-14",
-              "2027-04-15",
-              "2027-04-16"
-            ]
-          },
-          {
-            "id": "king-birthday",
-            "names": {
-              "en": "King Norodom Sihamoni’s Birthday",
-              "km": "ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម ព្រះករុណាព្រះបាទសម្ដេចព្រះបរមនាថ នរោត្តម សីហមុនី"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-198-ankr-bk-2027"
-            ],
-            "dates": [
-              "2027-05-14"
-            ]
-          },
-          {
-            "id": "king-father",
-            "names": {
-              "en": "King Father’s Commemoration Day",
-              "km": "ទិវាប្រារព្ធពិធីគោរពព្រះវិញ្ញាណក្ខន្ធ ព្រះបរមរតនកោដ្ឋ"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-198-ankr-bk-2027"
-            ],
-            "dates": [
-              "2027-10-15"
-            ]
-          },
-          {
-            "id": "labour",
-            "names": {
-              "en": "International Labour Day",
-              "km": "ទិវាពលកម្មអន្តរជាតិ"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-198-ankr-bk-2027"
-            ],
-            "dates": [
-              "2027-05-01"
-            ]
-          },
-          {
-            "id": "new-year",
-            "names": {
-              "en": "International New Year’s Day",
-              "km": "ទិវាចូលឆ្នាំសកល"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-198-ankr-bk-2027"
-            ],
             "dates": [
               "2027-01-01"
-            ]
-          },
-          {
-            "id": "pchum",
-            "names": {
-              "en": "Pchum Ben Festival",
-              "km": "ពិធីបុណ្យភ្ជុំបិណ្ឌ"
-            },
+            ],
             "status": "active",
             "sourceIds": [
               "subdecree-198-ankr-bk-2027"
             ],
-            "dates": [
-              "2027-09-29",
-              "2027-09-30",
-              "2027-10-01"
-            ]
+            "eventId": "new_year_day"
           },
           {
-            "id": "peace",
+            "id": "2027_victory_over_genocide",
             "names": {
-              "en": "Peace Day in Cambodia",
-              "km": "ទិវាសន្តិភាពនៅកម្ពុជា"
+              "en": "Victory Over Genocide Day",
+              "km": "ទិវា​ជ័យ​ជម្នះ​លើ​របប​ប្រល័យ​ពូជ​សាសន៍ ខួបលើកទី{anniversary}"
             },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-198-ankr-bk-2027"
-            ],
-            "dates": [
-              "2027-12-29"
-            ]
-          },
-          {
-            "id": "ploughing",
-            "names": {
-              "en": "Royal Ploughing Ceremony",
-              "km": "ព្រះរាជពិធីច្រត់ព្រះនង្គ័ល"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-198-ankr-bk-2027"
-            ],
-            "dates": [
-              "2027-05-24"
-            ]
-          },
-          {
-            "id": "queen-birthday",
-            "names": {
-              "en": "Queen Mother’s Birthday",
-              "km": "ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម សម្ដេចព្រះមហាក្សត្រី នរោត្តម មុនិនាថ សីហនុ"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-198-ankr-bk-2027"
-            ],
-            "dates": [
-              "2027-06-18"
-            ]
-          },
-          {
-            "id": "victory",
-            "names": {
-              "en": "Victory Day over Genocide",
-              "km": "ទិវាជ័យជម្នះលើរបបប្រល័យពូជសាសន៍"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-198-ankr-bk-2027"
-            ],
             "dates": [
               "2027-01-07"
-            ]
-          },
-          {
-            "id": "visak",
-            "names": {
-              "en": "Visak Bochea",
-              "km": "ពិធីបុណ្យវិសាខបូជា"
-            },
+            ],
             "status": "active",
             "sourceIds": [
               "subdecree-198-ankr-bk-2027"
             ],
-            "dates": [
-              "2027-05-20"
-            ]
+            "eventId": "victory_over_genocide"
           },
           {
-            "id": "water",
+            "id": "2027_international_women_day",
             "names": {
-              "en": "Water Festival",
-              "km": "ព្រះរាជពិធីបុណ្យអុំទូក បណ្ដែតប្រទីប និងសំពះព្រះខែ អកអំបុក"
+              "en": "International Women's Day",
+              "km": "ទិវា​នារី​អន្តរជាតិ ខួបលើកទី{anniversary}"
             },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-198-ankr-bk-2027"
-            ],
-            "dates": [
-              "2027-11-12",
-              "2027-11-13",
-              "2027-11-14"
-            ]
-          },
-          {
-            "id": "women",
-            "names": {
-              "en": "International Women’s Day",
-              "km": "ទិវាអន្តរជាតិនារី"
-            },
-            "status": "active",
-            "sourceIds": [
-              "subdecree-198-ankr-bk-2027"
-            ],
             "dates": [
               "2027-03-08"
-            ]
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-198-ankr-bk-2027"
+            ],
+            "eventId": "international_women_day"
+          },
+          {
+            "id": "2027_khmer_new_year_1",
+            "names": {
+              "en": "Khmer New Year – Moha Sankranta",
+              "km": "ពិធី​បុណ្យ​ចូល​ឆ្នាំ​ថ្មី ប្រពៃណី​ជាតិ – មហា​សង្ក្រាន្ត"
+            },
+            "dates": [
+              "2027-04-14"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-198-ankr-bk-2027"
+            ],
+            "eventId": "khmer_new_year_1"
+          },
+          {
+            "id": "2027_khmer_new_year_2",
+            "names": {
+              "en": "Khmer New Year - Veareak Vanabat",
+              "km": "ពិធី​បុណ្យ​ចូល​ឆ្នាំ​ថ្មី ប្រពៃណី​ជាតិ - វារៈ​វ័ន​បត"
+            },
+            "dates": [
+              "2027-04-15"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-198-ankr-bk-2027"
+            ],
+            "eventId": "khmer_new_year_2"
+          },
+          {
+            "id": "2027_khmer_new_year_3",
+            "names": {
+              "en": "Khmer New Year - Veareak Laeung Sak",
+              "km": "ពិធី​បុណ្យ​ចូល​ឆ្នាំ​ថ្មី ប្រពៃណី​ជាតិ - ថ្ងៃ​ឡើង​ស័ក"
+            },
+            "dates": [
+              "2027-04-16"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-198-ankr-bk-2027"
+            ],
+            "eventId": "khmer_new_year_3"
+          },
+          {
+            "id": "2027_international_labor_day",
+            "names": {
+              "en": "International Labor Day",
+              "km": "ទិវា​ពលកម្ម​អន្តរជាតិ ខួបលើកទី{anniversary}"
+            },
+            "dates": [
+              "2027-05-01"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-198-ankr-bk-2027"
+            ],
+            "eventId": "international_labor_day"
+          },
+          {
+            "id": "2027_king_sihamoni_birthday",
+            "names": {
+              "en": "King Sihamoni's Birthday",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​ចម្រើន​ព្រះ​ជន្ម ព្រះ​ករុណា​ព្រះ​បាទ​សម្តេច​ព្រះ​បរម​នាថ នរោត្តម សីហមុនី ព្រះ​មហាក្សត្រ​នៃ​ព្រះរាជាណាចក្រ​កម្ពុជា"
+            },
+            "dates": [
+              "2027-05-14"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-198-ankr-bk-2027"
+            ],
+            "eventId": "king_sihamoni_birthday"
+          },
+          {
+            "id": "2027_visak_bochea",
+            "names": {
+              "en": "Visak Bochea",
+              "km": "ពិធី​បុណ្យ​វិសាខ​បូជា"
+            },
+            "dates": [
+              "2027-05-20"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-198-ankr-bk-2027"
+            ],
+            "eventId": "visak_bochea"
+          },
+          {
+            "id": "2027_royal_ploughing_ceremony",
+            "names": {
+              "en": "Royal Ploughing Ceremony",
+              "km": "ព្រះ​រាជ​ពិធី​ច្រត់​ព្រះ​នង្គ័ល"
+            },
+            "dates": [
+              "2027-05-24"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-198-ankr-bk-2027"
+            ],
+            "eventId": "royal_ploughing_ceremony"
+          },
+          {
+            "id": "2027_queen_mother_birthday",
+            "names": {
+              "en": "Queen Mother's Birthday",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​ចម្រើន​ព្រះ​ជន្ម សម្តេច​ព្រះ​មហាក្សត្រី នរោត្តម មុនិនាថ សីហនុ ព្រះ​វររាជ​មាតា​ជាតិ​ខ្មែរ ក្នុង​សេរីភាព សេចក្តីថ្លៃថ្នូរ និង​សុភមង្គល"
+            },
+            "dates": [
+              "2027-06-18"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-198-ankr-bk-2027"
+            ],
+            "eventId": "queen_mother_birthday"
+          },
+          {
+            "id": "2027_constitution_day",
+            "names": {
+              "en": "Constitution Day",
+              "km": "ទិវា​ប្រកាស​រដ្ឋ​ធម្មនុញ្ញ ខួបលើកទី{anniversary}"
+            },
+            "dates": [
+              "2027-09-24"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-198-ankr-bk-2027"
+            ],
+            "eventId": "constitution_day"
+          },
+          {
+            "id": "2027_pchum_ben_festival_1",
+            "names": {
+              "en": "Pchum Ben Festival",
+              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+            },
+            "dates": [
+              "2027-09-29"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-198-ankr-bk-2027"
+            ],
+            "eventId": "pchum_ben_festival"
+          },
+          {
+            "id": "2027_pchum_ben_festival_2",
+            "names": {
+              "en": "Pchum Ben Festival",
+              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+            },
+            "dates": [
+              "2027-09-30"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-198-ankr-bk-2027"
+            ],
+            "eventId": "pchum_ben_festival"
+          },
+          {
+            "id": "2027_pchum_ben_festival_3",
+            "names": {
+              "en": "Pchum Ben Festival",
+              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+            },
+            "dates": [
+              "2027-10-01"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-198-ankr-bk-2027"
+            ],
+            "eventId": "pchum_ben_festival"
+          },
+          {
+            "id": "2027_king_father_commemoration",
+            "names": {
+              "en": "King Father's Commemoration Day",
+              "km": "ទិវា​ប្រារព្ធ​ពិធី​គោរព​ព្រះវិញ្ញាណក្ខន្ធ ព្រះករុណា​ព្រះបាទ​សម្តេច​ព្រះ នរោត្តម សីហនុ ព្រះមហាវីរក្សត្រ ព្រះ​វររាជ​បិតា​ឯករាជ្យ បូរណភាព​ទឹកដី និង​ឯកភាព​ជាតិ​ខ្មែរ"
+            },
+            "dates": [
+              "2027-10-15"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-198-ankr-bk-2027"
+            ],
+            "eventId": "king_father_commemoration"
+          },
+          {
+            "id": "2027_king_coronation_day",
+            "names": {
+              "en": "King's Coronation Day",
+              "km": "ព្រះ​រាជ​ពិធី​គ្រង​ព្រះ​បរម​រាជ​សម្បត្តិ ព្រះ​ករុណា​ព្រះ​បាទ​សម្តេច​ព្រះ​បរមនាថ នរោត្តម សីហមុនី ព្រះ​មហាក្សត្រ​នៃ​ព្រះរាជាណាចក្រ​កម្ពុជា"
+            },
+            "dates": [
+              "2027-10-29"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-198-ankr-bk-2027"
+            ],
+            "eventId": "king_coronation_day"
+          },
+          {
+            "id": "2027_independence_day",
+            "names": {
+              "en": "Independence Day",
+              "km": "ពិធី​បុណ្យ​ឯករាជ្យ​ជាតិ ខួបលើកទី{anniversary}"
+            },
+            "dates": [
+              "2027-11-09"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-198-ankr-bk-2027"
+            ],
+            "eventId": "independence_day"
+          },
+          {
+            "id": "2027_water_festival_1",
+            "names": {
+              "en": "Water Festival",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​អុំ​ទូក បណ្ដែត​ប្រទីប និង​សំពះ​ព្រះ​ខែ អកអំបុក"
+            },
+            "dates": [
+              "2027-11-12"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-198-ankr-bk-2027"
+            ],
+            "eventId": "water_festival"
+          },
+          {
+            "id": "2027_water_festival_2",
+            "names": {
+              "en": "Water Festival",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​អុំ​ទូក បណ្ដែត​ប្រទីប និង​សំពះ​ព្រះ​ខែ អកអំបុក"
+            },
+            "dates": [
+              "2027-11-13"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-198-ankr-bk-2027"
+            ],
+            "eventId": "water_festival"
+          },
+          {
+            "id": "2027_water_festival_3",
+            "names": {
+              "en": "Water Festival",
+              "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​អុំ​ទូក បណ្ដែត​ប្រទីប និង​សំពះ​ព្រះ​ខែ អកអំបុក"
+            },
+            "dates": [
+              "2027-11-14"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-198-ankr-bk-2027"
+            ],
+            "eventId": "water_festival"
+          },
+          {
+            "id": "2027_peace_day_cambodia",
+            "names": {
+              "en": "Peace Day in Cambodia",
+              "km": "ទិវា​សន្តិ​ភាព​នៅ​កម្ពុជា"
+            },
+            "dates": [
+              "2027-12-29"
+            ],
+            "status": "active",
+            "sourceIds": [
+              "subdecree-198-ankr-bk-2027"
+            ],
+            "eventId": "peace_day_cambodia"
           }
         ]
       }
@@ -39796,6 +40419,58 @@
           "section": "Recorded event",
           "id": "2030/d7a7fe8ae7787c341ae39609",
           "action": "removed"
+        }
+      ]
+    },
+    {
+      "revision": 5,
+      "at": "2026-09-17T20:29:52.181Z",
+      "note": "Standardize holidayCalendars to per-day entries with explicit eventId across all years (2020-2027) and clean up source notes",
+      "changes": [
+        {
+          "section": "sources",
+          "id": "khmer-lunar-calendar-capture-2026-09-10",
+          "action": "changed"
+        },
+        {
+          "section": "holidayCalendars",
+          "id": "2020",
+          "action": "changed"
+        },
+        {
+          "section": "holidayCalendars",
+          "id": "2021",
+          "action": "changed"
+        },
+        {
+          "section": "holidayCalendars",
+          "id": "2022",
+          "action": "changed"
+        },
+        {
+          "section": "holidayCalendars",
+          "id": "2023",
+          "action": "changed"
+        },
+        {
+          "section": "holidayCalendars",
+          "id": "2024",
+          "action": "changed"
+        },
+        {
+          "section": "holidayCalendars",
+          "id": "2025",
+          "action": "changed"
+        },
+        {
+          "section": "holidayCalendars",
+          "id": "2026",
+          "action": "changed"
+        },
+        {
+          "section": "holidayCalendars",
+          "id": "2027",
+          "action": "changed"
         }
       ]
     }
