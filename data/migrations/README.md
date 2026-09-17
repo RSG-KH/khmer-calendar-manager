@@ -4,4 +4,11 @@
 
 The generator reads the reviewed inputs from the sibling `khmer-calendar` repository, verifies their pinned SHA-256 hashes, converts the 2000–2030 dated archive into complete recorded-event calendars, converts all Android recurrence definitions to the engine's public rule format, and records reviewed archive/rule differences as source-backed overrides.
 
-Run `npm run migrate:android:check` from a paired manager/Android workspace before publishing migration changes. Normal standalone CI verifies the checked-in catalog directly through `tests/migration.test.ts`. Import the JSON file as a full catalog through the manager UI; the generator never modifies `data/workspace.json`.
+Run `npm run migrate:android:check` from a paired manager/Android workspace before publishing migration changes. Normal standalone CI verifies the checked-in catalog directly through `tests/migration.test.ts`.
+
+### Streamlined production catalog
+In the canonical catalog (`data/workspace.json`), this historical archive has been further streamlined:
+- The 349 unlinked archive occurrences were extracted into 24 first-class static date-backed events in `events` (9 Chinese traditional festivals spanning 2000–2030 and 15 UNESCO/historical milestones).
+- `eventCalendars` is retired (`[]`), cutting the export bundle size by ~90% (~108 KB) and eliminating the need for client applications to implement archive-versus-rule precedence logic.
+- Official public holidays for 2020–2027 were transcribed and confirmed directly from Royal Government Sub-Decrees (Anukret).
+

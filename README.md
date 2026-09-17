@@ -6,7 +6,9 @@ A developer web app for maintaining events, historical facts, translations, sour
 
 ## Status
 
-**0.1.0 — local and GitHub Pages versions.** The saved workspace starts with no published data. Generate a year to prepare editable holiday dates, then review them against the government announcement. An importable schema-v2 migration bundle now preserves the Android application's 2000–2030 recorded event calendars and adopts its 100 recurrence rules without replacing a developer's current workspace automatically.
+**0.2.0 — streamlined catalog with official 2020–2027 holidays.** The default workspace (`data/workspace.json`) is fully seeded with 124 events (100 engine recurrence rules + 24 static date-backed events), 15 King Sihamoni birthday overrides (2005–2019), and 8 officially confirmed government public holiday calendars (2020–2027) backed by Royal Government of Cambodia Sub-Decrees (Anukret).
+
+The 2000–2030 legacy archive (3,246 duplicate entries) has been streamlined: all 349 unlinked occurrences were extracted into 24 first-class date-backed events (9 Chinese traditional festivals across 31 years and 15 UNESCO/historical milestones), allowing `eventCalendars` to be retired (`[]`). This drops the uncompressed export payload by 90% down to ~108 KB (~15 KB gzipped) while ensuring zero data loss and simple downstream consumption in Android and PWA.
 
 Implemented:
 
@@ -85,18 +87,16 @@ The calendar's **Import** button opens a JSON/CSV popup with a change review bef
 
 [Data format and import rules](docs/data-format.md) documents the catalog, yearly JSON/CSV formats, correction semantics and exported manifest. The manager accepts structured data transcribed from publications. XML adapters and document extraction can be added when an actual source format requires them.
 
-### Migrated Android archive and rules
+### Migrated Android archive and streamlined catalog
 
-[`data/migrations/android-archive-and-rules.json`](data/migrations/android-archive-and-rules.json) is a full-catalog import containing the 3,246 recorded occurrences for 2000–2030, all 100 Android recurrence definitions, 15 source-backed King Sihamoni birthday overrides, and the 44 government-sourced 2025–2026 holiday occurrences. Import it through **Calendar → Import** when you want to adopt the migrated catalog. It is intentionally separate from `data/workspace.json`, so generating or verifying it never overwrites an in-progress manager workspace.
+[`data/migrations/android-archive-and-rules.json`](data/migrations/android-archive-and-rules.json) is the raw transitional migration import containing the 3,246 recorded occurrences for 2000–2030 in `eventCalendars`. The migration pins SHA-256 hashes for each Android input and is verified by tests (`npm test` and `npm run migrate:android:check`).
 
-The migration pins SHA-256 hashes for each Android input. From this repository beside `khmer-calendar`, regenerate or verify it with:
-
-```text
-npm run migrate:android
-npm run migrate:android:check
-```
-
-Complete recorded years suppress calculated recurrence rows in previews; partial years supplement calculations and de-duplicate linked occurrences. Rules continue calculating years not covered by a complete recorded calendar. Unsupported or one-off records remain explicit occurrences.
+In the canonical catalog (`data/workspace.json`), this archive has been fully streamlined for Schema v2:
+- **100 Recurrence Rules**: Evaluated dynamically for any year (1800–2200) via `khmer-calendar-engine`.
+- **24 Static Date-Backed Events**: 9 Chinese traditional festivals (334 occurrences across 2000–2030) and 15 UNESCO/historical milestones (Preah Vihear, Kun Lbokator, Royal Ballet, Tuol Sleng, Krama, etc.) are explicit date-backed events in `events`.
+- **Retired `eventCalendars`**: Kept empty (`[]`), eliminating runtime archive-vs-engine precedence conflicts and shrinking the export bundle by 90% (~108 KB).
+- **Official Holiday Calendars (2020–2027)**: 8 years of official government public holidays transcribed and confirmed from Royal Government Sub-Decrees (Anukret).
+- **15 Overrides**: King Norodom Sihamoni's birthday 3-day holiday dates (2005–2019) before reducing to 1 day in 2020.
 
 ### Storage and recovery
 

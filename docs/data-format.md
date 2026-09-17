@@ -40,15 +40,19 @@ Rules support `solar`, `solar_nth_weekday`, `khmer_lunar`, `new_year_first`, `ne
 
 A correction replaces one recurring event's complete occurrence list for an **anchor year**. Empty `dates` cancels that year's calculated occurrences. A source and reason are mandatory. This changes the event occurrence only; any government holiday designation is maintained separately.
 
-## Recorded event calendars
+## Recorded event calendars and streamlined events
 
-Recorded event calendars preserve dated source observations separately from reusable recurrence definitions. Every occurrence has a stable ID, one date, bilingual names and source provenance; `eventId` links it to a rule when a reviewed mapping exists.
+Schema version 2 supports recorded event calendars (`eventCalendars`) to preserve dated source observations separately from reusable recurrence definitions. Every occurrence has a stable ID, one date, bilingual names and source provenance; `eventId` links it to a rule when a reviewed mapping exists.
 
 - A `complete` recorded calendar is the event result for that year. Rule calculations are suppressed, matching the Android archive-precedence behavior.
 - A `partial` recorded calendar supplements calculations. A linked occurrence on the same date replaces the calculated row instead of duplicating it.
 - Official holiday calendars remain a separate evidence layer. A holiday matching a recorded occurrence or linked rule/date enriches the preview rather than creating a duplicate occurrence.
 
-Schema-v1 catalogs are accepted and upgraded in memory with an empty `eventCalendars` array. New exports use schema version 2.
+### Streamlined static date-backed events
+For lightweight runtime consumption in downstream applications (Android and PWA), the canonical catalog in `data/workspace.json` streamlines this model:
+- All non-rule events (such as 9 Chinese traditional lunar festivals across 2000–2030 and 15 UNESCO/historical milestones) are modeled directly as first-class `Event` records in `events` with explicit `dates: ["YYYY-MM-DD", ...]`.
+- Consequently, `eventCalendars` is kept empty (`[]`), dropping the uncompressed JSON export bundle by ~90% (down to ~108 KB) and eliminating the need for client apps to implement archive-versus-rule precedence logic.
+- Schema-v1 catalogs are accepted and upgraded in memory with an empty `eventCalendars` array. New exports use schema version 2.
 
 An official holiday requires government sources, dates within its calendar year, and `status: "active"` or `"cancelled"`. A cancelled holiday retains its dates and requires an explanatory `note`. Linking an `eventId` is optional and does not turn calculated dates into official leave.
 
