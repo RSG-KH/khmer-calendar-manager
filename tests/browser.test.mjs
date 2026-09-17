@@ -257,3 +257,40 @@ test('browser edits, imports, reviews, saves and exports through the actual engi
   } catch (error) { await page.screenshot({ path: join(output, 'failure.png'), fullPage: true }); throw error; }
   finally { await browser.close(); await app.close(); }
 });
+
+test('browser imports and exports the complete migrated Android catalog', { timeout: 90000 }, async () => {
+  const root = resolve('.'), pages = process.env.MANAGER_TEST_MODE === 'pages';
+  const app = pages ? await servePages() : await createApp({ root, dataDirectory: await mkdtemp(join(tmpdir(), 'calendar-migration-test-')) });
+  if (!pages) await new Promise(ok => app.server.listen(0, '127.0.0.1', ok));
+  const url = pages ? app.url : `http://127.0.0.1:${app.server.address().port}`;
+  const browser = await chromium.launch(process.env.CHROME_BIN ? { executablePath: process.env.CHROME_BIN, headless: true } : { channel: 'chrome', headless: true });
+  const page = await browser.newPage({ viewport: { width: 1440, height: 1080 } });
+  page.setDefaultTimeout(15000); const errors = []; page.on('pageerror', error => errors.push(String(error)));
+  try {
+    await page.goto(url);
+    await page.getByRole('button', { name: 'Import', exact: true }).click();
+    await page.getByLabel('Choose file', { exact: true }).setInputFiles('data/migrations/android-archive-and-rules.json');
+    await page.getByRole('button', { name: 'Review import', exact: true }).click();
+    await page.getByText('Full catalog replacement', { exact: true }).waitFor();
+    await page.getByRole('checkbox', { name: /I reviewed the replacements/ }).check();
+    await page.getByRole('button', { name: 'Apply import', exact: true }).click();
+    assert.match(await page.locator('.list-count').textContent(), /^113 records/);
+    await page.getByLabel('Search calendar', { exact: true }).fill('Chinese New Year');
+    assert.equal(await page.getByRole('heading', { name: 'Chinese New Year', exact: true }).count(), 3);
+    await page.getByLabel('Search calendar', { exact: true }).fill('');
+    await page.getByLabel('Selected year').selectOption('2031');
+    await page.locator('.list-count').filter({ hasText: 'Calculated event' }).waitFor();
+    await navigate(page, 'Review & save');
+    await page.getByRole('button', { name: 'Save changes', exact: true }).click();
+    await page.getByText('Saved · revision 1', { exact: true }).waitFor();
+    await navigate(page, 'Export');
+    await page.getByRole('button', { name: 'Prepare export', exact: true }).click();
+    const [download] = await Promise.all([page.waitForEvent('download'), page.getByRole('button', { name: 'Download data JSON', exact: true }).click()]);
+    const exported = JSON.parse(await readFile(await download.path(), 'utf8'));
+    assert.equal(exported.schemaVersion, 2);
+    assert.equal(exported.events.length, 100);
+    assert.equal(exported.eventCalendars.length, 31);
+    assert.equal(exported.eventCalendars.flatMap(calendar => calendar.events).length, 3246);
+    assert.deepEqual(errors, []);
+  } finally { await browser.close(); await app.close(); }
+});

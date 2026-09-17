@@ -6,7 +6,7 @@ A developer web app for maintaining events, historical facts, translations, sour
 
 ## Status
 
-**0.1.0 — local and GitHub Pages versions.** The saved catalog starts empty. Generate a year to prepare editable holiday dates, then review them against the government announcement. Existing application archives have not been migrated yet.
+**0.1.0 — local and GitHub Pages versions.** The saved workspace starts with no published data. Generate a year to prepare editable holiday dates, then review them against the government announcement. An importable schema-v2 migration bundle now preserves the Android application's 2000–2030 recorded event calendars and adopts its 100 recurrence rules without replacing a developer's current workspace automatically.
 
 Implemented:
 
@@ -17,6 +17,7 @@ Implemented:
 - Add/edit popups with references created or edited in context, preserving the parent form. An event can be started before its reference exists. Year-specific date changes are available inside the recurring event's editor.
 - Source records with authority, publication date, document reference, URL and review notes.
 - Bilingual event editing, explicit dates, historical original dates and optional annual commemorations.
+- Complete or partial recorded-event calendars, with complete years taking precedence over calculated recurrences while retaining links to their definitions.
 - Engine-backed recurrence previews and individual-year corrections or cancellations.
 - Official holiday records, amendments and cancellations, kept separate from calculated festivals.
 - JSON and CSV imports with validation, before/after review and explicit acceptance of replacements or removals.
@@ -83,6 +84,19 @@ The calendar's **Import** button opens a JSON/CSV popup with a change review bef
 **Partial imports preserve unlisted holidays. Complete imports replace the selected yearly list and expose removals for review.** Repeating an identical import produces no changes. Existing IDs are retained across wording and date corrections.
 
 [Data format and import rules](docs/data-format.md) documents the catalog, yearly JSON/CSV formats, correction semantics and exported manifest. The manager accepts structured data transcribed from publications. XML adapters and document extraction can be added when an actual source format requires them.
+
+### Migrated Android archive and rules
+
+[`data/migrations/android-archive-and-rules.json`](data/migrations/android-archive-and-rules.json) is a full-catalog import containing the 3,246 recorded occurrences for 2000–2030, all 100 Android recurrence definitions, 15 source-backed King Sihamoni birthday overrides, and the 44 government-sourced 2025–2026 holiday occurrences. Import it through **Calendar → Import** when you want to adopt the migrated catalog. It is intentionally separate from `data/workspace.json`, so generating or verifying it never overwrites an in-progress manager workspace.
+
+The migration pins SHA-256 hashes for each Android input. From this repository beside `khmer-calendar`, regenerate or verify it with:
+
+```text
+npm run migrate:android
+npm run migrate:android:check
+```
+
+Complete recorded years suppress calculated recurrence rows in previews; partial years supplement calculations and de-duplicate linked occurrences. Rules continue calculating years not covered by a complete recorded calendar. Unsupported or one-off records remain explicit occurrences.
 
 ### Storage and recovery
 

@@ -1,4 +1,4 @@
-# Data format — version 1
+# Data format — version 2
 
 The manager owns the catalog schema. Recurrence configurations use the engine's public rule contract. Unknown fields, duplicate IDs/dates, invalid dates and missing source references are rejected.
 
@@ -8,10 +8,11 @@ The manager owns the catalog schema. Recurrence configurations use the engine's 
 
 ```json
 {
-  "schemaVersion": 1,
-  "dataVersion": "0.1.0",
+  "schemaVersion": 2,
+  "dataVersion": "0.2.0",
   "sources": [],
   "events": [],
+  "eventCalendars": [],
   "holidayCalendars": [],
   "overrides": []
 }
@@ -22,7 +23,9 @@ IDs use lowercase letters, digits, hyphens, underscores or dots, start with a le
 | Record | Fields |
 | --- | --- |
 | Source | `id`, `title`, `publisher`, `kind`; optional `url`, `reference`, `publishedOn`, `notes` |
-| Event | `id`, `kind`, `names`, `sourceIds`; either `dates` or `rule`; optional `description`, `originalDate` |
+| Event | `id`, `kind`, `names`, `sourceIds`; either `dates` or `rule`; optional `description`, `originalDate`, `anniversaryBase` |
+| Recorded-event calendar | `year`, `coverage`, `sourceIds`, `events` |
+| Recorded occurrence | `id`, `date`, `kind`, `names`, `sourceIds`; optional `eventId` linking a recurrence definition |
 | Yearly calendar | `year`, `coverage`, `sourceIds`, `holidays` |
 | Holiday | `id`, `names`, `dates`, `status`, `sourceIds`; optional `eventId`, `note` |
 | Correction | `eventId`, `year`, `dates`, `sourceId`, `reason` |
@@ -31,9 +34,21 @@ Names and descriptions are objects with `en` and `km` strings. Draft names requi
 
 Event kinds are `traditional`, `historical` or `observance`. Historical events require `originalDate`. An event has either a non-empty array of explicit dates, or an engine rule with the same ID. Annual commemorations must not start before the original historical event; preview dates before the original date are excluded, including earlier days in its first year.
 
+`anniversaryBase` is available only on a recurring event whose English or Khmer name contains `{anniversary}`. Preview and consumer output replace it with `year - anniversaryBase`, using Khmer numerals in the Khmer name.
+
 Rules support `solar`, `solar_nth_weekday`, `khmer_lunar`, `new_year_first`, `new_year_middle` and `new_year_last`. Gregorian/lunar rules must explicitly supply month/day, lunar rules also supply `waxing`, and weekday rules supply `occurrence`. Engine options include effective anchor years, offset and duration. Lunar month 7 with `monthPolicy: "ordinary_or_second_asadh"` covers ordinary and leap-month years. Calculations are delegated to the installed engine package.
 
 A correction replaces one recurring event's complete occurrence list for an **anchor year**. Empty `dates` cancels that year's calculated occurrences. A source and reason are mandatory. This changes the event occurrence only; any government holiday designation is maintained separately.
+
+## Recorded event calendars
+
+Recorded event calendars preserve dated source observations separately from reusable recurrence definitions. Every occurrence has a stable ID, one date, bilingual names and source provenance; `eventId` links it to a rule when a reviewed mapping exists.
+
+- A `complete` recorded calendar is the event result for that year. Rule calculations are suppressed, matching the Android archive-precedence behavior.
+- A `partial` recorded calendar supplements calculations. A linked occurrence on the same date replaces the calculated row instead of duplicating it.
+- Official holiday calendars remain a separate evidence layer. A holiday matching a recorded occurrence or linked rule/date enriches the preview rather than creating a duplicate occurrence.
+
+Schema-v1 catalogs are accepted and upgraded in memory with an empty `eventCalendars` array. New exports use schema version 2.
 
 An official holiday requires government sources, dates within its calendar year, and `status: "active"` or `"cancelled"`. A cancelled holiday retains its dates and requires an explanatory `note`. Linking an `eventId` is optional and does not turn calculated dates into official leave.
 
@@ -45,7 +60,7 @@ Developers edit the generated dates, remove unwanted suggestions and add new rec
 
 The starter in `src/generate-year.ts` contains 16 holiday patterns based on the [LRC 2026 calendar](https://lrc.gov.kh/en/annual-holiday-calendar-2026/) and is offered for years 2026–2200. These are proposed recurring patterns, not future government designations. All calendar arithmetic stays in the engine. Historical official lists remain available through manual entry or import. A year with existing records cannot be regenerated, protecting corrections and removals.
 
-Exported schema version 1 remains unchanged: app bundles contain only active/cancelled official records with government sources, never draft holiday entries.
+Exported app bundles contain only active/cancelled official records with government sources, never draft holiday entries.
 
 ## Yearly JSON import
 

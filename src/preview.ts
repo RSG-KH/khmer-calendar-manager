@@ -1,11 +1,27 @@
 import { EventDateOverride, GregorianDate, createRule } from 'khmer-calendar-engine';
-import { engine, year, type Catalog } from './model.ts';
+import { engine, year, type Catalog, type Event, type Names } from './model.ts';
 
-export type PreviewRow = { date: string; id: string; en: string; km: string; kind: string; basis: string; sourceIds: string[]; cancelled?: boolean };
+export type PreviewRow = { date: string; id: string; eventId?: string; en: string; km: string; kind: string; basis: string; sourceIds: string[]; cancelled?: boolean };
+const khmerDigits = ['០', '១', '២', '៣', '៤', '៥', '៦', '៧', '៨', '៩'];
+function khmerNumber(value: number): string { return String(value).replace(/\d/g, digit => khmerDigits[Number(digit)]); }
+export function eventNames(event: Event, selectedYear: number): Names {
+  if (event.anniversaryBase === undefined) return event.names;
+  const anniversary = selectedYear - event.anniversaryBase;
+  return {
+    en: event.names.en.replaceAll('{anniversary}', String(anniversary)),
+    km: event.names.km.replaceAll('{anniversary}', khmerNumber(anniversary)),
+  };
+}
 export function preview(data: Catalog, selectedYear: number): { rows: PreviewRow[]; issues: string[] } {
   year(selectedYear, 'preview year');
   const rows: PreviewRow[] = [], issues: string[] = [];
+  const recorded = data.eventCalendars.find(c => c.year === selectedYear);
+  if (recorded) for (const event of recorded.events) rows.push({
+    date: event.date, id: event.id, eventId: event.eventId, ...event.names,
+    kind: event.kind, basis: 'Recorded', sourceIds: event.sourceIds,
+  });
   for (const event of data.events) {
+    if (recorded?.coverage === 'complete' && event.rule) continue;
     const dates = new Map<string, { basis: string; sourceIds: string[] }>();
     if (event.dates) for (const date of event.dates) if (Number(date.slice(0, 4)) === selectedYear) dates.set(date, { basis: 'Recorded', sourceIds: event.sourceIds });
     if (event.rule) {
@@ -30,10 +46,19 @@ export function preview(data: Catalog, selectedYear: number): { rows: PreviewRow
         } catch (error) { issues.push(`${event.id}, anchor ${anchor}: ${String(error)}`); }
       }
     }
-    for (const [date, detail] of dates) rows.push({ date, id: event.id, ...event.names, kind: event.kind, ...detail });
+    const names = eventNames(event, selectedYear);
+    for (const [date, detail] of dates) {
+      if (rows.some(row => row.date === date && (row.id === event.id || row.eventId === event.id))) continue;
+      rows.push({ date, id: event.id, eventId: event.id, ...names, kind: event.kind, ...detail });
+    }
   }
   for (const calendar of data.holidayCalendars.filter(c => c.year === selectedYear)) for (const h of calendar.holidays) {
-    for (const date of h.dates) rows.push({ date, id: h.id, ...h.names, kind: h.status === 'draft' ? 'draft' : 'official', basis: h.status === 'draft' ? 'Awaiting review' : h.status === 'active' ? 'Official holiday' : 'Cancelled holiday', sourceIds: h.sourceIds, cancelled: h.status === 'cancelled' });
+    for (const date of h.dates) {
+      const existing = rows.find(row => row.date === date && (row.id === h.id || (h.eventId !== undefined && row.eventId === h.eventId)));
+      const details = { kind: h.status === 'draft' ? 'draft' : 'official', basis: h.status === 'draft' ? 'Awaiting review' : h.status === 'active' ? 'Official holiday' : 'Cancelled holiday', sourceIds: h.sourceIds, cancelled: h.status === 'cancelled' };
+      if (existing) Object.assign(existing, details, { sourceIds: [...new Set([...existing.sourceIds, ...h.sourceIds])] });
+      else rows.push({ date, id: h.id, eventId: h.eventId, ...h.names, ...details });
+    }
   }
   rows.sort((a, b) => a.date < b.date ? -1 : a.date > b.date ? 1 : a.id < b.id ? -1 : a.id > b.id ? 1 : a.kind < b.kind ? -1 : a.kind > b.kind ? 1 : 0);
   return { rows, issues };

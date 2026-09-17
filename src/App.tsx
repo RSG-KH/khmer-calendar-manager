@@ -56,7 +56,7 @@ export function App() {
     <header className="app-header"><div className="header-main">
       <a className="brand" href="#" onClick={e => { e.preventDefault(); navigate('calendar'); }}><img className="brand-mark" src={`${import.meta.env.BASE_URL}icons/khmer-calendar.png`} width="40" height="40" alt="" /><span>Khmer Calendar<strong>Event manager</strong></span></a>
       <div className="header-summary">
-        <dl className="header-overview" aria-label="Workspace overview"><div><dt>Holiday years</dt><dd>{draft.holidayCalendars.length}</dd></div><div><dt>Events</dt><dd>{draft.events.length}</dd></div><div><dt>References</dt><dd>{draft.sources.length}</dd></div></dl>
+        <dl className="header-overview" aria-label="Workspace overview"><div><dt>Recorded years</dt><dd>{draft.eventCalendars.length}</dd></div><div><dt>Rules</dt><dd>{draft.events.length}</dd></div><div><dt>Holiday years</dt><dd>{draft.holidayCalendars.length}</dd></div><div><dt>References</dt><dd>{draft.sources.length}</dd></div></dl>
         <span className="status header-status"><span className={`status-dot ${dirty ? 'dirty' : ''}`} />{snapshot ? dirty ? `${diff.length} unsaved changes` : `Saved · revision ${snapshot.workspace.revision}` : 'Opening workspace…'}</span>
       </div>
       <div className="year-picker"><label>Year<select aria-label="Selected year" value={selectedYear} onChange={e => { setSelectedYear(Number(e.target.value)); setMessage(null); }}>{calendarYears.map(value => <option key={value} value={value}>{value}</option>)}</select></label></div>

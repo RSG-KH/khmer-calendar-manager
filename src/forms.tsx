@@ -56,6 +56,8 @@ export function EventForm({ item, data, save, attempt, cancel, saveSource, remov
       if (mode === 'solar_nth_weekday') rule.occurrence = Number(text(f, 'occurrence'));
       if (mode === 'khmer_lunar') { rule.waxing = text(f, 'waxing') === 'true'; rule.monthPolicy = text(f, 'monthPolicy'); }
       event.rule = rule as RuleInput;
+      const anniversaryBase = text(f, 'anniversaryBase');
+      if (anniversaryBase) event.anniversaryBase = Number(anniversaryBase);
     }
     save(event);
   }, attempt)}>
@@ -86,6 +88,7 @@ export function EventForm({ item, data, save, attempt, cancel, saveSource, remov
         <Field label="Last anchor year"><input name="throughYear" type="number" min={1800} max={2200} required defaultValue={rule?.throughYear ?? 2200} /></Field>
         <Field label="Offset in days"><input name="offset" type="number" min={-366} max={366} required defaultValue={rule?.offset ?? 0} /></Field>
         <Field label="Duration in days"><input name="duration" type="number" min={1} max={366} required defaultValue={rule?.duration ?? 1} /></Field>
+        <Field label="Anniversary base year" help="Optional. Use {anniversary} in the names."><input name="anniversaryBase" type="number" min={1} max={2200} defaultValue={item?.anniversaryBase} /></Field>
       </div>
     </div>}
     <div className="form-grid"><Field label="English description"><textarea name="descriptionEn" rows={3} defaultValue={item?.description?.en} /></Field><Field label="Khmer description"><textarea name="descriptionKm" lang="km" rows={3} defaultValue={item?.description?.km} /></Field></div>

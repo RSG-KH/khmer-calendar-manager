@@ -1,12 +1,311 @@
 {
-  "revision": 0,
+  "revision": 1,
   "data": {
     "schemaVersion": 1,
     "dataVersion": "0.1.0",
     "sources": [],
     "events": [],
-    "holidayCalendars": [],
+    "holidayCalendars": [
+      {
+        "year": 2027,
+        "coverage": "partial",
+        "sourceIds": [],
+        "holidays": [
+          {
+            "id": "constitution",
+            "names": {
+              "en": "Constitution Day",
+              "km": "ទិវាប្រកាសរដ្ឋធម្មនុញ្ញ"
+            },
+            "status": "draft",
+            "sourceIds": [],
+            "dates": [
+              "2027-09-24"
+            ]
+          },
+          {
+            "id": "coronation",
+            "names": {
+              "en": "King Norodom Sihamoni’s Coronation Day",
+              "km": "ព្រះរាជពិធីគ្រងព្រះបរមរាជសម្បត្តិ ព្រះករុណាព្រះបាទសម្ដេចព្រះបរមនាថ នរោត្តម សីហមុនី"
+            },
+            "status": "draft",
+            "sourceIds": [],
+            "dates": [
+              "2027-10-29"
+            ]
+          },
+          {
+            "id": "independence",
+            "names": {
+              "en": "Independence Day",
+              "km": "ពិធីបុណ្យឯករាជ្យជាតិ"
+            },
+            "status": "draft",
+            "sourceIds": [],
+            "dates": [
+              "2027-11-09"
+            ]
+          },
+          {
+            "id": "khmer-new-year",
+            "names": {
+              "en": "Khmer New Year",
+              "km": "ពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ"
+            },
+            "status": "draft",
+            "sourceIds": [],
+            "dates": [
+              "2027-04-14",
+              "2027-04-15",
+              "2027-04-16"
+            ]
+          },
+          {
+            "id": "king-birthday",
+            "names": {
+              "en": "King Norodom Sihamoni’s Birthday",
+              "km": "ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម ព្រះករុណាព្រះបាទសម្ដេចព្រះបរមនាថ នរោត្តម សីហមុនី"
+            },
+            "status": "draft",
+            "sourceIds": [],
+            "dates": [
+              "2027-05-14"
+            ]
+          },
+          {
+            "id": "king-father",
+            "names": {
+              "en": "King Father’s Commemoration Day",
+              "km": "ទិវាប្រារព្ធពិធីគោរពព្រះវិញ្ញាណក្ខន្ធ ព្រះបរមរតនកោដ្ឋ"
+            },
+            "status": "draft",
+            "sourceIds": [],
+            "dates": [
+              "2027-10-15"
+            ]
+          },
+          {
+            "id": "labour",
+            "names": {
+              "en": "International Labour Day",
+              "km": "ទិវាពលកម្មអន្តរជាតិ"
+            },
+            "status": "draft",
+            "sourceIds": [],
+            "dates": [
+              "2027-05-01"
+            ]
+          },
+          {
+            "id": "new-year",
+            "names": {
+              "en": "International New Year’s Day",
+              "km": "ទិវាចូលឆ្នាំសកល"
+            },
+            "status": "draft",
+            "sourceIds": [],
+            "dates": [
+              "2027-01-01"
+            ]
+          },
+          {
+            "id": "pchum",
+            "names": {
+              "en": "Pchum Ben Festival",
+              "km": "ពិធីបុណ្យភ្ជុំបិណ្ឌ"
+            },
+            "status": "draft",
+            "sourceIds": [],
+            "dates": [
+              "2027-09-29",
+              "2027-09-30",
+              "2027-10-01"
+            ]
+          },
+          {
+            "id": "peace",
+            "names": {
+              "en": "Peace Day in Cambodia",
+              "km": "ទិវាសន្តិភាពនៅកម្ពុជា"
+            },
+            "status": "draft",
+            "sourceIds": [],
+            "dates": [
+              "2027-12-29"
+            ]
+          },
+          {
+            "id": "ploughing",
+            "names": {
+              "en": "Royal Ploughing Ceremony",
+              "km": "ព្រះរាជពិធីច្រត់ព្រះនង្គ័ល"
+            },
+            "status": "draft",
+            "sourceIds": [],
+            "dates": [
+              "2027-05-24"
+            ]
+          },
+          {
+            "id": "queen-birthday",
+            "names": {
+              "en": "Queen Mother’s Birthday",
+              "km": "ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម សម្ដេចព្រះមហាក្សត្រី នរោត្តម មុនិនាថ សីហនុ"
+            },
+            "status": "draft",
+            "sourceIds": [],
+            "dates": [
+              "2027-06-18"
+            ]
+          },
+          {
+            "id": "victory",
+            "names": {
+              "en": "Victory Day over Genocide",
+              "km": "ទិវាជ័យជម្នះលើរបបប្រល័យពូជសាសន៍"
+            },
+            "status": "draft",
+            "sourceIds": [],
+            "dates": [
+              "2027-01-07"
+            ]
+          },
+          {
+            "id": "visak",
+            "names": {
+              "en": "Visak Bochea",
+              "km": "ពិធីបុណ្យវិសាខបូជា"
+            },
+            "status": "draft",
+            "sourceIds": [],
+            "dates": [
+              "2027-05-20"
+            ]
+          },
+          {
+            "id": "water",
+            "names": {
+              "en": "Water Festival",
+              "km": "ព្រះរាជពិធីបុណ្យអុំទូក បណ្ដែតប្រទីប និងសំពះព្រះខែ អកអំបុក"
+            },
+            "status": "draft",
+            "sourceIds": [],
+            "dates": [
+              "2027-11-12",
+              "2027-11-13",
+              "2027-11-14"
+            ]
+          },
+          {
+            "id": "women",
+            "names": {
+              "en": "International Women’s Day",
+              "km": "ទិវាអន្តរជាតិនារី"
+            },
+            "status": "draft",
+            "sourceIds": [],
+            "dates": [
+              "2027-03-08"
+            ]
+          }
+        ]
+      }
+    ],
     "overrides": []
   },
-  "history": []
+  "history": [
+    {
+      "revision": 1,
+      "at": "2026-09-16T03:54:05.070Z",
+      "note": "Generated 2027 holidays for review",
+      "changes": [
+        {
+          "section": "Calendar",
+          "id": "2027",
+          "action": "added"
+        },
+        {
+          "section": "Holiday",
+          "id": "2027/constitution",
+          "action": "added"
+        },
+        {
+          "section": "Holiday",
+          "id": "2027/coronation",
+          "action": "added"
+        },
+        {
+          "section": "Holiday",
+          "id": "2027/independence",
+          "action": "added"
+        },
+        {
+          "section": "Holiday",
+          "id": "2027/khmer-new-year",
+          "action": "added"
+        },
+        {
+          "section": "Holiday",
+          "id": "2027/king-birthday",
+          "action": "added"
+        },
+        {
+          "section": "Holiday",
+          "id": "2027/king-father",
+          "action": "added"
+        },
+        {
+          "section": "Holiday",
+          "id": "2027/labour",
+          "action": "added"
+        },
+        {
+          "section": "Holiday",
+          "id": "2027/new-year",
+          "action": "added"
+        },
+        {
+          "section": "Holiday",
+          "id": "2027/pchum",
+          "action": "added"
+        },
+        {
+          "section": "Holiday",
+          "id": "2027/peace",
+          "action": "added"
+        },
+        {
+          "section": "Holiday",
+          "id": "2027/ploughing",
+          "action": "added"
+        },
+        {
+          "section": "Holiday",
+          "id": "2027/queen-birthday",
+          "action": "added"
+        },
+        {
+          "section": "Holiday",
+          "id": "2027/victory",
+          "action": "added"
+        },
+        {
+          "section": "Holiday",
+          "id": "2027/visak",
+          "action": "added"
+        },
+        {
+          "section": "Holiday",
+          "id": "2027/water",
+          "action": "added"
+        },
+        {
+          "section": "Holiday",
+          "id": "2027/women",
+          "action": "added"
+        }
+      ]
+    }
+  ]
 }

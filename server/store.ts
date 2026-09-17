@@ -9,7 +9,7 @@ export function digest(text: string): string { return createHash('sha256').updat
 export function buildExport(data: Catalog) {
   const { content, filename, dataVersion } = exportContent(data);
   return { filename, content, manifest: {
-    schemaVersion: 1, dataVersion, engineVersion: ENGINE_VERSION,
+    schemaVersion: 2, dataVersion, engineVersion: ENGINE_VERSION,
     file: filename, sha256: digest(content), bytes: Buffer.byteLength(content),
   } };
 }

@@ -21,5 +21,5 @@ export function exportContent(data: Catalog) {
   return { filename: `khmer-calendar-data-${catalog.dataVersion}.json`, content: canonical(catalog) + '\n', dataVersion: catalog.dataVersion };
 }
 
-export type ExportManifest = { schemaVersion: 1; dataVersion: string; engineVersion: string; file: string; sha256: string; bytes: number };
+export type ExportManifest = { schemaVersion: 2; dataVersion: string; engineVersion: string; file: string; sha256: string; bytes: number };
 export type ExportBundle = { filename: string; content: string; manifest: ExportManifest };

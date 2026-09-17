@@ -11,7 +11,14 @@ export type Source = {
 export type Event = {
   id: string; kind: 'traditional' | 'historical' | 'observance'; names: Names;
   sourceIds: string[]; description?: Names; originalDate?: string;
-  dates?: string[]; rule?: RuleInput;
+  dates?: string[]; rule?: RuleInput; anniversaryBase?: number;
+};
+export type EventOccurrence = {
+  id: string; date: string; kind: 'traditional' | 'historical' | 'observance'; names: Names;
+  sourceIds: string[]; eventId?: string;
+};
+export type EventCalendar = {
+  year: number; coverage: 'complete' | 'partial'; sourceIds: string[]; events: EventOccurrence[];
 };
 export type Holiday = {
   id: string; names: Names; dates: string[]; status: 'draft' | 'active' | 'cancelled';
@@ -22,8 +29,8 @@ export type HolidayCalendar = {
 };
 export type Override = { eventId: string; year: number; dates: string[]; sourceId: string; reason: string };
 export type Catalog = {
-  schemaVersion: 1; dataVersion: string; sources: Source[]; events: Event[];
-  holidayCalendars: HolidayCalendar[]; overrides: Override[];
+  schemaVersion: 2; dataVersion: string; sources: Source[]; events: Event[];
+  eventCalendars: EventCalendar[]; holidayCalendars: HolidayCalendar[]; overrides: Override[];
 };
 export type Change = { section: string; id: string; action: 'added' | 'changed' | 'removed' };
 export type HistoryEntry = { revision: number; at: string; note: string; changes: Change[] };
@@ -31,7 +38,7 @@ export type Workspace = { revision: number; data: Catalog; history: HistoryEntry
 export type Snapshot = { workspace: Workspace; etag: string; engineVersion: string };
 
 export function emptyCatalog(): Catalog {
-  return { schemaVersion: 1, dataVersion: '0.1.0', sources: [], events: [], holidayCalendars: [], overrides: [] };
+  return { schemaVersion: 2, dataVersion: '0.1.0', sources: [], events: [], eventCalendars: [], holidayCalendars: [], overrides: [] };
 }
 
 export class ValidationError extends Error {}
@@ -93,10 +100,11 @@ export function validateSource(input: unknown, path = 'source'): Source {
 }
 
 export function validateCatalog(input: unknown): Catalog {
-  const v = object(input, 'catalog', ['schemaVersion', 'dataVersion', 'sources', 'events', 'holidayCalendars', 'overrides']);
-  if (v.schemaVersion !== 1) fail('schemaVersion', 'only version 1 is supported');
+  const raw = object(input, 'catalog', ['schemaVersion', 'dataVersion', 'sources', 'events', 'eventCalendars', 'holidayCalendars', 'overrides']);
+  if (![1, 2].includes(raw.schemaVersion)) fail('schemaVersion', 'only versions 1 and 2 are supported');
+  const v = raw.schemaVersion === 1 ? { ...raw, schemaVersion: 2, eventCalendars: raw.eventCalendars ?? [] } : raw;
   if (typeof v.dataVersion !== 'string' || !/^\d+\.\d+\.\d+(?:-[a-z0-9.-]+)?$/.test(v.dataVersion)) fail('dataVersion', 'use a version such as 0.1.0 or 2026.1.0');
-  for (const key of ['sources', 'events', 'holidayCalendars', 'overrides']) array(v[key], key);
+  for (const key of ['sources', 'events', 'eventCalendars', 'holidayCalendars', 'overrides']) array(v[key], key);
   v.sources.forEach((source: unknown, i: number) => validateSource(source, `sources[${i}]`));
   unique(v.sources.map((s: Source) => s.id), 'sources');
   const sources = new Map<string, Source>(v.sources.map((s: Source) => [s.id, s]));
@@ -111,7 +119,7 @@ export function validateCatalog(input: unknown): Catalog {
     }
   }
   v.events.forEach((input: unknown, i: number) => {
-    const p = `events[${i}]`, e = object(input, p, ['id', 'kind', 'names', 'sourceIds', 'description', 'originalDate', 'dates', 'rule']);
+    const p = `events[${i}]`, e = object(input, p, ['id', 'kind', 'names', 'sourceIds', 'description', 'originalDate', 'dates', 'rule', 'anniversaryBase']);
     id(e.id, `${p}.id`); names(e.names, `${p}.names`); sourceIds(e.sourceIds, `${p}.sourceIds`);
     if (!['traditional', 'historical', 'observance'].includes(e.kind)) fail(p, 'unknown event kind');
     if (e.description !== undefined) {
@@ -121,6 +129,10 @@ export function validateCatalog(input: unknown): Catalog {
     if (e.originalDate !== undefined) isoDate(e.originalDate, `${p}.originalDate`);
     if (e.kind === 'historical' && !e.originalDate) fail(p, 'a historical event needs its original date');
     if ((e.rule !== undefined) === (e.dates !== undefined)) fail(p, 'choose explicit dates or a recurrence rule');
+    if (e.anniversaryBase !== undefined) {
+      if (!e.rule || !Number.isInteger(e.anniversaryBase) || e.anniversaryBase < 1 || e.anniversaryBase > engine.maxYear) fail(`${p}.anniversaryBase`, 'use a valid base year on a recurring event');
+      if (!e.names.en.includes('{anniversary}') && !e.names.km.includes('{anniversary}')) fail(`${p}.anniversaryBase`, 'the event name must contain {anniversary}');
+    }
     if (e.dates !== undefined) {
       dates(e.dates, `${p}.dates`);
       if (e.kind === 'historical' && e.dates.some((d: string) => d < e.originalDate)) fail(p, 'an appearance cannot precede the original historical date');
@@ -134,6 +146,23 @@ export function validateCatalog(input: unknown): Catalog {
     }
   });
   unique(v.events.map((e: Event) => e.id), 'events');
+  v.eventCalendars.forEach((input: unknown, i: number) => {
+    const p = `eventCalendars[${i}]`, c = object(input, p, ['year', 'coverage', 'sourceIds', 'events']);
+    year(c.year, `${p}.year`);
+    if (!['complete', 'partial'].includes(c.coverage)) fail(p, 'coverage must be complete or partial');
+    sourceIds(c.sourceIds, `${p}.sourceIds`); array(c.events, `${p}.events`);
+    c.events.forEach((input: unknown, j: number) => {
+      const ep = `${p}.events[${j}]`, e = object(input, ep, ['id', 'date', 'kind', 'names', 'sourceIds', 'eventId']);
+      id(e.id, `${ep}.id`); names(e.names, `${ep}.names`); sourceIds(e.sourceIds, `${ep}.sourceIds`);
+      if (!['traditional', 'historical', 'observance'].includes(e.kind)) fail(ep, 'unknown event kind');
+      const date = isoDate(e.date, `${ep}.date`);
+      if (Number(date.slice(0, 4)) !== c.year) fail(`${ep}.date`, `must be in ${c.year}`);
+      if (e.eventId !== undefined) { id(e.eventId, `${ep}.eventId`); if (!eventIds.has(e.eventId)) fail(ep, `linked event “${e.eventId}” does not exist`); }
+    });
+    unique(c.events.map((e: unknown) => (e as EventOccurrence).id), `${p}.events`);
+  });
+  unique(v.eventCalendars.map((c: EventCalendar) => c.year), 'eventCalendars');
+  unique(v.eventCalendars.flatMap((c: EventCalendar) => c.events.map(e => e.id)), 'event occurrence IDs');
   v.holidayCalendars.forEach((input: unknown, i: number) => {
     const p = `holidayCalendars[${i}]`, c = object(input, p, ['year', 'coverage', 'sourceIds', 'holidays']);
     year(c.year, `${p}.year`);
@@ -168,6 +197,7 @@ export function publicationIssues(data: Catalog): string[] {
   const issues: string[] = [];
   for (const c of data.holidayCalendars) if (!c.sourceIds.length) issues.push(`Add the reviewed government publication for ${c.year} before exporting.`);
   for (const e of data.events) if (!e.names.en.trim() || !e.names.km.trim()) issues.push(`Complete both names for event “${e.id}”.`);
+  for (const c of data.eventCalendars) for (const e of c.events) if (!e.names.en.trim() || !e.names.km.trim()) issues.push(`Complete both names for recorded event “${e.id}”.`);
   for (const c of data.holidayCalendars) for (const h of c.holidays) {
     if (h.status === 'draft') issues.push(`Review ${c.year} holiday “${h.id}” against the publication before exporting.`);
     if (!h.names.en.trim() || !h.names.km.trim()) issues.push(`Complete both names for ${c.year} holiday “${h.id}”.`);
@@ -186,8 +216,9 @@ export function canonical(value: unknown): string {
 export function normalize(data: Catalog): Catalog {
   const c = structuredClone(data);
   const byId = (a: {id: string}, b: {id: string}) => a.id < b.id ? -1 : a.id > b.id ? 1 : 0;
-  c.sources.sort(byId); c.events.sort(byId); c.holidayCalendars.sort((a, b) => a.year - b.year);
+  c.sources.sort(byId); c.events.sort(byId); c.eventCalendars.sort((a, b) => a.year - b.year); c.holidayCalendars.sort((a, b) => a.year - b.year);
   c.events.forEach(e => { e.sourceIds.sort(); e.dates?.sort(); });
+  c.eventCalendars.forEach(y => { y.sourceIds.sort(); y.events.sort((a, b) => a.date.localeCompare(b.date) || a.id.localeCompare(b.id)); y.events.forEach(e => e.sourceIds.sort()); });
   c.holidayCalendars.forEach(y => { y.sourceIds.sort(); y.holidays.sort(byId); y.holidays.forEach(h => { h.dates.sort(); h.sourceIds.sort(); }); });
   c.overrides.sort((a, b) => (a.eventId < b.eventId ? -1 : a.eventId > b.eventId ? 1 : 0) || a.year - b.year);
   c.overrides.forEach(o => o.dates.sort());
@@ -206,6 +237,8 @@ export function changes(before: Catalog, after: Catalog): Change[] {
   }
   const a = normalize(before), b = normalize(after);
   compare('Source', a.sources, b.sources, v => v.id); compare('Event', a.events, b.events, v => v.id);
+  compare('Event calendar', a.eventCalendars.map(v => ({ ...v, events: undefined })), b.eventCalendars.map(v => ({ ...v, events: undefined })), v => String(v.year));
+  compare('Recorded event', a.eventCalendars.flatMap(c => c.events.map(e => ({ ...e, year: c.year }))), b.eventCalendars.flatMap(c => c.events.map(e => ({ ...e, year: c.year }))), v => `${v.year}/${v.id}`);
   compare('Calendar', a.holidayCalendars.map(v => ({ ...v, holidays: undefined })), b.holidayCalendars.map(v => ({ ...v, holidays: undefined })), v => String(v.year));
   compare('Holiday', a.holidayCalendars.flatMap(c => c.holidays.map(h => ({ ...h, year: c.year }))), b.holidayCalendars.flatMap(c => c.holidays.map(h => ({ ...h, year: c.year }))), v => `${v.year}/${v.id}`);
   compare('Correction', a.overrides, b.overrides, v => `${v.eventId}/${v.year}`);

@@ -10,8 +10,10 @@ function record(data: Catalog, change: Change): unknown {
   if (change.section === 'Version') return data.dataVersion;
   if (change.section === 'Source') return data.sources.find(s => s.id === change.id);
   if (change.section === 'Event') return data.events.find(s => s.id === change.id);
+  if (change.section === 'Event calendar') { const c = data.eventCalendars.find(c => String(c.year) === change.id); return c && { year: c.year, coverage: c.coverage, sourceIds: c.sourceIds }; }
   if (change.section === 'Calendar') { const c = data.holidayCalendars.find(c => String(c.year) === change.id); return c && { year: c.year, coverage: c.coverage, sourceIds: c.sourceIds }; }
   const [first, second] = change.id.split('/');
+  if (change.section === 'Recorded event') return data.eventCalendars.find(c => c.year === Number(first))?.events.find(e => e.id === second);
   if (change.section === 'Holiday') return data.holidayCalendars.find(c => c.year === Number(first))?.holidays.find(h => h.id === second);
   return data.overrides.find(o => o.eventId === first && o.year === Number(second));
 }

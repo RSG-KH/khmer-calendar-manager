@@ -11,12 +11,17 @@ export function CalendarWorkspace({ data, selectedYear, hidden, edit, generate, 
   const [filter, setFilter] = useState('all'), [query, setQuery] = useState(''), [limit, setLimit] = useState(60);
   const [hasAnnouncement, setHasAnnouncement] = useState(false);
   const calendar = data.holidayCalendars.find(c => c.year === selectedYear);
+  const eventCalendar = data.eventCalendars.find(c => c.year === selectedYear);
   const calculated = useMemo(() => preview(data, selectedYear), [data, selectedYear]);
   const records = [
-    ...(calendar?.holidays ?? []).map(h => ({ id: h.id, kind: 'holiday' as const, names: h.names, dates: h.dates, draft: h.status === 'draft', cancelled: h.status === 'cancelled', basis: h.status === 'draft' ? 'Awaiting review' : h.status === 'cancelled' ? 'Cancelled holiday' : 'Official holiday' })),
-    ...data.events.map(e => {
+    ...(calendar?.holidays ?? []).filter(h => !h.dates.some(date => eventCalendar?.events.some(e => e.id === h.id && e.date === date))).map(h => ({ id: h.id, kind: 'holiday' as const, names: h.names, dates: h.dates, draft: h.status === 'draft', cancelled: h.status === 'cancelled', basis: h.status === 'draft' ? 'Awaiting review' : h.status === 'cancelled' ? 'Cancelled holiday' : 'Official holiday', editable: true })),
+    ...(eventCalendar?.events ?? []).map(e => {
+      const holiday = calendar?.holidays.find(h => h.id === e.id && h.dates.includes(e.date));
+      return { id: e.id, kind: holiday ? 'holiday' as const : 'event' as const, names: e.names, dates: [e.date], draft: holiday?.status === 'draft', cancelled: holiday?.status === 'cancelled', basis: holiday ? holiday.status === 'draft' ? 'Awaiting review' : holiday.status === 'cancelled' ? 'Cancelled holiday' : 'Official holiday' : 'Recorded event', editable: !!holiday };
+    }),
+    ...data.events.filter(e => eventCalendar?.coverage !== 'complete' || !e.rule).map(e => {
       const rows = calculated.rows.filter(r => r.id === e.id && !['official', 'draft'].includes(r.kind));
-      return { id: e.id, kind: 'event' as const, names: e.names, dates: rows.map(r => r.date), draft: false, cancelled: false, basis: rows.some(r => r.basis === 'Corrected') ? 'Adjusted event' : e.rule ? 'Calculated event' : 'Recorded event' };
+      return { id: e.id, kind: 'event' as const, names: e.names, dates: rows.map(r => r.date), draft: false, cancelled: false, basis: rows.some(r => r.basis === 'Corrected') ? 'Adjusted event' : e.rule ? 'Calculated event' : 'Recorded event', editable: true };
     }),
   ].filter(r => (filter === 'all' || (filter === 'draft' ? r.draft : r.kind === filter)) && `${r.names.en} ${r.names.km} ${r.id} ${r.dates.join(' ')}`.toLowerCase().includes(query.toLowerCase()))
     .sort((a, b) => (a.dates[0] ?? '9999').localeCompare(b.dates[0] ?? '9999') || a.id.localeCompare(b.id));
@@ -36,7 +41,7 @@ export function CalendarWorkspace({ data, selectedYear, hidden, edit, generate, 
           {records.length ? <div className="record-list">{records.slice(0, limit).map(r => <article key={`${r.kind}/${r.id}`} className={r.cancelled ? 'cancelled' : ''}>
             <div className="calendar-dates">{r.dates.length ? r.dates.map(date => <time key={date} dateTime={date}>{new Date(`${date}T00:00:00Z`).toLocaleDateString('en-GB', { month: 'short', day: 'numeric', timeZone: 'UTC' })}</time>) : <span>No dates<br />in {selectedYear}</span>}</div>
             <div className="calendar-name"><h3>{r.names.en || r.names.km}</h3>{r.names.en && r.names.km && <p lang="km">{r.names.km}</p>}{!commonBasis && <span className={`record-basis ${r.draft ? 'pending' : ''}`}>{r.basis}</span>}</div>
-            <button onClick={() => edit(r.kind, r.id)}>Edit</button>
+            {r.editable ? <button onClick={() => edit(r.kind, r.id)}>Edit</button> : <span className="record-basis">Imported</span>}
           </article>)}</div> : <div className="empty"><h3>{query || filter !== 'all' ? 'No matching records' : 'No records yet'}</h3><p>{query || filter !== 'all' ? 'Change the filter or search.' : 'Generate the holidays, import a list, or add an event.'}</p></div>}
           {records.length > limit && <div className="pagination"><button onClick={() => setLimit(limit + 60)}>Show more</button></div>}
         </section>

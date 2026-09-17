@@ -104,3 +104,10 @@ test('exports are deterministic; incomplete translations remain editable drafts'
   assert.ok(publicationIssues(data).length); assert.throws(() => buildExport(data), /Complete both names/);
   assert.equal(canonical({ z: undefined, a: 1 }), '{"a":1}');
 });
+test('schema-v1 catalogs upgrade without losing existing records', () => {
+  const legacy: any = catalog(); legacy.schemaVersion = 1; delete legacy.eventCalendars;
+  const upgraded = validateCatalog(legacy);
+  assert.equal(upgraded.schemaVersion, 2);
+  assert.deepEqual(upgraded.eventCalendars, []);
+  assert.equal(upgraded.events.length, legacy.events.length);
+});

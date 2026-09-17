@@ -50,7 +50,7 @@ export function validateBackup(input: unknown): WorkspaceBackup {
   const seen = new Set<string>();
   for (const input of value.exports) {
     const item = object(input, 'export record', ['schemaVersion', 'dataVersion', 'engineVersion', 'file', 'sha256', 'bytes']);
-    if (item.schemaVersion !== 1 || typeof item.dataVersion !== 'string' || typeof item.engineVersion !== 'string' || typeof item.file !== 'string' || !/^[a-f0-9]{64}$/.test(item.sha256) || !Number.isSafeInteger(item.bytes) || item.bytes < 0 || seen.has(item.dataVersion)) throw new Error('Invalid or duplicate export record in workspace backup');
+    if (![1, 2].includes(item.schemaVersion) || typeof item.dataVersion !== 'string' || typeof item.engineVersion !== 'string' || typeof item.file !== 'string' || !/^[a-f0-9]{64}$/.test(item.sha256) || !Number.isSafeInteger(item.bytes) || item.bytes < 0 || seen.has(item.dataVersion)) throw new Error('Invalid or duplicate export record in workspace backup');
     seen.add(item.dataVersion);
   }
   return { format: 'khmer-calendar-manager', schemaVersion: 1, workspace: validateWorkspace(value.workspace), exports: value.exports };
@@ -76,7 +76,7 @@ export const browserStore = {
     const current = await browserStore.read();
     if (current.etag !== expected) throw conflict();
     const { content, filename, dataVersion } = exportContent(current.workspace.data);
-    const manifest: ExportManifest = { schemaVersion: 1, dataVersion, engineVersion: ENGINE_VERSION, file: filename, sha256: await sha256(content), bytes: new TextEncoder().encode(content).byteLength };
+    const manifest: ExportManifest = { schemaVersion: 2, dataVersion, engineVersion: ENGINE_VERSION, file: filename, sha256: await sha256(content), bytes: new TextEncoder().encode(content).byteLength };
     return transaction(true, state => {
       if (state.token !== expected) throw conflict();
       const previous = state.exports.find(item => item.dataVersion === dataVersion);
