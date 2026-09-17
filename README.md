@@ -95,7 +95,7 @@ In the canonical catalog (`data/workspace.json`), this archive has been fully st
 - **100 Recurrence Rules**: Evaluated dynamically for any year (1800–2200) via `khmer-calendar-engine`.
 - **24 Static Date-Backed Events**: 9 Chinese traditional festivals (334 occurrences across 2000–2030) and 15 UNESCO/historical milestones (Preah Vihear, Kun Lbokator, Royal Ballet, Tuol Sleng, Krama, etc.) are explicit date-backed events in `events`.
 - **Retired `eventCalendars`**: Kept empty (`[]`), eliminating runtime archive-vs-engine precedence conflicts and shrinking the export bundle by 90% (~108 KB).
-- **Official Holiday Calendars (2020–2027)**: 8 years of official government public holidays transcribed and confirmed from Royal Government Sub-Decrees (Anukret).
+- **Official Holiday Calendars (2020–2027)**: 8 years of official government public holidays transcribed and confirmed from Royal Government Sub-Decrees (Anukret). Standardized as individual per-day entries (173 off-days) with explicit `eventId` linking directly to recurrence rules, day-specific names (Moha Sankranta, Vanabat, Laeung Sak), and user-friendly source citations.
 - **15 Overrides**: King Norodom Sihamoni's birthday 3-day holiday dates (2005–2019) before reducing to 1 day in 2020.
 
 ### Storage and recovery

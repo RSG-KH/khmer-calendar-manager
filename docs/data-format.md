@@ -54,6 +54,13 @@ For lightweight runtime consumption in downstream applications (Android and PWA)
 - Consequently, `eventCalendars` is kept empty (`[]`), dropping the uncompressed JSON export bundle by ~90% (down to ~108 KB) and eliminating the need for client apps to implement archive-versus-rule precedence logic.
 - Schema-v1 catalogs are accepted and upgraded in memory with an empty `eventCalendars` array. New exports use schema version 2.
 
+### Standardized official holiday calendars
+Official holiday calendars (`holidayCalendars`) across all confirmed years (2020–2027) are standardized as individual per-day entries (173 total off-days):
+- **Single-Day Scope**: Each entry covers exactly one off-day date (`dates: ["YYYY-MM-DD"]`).
+- **Explicit `eventId`**: Every holiday entry provides an `eventId` referencing its canonical recurrence rule in `events` (e.g. `khmer_new_year_1`, `pchum_ben_festival`, `water_festival`, `new_year_day`), allowing client apps (Android, PWA) to unambiguously match official leave to calculated observances with zero duplicate rendering.
+- **Day-Specific Names**: Multi-day holidays carry their traditional day-specific titles (e.g. Khmer New Year Days 1–3: *Moha Sankranta*, *Veareak Vanabat*, *Veareak Laeung Sak*).
+- **Clean Citations**: Government decrees provide their official Khmer decree titles in source `notes` and English document references in `reference`.
+
 An official holiday requires government sources, dates within its calendar year, and `status: "active"` or `"cancelled"`. A cancelled holiday retains its dates and requires an explanatory `note`. Linking an `eventId` is optional and does not turn calculated dates into official leave.
 
 ## Generate and review a year
