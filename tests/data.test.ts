@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { canonical, changes, publicationIssues, validateCatalog } from '../src/model.ts';
+import { canonical, changes, ENGINE_VERSION, publicationIssues, validateCatalog } from '../src/model.ts';
 import { dateRange, parseCsv, planImport } from '../src/imports.ts';
 import { preview } from '../src/preview.ts';
 import { buildExport } from '../server/store.ts';
@@ -96,7 +96,7 @@ test('exports are deterministic; incomplete translations remain editable drafts'
   reordered.sources.reverse(); reordered.events.reverse();
   assert.equal(buildExport(reordered).content, first.content);
   assert.equal(JSON.parse(first.content).dataVersion, data.dataVersion);
-  assert.equal(first.manifest.engineVersion, '0.1.0');
+  assert.equal(first.manifest.engineVersion, ENGINE_VERSION);
   assert.equal(first.manifest.sha256.length, 64);
   assert.deepEqual(changes(data, reordered), []);
   data.events[0].names.km = '';

@@ -112,14 +112,14 @@ Each exported version is immutable within the local export history: changed cont
 
 ## Engine dependency
 
-Local development installs the compiled JavaScript package from the engine's [GitHub release v0.1.0](https://github.com/RSG-KH/khmer-calendar-engine/releases/tag/v0.1.0). `package.json` pins the versioned release URL, and `package-lock.json` records the archive's integrity hash. `npm ci` downloads that exact package during setup or CI. The Pages deployment workflow then selects its requested engine release and tests it before publication.
+Local development installs the compiled JavaScript package from the engine's [GitHub release v0.2.0](https://github.com/RSG-KH/khmer-calendar-engine/releases/tag/v0.2.0). `package.json` pins the versioned release URL, and `package-lock.json` records the archive's integrity hash. `npm ci` downloads that exact package during setup or CI. The Pages deployment workflow then selects its requested engine release and tests it before publication.
 
 All calendar formulas stay in the engine; the manager owns data validation, import, editing and export. Each deployed build uses one verified engine version. If that version changes, previously exported data versions remain protected: increase the data version before exporting with the new engine.
 
-The adopted package comes from engine commit [`dd8d402`](https://github.com/RSG-KH/khmer-calendar-engine/commit/dd8d4025c912b04ef389bbc067f3875dad4816e0). Its SHA-256 matches the release's `SHA256SUMS`:
+The adopted package comes from engine commit [`2abd6fd`](https://github.com/RSG-KH/khmer-calendar-engine/commit/2abd6fde383bcf3d62ea09c063cf224855268c17). Its SHA-256 matches the release's `SHA256SUMS`:
 
 ```text
-9c9000baadd2d6d1cf2ae020e98fb3daf8fc269a56020ada15a7a19a1034e2f0
+585b5130ac620a549b67e2b997db27e7be00da536e1ac85e287f3fde43c4a022
 ```
 
 ### Adopt a newer engine release

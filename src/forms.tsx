@@ -55,6 +55,10 @@ export function EventForm({ item, data, save, attempt, cancel, saveSource, remov
       if (['solar', 'solar_nth_weekday', 'khmer_lunar'].includes(mode)) { rule.month = Number(text(f, 'month')); rule.day = Number(text(f, 'day')); }
       if (mode === 'solar_nth_weekday') rule.occurrence = Number(text(f, 'occurrence'));
       if (mode === 'khmer_lunar') { rule.waxing = text(f, 'waxing') === 'true'; rule.monthPolicy = text(f, 'monthPolicy'); }
+      if (mode === 'chinese_festival') {
+        rule.id = id;
+        rule.monthPolicy = text(f, 'chineseMonthPolicy') || 'cn-reference-utc8';
+      }
       event.rule = rule as RuleInput;
       const anniversaryBase = text(f, 'anniversaryBase');
       if (anniversaryBase) event.anniversaryBase = Number(anniversaryBase);
@@ -70,7 +74,7 @@ export function EventForm({ item, data, save, attempt, cancel, saveSource, remov
       <Field label="Sources"><SourceControl data={data} saveSource={saveSource} multiple value={item?.sourceIds} /></Field>
       <Field label="Original historical date" help="Retained separately from annual commemorations."><input type="date" name="originalDate" required={kind === 'historical'} defaultValue={item?.originalDate} onChange={e => { if (kind === 'historical' && e.target.value) setFirstYear(String(Math.max(Number(firstYear), 1800, Number(e.target.value.slice(0, 4))))); }} /></Field>
     </div>
-    <Field label="Date method"><select value={mode} onChange={e => setMode(e.target.value)}><option value="explicit">Explicit dates / one-time event</option><option value="solar">Annual Gregorian date</option><option value="khmer_lunar">Khmer lunar recurrence</option><option value="solar_nth_weekday">Nth weekday of a month</option><option value="new_year_first">Khmer New Year — first day</option><option value="new_year_middle">Khmer New Year — middle day(s)</option><option value="new_year_last">Khmer New Year — last day</option></select></Field>
+    <Field label="Date method"><select value={mode} onChange={e => setMode(e.target.value)}><option value="explicit">Explicit dates / one-time event</option><option value="solar">Annual Gregorian date</option><option value="khmer_lunar">Khmer lunar recurrence</option><option value="chinese_festival">Chinese traditional festival</option><option value="solar_nth_weekday">Nth weekday of a month</option><option value="new_year_first">Khmer New Year — first day</option><option value="new_year_middle">Khmer New Year — middle day(s)</option><option value="new_year_last">Khmer New Year — last day</option></select></Field>
     {mode === 'explicit' ? <Field label="Event dates" help="One date per line, or a range such as 2026-04-14..2026-04-16."><textarea name="dates" rows={3} required defaultValue={item?.dates?.join('\n') ?? item?.originalDate} placeholder="YYYY-MM-DD" /></Field> : <div className="rule-box">
       <h3>Recurrence parameters</h3>
       <div className="form-grid">
@@ -79,6 +83,15 @@ export function EventForm({ item, data, save, attempt, cancel, saveSource, remov
           <Field label="Lunar day"><input name="day" type="number" required min={1} max={15} defaultValue={rule?.day ?? 1} /></Field>
           <Field label="Phase"><select name="waxing" defaultValue={String(rule?.waxing ?? true)}><option value="true">Waxing — Keut</option><option value="false">Waning — Roach</option></select></Field>
           <Field label="Asadh policy"><select name="monthPolicy" defaultValue={rule?.monthPolicy ?? 'exact'}><option value="exact">Exact month</option><option value="ordinary_or_second_asadh">Ordinary or second Asadh</option></select></Field>
+        </> : mode === 'chinese_festival' ? <>
+          <Field label="Chinese festival"><select name="chineseFestivalId" defaultValue={rule?.id ?? item?.id ?? 'chinese_new_year_days'} onChange={e => {
+            const form = e.target.form;
+            if (form && !item) {
+              const idInput = form.elements.namedItem('id') as HTMLInputElement;
+              if (idInput && !idInput.readOnly) idInput.value = e.target.value;
+            }
+          }}><option value="chinese_new_year_days">Chinese New Year (3 Days)</option><option value="chinese_new_year_eve">Chinese New Year's Eve</option><option value="chinese_kitchen_god_festival">Kitchen God Festival (Xiaonian)</option><option value="chinese_spirit_parade">Spirit Parade / Lantern Festival</option><option value="chinese_zongzi_festival">Dragon Boat / Zongzi Festival (Duanwu)</option><option value="chinese_ghost_festival">Ghost Festival (Zhongyuan)</option><option value="chinese_mid_autumn_festival">Mid-Autumn Festival (Mooncake)</option><option value="chinese_qingming_festival">Qingming (Tomb Sweeping) Festival</option><option value="chinese_winter_solstice">Winter Solstice (Dongzhi)</option></select></Field>
+          <Field label="Calculation profile"><select name="chineseMonthPolicy" defaultValue={rule?.monthPolicy ?? 'cn-reference-utc8'}><option value="cn-reference-utc8">CN Reference UTC+8 (Tong Shu standard, recommended)</option><option value="archive-v1">Archive V1 (Legacy 2000–2030 dataset match)</option><option value="cn-lunar-utc7-solar">CN Lunar UTC+8 + UTC+7 Solar Term</option><option value="local-utc7-model">Strict Cambodia UTC+7 model</option></select></Field>
         </> : ['solar', 'solar_nth_weekday'].includes(mode) ? <>
           <Field label="Gregorian month"><input name="month" type="number" min={1} max={12} required defaultValue={rule?.month} /></Field>
           <Field label={mode === 'solar' ? 'Day of month' : 'Weekday (Monday 1 – Sunday 7)'}><input name="day" type="number" min={1} max={mode === 'solar' ? 31 : 7} required defaultValue={rule?.day} /></Field>

@@ -19,7 +19,7 @@
     "test:pages": "node tools/test-pages.mjs"
   },
   "dependencies": {
-    "khmer-calendar-engine": "https://github.com/RSG-KH/khmer-calendar-engine/releases/download/v0.1.0/khmer-calendar-engine-0.1.0.tgz",
+    "khmer-calendar-engine": "https://github.com/RSG-KH/khmer-calendar-engine/releases/download/v0.2.0/khmer-calendar-engine-0.2.0.tgz",
     "react": "19.3.0",
     "react-dom": "19.3.0"
   },
