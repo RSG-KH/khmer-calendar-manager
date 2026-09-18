@@ -1,5 +1,5 @@
 {
-  "revision": 6,
+  "revision": 7,
   "data": {
     "schemaVersion": 2,
     "dataVersion": "0.3.0",
@@ -815,7 +815,7 @@
         "kind": "traditional",
         "names": {
           "en": "Winter Solstice Festival",
-          "km": "សែន​នំ​អ៉ី"
+          "km": "សែន​នំ​អ៊ី"
         },
         "sourceIds": [
           "khmer-lunar-calendar-capture-2026-09-10"
@@ -40281,6 +40281,18 @@
           "section": "Correction",
           "id": "chinese_zongzi_festival/2013",
           "action": "added"
+        }
+      ]
+    },
+    {
+      "revision": 7,
+      "at": "2026-09-18T04:22:07.360Z",
+      "note": "Fix Khmer spelling of Winter Solstice Festival to សែន​នំ​អ៊ី (use Triisap instead of Muusikatoan)",
+      "changes": [
+        {
+          "section": "Event",
+          "id": "chinese_winter_solstice",
+          "action": "changed"
         }
       ]
     }
