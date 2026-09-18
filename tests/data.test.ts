@@ -127,8 +127,8 @@ test('workspace catalog contains 12 verified official holiday years (2016–2027
   const subdecreeSources = catalog.sources.filter(s => s.id.startsWith('subdecree-'));
   assert.equal(subdecreeSources.length, 12);
   for (const s of subdecreeSources) {
-    assert.ok(s.reference?.startsWith('🗎 Anukret No. '), `reference starts with 🗎 on ${s.id}`);
-    assert.ok(s.notes?.startsWith('🗎 អនុក្រឹត្យលេខ '), `notes starts with 🗎 on ${s.id}`);
+    assert.ok(s.reference?.startsWith('📜 Anukret No. '), `reference starts with 📜 on ${s.id}`);
+    assert.ok(s.notes?.startsWith('📜 អនុក្រឹត្យលេខ '), `notes starts with 📜 on ${s.id}`);
     const year = Number(s.id.split('-').pop());
     if (year <= 2024) {
       assert.ok(s.reference?.includes('signed by Prime Minister Hun Sen'), `English signatory for ${year}`);

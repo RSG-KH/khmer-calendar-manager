@@ -60,7 +60,7 @@ Official holiday calendars (`holidayCalendars`) across all confirmed years (2016
 - **Single-Day Scope**: Each entry covers exactly one off-day date (`dates: ["YYYY-MM-DD"]`).
 - **Explicit `eventId`**: Every holiday entry provides an `eventId` referencing its canonical recurrence rule in `events` (e.g. `khmer_new_year_1`, `pchum_ben_festival`, `water_festival`, `new_year_day`), allowing client apps (Android, PWA) to unambiguously match official leave to calculated observances with zero duplicate rendering.
 - **Day-Specific Names**: Multi-day holidays carry their traditional day-specific titles (e.g. Khmer New Year Days 1–3: *Moha Sankranta*, *Veareak Vanabat*, *Veareak Laeung Sak*).
-- **Clean Citations**: Government decrees provide their official Khmer decree titles in source `notes` and English document references in `reference`, prefixed with the document symbol `🗎 ` and citing the signatory Prime Minister (PM Hun Sen for 2016–2024; PM Hun Manet for 2025–2027).
+- **Clean Citations**: Government decrees provide their official Khmer decree titles in source `notes` and English document references in `reference`, prefixed with the document symbol `📜 ` and citing the signatory Prime Minister (PM Hun Sen for 2016–2024; PM Hun Manet for 2025–2027).
 
 #### Verified Royal Government Sub-Decrees (2016–2027)
 
