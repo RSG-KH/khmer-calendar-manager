@@ -36,7 +36,7 @@ Event kinds are `traditional`, `historical` or `observance`. Historical events r
 
 `anniversaryBase` is available only on a recurring event whose English or Khmer name contains `{anniversary}`. Preview and consumer output replace it with `year - anniversaryBase`, using Khmer numerals in the Khmer name.
 
-Rules support `solar`, `solar_nth_weekday`, `khmer_lunar`, `new_year_first`, `new_year_middle` and `new_year_last`. Gregorian/lunar rules must explicitly supply month/day, lunar rules also supply `waxing`, and weekday rules supply `occurrence`. Engine options include effective anchor years, offset and duration. Lunar month 7 with `monthPolicy: "ordinary_or_second_asadh"` covers ordinary and leap-month years. Calculations are delegated to the installed engine package.
+Rules support `solar`, `solar_nth_weekday`, `khmer_lunar`, `chinese_festival`, `new_year_first`, `new_year_middle` and `new_year_last`. Gregorian/lunar rules must explicitly supply month/day, lunar rules also supply `waxing`, and weekday rules supply `occurrence`. Chinese festival rules require rule `id` to match one of the 9 traditional festival identifiers, with `monthPolicy` set to `"cn-reference-utc8"` (Tong Shu reference standard) or `"archive-v1"`. Engine options include effective anchor years, offset and duration. Lunar month 7 with `monthPolicy: "ordinary_or_second_asadh"` covers ordinary and leap-month years. Calculations are delegated to the installed engine package.
 
 A correction replaces one recurring event's complete occurrence list for an **anchor year**. Empty `dates` cancels that year's calculated occurrences. A source and reason are mandatory. This changes the event occurrence only; any government holiday designation is maintained separately.
 
@@ -48,10 +48,11 @@ Schema version 2 supports recorded event calendars (`eventCalendars`) to preserv
 - A `partial` recorded calendar supplements calculations. A linked occurrence on the same date replaces the calculated row instead of duplicating it.
 - Official holiday calendars remain a separate evidence layer. A holiday matching a recorded occurrence or linked rule/date enriches the preview rather than creating a duplicate occurrence.
 
-### Streamlined static date-backed events
+### Streamlined dynamic and date-backed events
 For lightweight runtime consumption in downstream applications (Android and PWA), the canonical catalog in `data/workspace.json` streamlines this model:
-- All non-rule events (such as 9 Chinese traditional lunar festivals across 2000–2030 and 15 UNESCO/historical milestones) are modeled directly as first-class `Event` records in `events` with explicit `dates: ["YYYY-MM-DD", ...]`.
-- Consequently, `eventCalendars` is kept empty (`[]`), dropping the uncompressed JSON export bundle by ~90% (down to ~108 KB) and eliminating the need for client apps to implement archive-versus-rule precedence logic.
+- All 9 traditional Chinese festivals (Chinese New Year, Lantern/Spirit Parade, Qingming, Zongzi, Ghost Festival, Mid-Autumn, Winter Solstice, etc.) are computed dynamically across 1900–2100 via `chinese_festival` recurrence rules (`monthPolicy: "cn-reference-utc8"`). Three explicit `overrides` document historical published archive parity for Qingming (2009, 2029) and Zongzi (2013).
+- Remaining non-rule events (15 UNESCO/historical milestones) are modeled directly as first-class `Event` records in `events` with explicit `dates: ["YYYY-MM-DD", ...]`.
+- Consequently, `eventCalendars` is kept empty (`[]`), dropping the uncompressed JSON export bundle down to ~131 KB and eliminating the need for client apps to implement archive-versus-rule precedence logic.
 - Schema-v1 catalogs are accepted and upgraded in memory with an empty `eventCalendars` array. New exports use schema version 2.
 
 ### Standardized official holiday calendars
