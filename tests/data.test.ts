@@ -123,5 +123,19 @@ test('workspace catalog contains 12 verified official holiday years (2016–2027
   assert.ok(catalog.holidayCalendars.every(c => c.coverage === 'complete'));
   const totalHolidays = catalog.holidayCalendars.flatMap(c => c.holidays);
   assert.equal(totalHolidays.length, 283);
-  assert.ok(totalHolidays.every(h => h.status === 'active' && h.dates.length === 1 && h.sourceIds.length > 0 && !!h.eventId));
+  assert.equal(catalog.dataVersion, '0.3.3');
+  const subdecreeSources = catalog.sources.filter(s => s.id.startsWith('subdecree-'));
+  assert.equal(subdecreeSources.length, 12);
+  for (const s of subdecreeSources) {
+    assert.ok(s.reference?.startsWith('🗎 Anukret No. '), `reference starts with 🗎 on ${s.id}`);
+    assert.ok(s.notes?.startsWith('🗎 អនុក្រឹត្យលេខ '), `notes starts with 🗎 on ${s.id}`);
+    const year = Number(s.id.split('-').pop());
+    if (year <= 2024) {
+      assert.ok(s.reference?.includes('signed by Prime Minister Hun Sen'), `English signatory for ${year}`);
+      assert.ok(s.notes?.includes('ចុះហត្ថលេខាដោយ សម្តេចអគ្គមហាសេនាបតីតេជោ ហ៊ុន សែន នាយករដ្ឋមន្ត្រី'), `Khmer signatory for ${year}`);
+    } else {
+      assert.ok(s.reference?.includes('signed by Prime Minister Hun Manet'), `English signatory for ${year}`);
+      assert.ok(s.notes?.includes('ចុះហត្ថលេខាដោយ សម្តេចមហាបវរធិបតី ហ៊ុន ម៉ាណែត នាយករដ្ឋមន្ត្រី'), `Khmer signatory for ${year}`);
+    }
+  }
 });

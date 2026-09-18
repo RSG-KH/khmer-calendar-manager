@@ -6,7 +6,7 @@ A developer web app for maintaining events, historical facts, translations, sour
 
 ## Status
 
-**0.3.2 — streamlined catalog with official 2016–2027 holidays and research-verified historical coverage.** The default workspace (`data/workspace.json`) is fully seeded with 137 events (111 engine recurrence rules + 26 static date-backed events), 22 corrections (15 King Sihamoni birthday overrides 2005–2019, 3 Chinese festival archive-parity dates, and 4 documented International Day of Peace observance exceptions 1998–2001), and 12 officially confirmed government public holiday calendars (2016–2027) backed by Royal Government of Cambodia Sub-Decrees (Anukret).
+**0.3.3 — standardized citations with signatories and official 2016–2027 holidays.** The default workspace (`data/workspace.json`) is fully seeded with 137 events (111 engine recurrence rules + 26 static date-backed events), 22 corrections (15 King Sihamoni birthday overrides 2005–2019, 3 Chinese festival archive-parity dates, and 4 documented International Day of Peace observance exceptions 1998–2001), and 12 officially confirmed government public holiday calendars (2016–2027) backed by Royal Government of Cambodia Sub-Decrees (Anukret) with document symbols and verified signatories in English and Khmer.
 
 The 2000–2030 legacy archive (3,246 duplicate entries) has been streamlined: all 349 unlinked occurrences were extracted into 24 first-class date-backed events (9 Chinese traditional festivals across 31 years and 15 UNESCO/historical milestones), allowing `eventCalendars` to be retired (`[]`). This drops the uncompressed export payload by 90% down to ~108 KB (~15 KB gzipped) while ensuring zero data loss and simple downstream consumption in Android and PWA.
 
