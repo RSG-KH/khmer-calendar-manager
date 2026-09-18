@@ -34,7 +34,7 @@ Names and descriptions are objects with `en` and `km` strings. Draft names requi
 
 Event kinds are `traditional`, `historical` or `observance`. Historical events require `originalDate`. An event has either a non-empty array of explicit dates, or an engine rule with the same ID. Annual commemorations must not start before the original historical event; preview dates before the original date are excluded, including earlier days in its first year.
 
-`anniversaryBase` is available only on a recurring event whose English or Khmer name contains `{anniversary}`. Preview and consumer output replace it with `year - anniversaryBase`, using Khmer numerals in the Khmer name.
+`anniversaryBase` is available only on a recurring event whose English or Khmer name contains `{anniversary}`. Preview and consumer output replace it with `year - anniversaryBase`, using Khmer numerals in the Khmer name. By convention the rule's `fromYear` is `anniversaryBase + 1` (the first ខួប), while a companion date-backed milestone event carries the original historical date so the base year never renders an awkward "0th" anniversary.
 
 Rules support `solar`, `solar_nth_weekday`, `khmer_lunar`, `chinese_festival`, `new_year_first`, `new_year_middle` and `new_year_last`. Gregorian/lunar rules must explicitly supply month/day, lunar rules also supply `waxing`, and weekday rules supply `occurrence`. Chinese festival rules require rule `id` to match one of the 9 traditional festival identifiers, with `monthPolicy` set to `"cn-reference-utc8"` (Tong Shu reference standard) or `"archive-v1"`. Engine options include effective anchor years, offset and duration. Lunar month 7 with `monthPolicy: "ordinary_or_second_asadh"` covers ordinary and leap-month years. Calculations are delegated to the installed engine package.
 
@@ -51,7 +51,7 @@ Schema version 2 supports recorded event calendars (`eventCalendars`) to preserv
 ### Streamlined dynamic and date-backed events
 For lightweight runtime consumption in downstream applications (Android and PWA), the canonical catalog in `data/workspace.json` streamlines this model:
 - All 9 traditional Chinese festivals (Chinese New Year, Lantern/Spirit Parade, Qingming, Zongzi, Ghost Festival, Mid-Autumn, Winter Solstice, etc.) are computed dynamically across 1900–2100 via `chinese_festival` recurrence rules (`monthPolicy: "cn-reference-utc8"`). Three explicit `overrides` document historical published archive parity for Qingming (2009, 2029) and Zongzi (2013).
-- Remaining non-rule events (15 UNESCO/historical milestones) are modeled directly as first-class `Event` records in `events` with explicit `dates: ["YYYY-MM-DD", ...]`.
+- Remaining non-rule events (26 UNESCO/historical milestones, including the 10 pre-2000 origin dates such as Victory Day 1979-01-07 and Independence 1953-11-09, plus the 1984 Day of Hatred) are modeled directly as first-class `Event` records in `events` with explicit `dates: ["YYYY-MM-DD", ...]`.
 - Consequently, `eventCalendars` is kept empty (`[]`), dropping the uncompressed JSON export bundle down to ~131 KB and eliminating the need for client apps to implement archive-versus-rule precedence logic.
 - Schema-v1 catalogs are accepted and upgraded in memory with an empty `eventCalendars` array. New exports use schema version 2.
 

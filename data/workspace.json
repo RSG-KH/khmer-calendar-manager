@@ -1,8 +1,8 @@
 {
-  "revision": 7,
+  "revision": 16,
   "data": {
     "schemaVersion": 2,
-    "dataVersion": "0.3.0",
+    "dataVersion": "0.3.1",
     "sources": [
       {
         "id": "khmer-lunar-calendar-capture-2026-09-10",
@@ -26,6 +26,13 @@
         "publisher": "Ministry of Economy and Finance",
         "kind": "government",
         "url": "https://mef.gov.kh/calendar-holiday-2025/"
+      },
+      {
+        "id": "research-event-origins-2026-09-18",
+        "title": "Event origin-year research dossiers (GPT-6 Astra Pro; Gemini 3.8 Flash Extended)",
+        "publisher": "LLM research dossiers citing UN, WHO, UNESCO, IFRC, ICAO, Cambodian sub-decrees and press archives",
+        "kind": "historical",
+        "reference": "docs/research (rounds 1-2): gpt6_astra_pro.md; gemini_3.8_flash_extend.md; sonnet_5_max.md; to_research.txt"
       },
       {
         "id": "subdecree-112-ankr-bk-2020",
@@ -116,7 +123,7 @@
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 1993,
           "throughYear": 2200,
           "month": 12,
           "day": 14
@@ -131,14 +138,15 @@
           "km": "ទិវា​ប្រយុទ្ធ​ប្រឆាំង​អំពើ​ពុករលួយ"
         },
         "sourceIds": [
-          "khmer-lunar-calendar-capture-2026-09-10"
+          "khmer-lunar-calendar-capture-2026-09-10",
+          "research-event-origins-2026-09-18"
         ],
         "rule": {
           "id": "anti_corruption_day",
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2003,
+          "fromYear": 2004,
           "throughYear": 2200,
           "month": 12,
           "day": 9
@@ -152,14 +160,15 @@
           "km": "ទិវា​អន្តរ​ជាតិ​ប្រយុទ្ធ​ប្រឆាំង​គ្រឿង​ញៀន"
         },
         "sourceIds": [
-          "khmer-lunar-calendar-capture-2026-09-10"
+          "khmer-lunar-calendar-capture-2026-09-10",
+          "research-event-origins-2026-09-18"
         ],
         "rule": {
           "id": "anti_drug_day",
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 1988,
           "throughYear": 2200,
           "month": 6,
           "day": 26
@@ -173,14 +182,15 @@
           "km": "ទិវា​ជាតិ​ប្រឆាំង​ការ​ជួញ​ដូរ​មនុស្ស"
         },
         "sourceIds": [
-          "khmer-lunar-calendar-capture-2026-09-10"
+          "khmer-lunar-calendar-capture-2026-09-10",
+          "research-event-origins-2026-09-18"
         ],
         "rule": {
           "id": "anti_human_trafficking_day",
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2006,
+          "fromYear": 2007,
           "throughYear": 2200,
           "month": 12,
           "day": 12
@@ -194,14 +204,15 @@
           "km": "រុក្ខ​ទិវា"
         },
         "sourceIds": [
-          "khmer-lunar-calendar-capture-2026-09-10"
+          "khmer-lunar-calendar-capture-2026-09-10",
+          "research-event-origins-2026-09-18"
         ],
         "rule": {
           "id": "arbor_day",
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 1992,
           "throughYear": 2200,
           "month": 7,
           "day": 9
@@ -544,7 +555,7 @@
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 1946,
           "throughYear": 2200,
           "month": 5,
           "day": 16
@@ -611,7 +622,7 @@
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 1956,
           "throughYear": 2200,
           "month": 12,
           "day": 14
@@ -633,7 +644,7 @@
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 1952,
           "throughYear": 2200,
           "month": 7,
           "day": 3
@@ -655,7 +666,7 @@
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 1999,
           "throughYear": 2200,
           "month": 10,
           "day": 1
@@ -875,14 +886,15 @@
           "km": "ទិវា​អា​កាស​ចរណ៍ស៊ីវិល"
         },
         "sourceIds": [
-          "khmer-lunar-calendar-capture-2026-09-10"
+          "khmer-lunar-calendar-capture-2026-09-10",
+          "research-event-origins-2026-09-18"
         ],
         "rule": {
           "id": "civil_aviation_day",
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 1994,
           "throughYear": 2200,
           "month": 12,
           "day": 7
@@ -903,7 +915,7 @@
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 1994,
           "throughYear": 2200,
           "month": 9,
           "day": 24
@@ -918,14 +930,15 @@
           "km": "ទិវា​ជន​មាន​ពិការភាព​អន្តរជាតិ"
         },
         "sourceIds": [
-          "khmer-lunar-calendar-capture-2026-09-10"
+          "khmer-lunar-calendar-capture-2026-09-10",
+          "research-event-origins-2026-09-18"
         ],
         "rule": {
           "id": "disabled_persons_day",
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 1999,
           "throughYear": 2200,
           "month": 12,
           "day": 3
@@ -962,14 +975,15 @@
           "km": "ទិវា​អនា​ម័យ​បរិ​ស្ថាន​ជាតិ"
         },
         "sourceIds": [
-          "khmer-lunar-calendar-capture-2026-09-10"
+          "khmer-lunar-calendar-capture-2026-09-10",
+          "research-event-origins-2026-09-18"
         ],
         "rule": {
           "id": "environmental_sanitation_day",
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2017,
+          "fromYear": 1995,
           "throughYear": 2200,
           "month": 11,
           "day": 23
@@ -1033,7 +1047,7 @@
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 1963,
           "throughYear": 2200,
           "month": 6,
           "day": 15
@@ -1055,7 +1069,7 @@
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 1954,
           "throughYear": 2200,
           "month": 11,
           "day": 9
@@ -1070,14 +1084,15 @@
           "km": "ទិវា​អន្តរ​ជាតិ​ជនជាតិដើមភាគតិចពិភពលោក"
         },
         "sourceIds": [
-          "khmer-lunar-calendar-capture-2026-09-10"
+          "khmer-lunar-calendar-capture-2026-09-10",
+          "research-event-origins-2026-09-18"
         ],
         "rule": {
           "id": "indigenous_peoples_day",
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 2005,
           "throughYear": 2200,
           "month": 8,
           "day": 9
@@ -1091,7 +1106,8 @@
           "km": "ទិវា​ព្រះ​ពុទ្ធ​សាសនា​អន្តរជាតិ"
         },
         "sourceIds": [
-          "khmer-lunar-calendar-capture-2026-09-10"
+          "khmer-lunar-calendar-capture-2026-09-10",
+          "research-event-origins-2026-09-18"
         ],
         "rule": {
           "id": "international_buddhist_day",
@@ -1119,7 +1135,7 @@
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 1950,
           "throughYear": 2200,
           "month": 6,
           "day": 1
@@ -1134,14 +1150,15 @@
           "km": "ទិវា​អន្តរ​ជាតិ​នៃ​គ្រួសារ"
         },
         "sourceIds": [
-          "khmer-lunar-calendar-capture-2026-09-10"
+          "khmer-lunar-calendar-capture-2026-09-10",
+          "research-event-origins-2026-09-18"
         ],
         "rule": {
           "id": "international_day_of_families",
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 1994,
           "throughYear": 2200,
           "month": 5,
           "day": 15
@@ -1162,7 +1179,7 @@
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 1949,
           "throughYear": 2200,
           "month": 12,
           "day": 10
@@ -1184,7 +1201,7 @@
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 1887,
           "throughYear": 2200,
           "month": 5,
           "day": 1
@@ -1199,14 +1216,15 @@
           "km": "ទិវា​អក្ខរ​កម្ម​អន្តរ​ជាតិ"
         },
         "sourceIds": [
-          "khmer-lunar-calendar-capture-2026-09-10"
+          "khmer-lunar-calendar-capture-2026-09-10",
+          "research-event-origins-2026-09-18"
         ],
         "rule": {
           "id": "international_literacy_day",
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 1967,
           "throughYear": 2200,
           "month": 9,
           "day": 8
@@ -1220,17 +1238,41 @@
           "km": "ទិវា​សន្តិ​ភាព​អន្តរ​ជាតិ"
         },
         "sourceIds": [
-          "khmer-lunar-calendar-capture-2026-09-10"
+          "khmer-lunar-calendar-capture-2026-09-10",
+          "research-event-origins-2026-09-18"
         ],
         "rule": {
           "id": "international_peace_day",
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 2002,
           "throughYear": 2200,
           "month": 9,
           "day": 21
+        }
+      },
+      {
+        "id": "international_peace_day_ga_opening",
+        "kind": "observance",
+        "names": {
+          "en": "International Day of Peace",
+          "km": "ទិវាសន្តិភាពអន្តរជាតិ"
+        },
+        "sourceIds": [
+          "khmer-lunar-calendar-capture-2026-09-10",
+          "research-event-origins-2026-09-18"
+        ],
+        "rule": {
+          "id": "international_peace_day_ga_opening",
+          "type": "solar_nth_weekday",
+          "offset": 0,
+          "duration": 1,
+          "fromYear": 1982,
+          "throughYear": 2001,
+          "month": 9,
+          "day": 2,
+          "occurrence": 3
         }
       },
       {
@@ -1248,7 +1290,7 @@
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 1912,
           "throughYear": 2200,
           "month": 3,
           "day": 8
@@ -1386,14 +1428,15 @@
           "km": "ព្រះ​រាជ​ពិធី​គ្រង​ព្រះ​បរម​រាជ​សម្បត្តិ ព្រះ​ករុណា​ព្រះ​បាទ​សម្តេច​ព្រះ​បរមនាថ នរោត្តម សីហមុនី ព្រះ​មហាក្សត្រ​នៃ​ព្រះរាជាណាចក្រ​កម្ពុជា"
         },
         "sourceIds": [
-          "khmer-lunar-calendar-capture-2026-09-10"
+          "khmer-lunar-calendar-capture-2026-09-10",
+          "research-event-origins-2026-09-18"
         ],
         "rule": {
           "id": "king_coronation_day",
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2014,
+          "fromYear": 2004,
           "throughYear": 2200,
           "month": 10,
           "day": 29
@@ -1407,14 +1450,15 @@
           "km": "ទិវា​ប្រារព្ធ​ពិធី​គោរព​ព្រះវិញ្ញាណក្ខន្ធ ព្រះករុណា​ព្រះបាទ​សម្តេច​ព្រះ នរោត្តម សីហនុ ព្រះមហាវីរក្សត្រ ព្រះ​វររាជ​បិតា​ឯករាជ្យ បូរណភាព​ទឹកដី និង​ឯកភាព​ជាតិ​ខ្មែរ"
         },
         "sourceIds": [
-          "khmer-lunar-calendar-capture-2026-09-10"
+          "khmer-lunar-calendar-capture-2026-09-10",
+          "research-event-origins-2026-09-18"
         ],
         "rule": {
           "id": "king_father_commemoration",
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2014,
+          "fromYear": 2013,
           "throughYear": 2200,
           "month": 10,
           "day": 15
@@ -1653,7 +1697,7 @@
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 1999,
           "throughYear": 2200,
           "month": 3,
           "day": 3
@@ -1668,14 +1712,15 @@
           "km": "ទិវា​ជាតិ​នៃ​ការ​ចង​ចាំ"
         },
         "sourceIds": [
-          "khmer-lunar-calendar-capture-2026-09-10"
+          "khmer-lunar-calendar-capture-2026-09-10",
+          "research-event-origins-2026-09-18"
         ],
         "rule": {
           "id": "national_day_of_remembrance",
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 2018,
           "throughYear": 2200,
           "month": 5,
           "day": 20
@@ -1689,14 +1734,15 @@
           "km": "ទិវា​មច្ឆា​ជាតិ"
         },
         "sourceIds": [
-          "khmer-lunar-calendar-capture-2026-09-10"
+          "khmer-lunar-calendar-capture-2026-09-10",
+          "research-event-origins-2026-09-18"
         ],
         "rule": {
           "id": "national_fish_day",
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2001,
+          "fromYear": 2003,
           "throughYear": 2200,
           "month": 7,
           "day": 1
@@ -1710,7 +1756,8 @@
           "km": "ទិវា​ជាតិ​យល់​ដឹង​ពី​មីន ខួបលើកទី{anniversary}"
         },
         "sourceIds": [
-          "khmer-lunar-calendar-capture-2026-09-10"
+          "khmer-lunar-calendar-capture-2026-09-10",
+          "research-event-origins-2026-09-18"
         ],
         "rule": {
           "id": "national_mine_awareness_day",
@@ -1732,14 +1779,15 @@
           "km": "ទិវា​​ប្រជាជនជាតិ និង​​ប្រជាជន​ពិភព​លោក"
         },
         "sourceIds": [
-          "khmer-lunar-calendar-capture-2026-09-10"
+          "khmer-lunar-calendar-capture-2026-09-10",
+          "research-event-origins-2026-09-18"
         ],
         "rule": {
           "id": "national_population_day",
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 1989,
           "throughYear": 2200,
           "month": 7,
           "day": 11
@@ -1781,7 +1829,7 @@
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 1986,
           "throughYear": 2200,
           "month": 9,
           "day": 16
@@ -1803,7 +1851,7 @@
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 1991,
           "throughYear": 2200,
           "month": 10,
           "day": 23
@@ -1840,7 +1888,8 @@
           "km": "ទិវា​សន្តិ​ភាព​នៅ​កម្ពុជា"
         },
         "sourceIds": [
-          "khmer-lunar-calendar-capture-2026-09-10"
+          "khmer-lunar-calendar-capture-2026-09-10",
+          "research-event-origins-2026-09-18"
         ],
         "rule": {
           "id": "peace_day_cambodia",
@@ -1883,14 +1932,15 @@
           "km": "ព្រះ​រាជ​ពិធី​បុណ្យ​ចម្រើន​ព្រះ​ជន្ម សម្តេច​ព្រះ​មហាក្សត្រី នរោត្តម មុនិនាថ សីហនុ ព្រះ​វររាជ​មាតា​ជាតិ​ខ្មែរ ក្នុង​សេរីភាព សេចក្តីថ្លៃថ្នូរ និង​សុភមង្គល"
         },
         "sourceIds": [
-          "khmer-lunar-calendar-capture-2026-09-10"
+          "khmer-lunar-calendar-capture-2026-09-10",
+          "research-event-origins-2026-09-18"
         ],
         "rule": {
           "id": "queen_mother_birthday",
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 1994,
           "throughYear": 2200,
           "month": 6,
           "day": 18
@@ -1964,6 +2014,66 @@
         "anniversaryBase": 2017
       },
       {
+        "id": "static_angkor_wat_unesco",
+        "kind": "historical",
+        "names": {
+          "en": "Angkor was inscribed on the UNESCO World Heritage List",
+          "km": "តំបន់​រមណី​ដ្ឋាន​អង្គរ ត្រូវ​បាន​ចុះ​ក្នុង​បញ្ជី​បេតិក​ភណ្ឌ​ពិភពលោករបស់អង្គការយូណេស្កូ"
+        },
+        "sourceIds": [
+          "khmer-lunar-calendar-capture-2026-09-10"
+        ],
+        "originalDate": "1992-12-14",
+        "dates": [
+          "1992-12-14"
+        ]
+      },
+      {
+        "id": "static_birth_of_national_police",
+        "kind": "historical",
+        "names": {
+          "en": "Birth of the National Police",
+          "km": "កំណើត​នគរ​បាល​ជាតិ"
+        },
+        "sourceIds": [
+          "khmer-lunar-calendar-capture-2026-09-10"
+        ],
+        "originalDate": "1945-05-16",
+        "dates": [
+          "1945-05-16"
+        ]
+      },
+      {
+        "id": "static_cambodia_joined_un",
+        "kind": "historical",
+        "names": {
+          "en": "Cambodia became a member of the United Nations",
+          "km": "កម្ពុជា​ចូល​ជា​សមា​ជិក​អង្គ​ការ​សហ​ប្រជាជាតិ"
+        },
+        "sourceIds": [
+          "khmer-lunar-calendar-capture-2026-09-10"
+        ],
+        "originalDate": "1955-12-14",
+        "dates": [
+          "1955-12-14"
+        ]
+      },
+      {
+        "id": "static_cambodia_joined_unesco",
+        "kind": "historical",
+        "names": {
+          "en": "Cambodia joined UNESCO",
+          "km": "កម្ពុជា​ចូល​ជា​សមា​ជិក​អង្គ​ការ​យូណេស្កូ"
+        },
+        "sourceIds": [
+          "khmer-lunar-calendar-capture-2026-09-10"
+        ],
+        "originalDate": "1951-07-03",
+        "dates": [
+          "1951-07-03"
+        ]
+      },
+      {
         "id": "static_chapei_dang_veng_inscribed_on_the_list_of_intangib",
         "kind": "historical",
         "names": {
@@ -1979,6 +2089,36 @@
         ]
       },
       {
+        "id": "static_constitution_day",
+        "kind": "historical",
+        "names": {
+          "en": "Constitution Day",
+          "km": "ទិវា​ប្រកាស​រដ្ឋ​ធម្មនុញ្ញ"
+        },
+        "sourceIds": [
+          "khmer-lunar-calendar-capture-2026-09-10"
+        ],
+        "originalDate": "1993-09-24",
+        "dates": [
+          "1993-09-24"
+        ]
+      },
+      {
+        "id": "static_day_of_hatred",
+        "kind": "historical",
+        "names": {
+          "en": "Day of Hatred",
+          "km": "ទិវាចងកំហឹង"
+        },
+        "sourceIds": [
+          "research-event-origins-2026-09-18"
+        ],
+        "originalDate": "1984-05-20",
+        "dates": [
+          "1984-05-20"
+        ]
+      },
+      {
         "id": "static_happy_world_day_against_child_labour",
         "kind": "historical",
         "names": {
@@ -1991,6 +2131,66 @@
         "originalDate": "2001-06-12",
         "dates": [
           "2001-06-12"
+        ]
+      },
+      {
+        "id": "static_icj_preah_vihear_ownership",
+        "kind": "historical",
+        "names": {
+          "en": "International Court of Justice in The Hague declared Cambodia is the owner of the Preah Vihear Temple",
+          "km": "តុលា​ការ​យុត្តិ​ធម៌​អន្តរ​ជាតិ​ក្រុង​ឡា​អេ សម្រេច​ឱ្យ​កម្ពុជាជាម្ចាស់កម្មសិទ្ធិ លើប្រាសាទព្រះវិហារ"
+        },
+        "sourceIds": [
+          "khmer-lunar-calendar-capture-2026-09-10"
+        ],
+        "originalDate": "1962-06-15",
+        "dates": [
+          "1962-06-15"
+        ]
+      },
+      {
+        "id": "static_independence_day",
+        "kind": "historical",
+        "names": {
+          "en": "Independence Day",
+          "km": "ពិធី​បុណ្យ​ឯករាជ្យ​ជាតិ"
+        },
+        "sourceIds": [
+          "khmer-lunar-calendar-capture-2026-09-10"
+        ],
+        "originalDate": "1953-11-09",
+        "dates": [
+          "1953-11-09"
+        ]
+      },
+      {
+        "id": "static_international_human_rights_day",
+        "kind": "historical",
+        "names": {
+          "en": "International Human Rights Day",
+          "km": "ទិវា​សិទ្ធិ​មនុស្ស​អន្តរជាតិ"
+        },
+        "sourceIds": [
+          "khmer-lunar-calendar-capture-2026-09-10"
+        ],
+        "originalDate": "1948-12-10",
+        "dates": [
+          "1948-12-10"
+        ]
+      },
+      {
+        "id": "static_international_labor_day",
+        "kind": "historical",
+        "names": {
+          "en": "International Labor Day",
+          "km": "ទិវា​ពលកម្ម​អន្តរជាតិ"
+        },
+        "sourceIds": [
+          "khmer-lunar-calendar-capture-2026-09-10"
+        ],
+        "originalDate": "1886-05-01",
+        "dates": [
+          "1886-05-01"
         ]
       },
       {
@@ -2159,6 +2359,21 @@
         ]
       },
       {
+        "id": "static_victory_over_genocide",
+        "kind": "historical",
+        "names": {
+          "en": "Victory Over Genocide Day",
+          "km": "ទិវា​ជ័យ​ជម្នះ​លើ​របប​ប្រល័យ​ពូជ​សាសន៍"
+        },
+        "sourceIds": [
+          "khmer-lunar-calendar-capture-2026-09-10"
+        ],
+        "originalDate": "1979-01-07",
+        "dates": [
+          "1979-01-07"
+        ]
+      },
+      {
         "id": "static_world_day_for_safety_and_health_at_work",
         "kind": "historical",
         "names": {
@@ -2276,7 +2491,7 @@
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 1980,
           "throughYear": 2200,
           "month": 1,
           "day": 7
@@ -2358,14 +2573,15 @@
           "km": "ទិវា​នយោ​បាយ​ឈ្នះ ឈ្នះ"
         },
         "sourceIds": [
-          "khmer-lunar-calendar-capture-2026-09-10"
+          "khmer-lunar-calendar-capture-2026-09-10",
+          "research-event-origins-2026-09-18"
         ],
         "rule": {
           "id": "win_win_policy_day",
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 1998,
           "throughYear": 2023,
           "month": 12,
           "day": 29
@@ -2379,14 +2595,15 @@
           "km": "ទិវា​ពិភព​លោក​ប្រយុទ្ធ​ប្រឆាំង​នឹង​ជំងឺ​អេដស៍"
         },
         "sourceIds": [
-          "khmer-lunar-calendar-capture-2026-09-10"
+          "khmer-lunar-calendar-capture-2026-09-10",
+          "research-event-origins-2026-09-18"
         ],
         "rule": {
           "id": "world_aids_day",
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 1988,
           "throughYear": 2200,
           "month": 12,
           "day": 1
@@ -2429,7 +2646,7 @@
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 1997,
           "throughYear": 2200,
           "month": 6,
           "day": 5
@@ -2444,17 +2661,40 @@
           "km": "ទិវា​សុខ​ភាព​ពិភព​លោក"
         },
         "sourceIds": [
-          "khmer-lunar-calendar-capture-2026-09-10"
+          "khmer-lunar-calendar-capture-2026-09-10",
+          "research-event-origins-2026-09-18"
         ],
         "rule": {
           "id": "world_health_day",
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 1950,
           "throughYear": 2200,
           "month": 4,
           "day": 7
+        }
+      },
+      {
+        "id": "world_meteorological_day",
+        "kind": "observance",
+        "names": {
+          "en": "World Meteorological Day",
+          "km": "ទិវាឧតុនិយមពិភពលោក"
+        },
+        "sourceIds": [
+          "khmer-lunar-calendar-capture-2026-09-10",
+          "research-event-origins-2026-09-18"
+        ],
+        "rule": {
+          "id": "world_meteorological_day",
+          "type": "solar",
+          "offset": 0,
+          "duration": 1,
+          "fromYear": 1961,
+          "throughYear": 2200,
+          "month": 3,
+          "day": 23
         }
       },
       {
@@ -2465,14 +2705,15 @@
           "km": "ទិវា​ពិភព​លោក​គ្មាន​ថ្នាំ​ជក់"
         },
         "sourceIds": [
-          "khmer-lunar-calendar-capture-2026-09-10"
+          "khmer-lunar-calendar-capture-2026-09-10",
+          "research-event-origins-2026-09-18"
         ],
         "rule": {
           "id": "world_no_tobacco_day",
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 1989,
           "throughYear": 2200,
           "month": 5,
           "day": 31
@@ -2493,7 +2734,7 @@
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 1994,
           "throughYear": 2200,
           "month": 5,
           "day": 3
@@ -2545,14 +2786,15 @@
           "km": "ទិវា​ពិភព​លោក​កាក​បាទ​ក្រហម និង​អឌ្ឍចន្ទក្រហម"
         },
         "sourceIds": [
-          "khmer-lunar-calendar-capture-2026-09-10"
+          "khmer-lunar-calendar-capture-2026-09-10",
+          "research-event-origins-2026-09-18"
         ],
         "rule": {
           "id": "world_red_cross_day",
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 1948,
           "throughYear": 2200,
           "month": 5,
           "day": 8
@@ -2588,14 +2830,15 @@
           "km": "ទិវា​គ្រូ​បង្រៀន​ពិភព​លោក"
         },
         "sourceIds": [
-          "khmer-lunar-calendar-capture-2026-09-10"
+          "khmer-lunar-calendar-capture-2026-09-10",
+          "research-event-origins-2026-09-18"
         ],
         "rule": {
           "id": "world_teachers_day",
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 1997,
           "throughYear": 2200,
           "month": 10,
           "day": 5
@@ -2609,14 +2852,15 @@
           "km": "ទិវា​ទេស​ចរណ៍​ពិ​ភព​លោក"
         },
         "sourceIds": [
-          "khmer-lunar-calendar-capture-2026-09-10"
+          "khmer-lunar-calendar-capture-2026-09-10",
+          "research-event-origins-2026-09-18"
         ],
         "rule": {
           "id": "world_tourism_day",
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 1980,
           "throughYear": 2200,
           "month": 9,
           "day": 27
@@ -2630,35 +2874,37 @@
           "km": "ទិវា​ពិភពលោក​កំចាត់​រោគ​របេង"
         },
         "sourceIds": [
-          "khmer-lunar-calendar-capture-2026-09-10"
+          "khmer-lunar-calendar-capture-2026-09-10",
+          "research-event-origins-2026-09-18"
         ],
         "rule": {
           "id": "world_tuberculosis_day",
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 1982,
           "throughYear": 2200,
           "month": 3,
           "day": 24
         }
       },
       {
-        "id": "world_water_meteorological_day",
+        "id": "world_water_day",
         "kind": "observance",
         "names": {
-          "en": "World Water and World Meteorological Day",
-          "km": "ទិវាទឹក និងឧតុនិយមពិភពលោក"
+          "en": "World Water Day",
+          "km": "ទិវាទឹកពិភពលោក"
         },
         "sourceIds": [
-          "khmer-lunar-calendar-capture-2026-09-10"
+          "khmer-lunar-calendar-capture-2026-09-10",
+          "research-event-origins-2026-09-18"
         ],
         "rule": {
-          "id": "world_water_meteorological_day",
+          "id": "world_water_day",
           "type": "solar",
           "offset": 0,
           "duration": 1,
-          "fromYear": 2000,
+          "fromYear": 1993,
           "throughYear": 2200,
           "month": 3,
           "day": 22
@@ -5408,6 +5654,42 @@
         ],
         "sourceId": "khmer-lunar-calendar-capture-2026-09-10",
         "reason": "Legacy archive historical parity (recorded June 13 / lunar 05/06 instead of lunar 5/5)"
+      },
+      {
+        "eventId": "international_peace_day_ga_opening",
+        "year": 1998,
+        "dates": [
+          "1998-09-09"
+        ],
+        "sourceId": "research-event-origins-2026-09-18",
+        "reason": "The 53rd General Assembly session opened early on 9 September 1998, moving the observance off the third Tuesday (UN session record and daily press briefing)."
+      },
+      {
+        "eventId": "international_peace_day_ga_opening",
+        "year": 1999,
+        "dates": [
+          "1999-09-14"
+        ],
+        "sourceId": "research-event-origins-2026-09-18",
+        "reason": "The 54th session opened on the second Tuesday, 14 September 1999; the Secretary-General’s message SG/SM/7126 dates the observance to that day."
+      },
+      {
+        "eventId": "international_peace_day_ga_opening",
+        "year": 2000,
+        "dates": [
+          "2000-09-05"
+        ],
+        "sourceId": "research-event-origins-2026-09-18",
+        "reason": "The Millennium Assembly opened on 5 September 2000 and the observance was held that day (UN press release GA/9746; SG/SM/7528 Peace Bell remarks)."
+      },
+      {
+        "eventId": "international_peace_day_ga_opening",
+        "year": 2001,
+        "dates": [
+          "2001-09-14"
+        ],
+        "sourceId": "research-event-origins-2026-09-18",
+        "reason": "Marked on 14 September 2001: the General Assembly opening and the observance moved after the 11 September attacks (UN history of the International Day of Peace)."
       },
       {
         "eventId": "king_sihamoni_birthday",
@@ -40292,6 +40574,428 @@
         {
           "section": "Event",
           "id": "chinese_winter_solstice",
+          "action": "changed"
+        }
+      ]
+    },
+    {
+      "revision": 8,
+      "at": "2026-09-18T04:53:57.054Z",
+      "note": "Extend historical commemorations before the legacy 2000 cutoff: start anniversary rules at their origins (fromYear = anniversaryBase + 1) for 17 events, start the Paris Peace Agreement (1991) and Win-Win Policy Day (1998) at their signing years, and add 10 static milestones for original dates: Victory Day 1979-01-07, Independence 1953-11-09, Constitution 1993-09-24, Angkor UNESCO 1992-12-14, ICJ Preah Vihear 1962-06-15, UN membership 1955-12-14, UNESCO membership 1951-07-03, National Police 1945-05-16, Labor Day 1886-05-01, Human Rights Day 1948-12-10.",
+      "changes": [
+        {
+          "section": "Version",
+          "id": "0.3.1",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "angkor_wat_unesco",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "birth_of_national_police",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "cambodia_joined_un",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "cambodia_joined_unesco",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "cambodian_older_persons_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "constitution_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "icj_preah_vihear_ownership",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "independence_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "international_children_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "international_human_rights_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "international_labor_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "international_women_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "national_culture_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "ozone_layer_preservation_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "paris_peace_agreement",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "static_angkor_wat_unesco",
+          "action": "added"
+        },
+        {
+          "section": "Event",
+          "id": "static_birth_of_national_police",
+          "action": "added"
+        },
+        {
+          "section": "Event",
+          "id": "static_cambodia_joined_un",
+          "action": "added"
+        },
+        {
+          "section": "Event",
+          "id": "static_cambodia_joined_unesco",
+          "action": "added"
+        },
+        {
+          "section": "Event",
+          "id": "static_constitution_day",
+          "action": "added"
+        },
+        {
+          "section": "Event",
+          "id": "static_icj_preah_vihear_ownership",
+          "action": "added"
+        },
+        {
+          "section": "Event",
+          "id": "static_independence_day",
+          "action": "added"
+        },
+        {
+          "section": "Event",
+          "id": "static_international_human_rights_day",
+          "action": "added"
+        },
+        {
+          "section": "Event",
+          "id": "static_international_labor_day",
+          "action": "added"
+        },
+        {
+          "section": "Event",
+          "id": "static_victory_over_genocide",
+          "action": "added"
+        },
+        {
+          "section": "Event",
+          "id": "victory_over_genocide",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "win_win_policy_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "world_environment_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "world_press_freedom_day",
+          "action": "changed"
+        }
+      ]
+    },
+    {
+      "revision": 9,
+      "at": "2026-09-18T05:12:34.862Z",
+      "note": "Correct royal commemoration start years: Coronation Day has been observed annually since the coronation on 29 October 2004 (was clamped at 2014, missing 2004-2013), and the King-Father commemoration was first observed on 15 October 2013, one year after his death (was clamped at 2014, missing 2013).",
+      "changes": [
+        {
+          "section": "Event",
+          "id": "king_coronation_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "king_father_commemoration",
+          "action": "changed"
+        }
+      ]
+    },
+    {
+      "revision": 10,
+      "at": "2026-09-18T05:45:15.202Z",
+      "note": "Apply event-origin research (docs/research dossiers): set 20 observances to verified first-observance years (international days 1948-1994 with Cambodia-first for Teachers 1997, Indigenous Peoples 2005 and Persons with Disabilities 1999; National Day of Remembrance moved to its 2018 statutory designation with a 1984 Day of Hatred milestone; Arbor Day from its 1992 revival; Fish Day 2003; Anti-Corruption 2004; Anti-Human-Trafficking 2007); split the combined World Water and World Meteorological Day into separate events (22 March since 1993, 23 March since 1961); model the pre-2002 International Day of Peace on the General Assembly opening day (third Tuesday, 1982-2001) with the documented 14 September 2001 exception; attach research provenance to the royal-day corrections.",
+      "changes": [
+        {
+          "section": "Source",
+          "id": "research-event-origins-2026-09-18",
+          "action": "added"
+        },
+        {
+          "section": "Event",
+          "id": "anti_corruption_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "anti_drug_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "anti_human_trafficking_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "arbor_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "civil_aviation_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "disabled_persons_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "indigenous_peoples_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "international_day_of_families",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "international_literacy_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "international_peace_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "international_peace_day_ga_opening",
+          "action": "added"
+        },
+        {
+          "section": "Event",
+          "id": "king_coronation_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "king_father_commemoration",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "national_day_of_remembrance",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "national_fish_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "national_population_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "static_day_of_hatred",
+          "action": "added"
+        },
+        {
+          "section": "Event",
+          "id": "world_aids_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "world_health_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "world_meteorological_day",
+          "action": "added"
+        },
+        {
+          "section": "Event",
+          "id": "world_no_tobacco_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "world_red_cross_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "world_teachers_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "world_tourism_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "world_tuberculosis_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "world_water_day",
+          "action": "added"
+        },
+        {
+          "section": "Event",
+          "id": "world_water_meteorological_day",
+          "action": "removed"
+        },
+        {
+          "section": "Correction",
+          "id": "international_peace_day_ga_opening/2001",
+          "action": "added"
+        }
+      ]
+    },
+    {
+      "revision": 11,
+      "at": "2026-09-18T06:36:18.881Z",
+      "note": "Apply round-2 research (docs/research/round_2_*): National Environmental Sanitation Day starts at its founding instrument, Sub-decree No. 47 of 12 June 1995 (first observed 23 November 1995, replacing the unverified 2017 start); International Buddhist Day starts at 8 April 2025, the first Cambodian observance per the Ministry of Information (the 16 August 2024 sub-decree postdates that year’s 8 April); the pre-2002 International Day of Peace gains documented exceptions for 1998 (9 September, early GA-53 opening), 1999 (14 September, second-Tuesday GA-54 opening per SG/SM/7126) and 2000 (5 September, Millennium Assembly).",
+      "changes": [
+        {
+          "section": "Source",
+          "id": "research-event-origins-2026-09-18",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "environmental_sanitation_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "international_buddhist_day",
+          "action": "changed"
+        },
+        {
+          "section": "Correction",
+          "id": "international_peace_day_ga_opening/1998",
+          "action": "added"
+        },
+        {
+          "section": "Correction",
+          "id": "international_peace_day_ga_opening/1999",
+          "action": "added"
+        },
+        {
+          "section": "Correction",
+          "id": "international_peace_day_ga_opening/2000",
+          "action": "added"
+        }
+      ]
+    },
+    {
+      "revision": 12,
+      "at": "2026-09-18T06:47:54.004Z",
+      "note": "Queen Mother’s Birthday starts in 1994, the first calendar year of the restored Kingdom’s holiday schedule (monarchy restored 24 September 1993, after that year’s 18 June). The maintainer attests the official day has not been missed in any year, resolving the placeholder 2000 start; Gemini’s round-1/2 dossiers independently claim the 1994 restoration-era start.",
+      "changes": [
+        {
+          "section": "Event",
+          "id": "queen_mother_birthday",
+          "action": "changed"
+        }
+      ]
+    },
+    {
+      "revision": 13,
+      "at": "2026-09-18T07:08:14.029Z",
+      "note": "Maintainer attests Win-Win Policy Day was commemorated every year through 2023, then renamed “Peace Day in Cambodia” and elevated to a national holiday from 29 December 2024 (Sub-decree No. 01 ANKr.BK of 1 January 2024 per docs/research). Rule bounds already matched (win-win 1998-2023, peace_day_cambodia from 2024); research provenance is now attached to both events.",
+      "changes": [
+        {
+          "section": "Event",
+          "id": "peace_day_cambodia",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "win_win_policy_day",
+          "action": "changed"
+        }
+      ]
+    },
+    {
+      "revision": 14,
+      "at": "2026-09-18T07:13:55.223Z",
+      "note": "Maintainer confirms 2026 is the 27th National Mine Awareness Day; counting back fixes anniversaryBase 1999 with the first observance on 24 February 2000, matching official usage (UNDP/CMAA 2024 = 25th). Values already matched; research provenance is attached to the event.",
+      "changes": [
+        {
+          "section": "Event",
+          "id": "national_mine_awareness_day",
+          "action": "changed"
+        }
+      ]
+    },
+    {
+      "revision": 15,
+      "at": "2026-09-18T07:17:25.694Z",
+      "note": "Maintainer endorses the Gemini round-2 account of the Day of Hatred: instituted by PRK National Assembly resolution in 1983 (adopted 18 August 1983 per TVK), first observed nationally on 20 May 1984, full official designation ទិវាចងកំហឹងចំពោះរបបប្រល័យពូជសាសន៍ ប៉ុល ពត អៀង សារី ខៀវ សំផន, shortened officially to ទិវាចងកំហឹង ២០ ឧសភា, and renamed ទិវាជាតិនៃការចងចាំ by Sub-decree No. 19 ANKr.BK in 2018 (settling the competing 2001 rename claim). Both endpoints already modeled correctly; the middle years 1985-2017 remain intentionally blank pending evidence of annual observance. No data change.",
+      "changes": []
+    },
+    {
+      "revision": 16,
+      "at": "2026-09-18T07:36:46.473Z",
+      "note": "Correct International Buddhist Day first observance year from 2025 to 2024 per maintainer confirmation",
+      "changes": [
+        {
+          "section": "Event",
+          "id": "international_buddhist_day",
           "action": "changed"
         }
       ]

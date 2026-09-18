@@ -1,0 +1,78 @@
+RESEARCH BRIEF — Khmer calendar event start years & conventions
+Context: A Cambodian calendar data catalog tracks observances with a "first
+observance year" and, for anniversaries, a "count-from year" (anniversaryBase).
+Cambodian calendars print anniversary counts like "47th" (ខួបលើកទី47).
+For each question, answer with: the exact YEAR (and date if relevant), whether
+the year refers to Cambodia's own first observance or the international one,
+and a source (prefer Royal Government of Cambodia sub-decrees/anukret, official
+holiday lists from the Ministry of Labour or National Bank of Cambodia, LRC
+lunar calendar publications, or the founding UN/UNESCO resolution).
+
+PRIORITY 0 — confirm two just-applied fixes
+1. King's Coronation Day (29 Oct): confirm it has been an annual public
+   holiday every year since the coronation of Norodom Sihamoni on 2004-10-29
+   (i.e., observed 2004 through 2013, not only from 2014).
+2. King-Father Commemoration Day (15 Oct, Norodom Sihanouk, died 2012-10-15):
+   confirm the FIRST annual observance was 2013-10-15 (government decree?)
+   and not 2014-10-15. Was anything official held on 2012-10-15 itself?
+
+PRIORITY 1 — international days currently clamped at start year 2000 in the
+data; find the true first observance year (Cambodia-specific if it exists,
+otherwise international first observance):
+3.  World Health Day, 7 April
+4.  World Red Cross Day, 8 May (first celebrated 1948? or does Cambodia tie it
+    to the Cambodian Red Cross, founded 18 Feb 1955?)
+5.  International Literacy Day, 8 September
+6.  World Tourism Day, 27 September
+7.  World AIDS Day, 1 December
+8.  World Tuberculosis Day, 24 March (commemorated since 1982, or WHO-adopted 1996?)
+9.  World No Tobacco Day, 31 May
+10. World Teachers' Day, 5 October
+11. International Day of Families, 15 May
+12. International Day of the World's Indigenous Peoples, 9 August (1994 or 1995?)
+13. International Day of Persons with Disabilities, 3 December
+14. International Day Against Drug Abuse, 26 June
+15. International Civil Aviation Day, 7 December (ICAO 1944 or UN-recognized 1996?)
+16. International Day of Peace, 21 September: the FIXED date only exists since
+    2002 (UN res 55/282); before that it was the 3rd Tuesday of September
+    (1981-2001). Confirm, so we can model pre-2002 correctly.
+17. National Day of Remembrance, 20 May: PRK-era "Day of Hatred" origin year
+    (1984?), and when the current name/revival began.
+
+PRIORITY 2 — Cambodia-specific days with unknown origin years:
+18. Queen Mother's birthday, 18 June (born 1936-06-18): when did it become an
+    officially observed day in the current era?
+19. Arbor Day (រុក្ខទិវា), 9 July: origin year?
+20. National Population Day, 11 July: Cambodia-specific origin?
+21. Water Policy Day (ទិវានយោបាយទឹក), 4 March: origin?
+22. National Mine Awareness Day, 24 February: what does the date mark, and is
+    the count-from year 1999 correct (first observed 2000)?
+23. Cambodian Older Persons Day, 1 October: does anything mark 1998-10-01, or
+    does Cambodia just adopt the UN day (since 1991)?
+24. National & World Environment Day, 5 June: is 1996 a real Cambodian origin,
+    or should the count start 1974 (first global observance)?
+25. Win-Win Policy Day vs Peace Day, both 29 December: was 29 Dec officially
+    commemorated every year 1999-2023 (as Win-Win Policy Day), and was 2024
+    truly the first year under the new "Peace Day" (ទិវាសន្តិភាព) name?
+26. Anti-Human Trafficking Day, 12 December (data starts 2006): origin?
+27. Confirm start years: Environmental Sanitation Day 23 Nov (2017), National
+    Fish Day 1 July (2001), Maternal-Newborn-Child Health Day 21 Feb (2012),
+    National Authors' Day 7 Dec (2024), International Buddhist Day 8 April (2024
+    — what exactly is this day, vs the UN's movable Vesak day?).
+28. International Anti-Corruption Day, 9 December: first observed 2003 or 2004
+    (UNCAC adopted 31 Oct 2003)?
+
+PRIORITY 3 — anniversary counting conventions as PRINTED on recent Cambodian
+calendars (we need the base year each count starts from):
+29. Ozone Layer Day, 16 Sep: counted from 1985 (Vienna Convention) or 1987
+    (Montreal Protocol, signed 16 Sep 1987)? What did 2026 prints say?
+30. International Children's Day, 1 June: counted from 1949 or 1950?
+    (2026 = 77th or 76th?)
+31. International Women's Day, 8 March: confirm the convention is from 1911
+    (2026 = 115th).
+32. World Press Freedom Day, 3 May: counted from 1993 or 1994?
+33. International Labor Day, 1 May: confirm from 1886 (2026 = 140th).
+34. Combined "World Water and World Meteorological Day" on 22 March: Cambodian
+    calendars list World Water Day (22 Mar) and World Meteorological Day
+    (23 Mar) — are they observed on separate dates (should we split the event)
+    or genuinely combined on one date?
