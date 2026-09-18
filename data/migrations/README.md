@@ -10,5 +10,5 @@ Run `npm run migrate:android:check` from a paired manager/Android workspace befo
 In the canonical catalog (`data/workspace.json`), this historical archive has been further streamlined:
 - The 349 unlinked archive occurrences were extracted into 24 first-class static date-backed events in `events` (9 Chinese traditional festivals spanning 2000–2030 and 15 UNESCO/historical milestones).
 - `eventCalendars` is retired (`[]`), cutting the export bundle size by ~90% (~108 KB) and eliminating the need for client applications to implement archive-versus-rule precedence logic.
-- Official public holidays for 2020–2027 were transcribed and confirmed directly from Royal Government Sub-Decrees (Anukret).
+- Official public holidays for 2016–2027 were transcribed and confirmed directly from Royal Government Sub-Decrees (Anukret).
 

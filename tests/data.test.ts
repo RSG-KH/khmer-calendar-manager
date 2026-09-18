@@ -111,3 +111,17 @@ test('schema-v1 catalogs upgrade without losing existing records', () => {
   assert.deepEqual(upgraded.eventCalendars, []);
   assert.equal(upgraded.events.length, legacy.events.length);
 });
+
+test('workspace catalog contains 12 verified official holiday years (2016–2027)', async () => {
+  const { readFile } = await import('node:fs/promises');
+  const ws = JSON.parse(await readFile(new URL('../data/workspace.json', import.meta.url), 'utf8'));
+  const catalog = validateCatalog(ws.data);
+  assert.equal(publicationIssues(catalog).length, 0);
+  assert.equal(catalog.holidayCalendars.length, 12);
+  const years = catalog.holidayCalendars.map(c => c.year);
+  assert.deepEqual(years, [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027]);
+  assert.ok(catalog.holidayCalendars.every(c => c.coverage === 'complete'));
+  const totalHolidays = catalog.holidayCalendars.flatMap(c => c.holidays);
+  assert.equal(totalHolidays.length, 283);
+  assert.ok(totalHolidays.every(h => h.status === 'active' && h.dates.length === 1 && h.sourceIds.length > 0 && !!h.eventId));
+});

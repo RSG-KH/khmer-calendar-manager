@@ -56,11 +56,28 @@ For lightweight runtime consumption in downstream applications (Android and PWA)
 - Schema-v1 catalogs are accepted and upgraded in memory with an empty `eventCalendars` array. New exports use schema version 2.
 
 ### Standardized official holiday calendars
-Official holiday calendars (`holidayCalendars`) across all confirmed years (2020–2027) are standardized as individual per-day entries (173 total off-days):
+Official holiday calendars (`holidayCalendars`) across all confirmed years (2016–2027) are standardized as individual per-day entries (283 total off-days across 12 consecutive years):
 - **Single-Day Scope**: Each entry covers exactly one off-day date (`dates: ["YYYY-MM-DD"]`).
 - **Explicit `eventId`**: Every holiday entry provides an `eventId` referencing its canonical recurrence rule in `events` (e.g. `khmer_new_year_1`, `pchum_ben_festival`, `water_festival`, `new_year_day`), allowing client apps (Android, PWA) to unambiguously match official leave to calculated observances with zero duplicate rendering.
 - **Day-Specific Names**: Multi-day holidays carry their traditional day-specific titles (e.g. Khmer New Year Days 1–3: *Moha Sankranta*, *Veareak Vanabat*, *Veareak Laeung Sak*).
 - **Clean Citations**: Government decrees provide their official Khmer decree titles in source `notes` and English document references in `reference`.
+
+#### Verified Royal Government Sub-Decrees (2016–2027)
+
+| Year | Sub-Decree No. | Signed Date | Khmer Heading / Lunar Alignment | Signatory | Off-Days |
+|:---:|:---|:---:|:---|:---|:---:|
+| **2016** | No. 137 ANKr.BK | 2015-10-01 | ៤ រោច ខែ ភទ្របទ ឆ្នាំមមែ សប្តស័ក ព.ស.២៥៥៩ | PM Hun Sen | 28 |
+| **2017** | No. 223 ANKr.BK | 2016-10-27 | ១១ រោច ខែ អស្សុជ ឆ្នាំវក អដ្ឋស័ក ព.ស.២៥៦០ | PM Hun Sen | 27 |
+| **2018** | No. 202 ANKr.BK | 2017-11-28 | ១០ កើត ខែ មិគសិរ ឆ្នាំរកា នព្វស័ក ព.ស.២៥៦១ | PM Hun Sen | 27 |
+| **2019** | No. 126 ANKr.BK | 2018-10-04 | ១០ រោច ខែ ភទ្របទ ឆ្នាំច សំរឹទ្ធិស័ក ព.ស.២៥៦២ | PM Hun Sen | 28 |
+| **2020** | No. 112 ANKr.BK | 2019-08-02 | ២ កើត ខែ ស្រាពណ៍ ឆ្នាំកុរ ឯកស័ក ព.ស.២៥៦៣ | PM Hun Sen | 22 |
+| **2021** | No. 131 ANKr.BK | 2020-08-26 | ៨ កើត ខែ ភទ្របទ ឆ្នាំជូត ទោស័ក ព.ស.២៥៦៤ | PM Hun Sen | 21 |
+| **2022** | No. 145 ANKr.BK | 2021-08-19 | ១១ កើត ខែ ស្រាពណ៍ ឆ្នាំឆ្លូវ ត្រីស័ក ព.ស.២៥៦៥ | PM Hun Sen | 21 |
+| **2023** | No. 166 ANKr.BK | 2022-08-12 | ១៥ កើត ខែ ស្រាពណ៍ ឆ្នាំខាល ចត្វាស័ក ព.ស.២៥៦៦ | PM Hun Sen | 21 |
+| **2024** | No. 230 ANKr.BK | 2023-08-18 | ២ កើត ខែ ស្រាពណ៍ ឆ្នាំថោះ បញ្ចស័ក ព.ស.២៥៦៧ | PM Hun Sen | 22 |
+| **2025** | No. 204 ANKr.BK | 2024-08-29 | ១០ រោច ខែ ស្រាពណ៍ ឆ្នាំរោង ឆស័ក ព.ស.២៥៦៨ | PM Hun Manet | 22 |
+| **2026** | No. 167 ANKr.BK | 2025-09-05 | ១៣ កើត ខែ ភទ្របទ ឆ្នាំម្សាញ់ សប្តស័ក ព.ស.២៥៦៩ | PM Hun Manet | 22 |
+| **2027** | No. 198 ANKr.BK | 2026-09-16 | ៥ កើត ខែ ភទ្របទ ឆ្នាំមមែ អដ្ឋស័ក ព.ស.២៥៧០ | PM Hun Manet | 22 |
 
 An official holiday requires government sources, dates within its calendar year, and `status: "active"` or `"cancelled"`. A cancelled holiday retains its dates and requires an explanatory `note`. Linking an `eventId` is optional and does not turn calculated dates into official leave.
 
