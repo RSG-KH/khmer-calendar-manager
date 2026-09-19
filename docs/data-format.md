@@ -98,7 +98,7 @@ An official holiday requires government sources, dates within its calendar year,
   - **2015**: Corrected to **14:01** per the primary Khmer broadcast announcement (superseding the secondary 14:02 transcription).
 - Consumers apply their own grade policy or display the evidenced record where available (12 of the 19 years match the engine's traditional 24-minute lattice calculation to the exact minute: 1997, 2010, 2016–2023, 2025, 2026). A year without an admissible record shows no arrival time — there is **no formula fallback** from the engine's estimate, whose minutes lie on a 24-minute lattice and disagree with off-lattice publications by 1–24 minutes.
 
-Arrival records are evidence, not holidays: they never enter `holidayCalendars`, carry no leave implications, and clock times must not be embedded in event or holiday names — the detail view pairs the estimate with the graded record instead.
+Arrival records are evidence, not holidays: they never enter `holidayCalendars`, carry no leave implications, and clock times must not be embedded in event or holiday names — client applications (Android, PWA) format the arrival time directly in the Moha Sangkran title/header, pairing the 12-hour clock with native period descriptors (`ព្រឹក`, `រសៀល`, `ល្ងាច`, `យប់`, `រំលងអធ្រាត្រ`) and the suffix `(ផ្លូវការ)` / `(Official)` for evidenced records or `(ប៉ាន់ស្មាន)` / `(Estimated)` for calculated predictions.
 
 ## Generate and review a year
 
