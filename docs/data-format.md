@@ -1,4 +1,4 @@
-# Data format — version 2
+﻿# Data format — version 3
 
 The manager owns the catalog schema. Recurrence configurations use the engine's public rule contract. Unknown fields, duplicate IDs/dates, invalid dates and missing source references are rejected.
 
@@ -8,15 +8,18 @@ The manager owns the catalog schema. Recurrence configurations use the engine's 
 
 ```json
 {
-  "schemaVersion": 2,
-  "dataVersion": "0.2.0",
+  "schemaVersion": 3,
+  "dataVersion": "0.4.0",
   "sources": [],
   "events": [],
   "eventCalendars": [],
   "holidayCalendars": [],
-  "overrides": []
+  "overrides": [],
+  "newYearArrivals": []
 }
 ```
+
+Schema version 3 adds the `newYearArrivals` evidence section; version 2 catalogs remain valid without it, and version 1 catalogs upgrade in memory as before. A version 2 catalog carrying the arrival section is rejected — move it to version 3.
 
 IDs use lowercase letters, digits, hyphens, underscores or dots, start with a letter/digit, and are at most 80 characters. Dates use `YYYY-MM-DD`. Official calendar years and calculation previews support 1800–2200; original historical dates and explicit records can use Gregorian years 1–9999.
 
@@ -29,6 +32,9 @@ IDs use lowercase letters, digits, hyphens, underscores or dots, start with a le
 | Yearly calendar | `year`, `coverage`, `sourceIds`, `holidays` |
 | Holiday | `id`, `names`, `dates`, `status`, `sourceIds`; optional `eventId`, `note` |
 | Correction | `eventId`, `year`, `dates`, `sourceId`, `reason` |
+| New Year arrival (v3) | `year`, `status`, `sourceIds`, `zoneStated`, `interpretedZone`, `retrieved`; optional `interpretedOffset`, `zoneBasis`, `sourceConflictNote` |
+| New Year arrival, evidenced | adds `localDate`, `localTime`, `minuteOfDay`, `second`, `precision`, `role`, `grade` |
+| New Year arrival, disputed | adds `disputeReason`, `claims`; claim fields are `localDate`, `localTime`, `precision`, `sourceIds`, optional `role` |
 
 Names and descriptions are objects with `en` and `km` strings. Draft names require at least one language; exports require both names. Description text is optional. Source kinds are `government`, `calendar`, `historical` or `other`; a source needs a URL or document reference. URLs are HTTP(S); source records are not fetched or automatically authenticated.
 
@@ -53,7 +59,7 @@ For lightweight runtime consumption in downstream applications (Android and PWA)
 - All 9 traditional Chinese festivals (Chinese New Year, Lantern/Spirit Parade, Qingming, Zongzi, Ghost Festival, Mid-Autumn, Winter Solstice, etc.) are computed dynamically across 1900–2100 via `chinese_festival` recurrence rules (`monthPolicy: "cn-reference-utc8"`). Three explicit `overrides` document historical published archive parity for Qingming (2009, 2029) and Zongzi (2013).
 - Remaining non-rule events (26 UNESCO/historical milestones, including the 10 pre-2000 origin dates such as Victory Day 1979-01-07 and Independence 1953-11-09, plus the 1984 Day of Hatred) are modeled directly as first-class `Event` records in `events` with explicit `dates: ["YYYY-MM-DD", ...]`.
 - Consequently, `eventCalendars` is kept empty (`[]`), dropping the uncompressed JSON export bundle down to ~131 KB and eliminating the need for client apps to implement archive-versus-rule precedence logic.
-- Schema-v1 catalogs are accepted and upgraded in memory with an empty `eventCalendars` array. New exports use schema version 2.
+- Schema-v1 and v2 catalogs are accepted and upgraded in memory. New exports use schema version 3 (which added the `newYearArrivals` catalog section).
 
 ### Standardized official holiday calendars
 Official holiday calendars (`holidayCalendars`) across all confirmed years (2016–2027) are standardized as individual per-day entries (283 total off-days across 12 consecutive years):
@@ -80,6 +86,19 @@ Official holiday calendars (`holidayCalendars`) across all confirmed years (2016
 | **2027** | No. 198 ANKr.BK | 2026-09-16 | ៥ កើត ខែ ភទ្របទ ឆ្នាំមមែ អដ្ឋស័ក ព.ស.២៥៧០ | PM Hun Manet | 22 |
 
 An official holiday requires government sources, dates within its calendar year, and `status: "active"` or `"cancelled"`. A cancelled holiday retains its dates and requires an explanatory `note`. Linking an `eventId` is optional and does not turn calculated dates into official leave.
+
+## New Year arrival evidence (schema v3)
+
+`newYearArrivals` carries the **Moha Sangkran arrival clocks as published evidence** — the engine's `arrivalEstimate` is the prediction, never this record. The dataset integrates the 18 September 2026 research package (`research-khmer-new-year-time`) with the National Television of Cambodia (TVK, ទូរទស្សន៍ជាតិកម្ពុជា) broadcast archive across 19 evidenced years (1997, 2009, 2010–2026 unbroken), reproducible via `node tools/seed-arrivals.ts`.
+
+- An **evidenced** record stores one absolute `localDate` + `localTime`/`minuteOfDay` (clock digits must match `minuteOfDay`; `second` is `null` at minute precision or integer seconds when broadcast with second precision, e.g. `2024` at `22:17:24`), its research `grade` (`A` direct government statement … `E` website data), `role` (`traditional_arrival`, never satisfiable by `ceremony`), and zone fields: `zoneStated` records what the source printed, `interpretedZone`/`interpretedOffset`/`zoneBasis` store the modern UTC+07:00 interpretation separately. Validation enforces that an evidenced `localDate` equals the engine's festival start for that year — a source-date disagreement must be recorded as **disputed**, never as data that overrides validated dates.
+- A **disputed** record carries no single clock: it preserves each published `claims` form (including second-precision and `ceremony` entries) plus a `disputeReason`. While early research quarantined 2020 and 2024, both have been resolved with direct official television broadcast evidence:
+  - **2020**: Confirmed as **13 April 2020 at 20:48** by TVK official announcement, resolving a diaspora printed calendar typo that printed 14 April with an invalid weekday and corroborating the engine's 13 April festival start.
+  - **2024**: Confirmed as **13 April 2024 at 22:17:24** by TVK official broadcast, resolving the dispute between the 22:24 traditional lattice calculation and 22:17 ceremony schedule.
+  - **2015**: Corrected to **14:01** per the primary Khmer broadcast announcement (superseding the secondary 14:02 transcription).
+- Consumers apply their own grade policy or display the evidenced record where available (12 of the 19 years match the engine's traditional 24-minute lattice calculation to the exact minute: 1997, 2010, 2016–2023, 2025, 2026). A year without an admissible record shows no arrival time — there is **no formula fallback** from the engine's estimate, whose minutes lie on a 24-minute lattice and disagree with off-lattice publications by 1–24 minutes.
+
+Arrival records are evidence, not holidays: they never enter `holidayCalendars`, carry no leave implications, and clock times must not be embedded in event or holiday names — the detail view pairs the estimate with the graded record instead.
 
 ## Generate and review a year
 
@@ -146,6 +165,6 @@ example-holiday,Example only,សាកល្បង,2026-07-01,2026-07-02,active,
 
 The data file is the normalized catalog above. Arrays are ordered by stable IDs/year, date and source-ID arrays are sorted, object keys are ordered, and the file ends in one LF newline. History and backups are omitted. The file contains rule definitions and necessary explicit records; recurring date occurrences are calculated by the consumer's engine.
 
-The separate manifest records `schemaVersion`, `dataVersion`, `engineVersion`, `file`, `sha256` and `bytes`. Its checksum covers the **exact UTF-8 data-file bytes**, including the final newline. Consumers should verify the checksum and supported schema/engine version before adoption. A checksum identifies content; it does not certify the publication's authenticity.
+The separate manifest records `schemaVersion` (matching the catalog: 3 since the arrival section), `dataVersion`, `engineVersion`, `file`, `sha256` and `bytes`. Its checksum covers the **exact UTF-8 data-file bytes**, including the final newline. Consumers should verify the checksum and supported schema/engine version before adoption. A checksum identifies content; it does not certify the publication's authenticity.
 
 Dates in a cancelled holiday record are retained for audit/display; consumers must exclude cancelled records when determining active public holidays. `coverage: "partial"` means missing dates are unknown, not confirmed non-holidays. Import and export never infer substitute leave from weekends.

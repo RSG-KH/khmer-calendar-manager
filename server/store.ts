@@ -7,9 +7,9 @@ import { exportContent, validateWorkspace } from '../src/workspace.ts';
 export class ConflictError extends Error {}
 export function digest(text: string): string { return createHash('sha256').update(text).digest('hex'); }
 export function buildExport(data: Catalog) {
-  const { content, filename, dataVersion } = exportContent(data);
+  const { content, filename, dataVersion, schemaVersion } = exportContent(data);
   return { filename, content, manifest: {
-    schemaVersion: 2, dataVersion, engineVersion: ENGINE_VERSION,
+    schemaVersion, dataVersion, engineVersion: ENGINE_VERSION,
     file: filename, sha256: digest(content), bytes: Buffer.byteLength(content),
   } };
 }

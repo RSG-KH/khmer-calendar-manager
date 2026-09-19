@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { canonical, changes, ENGINE_VERSION, publicationIssues, validateCatalog } from '../src/model.ts';
+import { canonical, changes, ENGINE_VERSION, normalize, publicationIssues, validateCatalog, type Catalog, type NewYearArrival } from '../src/model.ts';
 import { dateRange, parseCsv, planImport } from '../src/imports.ts';
 import { preview } from '../src/preview.ts';
 import { buildExport } from '../server/store.ts';
@@ -105,11 +105,58 @@ test('exports are deterministic; incomplete translations remain editable drafts'
   assert.equal(canonical({ z: undefined, a: 1 }), '{"a":1}');
 });
 test('schema-v1 catalogs upgrade without losing existing records', () => {
-  const legacy: any = catalog(); legacy.schemaVersion = 1; delete legacy.eventCalendars;
+  const legacy: any = catalog(); legacy.schemaVersion = 1; delete legacy.eventCalendars; delete legacy.newYearArrivals;
   const upgraded = validateCatalog(legacy);
   assert.equal(upgraded.schemaVersion, 2);
   assert.deepEqual(upgraded.eventCalendars, []);
   assert.equal(upgraded.events.length, legacy.events.length);
+});
+test('New Year arrival records enforce schema v3 and the engine festival start', () => {
+  const base = catalog();
+  const arrival: NewYearArrival = { year: 2026, localDate: '2026-04-14', localTime: '10:48', minuteOfDay: 648, second: null,
+    precision: 'minute', role: 'traditional_arrival', grade: 'A', status: 'evidenced', sourceIds: [source.id],
+    zoneStated: false, interpretedZone: 'Asia/Phnom_Penh', retrieved: '2026-09-18' };
+  assert.equal(validateCatalog({ ...base, newYearArrivals: [arrival] }).newYearArrivals?.length, 1);
+  const stripped: any = structuredClone(base); delete stripped.newYearArrivals;
+  assert.throws(() => validateCatalog(stripped), /requires the arrival section/);
+  const v2: any = structuredClone(base); v2.schemaVersion = 2; delete v2.newYearArrivals;
+  assert.equal(validateCatalog(v2).schemaVersion, 2);
+  assert.throws(() => validateCatalog({ ...v2, newYearArrivals: [arrival] }), /requires schemaVersion 3/);
+  const checks: ((a: any) => void)[] = [
+    a => { a.localDate = '2026-04-13'; },                     // not the engine festival start
+    a => { a.localTime = '10:49'; },                          // clock no longer matches minuteOfDay
+    a => { a.minuteOfDay = 649; },                            // out of sync with the clock
+    a => { a.second = 30; },                                  // second value at minute precision
+    a => { a.sourceIds = ['missing']; },                      // unknown source
+    a => { a.zoneStated = 'no'; },                            // not a boolean
+    a => { a.retrieved = '18/09/2026'; },                     // not an ISO date
+    a => { delete a.grade; },                                 // evidenced records carry a grade
+    a => { a.claims = [{ localDate: '2026-04-14', localTime: '10:48', precision: 'minute', sourceIds: [source.id] }]; },
+  ];
+  for (const mutate of checks) { const a = structuredClone(arrival); mutate(a); assert.throws(() => validateCatalog({ ...base, newYearArrivals: [a] })); }
+  const disputed: NewYearArrival = { year: 2024, status: 'disputed', sourceIds: [source.id], zoneStated: false,
+    interpretedZone: 'Asia/Phnom_Penh', retrieved: '2026-09-18',
+    disputeReason: '22:24 versus 22:17:24; no official almanac acquired',
+    claims: [
+      { localDate: '2024-04-13', localTime: '22:24', precision: 'minute', sourceIds: [source.id] },
+      { localDate: '2024-04-13', localTime: '22:17:24', precision: 'second', sourceIds: [source.id] },
+      { localDate: '2024-04-13', localTime: '22:17', precision: 'minute', role: 'ceremony', sourceIds: [source.id] },
+    ] };
+  assert.equal(validateCatalog({ ...base, newYearArrivals: [disputed] }).newYearArrivals?.[0].claims?.length, 3);
+  for (const mutate of [
+    (d: any) => { delete d.disputeReason; },
+    (d: any) => { d.claims = []; },
+    (d: any) => { d.localTime = '22:24'; },
+    (d: any) => { d.claims[1].localTime = '22:17'; },
+    (d: any) => { d.claims[0].localDate = '2023-04-13'; },
+  ] as ((d: any) => void)[]) { const d = structuredClone(disputed); mutate(d); assert.throws(() => validateCatalog({ ...base, newYearArrivals: [d] })); }
+  const twin = { year: 2026, status: 'disputed', sourceIds: [source.id], zoneStated: false,
+    interpretedZone: 'Asia/Phnom_Penh', retrieved: '2026-09-18', disputeReason: 'duplicate year',
+    claims: [{ localDate: '2026-04-14', localTime: '10:48', precision: 'minute', sourceIds: [source.id] }] };
+  assert.throws(() => validateCatalog({ ...base, newYearArrivals: [structuredClone(arrival), twin] }), /duplicate/);
+  const data = { ...base, newYearArrivals: [structuredClone(arrival), structuredClone(disputed)] };
+  assert.deepEqual(normalize(validateCatalog(data)).newYearArrivals?.map(r => r.year), [2024, 2026]); // normalized by year
+  assert.ok(changes(base, data).some(c => c.section === 'New Year arrival' && c.action === 'added'));
 });
 
 test('workspace catalog contains 12 verified official holiday years (2016–2027)', async () => {
@@ -123,7 +170,7 @@ test('workspace catalog contains 12 verified official holiday years (2016–2027
   assert.ok(catalog.holidayCalendars.every(c => c.coverage === 'complete'));
   const totalHolidays = catalog.holidayCalendars.flatMap(c => c.holidays);
   assert.equal(totalHolidays.length, 283);
-  assert.equal(catalog.dataVersion, '0.3.3');
+  assert.equal(catalog.dataVersion, '0.4.0');
   const subdecreeSources = catalog.sources.filter(s => s.id.startsWith('subdecree-'));
   assert.equal(subdecreeSources.length, 12);
   for (const s of subdecreeSources) {
@@ -138,4 +185,48 @@ test('workspace catalog contains 12 verified official holiday years (2016–2027
       assert.ok(s.notes?.includes('ចុះហត្ថលេខាដោយ សម្តេចមហាបវរធិបតី ហ៊ុន ម៉ាណែត នាយករដ្ឋមន្ត្រី'), `Khmer signatory for ${year}`);
     }
   }
+});
+
+test('workspace carries the arrival-time evidence dataset with TVK broadcast archive', async () => {
+  const { readFile } = await import('node:fs/promises');
+  const { engine } = await import('../src/model.ts');
+  const ws = JSON.parse(await readFile(new URL('../data/workspace.json', import.meta.url), 'utf8'));
+  const catalog = validateCatalog(ws.data);
+  assert.equal(catalog.schemaVersion, 3);
+  assert.equal(catalog.dataVersion, '0.4.0');
+  const arrivals = catalog.newYearArrivals!;
+  assert.equal(arrivals.length, 19);
+  assert.deepEqual(arrivals.map(r => r.year),
+    [1997, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]);
+  assert.ok(arrivals.every(r => r.status === 'evidenced'));
+  // Evidence records never override the engine's validated festival dates.
+  for (const record of arrivals) {
+    assert.equal(record.localDate, engine.newYear(record.year).start.iso, String(record.year));
+    assert.equal(record.localDate.slice(0, 4), String(record.year));
+    assert.equal(record.grade, 'A');
+  }
+  const byYear = new Map(arrivals.map(r => [r.year, r]));
+  assert.equal(byYear.get(2012)!.localTime, '19:11');       // upstream's Apr 14 is never reintroduced
+  assert.equal(byYear.get(2015)!.localTime, '14:01');       // TVK Khmer text confirms 14:01 (not 14:02)
+  assert.equal(byYear.get(2017)!.localTime, '03:12');       // TVK Khmer text confirms 03:12
+  assert.equal(byYear.get(2020)!.localTime, '20:48');       // TVK Facebook announcement resolves 2020 on 13 April
+  assert.equal(byYear.get(2021)!.localTime, '04:00');
+  assert.equal(byYear.get(2023)!.localTime, '16:00');
+  assert.equal(byYear.get(2024)!.localTime, '22:17:24');    // TVK official broadcast resolves 2024 with second precision
+  assert.equal(byYear.get(2024)!.precision, 'second');
+  assert.equal(byYear.get(2024)!.second, 24);
+  assert.equal(byYear.get(2025)!.minuteOfDay, 288);          // AKP + TVK grade A
+  assert.equal(byYear.get(2026)!.minuteOfDay, 648);
+  for (const year of [2025, 2026]) {
+    const record = byYear.get(year)!;
+    assert.ok(record.sourceIds.some(id => id.startsWith('arrival-s2')));
+    assert.ok(record.sourceIds.some(id => id.startsWith('arrival-tvk-')));
+  }
+  // No event or holiday title embeds a clock time anywhere in the catalog.
+  const titled = [...catalog.events.map(e => e.names), ...catalog.holidayCalendars.flatMap(c => c.holidays.map(h => h.names))];
+  assert.ok(!titled.some(names => /\d{1,2}:\d{2}/.test(names.en) || /\d{1,2}:\d{2}/.test(names.km) || /[០-៩]{2}:[០-៩]{2}/.test(names.km)));
+  const day1Names = catalog.holidayCalendars.flatMap(c => c.holidays.filter(h => h.eventId === 'khmer_new_year_1').map(h => h.names.en));
+  assert.equal(day1Names.length, 12);                              // every confirmed year 2016–2027
+  assert.equal(new Set(day1Names).size, 1);                        // one canonical day-1 name, no clocks
+  assert.equal(day1Names[0], 'Khmer New Year – Moha Sankranta');
 });

@@ -28,9 +28,25 @@ export type HolidayCalendar = {
   year: number; coverage: 'complete' | 'partial'; sourceIds: string[]; holidays: Holiday[];
 };
 export type Override = { eventId: string; year: number; dates: string[]; sourceId: string; reason: string };
+/** Source-tagged Moha Sangkran arrival observation. Evidence grade and dispute state are
+ *  research metadata; the engine's arrivalEstimate is the prediction, never this record. */
+export type NewYearArrivalClaim = {
+  localDate: string; localTime: string; precision: 'minute' | 'second';
+  role?: 'traditional_arrival' | 'ceremony'; sourceIds: string[];
+};
+export type NewYearArrival = {
+  year: number; status: 'evidenced' | 'disputed'; grade?: string; sourceIds: string[];
+  zoneStated: boolean; interpretedZone: string; interpretedOffset?: string; zoneBasis?: string;
+  retrieved: string; sourceConflictNote?: string; disputeReason?: string; claims?: NewYearArrivalClaim[];
+} & ({
+  status: 'evidenced'; localDate: string; localTime: string; minuteOfDay: number;
+  second: number | null; precision: 'minute' | 'second'; role: 'traditional_arrival' | 'ceremony'; grade: string;
+} | { status: 'disputed'; disputeReason: string; claims: NewYearArrivalClaim[] });
 export type Catalog = {
-  schemaVersion: 2; dataVersion: string; sources: Source[]; events: Event[];
+  schemaVersion: 2 | 3; dataVersion: string; sources: Source[]; events: Event[];
   eventCalendars: EventCalendar[]; holidayCalendars: HolidayCalendar[]; overrides: Override[];
+  /** Required at schemaVersion 3; absent in version 2 catalogs. */
+  newYearArrivals?: NewYearArrival[];
 };
 export type Change = { section: string; id: string; action: 'added' | 'changed' | 'removed' };
 export type HistoryEntry = { revision: number; at: string; note: string; changes: Change[] };
@@ -38,7 +54,7 @@ export type Workspace = { revision: number; data: Catalog; history: HistoryEntry
 export type Snapshot = { workspace: Workspace; etag: string; engineVersion: string };
 
 export function emptyCatalog(): Catalog {
-  return { schemaVersion: 2, dataVersion: '0.1.0', sources: [], events: [], eventCalendars: [], holidayCalendars: [], overrides: [] };
+  return { schemaVersion: 3, dataVersion: '0.1.0', sources: [], events: [], eventCalendars: [], holidayCalendars: [], overrides: [], newYearArrivals: [] };
 }
 
 export class ValidationError extends Error {}
@@ -100,8 +116,10 @@ export function validateSource(input: unknown, path = 'source'): Source {
 }
 
 export function validateCatalog(input: unknown): Catalog {
-  const raw = object(input, 'catalog', ['schemaVersion', 'dataVersion', 'sources', 'events', 'eventCalendars', 'holidayCalendars', 'overrides']);
-  if (![1, 2].includes(raw.schemaVersion)) fail('schemaVersion', 'only versions 1 and 2 are supported');
+  const raw = object(input, 'catalog', ['schemaVersion', 'dataVersion', 'sources', 'events', 'eventCalendars', 'holidayCalendars', 'overrides', 'newYearArrivals']);
+  if (![1, 2, 3].includes(raw.schemaVersion)) fail('schemaVersion', 'only versions 1, 2 and 3 are supported');
+  if (raw.schemaVersion === 3 && raw.newYearArrivals === undefined) fail('newYearArrivals', 'schemaVersion 3 requires the arrival section; use an empty array when unused');
+  if (raw.schemaVersion !== 3 && raw.newYearArrivals !== undefined) fail('newYearArrivals', 'the arrival section requires schemaVersion 3');
   const v = raw.schemaVersion === 1 ? { ...raw, schemaVersion: 2, eventCalendars: raw.eventCalendars ?? [] } : raw;
   if (typeof v.dataVersion !== 'string' || !/^\d+\.\d+\.\d+(?:-[a-z0-9.-]+)?$/.test(v.dataVersion)) fail('dataVersion', 'use a version such as 0.1.0 or 2026.1.0');
   for (const key of ['sources', 'events', 'eventCalendars', 'holidayCalendars', 'overrides']) array(v[key], key);
@@ -190,6 +208,60 @@ export function validateCatalog(input: unknown): Catalog {
     if (event.kind === 'historical' && o.dates.some((d: string) => d < event.originalDate!)) fail(p, 'a correction cannot precede the original historical date');
   });
   unique(v.overrides.map((o: Override) => `${o.eventId}/${o.year}`), 'overrides');
+  if (v.newYearArrivals !== undefined) {
+    array(v.newYearArrivals, 'newYearArrivals');
+    const clockFields = ['localDate', 'localTime', 'minuteOfDay', 'second', 'precision', 'role', 'grade'];
+    v.newYearArrivals.forEach((input: unknown, i: number) => {
+      const p = `newYearArrivals[${i}]`, r = object(input, p,
+        [...clockFields, 'year', 'status', 'sourceIds', 'zoneStated', 'interpretedZone', 'interpretedOffset', 'zoneBasis', 'retrieved', 'sourceConflictNote', 'disputeReason', 'claims']);
+      year(r.year, `${p}.year`);
+      if (r.status === 'evidenced') {
+        for (const field of clockFields) if (r[field] === undefined) fail(p, `${field} is required when the arrival status is evidenced`);
+      } else if (r.status === 'disputed') {
+        for (const field of ['disputeReason', 'claims']) if (r[field] === undefined) fail(p, `${field} is required when the arrival status is disputed`);
+        for (const field of clockFields) if (r[field] !== undefined) fail(p, `${field} belongs to evidenced arrivals; a disputed year carries its claims`);
+      } else fail(p, 'status must be evidenced or disputed');
+      if (typeof r.zoneStated !== 'boolean') fail(`${p}.zoneStated`, 'record whether the source itself states a time zone');
+      text(r.interpretedZone, `${p}.interpretedZone`, 60);
+      if (r.interpretedOffset !== undefined) text(r.interpretedOffset, `${p}.interpretedOffset`, 10);
+      optionalText(r, 'zoneBasis', p, 500); optionalText(r, 'sourceConflictNote', p, 1000);
+      isoDate(r.retrieved, `${p}.retrieved`);
+      sourceIds(r.sourceIds, `${p}.sourceIds`);
+      if (r.status === 'evidenced') {
+        if (r.claims !== undefined) fail(p, 'claims belong to disputed arrivals');
+        if (!['traditional_arrival', 'ceremony'].includes(r.role)) fail(`${p}.role`, 'role must be traditional_arrival or ceremony');
+        if (!['minute', 'second'].includes(r.precision)) fail(`${p}.precision`, 'precision must be minute or second');
+        text(r.grade, `${p}.grade`, 20);
+        const date = isoDate(r.localDate, `${p}.localDate`);
+        if (Number(date.slice(0, 4)) !== r.year) fail(`${p}.localDate`, `must be in ${r.year}`);
+        // The dataset records publications; it must never override validated festival dates.
+        if (date !== engine.newYear(r.year).start.iso) fail(p, 'an evidenced arrival date must equal the engine festival start; record the disagreement as disputed');
+        if (!Number.isInteger(r.minuteOfDay) || r.minuteOfDay < 0 || r.minuteOfDay > 1439) fail(`${p}.minuteOfDay`, 'use a minute of day from 0 to 1439');
+        const parts = String(r.localTime).match(/^([01]\d|2[0-3]):([0-5]\d)(?::([0-5]\d))?$/);
+        if (!parts || (parts[3] !== undefined) !== (r.precision === 'second')) fail(`${p}.localTime`, 'use HH:MM, or HH:MM:SS at second precision');
+        else if (Number(parts[1]) * 60 + Number(parts[2]) !== r.minuteOfDay) fail(`${p}.localTime`, 'the clock must match minuteOfDay');
+        if (r.second !== null && !(Number.isInteger(r.second) && r.second >= 0 && r.second <= 59)) fail(`${p}.second`, 'use null, or 0–59 at second precision');
+        if (r.precision === 'minute' && r.second !== null) fail(`${p}.second`, 'minute precision records no seconds; use null');
+        if (r.precision === 'second' && !Number.isInteger(r.second)) fail(`${p}.second`, 'second precision requires the second value');
+      }
+      if (r.claims !== undefined) {
+        array(r.claims, `${p}.claims`);
+        if (!r.claims.length) fail(`${p}.claims`, 'a disputed arrival needs at least one claim');
+        r.claims.forEach((input: unknown, j: number) => {
+          const cp = `${p}.claims[${j}]`, c = object(input, cp, ['localDate', 'localTime', 'precision', 'role', 'sourceIds']);
+          const date = isoDate(c.localDate, `${cp}.localDate`);
+          if (Number(date.slice(0, 4)) !== r.year) fail(`${cp}.localDate`, `must be in ${r.year}`);
+          if (!['minute', 'second'].includes(c.precision)) fail(`${cp}.precision`, 'precision must be minute or second');
+          const parts = String(c.localTime).match(/^([01]\d|2[0-3]):([0-5]\d)(?::([0-5]\d))?$/);
+          if (!parts || (parts[3] !== undefined) !== (c.precision === 'second')) fail(`${cp}.localTime`, 'use HH:MM, or HH:MM:SS at second precision');
+          if (c.role !== undefined && !['traditional_arrival', 'ceremony'].includes(c.role)) fail(`${cp}.role`, 'role must be traditional_arrival or ceremony');
+          sourceIds(c.sourceIds, `${cp}.sourceIds`);
+        });
+      }
+      if (r.disputeReason !== undefined) text(r.disputeReason, `${p}.disputeReason`, 1000);
+    });
+    unique(v.newYearArrivals.map((r: any) => r.year), 'newYearArrivals');
+  }
   return structuredClone(v) as Catalog;
 }
 
@@ -222,6 +294,13 @@ export function normalize(data: Catalog): Catalog {
   c.holidayCalendars.forEach(y => { y.sourceIds.sort(); y.holidays.sort(byId); y.holidays.forEach(h => { h.dates.sort(); h.sourceIds.sort(); }); });
   c.overrides.sort((a, b) => (a.eventId < b.eventId ? -1 : a.eventId > b.eventId ? 1 : 0) || a.year - b.year);
   c.overrides.forEach(o => o.dates.sort());
+  if (c.newYearArrivals) {
+    c.newYearArrivals.sort((a, b) => a.year - b.year);
+    c.newYearArrivals.forEach(r => {
+      r.sourceIds.sort();
+      r.claims?.forEach(claim => claim.sourceIds.sort());
+    });
+  }
   return c;
 }
 export function changes(before: Catalog, after: Catalog): Change[] {
@@ -242,5 +321,6 @@ export function changes(before: Catalog, after: Catalog): Change[] {
   compare('Calendar', a.holidayCalendars.map(v => ({ ...v, holidays: undefined })), b.holidayCalendars.map(v => ({ ...v, holidays: undefined })), v => String(v.year));
   compare('Holiday', a.holidayCalendars.flatMap(c => c.holidays.map(h => ({ ...h, year: c.year }))), b.holidayCalendars.flatMap(c => c.holidays.map(h => ({ ...h, year: c.year }))), v => `${v.year}/${v.id}`);
   compare('Correction', a.overrides, b.overrides, v => `${v.eventId}/${v.year}`);
+  compare('New Year arrival', a.newYearArrivals ?? [], b.newYearArrivals ?? [], v => String(v.year));
   return result;
 }

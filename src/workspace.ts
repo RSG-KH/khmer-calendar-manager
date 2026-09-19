@@ -18,8 +18,8 @@ export function exportContent(data: Catalog) {
   const catalog = normalize(validateCatalog(data));
   const issues = publicationIssues(catalog);
   if (issues.length) throw new Error(issues.join('\n'));
-  return { filename: `khmer-calendar-data-${catalog.dataVersion}.json`, content: canonical(catalog) + '\n', dataVersion: catalog.dataVersion };
+  return { filename: `khmer-calendar-data-${catalog.dataVersion}.json`, content: canonical(catalog) + '\n', dataVersion: catalog.dataVersion, schemaVersion: catalog.schemaVersion };
 }
 
-export type ExportManifest = { schemaVersion: 2; dataVersion: string; engineVersion: string; file: string; sha256: string; bytes: number };
+export type ExportManifest = { schemaVersion: number; dataVersion: string; engineVersion: string; file: string; sha256: string; bytes: number };
 export type ExportBundle = { filename: string; content: string; manifest: ExportManifest };
