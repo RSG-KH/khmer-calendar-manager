@@ -6,6 +6,8 @@ A developer web app for maintaining events, historical facts, translations, sour
 
 ## Status
 
+**0.4.2 — Holiday English anniversary counts.** The 68 official holiday entries (2016–2027) linked to `anniversaryBase` events now carry ` · {anniversary}` in English too, aligned with their Khmer side (58 placeholder entries + 10 baked 2025–2026 counts). The preview substitutes holiday placeholders via the linked event's base, so no raw `{anniversary}` tokens appear in any preview row. Reproduce the seed with `node tools/seed-anniversary-holidays-en.ts`.
+
 **0.4.1 — English anniversary counts.** All 34 `anniversaryBase` events now carry the `{anniversary}` placeholder in **both** names (e.g. `Victory Over Genocide Day · {anniversary}` / `ទិវាជ័យជម្នះលើរបបប្រល័យពូជសាសន៍ ខួបលើកទី{anniversary}`). Consumers substitute `year - anniversaryBase` themselves: Khmer renders Khmer numerals (ខួបលើកទី៤៧), English renders an ordinal (· 47th) — the manager preview matches this. Client-side special cases appending the count (Android's hardcoded `victory_over_genocide` fallback) can be removed once apps adopt 0.4.1. Reproduce the seed with `node tools/seed-anniversary-en.ts`.
 
 **0.4.0 — Moha Sangkran arrival-time evidence (schema v3).** The default workspace (`data/workspace.json`) is fully seeded with 137 events (111 engine recurrence rules + 26 static date-backed events), 22 corrections (15 King Sihamoni birthday overrides 2005–2019, 3 Chinese festival archive-parity dates, and 4 documented International Day of Peace observance exceptions 1998–2001), and 12 officially confirmed government public holiday calendars (2016–2027) backed by Royal Government of Cambodia Sub-Decrees (Anukret) with document symbols and verified signatories in English and Khmer.

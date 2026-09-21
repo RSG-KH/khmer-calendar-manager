@@ -170,7 +170,7 @@ test('workspace catalog contains 12 verified official holiday years (2016–2027
   assert.ok(catalog.holidayCalendars.every(c => c.coverage === 'complete'));
   const totalHolidays = catalog.holidayCalendars.flatMap(c => c.holidays);
   assert.equal(totalHolidays.length, 283);
-  assert.equal(catalog.dataVersion, '0.4.1');
+  assert.equal(catalog.dataVersion, '0.4.2');
   const subdecreeSources = catalog.sources.filter(s => s.id.startsWith('subdecree-'));
   assert.equal(subdecreeSources.length, 12);
   for (const s of subdecreeSources) {
@@ -193,7 +193,7 @@ test('workspace carries the arrival-time evidence dataset with TVK broadcast arc
   const ws = JSON.parse(await readFile(new URL('../data/workspace.json', import.meta.url), 'utf8'));
   const catalog = validateCatalog(ws.data);
   assert.equal(catalog.schemaVersion, 3);
-  assert.equal(catalog.dataVersion, '0.4.1');
+  assert.equal(catalog.dataVersion, '0.4.2');
   const arrivals = catalog.newYearArrivals!;
   assert.equal(arrivals.length, 19);
   assert.deepEqual(arrivals.map(r => r.year),

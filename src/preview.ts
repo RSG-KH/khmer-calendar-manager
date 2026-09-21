@@ -58,11 +58,17 @@ export function preview(data: Catalog, selectedYear: number): { rows: PreviewRow
     }
   }
   for (const calendar of data.holidayCalendars.filter(c => c.year === selectedYear)) for (const h of calendar.holidays) {
+    const base = data.events.find(e => e.id === (h.eventId ?? h.id))?.anniversaryBase;
+    const anniversary = base === undefined ? undefined : selectedYear - base;
+    const names = anniversary === undefined || (!h.names.en.includes('{anniversary}') && !h.names.km.includes('{anniversary}')) ? h.names : {
+      en: h.names.en.replaceAll('{anniversary}', `${anniversary}${ordinalSuffix(anniversary)}`),
+      km: h.names.km.replaceAll('{anniversary}', khmerNumber(anniversary)),
+    };
     for (const date of h.dates) {
       const existing = rows.find(row => row.date === date && (row.id === h.id || (h.eventId !== undefined && row.eventId === h.eventId)));
       const details = { kind: h.status === 'draft' ? 'draft' : 'official', basis: h.status === 'draft' ? 'Awaiting review' : h.status === 'active' ? 'Official holiday' : 'Cancelled holiday', sourceIds: h.sourceIds, cancelled: h.status === 'cancelled' };
       if (existing) Object.assign(existing, details, { sourceIds: [...new Set([...existing.sourceIds, ...h.sourceIds])] });
-      else rows.push({ date, id: h.id, eventId: h.eventId, ...h.names, ...details });
+      else rows.push({ date, id: h.id, eventId: h.eventId, ...names, ...details });
     }
   }
   rows.sort((a, b) => a.date < b.date ? -1 : a.date > b.date ? 1 : a.id < b.id ? -1 : a.id > b.id ? 1 : a.kind < b.kind ? -1 : a.kind > b.kind ? 1 : 0);

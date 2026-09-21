@@ -1,8 +1,8 @@
 {
-  "revision": 22,
+  "revision": 23,
   "data": {
     "schemaVersion": 3,
-    "dataVersion": "0.4.1",
+    "dataVersion": "0.4.2",
     "sources": [
       {
         "id": "arrival-s02",
@@ -3229,7 +3229,7 @@
           {
             "id": "2016_constitution_day",
             "names": {
-              "en": "Constitution Day",
+              "en": "Constitution Day · {anniversary}",
               "km": "ទិវា​ប្រកាស​រដ្ឋ​ធម្មនុញ្ញ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -3244,7 +3244,7 @@
           {
             "id": "2016_independence_day",
             "names": {
-              "en": "Independence Day",
+              "en": "Independence Day · {anniversary}",
               "km": "ពិធី​បុណ្យ​ឯករាជ្យ​ជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -3259,7 +3259,7 @@
           {
             "id": "2016_international_children_day",
             "names": {
-              "en": "International Children's Day",
+              "en": "International Children's Day · {anniversary}",
               "km": "ទិវា​កុមារ​អន្តរ​ជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -3274,7 +3274,7 @@
           {
             "id": "2016_international_human_rights_day",
             "names": {
-              "en": "International Human Rights Day",
+              "en": "International Human Rights Day · {anniversary}",
               "km": "ទិវា​សិទ្ធិ​មនុស្ស​អន្តរជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -3289,7 +3289,7 @@
           {
             "id": "2016_international_labor_day",
             "names": {
-              "en": "International Labor Day",
+              "en": "International Labor Day · {anniversary}",
               "km": "ទិវា​ពលកម្ម​អន្តរជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -3304,7 +3304,7 @@
           {
             "id": "2016_international_women_day",
             "names": {
-              "en": "International Women's Day",
+              "en": "International Women's Day · {anniversary}",
               "km": "ទិវា​នារី​អន្តរជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -3574,7 +3574,7 @@
           {
             "id": "2016_victory_over_genocide",
             "names": {
-              "en": "Victory Over Genocide Day",
+              "en": "Victory Over Genocide Day · {anniversary}",
               "km": "ទិវា​ជ័យ​ជម្នះ​លើ​របប​ប្រល័យ​ពូជ​សាសន៍ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -3658,7 +3658,7 @@
           {
             "id": "2017_constitution_day",
             "names": {
-              "en": "Constitution Day",
+              "en": "Constitution Day · {anniversary}",
               "km": "ទិវា​ប្រកាស​រដ្ឋ​ធម្មនុញ្ញ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -3673,7 +3673,7 @@
           {
             "id": "2017_independence_day",
             "names": {
-              "en": "Independence Day",
+              "en": "Independence Day · {anniversary}",
               "km": "ពិធី​បុណ្យ​ឯករាជ្យ​ជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -3688,7 +3688,7 @@
           {
             "id": "2017_international_children_day",
             "names": {
-              "en": "International Children's Day",
+              "en": "International Children's Day · {anniversary}",
               "km": "ទិវា​កុមារ​អន្តរ​ជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -3703,7 +3703,7 @@
           {
             "id": "2017_international_human_rights_day",
             "names": {
-              "en": "International Human Rights Day",
+              "en": "International Human Rights Day · {anniversary}",
               "km": "ទិវា​សិទ្ធិ​មនុស្ស​អន្តរជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -3718,7 +3718,7 @@
           {
             "id": "2017_international_labor_day",
             "names": {
-              "en": "International Labor Day",
+              "en": "International Labor Day · {anniversary}",
               "km": "ទិវា​ពលកម្ម​អន្តរជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -3733,7 +3733,7 @@
           {
             "id": "2017_international_women_day",
             "names": {
-              "en": "International Women's Day",
+              "en": "International Women's Day · {anniversary}",
               "km": "ទិវា​នារី​អន្តរជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -3988,7 +3988,7 @@
           {
             "id": "2017_victory_over_genocide",
             "names": {
-              "en": "Victory Over Genocide Day",
+              "en": "Victory Over Genocide Day · {anniversary}",
               "km": "ទិវា​ជ័យ​ជម្នះ​លើ​របប​ប្រល័យ​ពូជ​សាសន៍ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -4072,7 +4072,7 @@
           {
             "id": "2018_constitution_day",
             "names": {
-              "en": "Constitution Day",
+              "en": "Constitution Day · {anniversary}",
               "km": "ទិវា​ប្រកាស​រដ្ឋ​ធម្មនុញ្ញ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -4087,7 +4087,7 @@
           {
             "id": "2018_independence_day",
             "names": {
-              "en": "Independence Day",
+              "en": "Independence Day · {anniversary}",
               "km": "ពិធី​បុណ្យ​ឯករាជ្យ​ជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -4102,7 +4102,7 @@
           {
             "id": "2018_international_children_day",
             "names": {
-              "en": "International Children's Day",
+              "en": "International Children's Day · {anniversary}",
               "km": "ទិវា​កុមារ​អន្តរ​ជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -4117,7 +4117,7 @@
           {
             "id": "2018_international_human_rights_day",
             "names": {
-              "en": "International Human Rights Day",
+              "en": "International Human Rights Day · {anniversary}",
               "km": "ទិវា​សិទ្ធិ​មនុស្ស​អន្តរជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -4132,7 +4132,7 @@
           {
             "id": "2018_international_labor_day",
             "names": {
-              "en": "International Labor Day",
+              "en": "International Labor Day · {anniversary}",
               "km": "ទិវា​ពលកម្ម​អន្តរជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -4147,7 +4147,7 @@
           {
             "id": "2018_international_women_day",
             "names": {
-              "en": "International Women's Day",
+              "en": "International Women's Day · {anniversary}",
               "km": "ទិវា​នារី​អន្តរជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -4402,7 +4402,7 @@
           {
             "id": "2018_victory_over_genocide",
             "names": {
-              "en": "Victory Over Genocide Day",
+              "en": "Victory Over Genocide Day · {anniversary}",
               "km": "ទិវា​ជ័យ​ជម្នះ​លើ​របប​ប្រល័យ​ពូជ​សាសន៍ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -4486,7 +4486,7 @@
           {
             "id": "2019_constitution_day",
             "names": {
-              "en": "Constitution Day",
+              "en": "Constitution Day · {anniversary}",
               "km": "ទិវា​ប្រកាស​រដ្ឋ​ធម្មនុញ្ញ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -4501,7 +4501,7 @@
           {
             "id": "2019_independence_day",
             "names": {
-              "en": "Independence Day",
+              "en": "Independence Day · {anniversary}",
               "km": "ពិធី​បុណ្យ​ឯករាជ្យ​ជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -4516,7 +4516,7 @@
           {
             "id": "2019_international_children_day",
             "names": {
-              "en": "International Children's Day",
+              "en": "International Children's Day · {anniversary}",
               "km": "ទិវា​កុមារ​អន្តរ​ជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -4531,7 +4531,7 @@
           {
             "id": "2019_international_human_rights_day",
             "names": {
-              "en": "International Human Rights Day",
+              "en": "International Human Rights Day · {anniversary}",
               "km": "ទិវា​សិទ្ធិ​មនុស្ស​អន្តរជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -4546,7 +4546,7 @@
           {
             "id": "2019_international_labor_day",
             "names": {
-              "en": "International Labor Day",
+              "en": "International Labor Day · {anniversary}",
               "km": "ទិវា​ពលកម្ម​អន្តរជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -4561,7 +4561,7 @@
           {
             "id": "2019_international_women_day",
             "names": {
-              "en": "International Women's Day",
+              "en": "International Women's Day · {anniversary}",
               "km": "ទិវា​នារី​អន្តរជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -4831,7 +4831,7 @@
           {
             "id": "2019_victory_over_genocide",
             "names": {
-              "en": "Victory Over Genocide Day",
+              "en": "Victory Over Genocide Day · {anniversary}",
               "km": "ទិវា​ជ័យ​ជម្នះ​លើ​របប​ប្រល័យ​ពូជ​សាសន៍ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -4915,7 +4915,7 @@
           {
             "id": "2020_constitution_day",
             "names": {
-              "en": "Constitution Day",
+              "en": "Constitution Day · {anniversary}",
               "km": "ទិវា​ប្រកាស​រដ្ឋ​ធម្មនុញ្ញ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -4930,7 +4930,7 @@
           {
             "id": "2020_independence_day",
             "names": {
-              "en": "Independence Day",
+              "en": "Independence Day · {anniversary}",
               "km": "ពិធី​បុណ្យ​ឯករាជ្យ​ជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -4945,7 +4945,7 @@
           {
             "id": "2020_international_labor_day",
             "names": {
-              "en": "International Labor Day",
+              "en": "International Labor Day · {anniversary}",
               "km": "ទិវា​ពលកម្ម​អន្តរជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -4960,7 +4960,7 @@
           {
             "id": "2020_international_women_day",
             "names": {
-              "en": "International Women's Day",
+              "en": "International Women's Day · {anniversary}",
               "km": "ទិវា​នារី​អន្តរជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -5170,7 +5170,7 @@
           {
             "id": "2020_victory_over_genocide",
             "names": {
-              "en": "Victory Over Genocide Day",
+              "en": "Victory Over Genocide Day · {anniversary}",
               "km": "ទិវា​ជ័យ​ជម្នះ​លើ​របប​ប្រល័យ​ពូជ​សាសន៍ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -5254,7 +5254,7 @@
           {
             "id": "2021_constitution_day",
             "names": {
-              "en": "Constitution Day",
+              "en": "Constitution Day · {anniversary}",
               "km": "ទិវា​ប្រកាស​រដ្ឋ​ធម្មនុញ្ញ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -5269,7 +5269,7 @@
           {
             "id": "2021_independence_day",
             "names": {
-              "en": "Independence Day",
+              "en": "Independence Day · {anniversary}",
               "km": "ពិធី​បុណ្យ​ឯករាជ្យ​ជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -5284,7 +5284,7 @@
           {
             "id": "2021_international_labor_day",
             "names": {
-              "en": "International Labor Day",
+              "en": "International Labor Day · {anniversary}",
               "km": "ទិវា​ពលកម្ម​អន្តរជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -5299,7 +5299,7 @@
           {
             "id": "2021_international_women_day",
             "names": {
-              "en": "International Women's Day",
+              "en": "International Women's Day · {anniversary}",
               "km": "ទិវា​នារី​អន្តរជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -5494,7 +5494,7 @@
           {
             "id": "2021_victory_over_genocide",
             "names": {
-              "en": "Victory Over Genocide Day",
+              "en": "Victory Over Genocide Day · {anniversary}",
               "km": "ទិវា​ជ័យ​ជម្នះ​លើ​របប​ប្រល័យ​ពូជ​សាសន៍ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -5578,7 +5578,7 @@
           {
             "id": "2022_constitution_day",
             "names": {
-              "en": "Constitution Day",
+              "en": "Constitution Day · {anniversary}",
               "km": "ទិវា​ប្រកាស​រដ្ឋ​ធម្មនុញ្ញ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -5593,7 +5593,7 @@
           {
             "id": "2022_independence_day",
             "names": {
-              "en": "Independence Day",
+              "en": "Independence Day · {anniversary}",
               "km": "ពិធី​បុណ្យ​ឯករាជ្យ​ជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -5608,7 +5608,7 @@
           {
             "id": "2022_international_labor_day",
             "names": {
-              "en": "International Labor Day",
+              "en": "International Labor Day · {anniversary}",
               "km": "ទិវា​ពលកម្ម​អន្តរជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -5623,7 +5623,7 @@
           {
             "id": "2022_international_women_day",
             "names": {
-              "en": "International Women's Day",
+              "en": "International Women's Day · {anniversary}",
               "km": "ទិវា​នារី​អន្តរជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -5818,7 +5818,7 @@
           {
             "id": "2022_victory_over_genocide",
             "names": {
-              "en": "Victory Over Genocide Day",
+              "en": "Victory Over Genocide Day · {anniversary}",
               "km": "ទិវា​ជ័យ​ជម្នះ​លើ​របប​ប្រល័យ​ពូជ​សាសន៍ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -5902,7 +5902,7 @@
           {
             "id": "2023_constitution_day",
             "names": {
-              "en": "Constitution Day",
+              "en": "Constitution Day · {anniversary}",
               "km": "ទិវា​ប្រកាស​រដ្ឋ​ធម្មនុញ្ញ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -5917,7 +5917,7 @@
           {
             "id": "2023_independence_day",
             "names": {
-              "en": "Independence Day",
+              "en": "Independence Day · {anniversary}",
               "km": "ពិធី​បុណ្យ​ឯករាជ្យ​ជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -5932,7 +5932,7 @@
           {
             "id": "2023_international_labor_day",
             "names": {
-              "en": "International Labor Day",
+              "en": "International Labor Day · {anniversary}",
               "km": "ទិវា​ពលកម្ម​អន្តរជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -5947,7 +5947,7 @@
           {
             "id": "2023_international_women_day",
             "names": {
-              "en": "International Women's Day",
+              "en": "International Women's Day · {anniversary}",
               "km": "ទិវា​នារី​អន្តរជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -6142,7 +6142,7 @@
           {
             "id": "2023_victory_over_genocide",
             "names": {
-              "en": "Victory Over Genocide Day",
+              "en": "Victory Over Genocide Day · {anniversary}",
               "km": "ទិវា​ជ័យ​ជម្នះ​លើ​របប​ប្រល័យ​ពូជ​សាសន៍ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -6226,7 +6226,7 @@
           {
             "id": "2024_constitution_day",
             "names": {
-              "en": "Constitution Day",
+              "en": "Constitution Day · {anniversary}",
               "km": "ទិវា​ប្រកាស​រដ្ឋ​ធម្មនុញ្ញ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -6241,7 +6241,7 @@
           {
             "id": "2024_independence_day",
             "names": {
-              "en": "Independence Day",
+              "en": "Independence Day · {anniversary}",
               "km": "ពិធី​បុណ្យ​ឯករាជ្យ​ជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -6256,7 +6256,7 @@
           {
             "id": "2024_international_labor_day",
             "names": {
-              "en": "International Labor Day",
+              "en": "International Labor Day · {anniversary}",
               "km": "ទិវា​ពលកម្ម​អន្តរជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -6271,7 +6271,7 @@
           {
             "id": "2024_international_women_day",
             "names": {
-              "en": "International Women's Day",
+              "en": "International Women's Day · {anniversary}",
               "km": "ទិវា​នារី​អន្តរជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -6481,7 +6481,7 @@
           {
             "id": "2024_victory_over_genocide",
             "names": {
-              "en": "Victory Over Genocide Day",
+              "en": "Victory Over Genocide Day · {anniversary}",
               "km": "ទិវា​ជ័យ​ជម្នះ​លើ​របប​ប្រល័យ​ពូជ​សាសន៍ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -6566,7 +6566,7 @@
           {
             "id": "2025_constitution_day",
             "names": {
-              "en": "Constitution Day",
+              "en": "Constitution Day · {anniversary}",
               "km": "ទិវា​ប្រកាស​រដ្ឋ​ធម្មនុញ្ញ ខួបលើកទី៣២"
             },
             "dates": [
@@ -6582,7 +6582,7 @@
           {
             "id": "2025_independence_day",
             "names": {
-              "en": "Independence Day",
+              "en": "Independence Day · {anniversary}",
               "km": "ពិធី​បុណ្យ​ឯករាជ្យ​ជាតិ ខួបលើកទី៧២"
             },
             "dates": [
@@ -6598,7 +6598,7 @@
           {
             "id": "2025_international_labor_day",
             "names": {
-              "en": "International Labor Day",
+              "en": "International Labor Day · {anniversary}",
               "km": "ទិវា​ពលកម្ម​អន្តរជាតិ ខួបលើកទី១៣៩"
             },
             "dates": [
@@ -6614,7 +6614,7 @@
           {
             "id": "2025_international_women_day",
             "names": {
-              "en": "International Women's Day",
+              "en": "International Women's Day · {anniversary}",
               "km": "ទិវា​នារី​អន្តរជាតិ ខួបលើកទី១១៤"
             },
             "dates": [
@@ -6838,7 +6838,7 @@
           {
             "id": "2025_victory_over_genocide",
             "names": {
-              "en": "Victory Over Genocide Day",
+              "en": "Victory Over Genocide Day · {anniversary}",
               "km": "ទិវា​ជ័យ​ជម្នះ​លើ​របប​ប្រល័យ​ពូជ​សាសន៍ ខួបលើកទី៤៦"
             },
             "dates": [
@@ -6928,7 +6928,7 @@
           {
             "id": "2026_constitution_day",
             "names": {
-              "en": "Constitution Day",
+              "en": "Constitution Day · {anniversary}",
               "km": "ទិវា​ប្រកាស​រដ្ឋ​ធម្មនុញ្ញ ខួបលើកទី៣៣"
             },
             "dates": [
@@ -6944,7 +6944,7 @@
           {
             "id": "2026_independence_day",
             "names": {
-              "en": "Independence Day",
+              "en": "Independence Day · {anniversary}",
               "km": "ពិធី​បុណ្យ​ឯករាជ្យ​ជាតិ ខួបលើកទី៧៣"
             },
             "dates": [
@@ -6960,7 +6960,7 @@
           {
             "id": "2026_international_labor_day",
             "names": {
-              "en": "International Labor Day",
+              "en": "International Labor Day · {anniversary}",
               "km": "ទិវា​ពលកម្ម​អន្តរជាតិ ខួបលើកទី១៤០"
             },
             "dates": [
@@ -6976,7 +6976,7 @@
           {
             "id": "2026_international_women_day",
             "names": {
-              "en": "International Women's Day",
+              "en": "International Women's Day · {anniversary}",
               "km": "ទិវា​នារី​អន្តរជាតិ ខួបលើកទី១១៥"
             },
             "dates": [
@@ -7200,7 +7200,7 @@
           {
             "id": "2026_victory_over_genocide",
             "names": {
-              "en": "Victory Over Genocide Day",
+              "en": "Victory Over Genocide Day · {anniversary}",
               "km": "ទិវា​ជ័យ​ជម្នះ​លើ​របប​ប្រល័យ​ពូជ​សាសន៍ ខួបលើកទី៤៧"
             },
             "dates": [
@@ -7289,7 +7289,7 @@
           {
             "id": "2027_constitution_day",
             "names": {
-              "en": "Constitution Day",
+              "en": "Constitution Day · {anniversary}",
               "km": "ទិវា​ប្រកាស​រដ្ឋ​ធម្មនុញ្ញ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -7304,7 +7304,7 @@
           {
             "id": "2027_independence_day",
             "names": {
-              "en": "Independence Day",
+              "en": "Independence Day · {anniversary}",
               "km": "ពិធី​បុណ្យ​ឯករាជ្យ​ជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -7319,7 +7319,7 @@
           {
             "id": "2027_international_labor_day",
             "names": {
-              "en": "International Labor Day",
+              "en": "International Labor Day · {anniversary}",
               "km": "ទិវា​ពលកម្ម​អន្តរជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -7334,7 +7334,7 @@
           {
             "id": "2027_international_women_day",
             "names": {
-              "en": "International Women's Day",
+              "en": "International Women's Day · {anniversary}",
               "km": "ទិវា​នារី​អន្តរជាតិ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -7544,7 +7544,7 @@
           {
             "id": "2027_victory_over_genocide",
             "names": {
-              "en": "Victory Over Genocide Day",
+              "en": "Victory Over Genocide Day · {anniversary}",
               "km": "ទិវា​ជ័យ​ជម្នះ​លើ​របប​ប្រល័យ​ពូជ​សាសន៍ ខួបលើកទី{anniversary}"
             },
             "dates": [
@@ -44739,6 +44739,358 @@
         {
           "section": "Event",
           "id": "world_safety_and_health_at_work",
+          "action": "changed"
+        }
+      ]
+    },
+    {
+      "revision": 23,
+      "at": "2026-09-21T16:57:08.674Z",
+      "note": "Add {anniversary} to the English names of the 68 official holiday entries linked to anniversaryBase events (7 events, 2016-2027), aligning with the Khmer side (58 placeholder + 10 baked 2025-2026 counts); consumers substitute year - anniversaryBase with an English ordinal.",
+      "changes": [
+        {
+          "section": "Version",
+          "id": "0.4.2",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2016/2016_constitution_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2016/2016_independence_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2016/2016_international_children_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2016/2016_international_human_rights_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2016/2016_international_labor_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2016/2016_international_women_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2016/2016_victory_over_genocide",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2017/2017_constitution_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2017/2017_independence_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2017/2017_international_children_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2017/2017_international_human_rights_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2017/2017_international_labor_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2017/2017_international_women_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2017/2017_victory_over_genocide",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2018/2018_constitution_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2018/2018_independence_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2018/2018_international_children_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2018/2018_international_human_rights_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2018/2018_international_labor_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2018/2018_international_women_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2018/2018_victory_over_genocide",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2019/2019_constitution_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2019/2019_independence_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2019/2019_international_children_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2019/2019_international_human_rights_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2019/2019_international_labor_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2019/2019_international_women_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2019/2019_victory_over_genocide",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2020/2020_constitution_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2020/2020_independence_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2020/2020_international_labor_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2020/2020_international_women_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2020/2020_victory_over_genocide",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2021/2021_constitution_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2021/2021_independence_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2021/2021_international_labor_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2021/2021_international_women_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2021/2021_victory_over_genocide",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2022/2022_constitution_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2022/2022_independence_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2022/2022_international_labor_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2022/2022_international_women_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2022/2022_victory_over_genocide",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2023/2023_constitution_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2023/2023_independence_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2023/2023_international_labor_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2023/2023_international_women_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2023/2023_victory_over_genocide",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2024/2024_constitution_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2024/2024_independence_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2024/2024_international_labor_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2024/2024_international_women_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2024/2024_victory_over_genocide",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2025/2025_constitution_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2025/2025_independence_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2025/2025_international_labor_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2025/2025_international_women_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2025/2025_victory_over_genocide",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2026/2026_constitution_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2026/2026_independence_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2026/2026_international_labor_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2026/2026_international_women_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2026/2026_victory_over_genocide",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2027/2027_constitution_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2027/2027_independence_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2027/2027_international_labor_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2027/2027_international_women_day",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2027/2027_victory_over_genocide",
           "action": "changed"
         }
       ]
