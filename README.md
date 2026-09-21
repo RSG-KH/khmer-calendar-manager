@@ -6,6 +6,8 @@ A developer web app for maintaining events, historical facts, translations, sour
 
 ## Status
 
+**Event knowledge companion.** `data/knowledge.json` carries one curated bilingual knowledge entry per catalog event (139 entries), keyed by catalog id and credited in its `provenance` block to Gemini 3.8 Flash Extended and GPT5.6 Sol High (2026-09-22). `tests/knowledge.test.ts` enforces the lockstep — adding or removing an event fails the suite until the knowledge matches. See [docs/data-format.md](docs/data-format.md#event-knowledge-companion).
+
 **0.4.5 — Calculated Post Pchum Ben Festival.** The travel-bonus day after the 15 រោច climax is now its own calculated event (khmer_lunar day 15, offset +1), so years without a sub-decree (1800–2015, 2028–2200) list it again as the former 3-day block did; the 2016–2027 bonus-day holiday entries link to it. 139 events. Reproduce with `node tools/seed-post-pchum.ts`.
 
 **0.4.4 — Traditional Pchum Ben structure, per-day titles and calculated Post day.** The Kan Ben series runs 1–15 រោច: Ben 14 (១៤ រោច) is its own day, pchum_ben_festival is the single 15 រោច climax, and Post Pchum Ben Festival (ក្រោយពិធីបុណ្យភ្ជុំបិណ្ឌ, khmer_lunar day 15 offset +1) is calculated so sub-decree-less years (1800–2015, 2028–2200) list the travel-bonus day. The three government leave days carry deliberate per-day titles, each entry noting the Anukret lists all three as ពិធីបុណ្យភ្ជុំបិណ្ឌ — do not override them back. 139 events. Reproduce with `node tools/seed-pchum-titles.ts` then `node tools/seed-post-pchum.ts`.

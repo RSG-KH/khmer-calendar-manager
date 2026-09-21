@@ -87,6 +87,34 @@ Official holiday calendars (`holidayCalendars`) across all confirmed years (2016
 
 An official holiday requires government sources, dates within its calendar year, and `status: "active"` or `"cancelled"`. A cancelled holiday retains its dates and requires an explanatory `note`. Linking an `eventId` is optional and does not turn calculated dates into official leave.
 
+## Event knowledge companion
+
+`data/knowledge.json` is a curated bilingual knowledge dataset maintained alongside the catalog — one entry per catalog event, keyed by catalog event id. It is a manager-side companion (not part of the app export bundle); publishing it to consumers is a separate decision.
+
+```json
+{
+  "provenance": {
+    "note": "Knowledge checked and written by Gemini 3.8 Flash Extended and GPT5.6 Sol High on 2026-09-22.",
+    "catalogDataVersion": "0.4.4"
+  },
+  "entries": [
+    {
+      "id": "victory_over_genocide",
+      "category": "national_history",
+      "name_km": "ទិវាជ័យជម្នះលើរបបប្រល័យពូជសាសន៍",
+      "name_en": "Victory Over Genocide Day",
+      "summary_km": "…",
+      "summary_en": "…"
+    }
+  ]
+}
+```
+
+- `provenance.note` credits the research models and date; `provenance.catalogDataVersion` records the catalog revision the ids were verified against (informational — the id-coverage test is the binding guard).
+- `category` is one of `global_observance`, `national_history`, `cultural`, `royal`, `unesco`, `lunar_buddhist`, `milestone` and may cut across rule types (a UNESCO rule and its static milestone share different categories).
+- Names are display variants; they never join by text — the id is the only join key.
+- `tests/knowledge.test.ts` validates the lockstep: provenance present, unique catalog ids, one entry per catalog event in both directions, and no empty fields. Adding or removing a catalog event fails the suite until the knowledge file matches in the same change.
+
 ## New Year arrival evidence (schema v3)
 
 `newYearArrivals` carries the **Moha Sangkran arrival clocks as published evidence** — the engine's `arrivalEstimate` is the prediction, never this record. The dataset integrates the 18 September 2026 research package (`research-khmer-new-year-time`) with the National Television of Cambodia (TVK, ទូរទស្សន៍ជាតិកម្ពុជា) broadcast archive across 19 evidenced years (1997, 2009, 2010–2026 unbroken), reproducible via `node tools/seed-arrivals.ts`.
