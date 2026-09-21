@@ -1,8 +1,8 @@
 {
-  "revision": 24,
+  "revision": 25,
   "data": {
     "schemaVersion": 3,
-    "dataVersion": "0.4.3",
+    "dataVersion": "0.4.4",
     "sources": [
       {
         "id": "arrival-s02",
@@ -2232,6 +2232,29 @@
         }
       },
       {
+        "id": "post_pchum_ben_festival",
+        "kind": "observance",
+        "names": {
+          "en": "Post Pchum Ben Festival",
+          "km": "ក្រោយពិធីបុណ្យភ្ជុំបិណ្ឌ"
+        },
+        "sourceIds": [
+          "khmer-lunar-calendar-capture-2026-09-10"
+        ],
+        "rule": {
+          "id": "post_pchum_ben_festival",
+          "type": "khmer_lunar",
+          "offset": 1,
+          "duration": 1,
+          "fromYear": 1800,
+          "throughYear": 2200,
+          "month": 9,
+          "day": 15,
+          "waxing": false,
+          "monthPolicy": "exact"
+        }
+      },
+      {
         "id": "preah_vihear_unesco",
         "kind": "observance",
         "names": {
@@ -3522,8 +3545,8 @@
           {
             "id": "2016_pchum_ben_festival_1",
             "names": {
-              "en": "Pchum Ben Festival",
-              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+              "en": "Ben 14",
+              "km": "បិណ្ឌ ១៤"
             },
             "dates": [
               "2016-09-30"
@@ -3532,7 +3555,8 @@
             "sourceIds": [
               "subdecree-137-ankr-bk-2016"
             ],
-            "eventId": "ben_14"
+            "eventId": "ben_14",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2016_pchum_ben_festival_2",
@@ -3547,13 +3571,14 @@
             "sourceIds": [
               "subdecree-137-ankr-bk-2016"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "pchum_ben_festival",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2016_pchum_ben_festival_3",
             "names": {
-              "en": "Pchum Ben Festival",
-              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+              "en": "Post Pchum Ben Festival",
+              "km": "ក្រោយពិធីបុណ្យភ្ជុំបិណ្ឌ"
             },
             "dates": [
               "2016-10-02"
@@ -3562,7 +3587,8 @@
             "sourceIds": [
               "subdecree-137-ankr-bk-2016"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "post_pchum_ben_festival",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2016_queen_mother_birthday",
@@ -3936,8 +3962,8 @@
           {
             "id": "2017_pchum_ben_festival_1",
             "names": {
-              "en": "Pchum Ben Festival",
-              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+              "en": "Ben 14",
+              "km": "បិណ្ឌ ១៤"
             },
             "dates": [
               "2017-09-19"
@@ -3946,7 +3972,8 @@
             "sourceIds": [
               "subdecree-223-ankr-bk-2017"
             ],
-            "eventId": "ben_14"
+            "eventId": "ben_14",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2017_pchum_ben_festival_2",
@@ -3961,13 +3988,14 @@
             "sourceIds": [
               "subdecree-223-ankr-bk-2017"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "pchum_ben_festival",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2017_pchum_ben_festival_3",
             "names": {
-              "en": "Pchum Ben Festival",
-              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+              "en": "Post Pchum Ben Festival",
+              "km": "ក្រោយពិធីបុណ្យភ្ជុំបិណ្ឌ"
             },
             "dates": [
               "2017-09-21"
@@ -3976,7 +4004,8 @@
             "sourceIds": [
               "subdecree-223-ankr-bk-2017"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "post_pchum_ben_festival",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2017_queen_mother_birthday",
@@ -4350,8 +4379,8 @@
           {
             "id": "2018_pchum_ben_festival_1",
             "names": {
-              "en": "Pchum Ben Festival",
-              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+              "en": "Ben 14",
+              "km": "បិណ្ឌ ១៤"
             },
             "dates": [
               "2018-10-08"
@@ -4360,7 +4389,8 @@
             "sourceIds": [
               "subdecree-202-ankr-bk-2018"
             ],
-            "eventId": "ben_14"
+            "eventId": "ben_14",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2018_pchum_ben_festival_2",
@@ -4375,13 +4405,14 @@
             "sourceIds": [
               "subdecree-202-ankr-bk-2018"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "pchum_ben_festival",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2018_pchum_ben_festival_3",
             "names": {
-              "en": "Pchum Ben Festival",
-              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+              "en": "Post Pchum Ben Festival",
+              "km": "ក្រោយពិធីបុណ្យភ្ជុំបិណ្ឌ"
             },
             "dates": [
               "2018-10-10"
@@ -4390,7 +4421,8 @@
             "sourceIds": [
               "subdecree-202-ankr-bk-2018"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "post_pchum_ben_festival",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2018_queen_mother_birthday",
@@ -4779,8 +4811,8 @@
           {
             "id": "2019_pchum_ben_festival_1",
             "names": {
-              "en": "Pchum Ben Festival",
-              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+              "en": "Ben 14",
+              "km": "បិណ្ឌ ១៤"
             },
             "dates": [
               "2019-09-27"
@@ -4789,7 +4821,8 @@
             "sourceIds": [
               "subdecree-126-ankr-bk-2019"
             ],
-            "eventId": "ben_14"
+            "eventId": "ben_14",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2019_pchum_ben_festival_2",
@@ -4804,13 +4837,14 @@
             "sourceIds": [
               "subdecree-126-ankr-bk-2019"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "pchum_ben_festival",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2019_pchum_ben_festival_3",
             "names": {
-              "en": "Pchum Ben Festival",
-              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+              "en": "Post Pchum Ben Festival",
+              "km": "ក្រោយពិធីបុណ្យភ្ជុំបិណ្ឌ"
             },
             "dates": [
               "2019-09-29"
@@ -4819,7 +4853,8 @@
             "sourceIds": [
               "subdecree-126-ankr-bk-2019"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "post_pchum_ben_festival",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2019_queen_mother_birthday",
@@ -5118,8 +5153,8 @@
           {
             "id": "2020_pchum_ben_festival_1",
             "names": {
-              "en": "Pchum Ben Festival",
-              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+              "en": "Ben 14",
+              "km": "បិណ្ឌ ១៤"
             },
             "dates": [
               "2020-09-16"
@@ -5128,7 +5163,8 @@
             "sourceIds": [
               "subdecree-112-ankr-bk-2020"
             ],
-            "eventId": "ben_14"
+            "eventId": "ben_14",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2020_pchum_ben_festival_2",
@@ -5143,13 +5179,14 @@
             "sourceIds": [
               "subdecree-112-ankr-bk-2020"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "pchum_ben_festival",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2020_pchum_ben_festival_3",
             "names": {
-              "en": "Pchum Ben Festival",
-              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+              "en": "Post Pchum Ben Festival",
+              "km": "ក្រោយពិធីបុណ្យភ្ជុំបិណ្ឌ"
             },
             "dates": [
               "2020-09-18"
@@ -5158,7 +5195,8 @@
             "sourceIds": [
               "subdecree-112-ankr-bk-2020"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "post_pchum_ben_festival",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2020_queen_mother_birthday",
@@ -5442,8 +5480,8 @@
           {
             "id": "2021_pchum_ben_festival_1",
             "names": {
-              "en": "Pchum Ben Festival",
-              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+              "en": "Ben 14",
+              "km": "បិណ្ឌ ១៤"
             },
             "dates": [
               "2021-10-05"
@@ -5452,7 +5490,8 @@
             "sourceIds": [
               "subdecree-131-ankr-bk-2021"
             ],
-            "eventId": "ben_14"
+            "eventId": "ben_14",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2021_pchum_ben_festival_2",
@@ -5467,13 +5506,14 @@
             "sourceIds": [
               "subdecree-131-ankr-bk-2021"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "pchum_ben_festival",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2021_pchum_ben_festival_3",
             "names": {
-              "en": "Pchum Ben Festival",
-              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+              "en": "Post Pchum Ben Festival",
+              "km": "ក្រោយពិធីបុណ្យភ្ជុំបិណ្ឌ"
             },
             "dates": [
               "2021-10-07"
@@ -5482,7 +5522,8 @@
             "sourceIds": [
               "subdecree-131-ankr-bk-2021"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "post_pchum_ben_festival",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2021_queen_mother_birthday",
@@ -5766,8 +5807,8 @@
           {
             "id": "2022_pchum_ben_festival_1",
             "names": {
-              "en": "Pchum Ben Festival",
-              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+              "en": "Ben 14",
+              "km": "បិណ្ឌ ១៤"
             },
             "dates": [
               "2022-09-24"
@@ -5776,7 +5817,8 @@
             "sourceIds": [
               "subdecree-145-ankr-bk-2022"
             ],
-            "eventId": "ben_14"
+            "eventId": "ben_14",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2022_pchum_ben_festival_2",
@@ -5791,13 +5833,14 @@
             "sourceIds": [
               "subdecree-145-ankr-bk-2022"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "pchum_ben_festival",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2022_pchum_ben_festival_3",
             "names": {
-              "en": "Pchum Ben Festival",
-              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+              "en": "Post Pchum Ben Festival",
+              "km": "ក្រោយពិធីបុណ្យភ្ជុំបិណ្ឌ"
             },
             "dates": [
               "2022-09-26"
@@ -5806,7 +5849,8 @@
             "sourceIds": [
               "subdecree-145-ankr-bk-2022"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "post_pchum_ben_festival",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2022_queen_mother_birthday",
@@ -6090,8 +6134,8 @@
           {
             "id": "2023_pchum_ben_festival_1",
             "names": {
-              "en": "Pchum Ben Festival",
-              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+              "en": "Ben 14",
+              "km": "បិណ្ឌ ១៤"
             },
             "dates": [
               "2023-10-13"
@@ -6100,7 +6144,8 @@
             "sourceIds": [
               "subdecree-166-ankr-bk-2023"
             ],
-            "eventId": "ben_14"
+            "eventId": "ben_14",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2023_pchum_ben_festival_2",
@@ -6115,13 +6160,14 @@
             "sourceIds": [
               "subdecree-166-ankr-bk-2023"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "pchum_ben_festival",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2023_pchum_ben_festival_3",
             "names": {
-              "en": "Pchum Ben Festival",
-              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+              "en": "Post Pchum Ben Festival",
+              "km": "ក្រោយពិធីបុណ្យភ្ជុំបិណ្ឌ"
             },
             "dates": [
               "2023-10-15"
@@ -6130,7 +6176,8 @@
             "sourceIds": [
               "subdecree-166-ankr-bk-2023"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "post_pchum_ben_festival",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2023_queen_mother_birthday",
@@ -6429,8 +6476,8 @@
           {
             "id": "2024_pchum_ben_festival_1",
             "names": {
-              "en": "Pchum Ben Festival",
-              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+              "en": "Ben 14",
+              "km": "បិណ្ឌ ១៤"
             },
             "dates": [
               "2024-10-01"
@@ -6439,7 +6486,8 @@
             "sourceIds": [
               "subdecree-230-ankr-bk-2024"
             ],
-            "eventId": "ben_14"
+            "eventId": "ben_14",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2024_pchum_ben_festival_2",
@@ -6454,13 +6502,14 @@
             "sourceIds": [
               "subdecree-230-ankr-bk-2024"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "pchum_ben_festival",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2024_pchum_ben_festival_3",
             "names": {
-              "en": "Pchum Ben Festival",
-              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+              "en": "Post Pchum Ben Festival",
+              "km": "ក្រោយពិធីបុណ្យភ្ជុំបិណ្ឌ"
             },
             "dates": [
               "2024-10-03"
@@ -6469,7 +6518,8 @@
             "sourceIds": [
               "subdecree-230-ankr-bk-2024"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "post_pchum_ben_festival",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2024_queen_mother_birthday",
@@ -6765,8 +6815,8 @@
           {
             "id": "2025_pchum_ben_festival",
             "names": {
-              "en": "Pchum Ben Festival",
-              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+              "en": "Post Pchum Ben Festival",
+              "km": "ក្រោយពិធីបុណ្យភ្ជុំបិណ្ឌ"
             },
             "dates": [
               "2025-09-23"
@@ -6776,13 +6826,14 @@
               "mef-holiday-calendar-2025",
               "subdecree-204-ankr-bk-2025"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "post_pchum_ben_festival",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2025_pchum_ben_festival_2",
             "names": {
-              "en": "Pchum Ben Festival",
-              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+              "en": "Ben 14",
+              "km": "បិណ្ឌ ១៤"
             },
             "dates": [
               "2025-09-21"
@@ -6792,7 +6843,8 @@
               "mef-holiday-calendar-2025",
               "subdecree-204-ankr-bk-2025"
             ],
-            "eventId": "ben_14"
+            "eventId": "ben_14",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2025_pchum_ben_festival_3",
@@ -6808,7 +6860,8 @@
               "mef-holiday-calendar-2025",
               "subdecree-204-ankr-bk-2025"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "pchum_ben_festival",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2025_peace_day_cambodia",
@@ -7127,8 +7180,8 @@
           {
             "id": "2026_pchum_ben_festival",
             "names": {
-              "en": "Pchum Ben Festival",
-              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+              "en": "Ben 14",
+              "km": "បិណ្ឌ ១៤"
             },
             "dates": [
               "2026-10-10"
@@ -7138,13 +7191,14 @@
               "lrc-annual-holiday-calendar-2026",
               "subdecree-167-ankr-bk-2026"
             ],
-            "eventId": "ben_14"
+            "eventId": "ben_14",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2026_pchum_ben_festival_2",
             "names": {
-              "en": "Pchum Ben Festival",
-              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+              "en": "Post Pchum Ben Festival",
+              "km": "ក្រោយពិធីបុណ្យភ្ជុំបិណ្ឌ"
             },
             "dates": [
               "2026-10-12"
@@ -7154,7 +7208,8 @@
               "lrc-annual-holiday-calendar-2026",
               "subdecree-167-ankr-bk-2026"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "post_pchum_ben_festival",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2026_pchum_ben_festival_3",
@@ -7170,7 +7225,8 @@
               "lrc-annual-holiday-calendar-2026",
               "subdecree-167-ankr-bk-2026"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "pchum_ben_festival",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2026_peace_day_cambodia",
@@ -7477,8 +7533,8 @@
           {
             "id": "2027_pchum_ben_festival_1",
             "names": {
-              "en": "Pchum Ben Festival",
-              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+              "en": "Ben 14",
+              "km": "បិណ្ឌ ១៤"
             },
             "dates": [
               "2027-09-29"
@@ -7487,7 +7543,8 @@
             "sourceIds": [
               "subdecree-198-ankr-bk-2027"
             ],
-            "eventId": "ben_14"
+            "eventId": "ben_14",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2027_pchum_ben_festival_2",
@@ -7502,13 +7559,14 @@
             "sourceIds": [
               "subdecree-198-ankr-bk-2027"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "pchum_ben_festival",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2027_pchum_ben_festival_3",
             "names": {
-              "en": "Pchum Ben Festival",
-              "km": "ពិធី​បុណ្យ​ភ្ជុំ​បិណ្ឌ"
+              "en": "Post Pchum Ben Festival",
+              "km": "ក្រោយពិធីបុណ្យភ្ជុំបិណ្ឌ"
             },
             "dates": [
               "2027-10-01"
@@ -7517,7 +7575,8 @@
             "sourceIds": [
               "subdecree-198-ankr-bk-2027"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "post_pchum_ben_festival",
+            "note": "The official Anukret (sub-decree) lists all three Pchum Ben days as ពិធីបុណ្យភ្ជុំបិណ្ឌ (Pchum Ben Festival). This entry keeps a deliberate per-day title — Ben 14 (the 14 រោច Kan Ben day), Pchum Ben Festival (the 15 រោច climax) or Post Pchum Ben Festival (the travel-bonus day after the festival) — do not override these labels back to the single sub-decree title."
           },
           {
             "id": "2027_peace_day_cambodia",
@@ -45196,6 +45255,203 @@
         {
           "section": "Holiday",
           "id": "2027/2027_pchum_ben_festival_1",
+          "action": "changed"
+        }
+      ]
+    },
+    {
+      "revision": 25,
+      "at": "2026-09-21T22:41:55.913Z",
+      "note": "Pchum Ben per tradition, one revision: title the three leave days — Ben 14 (១៤ រោច), Pchum Ben Festival (១៥ រោច), Post Pchum Ben Festival (travel bonus) — each noting the Anukret lists all three as ពិធីបុណ្យភ្ជុំបិណ្ឌ so maintainers keep the labels; and calculate Post Pchum Ben Festival (khmer_lunar day 15, offset +1) as its own event so sub-decree-less years list the bonus day, with the 2016–2027 bonus-day entries linked to it.",
+      "changes": [
+        {
+          "section": "Version",
+          "id": "0.4.4",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "post_pchum_ben_festival",
+          "action": "added"
+        },
+        {
+          "section": "Holiday",
+          "id": "2016/2016_pchum_ben_festival_1",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2016/2016_pchum_ben_festival_2",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2016/2016_pchum_ben_festival_3",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2017/2017_pchum_ben_festival_1",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2017/2017_pchum_ben_festival_2",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2017/2017_pchum_ben_festival_3",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2018/2018_pchum_ben_festival_1",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2018/2018_pchum_ben_festival_2",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2018/2018_pchum_ben_festival_3",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2019/2019_pchum_ben_festival_1",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2019/2019_pchum_ben_festival_2",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2019/2019_pchum_ben_festival_3",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2020/2020_pchum_ben_festival_1",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2020/2020_pchum_ben_festival_2",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2020/2020_pchum_ben_festival_3",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2021/2021_pchum_ben_festival_1",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2021/2021_pchum_ben_festival_2",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2021/2021_pchum_ben_festival_3",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2022/2022_pchum_ben_festival_1",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2022/2022_pchum_ben_festival_2",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2022/2022_pchum_ben_festival_3",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2023/2023_pchum_ben_festival_1",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2023/2023_pchum_ben_festival_2",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2023/2023_pchum_ben_festival_3",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2024/2024_pchum_ben_festival_1",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2024/2024_pchum_ben_festival_2",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2024/2024_pchum_ben_festival_3",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2025/2025_pchum_ben_festival",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2025/2025_pchum_ben_festival_2",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2025/2025_pchum_ben_festival_3",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2026/2026_pchum_ben_festival",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2026/2026_pchum_ben_festival_2",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2026/2026_pchum_ben_festival_3",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2027/2027_pchum_ben_festival_1",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2027/2027_pchum_ben_festival_2",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2027/2027_pchum_ben_festival_3",
           "action": "changed"
         }
       ]

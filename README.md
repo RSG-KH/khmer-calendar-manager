@@ -6,6 +6,10 @@ A developer web app for maintaining events, historical facts, translations, sour
 
 ## Status
 
+**0.4.5 — Calculated Post Pchum Ben Festival.** The travel-bonus day after the 15 រោច climax is now its own calculated event (khmer_lunar day 15, offset +1), so years without a sub-decree (1800–2015, 2028–2200) list it again as the former 3-day block did; the 2016–2027 bonus-day holiday entries link to it. 139 events. Reproduce with `node tools/seed-post-pchum.ts`.
+
+**0.4.4 — Traditional Pchum Ben structure, per-day titles and calculated Post day.** The Kan Ben series runs 1–15 រោច: Ben 14 (១៤ រោច) is its own day, pchum_ben_festival is the single 15 រោច climax, and Post Pchum Ben Festival (ក្រោយពិធីបុណ្យភ្ជុំបិណ្ឌ, khmer_lunar day 15 offset +1) is calculated so sub-decree-less years (1800–2015, 2028–2200) list the travel-bonus day. The three government leave days carry deliberate per-day titles, each entry noting the Anukret lists all three as ពិធីបុណ្យភ្ជុំបិណ្ឌ — do not override them back. 139 events. Reproduce with `node tools/seed-pchum-titles.ts` then `node tools/seed-post-pchum.ts`.
+
 **0.4.3 — Traditional Pchum Ben structure.** The Kan Ben series now runs 1–15 រោច as printed: Ben 14 (១៤ រោច) is its own day, pchum_ben_festival is the single 15 រោច climax (previously a 3-day block from 14 រោច), and each official calendar links its first Pchum holiday day to ben_14. The government's three-day leave (14 រោច, 15 រោច, travel bonus) remains in the holiday layer. 138 events. Reproduce with `node tools/seed-pchum-structure.ts`.
 
 **0.4.2 — Holiday English anniversary counts.** The 68 official holiday entries (2016–2027) linked to `anniversaryBase` events now carry ` · {anniversary}` in English too, aligned with their Khmer side (58 placeholder entries + 10 baked 2025–2026 counts). The preview substitutes holiday placeholders via the linked event's base, so no raw `{anniversary}` tokens appear in any preview row. Reproduce the seed with `node tools/seed-anniversary-holidays-en.ts`.
