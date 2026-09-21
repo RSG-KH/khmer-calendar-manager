@@ -6,6 +6,8 @@ A developer web app for maintaining events, historical facts, translations, sour
 
 ## Status
 
+**0.4.3 — Traditional Pchum Ben structure.** The Kan Ben series now runs 1–15 រោច as printed: Ben 14 (១៤ រោច) is its own day, pchum_ben_festival is the single 15 រោច climax (previously a 3-day block from 14 រោច), and each official calendar links its first Pchum holiday day to ben_14. The government's three-day leave (14 រោច, 15 រោច, travel bonus) remains in the holiday layer. 138 events. Reproduce with `node tools/seed-pchum-structure.ts`.
+
 **0.4.2 — Holiday English anniversary counts.** The 68 official holiday entries (2016–2027) linked to `anniversaryBase` events now carry ` · {anniversary}` in English too, aligned with their Khmer side (58 placeholder entries + 10 baked 2025–2026 counts). The preview substitutes holiday placeholders via the linked event's base, so no raw `{anniversary}` tokens appear in any preview row. Reproduce the seed with `node tools/seed-anniversary-holidays-en.ts`.
 
 **0.4.1 — English anniversary counts.** All 34 `anniversaryBase` events now carry the `{anniversary}` placeholder in **both** names (e.g. `Victory Over Genocide Day · {anniversary}` / `ទិវាជ័យជម្នះលើរបបប្រល័យពូជសាសន៍ ខួបលើកទី{anniversary}`). Consumers substitute `year - anniversaryBase` themselves: Khmer renders Khmer numerals (ខួបលើកទី៤៧), English renders an ordinal (· 47th) — the manager preview matches this. Client-side special cases appending the count (Android's hardcoded `victory_over_genocide` fallback) can be removed once apps adopt 0.4.1. Reproduce the seed with `node tools/seed-anniversary-en.ts`.

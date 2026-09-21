@@ -1,8 +1,8 @@
 {
-  "revision": 23,
+  "revision": 24,
   "data": {
     "schemaVersion": 3,
-    "dataVersion": "0.4.2",
+    "dataVersion": "0.4.3",
     "sources": [
       {
         "id": "arrival-s02",
@@ -658,6 +658,29 @@
           "throughYear": 2200,
           "month": 9,
           "day": 13,
+          "waxing": false,
+          "monthPolicy": "exact"
+        }
+      },
+      {
+        "id": "ben_14",
+        "kind": "observance",
+        "names": {
+          "en": "Ben 14",
+          "km": "បិណ្ឌ ១៤"
+        },
+        "sourceIds": [
+          "khmer-lunar-calendar-capture-2026-09-10"
+        ],
+        "rule": {
+          "id": "ben_14",
+          "type": "khmer_lunar",
+          "offset": 0,
+          "duration": 1,
+          "fromYear": 1800,
+          "throughYear": 2200,
+          "month": 9,
+          "day": 14,
           "waxing": false,
           "monthPolicy": "exact"
         }
@@ -2176,8 +2199,8 @@
         "rule": {
           "id": "pchum_ben_festival",
           "type": "khmer_lunar",
-          "offset": -1,
-          "duration": 3,
+          "offset": 0,
+          "duration": 1,
           "fromYear": 1800,
           "throughYear": 2200,
           "month": 9,
@@ -3509,7 +3532,7 @@
             "sourceIds": [
               "subdecree-137-ankr-bk-2016"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "ben_14"
           },
           {
             "id": "2016_pchum_ben_festival_2",
@@ -3923,7 +3946,7 @@
             "sourceIds": [
               "subdecree-223-ankr-bk-2017"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "ben_14"
           },
           {
             "id": "2017_pchum_ben_festival_2",
@@ -4337,7 +4360,7 @@
             "sourceIds": [
               "subdecree-202-ankr-bk-2018"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "ben_14"
           },
           {
             "id": "2018_pchum_ben_festival_2",
@@ -4766,7 +4789,7 @@
             "sourceIds": [
               "subdecree-126-ankr-bk-2019"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "ben_14"
           },
           {
             "id": "2019_pchum_ben_festival_2",
@@ -5105,7 +5128,7 @@
             "sourceIds": [
               "subdecree-112-ankr-bk-2020"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "ben_14"
           },
           {
             "id": "2020_pchum_ben_festival_2",
@@ -5429,7 +5452,7 @@
             "sourceIds": [
               "subdecree-131-ankr-bk-2021"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "ben_14"
           },
           {
             "id": "2021_pchum_ben_festival_2",
@@ -5753,7 +5776,7 @@
             "sourceIds": [
               "subdecree-145-ankr-bk-2022"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "ben_14"
           },
           {
             "id": "2022_pchum_ben_festival_2",
@@ -6077,7 +6100,7 @@
             "sourceIds": [
               "subdecree-166-ankr-bk-2023"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "ben_14"
           },
           {
             "id": "2023_pchum_ben_festival_2",
@@ -6416,7 +6439,7 @@
             "sourceIds": [
               "subdecree-230-ankr-bk-2024"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "ben_14"
           },
           {
             "id": "2024_pchum_ben_festival_2",
@@ -6769,7 +6792,7 @@
               "mef-holiday-calendar-2025",
               "subdecree-204-ankr-bk-2025"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "ben_14"
           },
           {
             "id": "2025_pchum_ben_festival_3",
@@ -7115,7 +7138,7 @@
               "lrc-annual-holiday-calendar-2026",
               "subdecree-167-ankr-bk-2026"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "ben_14"
           },
           {
             "id": "2026_pchum_ben_festival_2",
@@ -7464,7 +7487,7 @@
             "sourceIds": [
               "subdecree-198-ankr-bk-2027"
             ],
-            "eventId": "pchum_ben_festival"
+            "eventId": "ben_14"
           },
           {
             "id": "2027_pchum_ben_festival_2",
@@ -45091,6 +45114,88 @@
         {
           "section": "Holiday",
           "id": "2027/2027_victory_over_genocide",
+          "action": "changed"
+        }
+      ]
+    },
+    {
+      "revision": 24,
+      "at": "2026-09-21T21:51:59.581Z",
+      "note": "Model Pchum Ben per tradition: add Ben 14 (14 រោច), shrink pchum_ben_festival to the single 15 រោច climax day, and link each official calendar's first Pchum holiday day to ben_14; the government's three-day leave (14 រោច, 15 រោច, travel bonus) remains in the holiday layer.",
+      "changes": [
+        {
+          "section": "Version",
+          "id": "0.4.3",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "ben_14",
+          "action": "added"
+        },
+        {
+          "section": "Event",
+          "id": "pchum_ben_festival",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2016/2016_pchum_ben_festival_1",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2017/2017_pchum_ben_festival_1",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2018/2018_pchum_ben_festival_1",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2019/2019_pchum_ben_festival_1",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2020/2020_pchum_ben_festival_1",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2021/2021_pchum_ben_festival_1",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2022/2022_pchum_ben_festival_1",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2023/2023_pchum_ben_festival_1",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2024/2024_pchum_ben_festival_1",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2025/2025_pchum_ben_festival_2",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2026/2026_pchum_ben_festival",
+          "action": "changed"
+        },
+        {
+          "section": "Holiday",
+          "id": "2027/2027_pchum_ben_festival_1",
           "action": "changed"
         }
       ]
