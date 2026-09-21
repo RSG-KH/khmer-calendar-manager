@@ -4,11 +4,16 @@ import { engine, year, type Catalog, type Event, type Names } from './model.ts';
 export type PreviewRow = { date: string; id: string; eventId?: string; en: string; km: string; kind: string; basis: string; sourceIds: string[]; cancelled?: boolean };
 const khmerDigits = ['០', '១', '២', '៣', '៤', '៥', '៦', '៧', '៨', '៩'];
 function khmerNumber(value: number): string { return String(value).replace(/\d/g, digit => khmerDigits[Number(digit)]); }
+function ordinalSuffix(value: number): string {
+  const hundred = value % 100, ten = value % 10;
+  if (hundred >= 11 && hundred <= 13) return 'th';
+  return ten === 1 ? 'st' : ten === 2 ? 'nd' : ten === 3 ? 'rd' : 'th';
+}
 export function eventNames(event: Event, selectedYear: number): Names {
   if (event.anniversaryBase === undefined) return event.names;
   const anniversary = selectedYear - event.anniversaryBase;
   return {
-    en: event.names.en.replaceAll('{anniversary}', String(anniversary)),
+    en: event.names.en.replaceAll('{anniversary}', `${anniversary}${ordinalSuffix(anniversary)}`),
     km: event.names.km.replaceAll('{anniversary}', khmerNumber(anniversary)),
   };
 }

@@ -9,7 +9,7 @@ The manager owns the catalog schema. Recurrence configurations use the engine's 
 ```json
 {
   "schemaVersion": 3,
-  "dataVersion": "0.4.0",
+  "dataVersion": "0.4.1",
   "sources": [],
   "events": [],
   "eventCalendars": [],
@@ -40,7 +40,7 @@ Names and descriptions are objects with `en` and `km` strings. Draft names requi
 
 Event kinds are `traditional`, `historical` or `observance`. Historical events require `originalDate`. An event has either a non-empty array of explicit dates, or an engine rule with the same ID. Annual commemorations must not start before the original historical event; preview dates before the original date are excluded, including earlier days in its first year.
 
-`anniversaryBase` is available only on a recurring event whose English or Khmer name contains `{anniversary}`. Preview and consumer output replace it with `year - anniversaryBase`, using Khmer numerals in the Khmer name. By convention the rule's `fromYear` is `anniversaryBase + 1` (the first ខួប), while a companion date-backed milestone event carries the original historical date so the base year never renders an awkward "0th" anniversary.
+`anniversaryBase` is available only on a recurring event whose English or Khmer name contains `{anniversary}`; by convention **both** names carry it (English as a ` · {anniversary}` suffix, Khmer as a ` ខួបលើកទី{anniversary}` suffix). Preview and consumer output replace it with `year - anniversaryBase`, using Khmer numerals in the Khmer name and an English ordinal (1st/2nd/3rd/…/11th–13th/21st/…) in the English name, e.g. `Victory Over Genocide Day · 47th` for base 1979 in 2026. By convention the rule's `fromYear` is `anniversaryBase + 1` (the first ខួប), while a companion date-backed milestone event carries the original historical date so the base year never renders an awkward "0th" anniversary.
 
 Rules support `solar`, `solar_nth_weekday`, `khmer_lunar`, `chinese_festival`, `new_year_first`, `new_year_middle` and `new_year_last`. Gregorian/lunar rules must explicitly supply month/day, lunar rules also supply `waxing`, and weekday rules supply `occurrence`. Chinese festival rules require rule `id` to match one of the 9 traditional festival identifiers, with `monthPolicy` set to `"cn-reference-utc8"` (Tong Shu reference standard) or `"archive-v1"`. Engine options include effective anchor years, offset and duration. Lunar month 7 with `monthPolicy: "ordinary_or_second_asadh"` covers ordinary and leap-month years. Calculations are delegated to the installed engine package.
 

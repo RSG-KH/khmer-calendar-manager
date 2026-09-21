@@ -1,8 +1,8 @@
 {
-  "revision": 21,
+  "revision": 22,
   "data": {
     "schemaVersion": 3,
-    "dataVersion": "0.4.0",
+    "dataVersion": "0.4.1",
     "sources": [
       {
         "id": "arrival-s02",
@@ -418,7 +418,7 @@
         "id": "angkor_wat_unesco",
         "kind": "observance",
         "names": {
-          "en": "Angkor was inscribed on the UNESCO World Heritage List",
+          "en": "Angkor was inscribed on the UNESCO World Heritage List · {anniversary}",
           "km": "តំបន់​រមណី​ដ្ឋាន​អង្គរ ត្រូវ​បាន​ចុះ​ក្នុង​បញ្ជី​បេតិក​ភណ្ឌ​ពិភពលោករបស់អង្គការយូណេស្កូ ខួបលើកទី{anniversary}"
         },
         "sourceIds": [
@@ -850,7 +850,7 @@
         "id": "birth_of_national_police",
         "kind": "observance",
         "names": {
-          "en": "Birth of the National Police",
+          "en": "Birth of the National Police · {anniversary}",
           "km": "កំណើត​នគរ​បាល​ជាតិ ខួបលើកទី{anniversary}"
         },
         "sourceIds": [
@@ -895,7 +895,7 @@
         "id": "cambodia_joined_asean",
         "kind": "observance",
         "names": {
-          "en": "Cambodia joined The Association of Southeast Asian Nations (ASEAN)",
+          "en": "Cambodia joined The Association of Southeast Asian Nations (ASEAN) · {anniversary}",
           "km": "កម្ពុជា​ចូល​ជា​សមា​ជិក​អាស៊ាន ខួបលើកទី{anniversary}"
         },
         "sourceIds": [
@@ -917,7 +917,7 @@
         "id": "cambodia_joined_un",
         "kind": "observance",
         "names": {
-          "en": "Cambodia became a member of the United Nations",
+          "en": "Cambodia became a member of the United Nations · {anniversary}",
           "km": "កម្ពុជា​ចូល​ជា​សមា​ជិក​អង្គ​ការ​សហ​ប្រជាជាតិ ខួបលើកទី{anniversary}"
         },
         "sourceIds": [
@@ -939,7 +939,7 @@
         "id": "cambodia_joined_unesco",
         "kind": "observance",
         "names": {
-          "en": "Cambodia joined UNESCO",
+          "en": "Cambodia joined UNESCO · {anniversary}",
           "km": "កម្ពុជា​ចូល​ជា​សមា​ជិក​អង្គ​ការ​យូណេស្កូ ខួបលើកទី{anniversary}"
         },
         "sourceIds": [
@@ -961,7 +961,7 @@
         "id": "cambodian_older_persons_day",
         "kind": "observance",
         "names": {
-          "en": "Cambodian Older Persons Day and the International Day of Older Persons",
+          "en": "Cambodian Older Persons Day and the International Day of Older Persons · {anniversary}",
           "km": "ទិវា​មនុស្ស​ចាស់​កម្ពុជា និងទិវាមនុស្សចាស់អន្តរជាតិ ខួបលើកទី{anniversary}"
         },
         "sourceIds": [
@@ -983,7 +983,7 @@
         "id": "chapei_dang_veng_unesco",
         "kind": "observance",
         "names": {
-          "en": "Chapei Dang Veng inscribed on the List of Intangible Cultural Heritage in Need of Urgent Safeguarding",
+          "en": "Chapei Dang Veng inscribed on the List of Intangible Cultural Heritage in Need of Urgent Safeguarding · {anniversary}",
           "km": "ចាប៉ី​ដង​វែង ត្រូវ​បាន​ចុះ​ក្នុង​បញ្ជី​បេតិក​ភណ្ឌ​វប្បធម៌អរូបីនៃមនុស្សជាតិ ខួបលើកទី{anniversary}"
         },
         "sourceIds": [
@@ -1210,7 +1210,7 @@
         "id": "constitution_day",
         "kind": "observance",
         "names": {
-          "en": "Constitution Day",
+          "en": "Constitution Day · {anniversary}",
           "km": "ទិវា​ប្រកាស​រដ្ឋ​ធម្មនុញ្ញ ខួបលើកទី{anniversary}"
         },
         "sourceIds": [
@@ -1342,7 +1342,7 @@
         "id": "icj_preah_vihear_ownership",
         "kind": "observance",
         "names": {
-          "en": "International Court of Justice in The Hague declared Cambodia is the owner of the Preah Vihear Temple",
+          "en": "International Court of Justice in The Hague declared Cambodia is the owner of the Preah Vihear Temple · {anniversary}",
           "km": "តុលា​ការ​យុត្តិ​ធម៌​អន្តរ​ជាតិ​ក្រុង​ឡា​អេ សម្រេច​ឱ្យ​កម្ពុជាជាម្ចាស់កម្មសិទ្ធិ លើប្រាសាទព្រះវិហារ ខួបលើកទី{anniversary}"
         },
         "sourceIds": [
@@ -1364,7 +1364,7 @@
         "id": "independence_day",
         "kind": "observance",
         "names": {
-          "en": "Independence Day",
+          "en": "Independence Day · {anniversary}",
           "km": "ពិធី​បុណ្យ​ឯករាជ្យ​ជាតិ ខួបលើកទី{anniversary}"
         },
         "sourceIds": [
@@ -1430,7 +1430,7 @@
         "id": "international_children_day",
         "kind": "observance",
         "names": {
-          "en": "International Children's Day",
+          "en": "International Children's Day · {anniversary}",
           "km": "ទិវា​កុមារ​អន្តរ​ជាតិ ខួបលើកទី{anniversary}"
         },
         "sourceIds": [
@@ -1474,7 +1474,7 @@
         "id": "international_human_rights_day",
         "kind": "observance",
         "names": {
-          "en": "International Human Rights Day",
+          "en": "International Human Rights Day · {anniversary}",
           "km": "ទិវា​សិទ្ធិ​មនុស្ស​អន្តរជាតិ ខួបលើកទី{anniversary}"
         },
         "sourceIds": [
@@ -1496,7 +1496,7 @@
         "id": "international_labor_day",
         "kind": "observance",
         "names": {
-          "en": "International Labor Day",
+          "en": "International Labor Day · {anniversary}",
           "km": "ទិវា​ពលកម្ម​អន្តរជាតិ ខួបលើកទី{anniversary}"
         },
         "sourceIds": [
@@ -1585,7 +1585,7 @@
         "id": "international_women_day",
         "kind": "observance",
         "names": {
-          "en": "International Women's Day",
+          "en": "International Women's Day · {anniversary}",
           "km": "ទិវា​នារី​អន្តរជាតិ ខួបលើកទី{anniversary}"
         },
         "sourceIds": [
@@ -1708,7 +1708,7 @@
         "id": "khmer_shadow_theatre_unesco",
         "kind": "observance",
         "names": {
-          "en": "Khmer Shadow Theatre inscribed on the Representative List of the Intangible Cultural Heritage of Humanity",
+          "en": "Khmer Shadow Theatre inscribed on the Representative List of the Intangible Cultural Heritage of Humanity · {anniversary}",
           "km": "ល្ខោន​ស្រមោល​ស្បែក​ ត្រូវ​បាន​ចុះ​ក្នុង​បញ្ជី​បេតិក​ភណ្ឌវប្បធម៌អរូបីនៃមនុស្សជាតិ ខួបលើកទី{anniversary}"
         },
         "sourceIds": [
@@ -1795,7 +1795,7 @@
         "id": "koh_ker_unesco",
         "kind": "observance",
         "names": {
-          "en": "Koh Ker inscribed on the UNESCO World Heritage List",
+          "en": "Koh Ker inscribed on the UNESCO World Heritage List · {anniversary}",
           "km": "តំបន់​ប្រាសាទ​កោះ​កេរ ត្រូវ​បាន​ចុះ​ក្នុង​បញ្ជី​បេតិក​ភណ្ឌ​ពិភពលោករបស់អង្គការយូណេស្កូ ខួបលើកទី{anniversary}"
         },
         "sourceIds": [
@@ -1817,7 +1817,7 @@
         "id": "krama_unesco",
         "kind": "observance",
         "names": {
-          "en": "Krama inscribed on the Representative List of the Intangible Cultural Heritage of Humanity",
+          "en": "Krama inscribed on the Representative List of the Intangible Cultural Heritage of Humanity · {anniversary}",
           "km": "ក្រមា ត្រូវ​បាន​ចុះក្នុងបញ្ជីបេតិកភណ្ឌវប្បធម៌អរូបីនៃមនុស្សជាតិ ខួបលើកទី{anniversary}"
         },
         "sourceIds": [
@@ -1839,7 +1839,7 @@
         "id": "kun_lbokator_unesco",
         "kind": "observance",
         "names": {
-          "en": "Kun Lbokator inscribed on the Representative List of the Intangible Cultural Heritage of Humanity",
+          "en": "Kun Lbokator inscribed on the Representative List of the Intangible Cultural Heritage of Humanity · {anniversary}",
           "km": "គុន​ល្បុក្ក​តោ ត្រូវ​បាន​ចុះក្នុងបញ្ជីបេតិកភណ្ឌវប្បធម៌អរូបីនៃមនុស្សជាតិ ខួបលើកទី{anniversary}"
         },
         "sourceIds": [
@@ -1861,7 +1861,7 @@
         "id": "lkhon_khol_wat_svay_andet_unesco",
         "kind": "observance",
         "names": {
-          "en": "Lkhon Khol Wat Svay Andet inscribed on the List of Intangible Cultural Heritage in Need of Urgent Safeguarding",
+          "en": "Lkhon Khol Wat Svay Andet inscribed on the List of Intangible Cultural Heritage in Need of Urgent Safeguarding · {anniversary}",
           "km": "ល្ខោន​ខោល​វត្ត​ស្វាយ​អណ្តែត ត្រូវ​បាន​ចុះ​ក្នុង​បញ្ជី​បេតិក​ភណ្ឌ​វប្ប​ធម៌​អរូបីនៃមនុស្សជាតិ ខួបលើកទី{anniversary}"
         },
         "sourceIds": [
@@ -1883,7 +1883,7 @@
         "id": "m13_tuol_sleng_choeung_ek_unesco",
         "kind": "observance",
         "names": {
-          "en": "M-13, Tuol Sleng Genocide Museum, and Choeung Ek were inscribed on the UNESCO World Heritage List",
+          "en": "M-13, Tuol Sleng Genocide Museum, and Choeung Ek were inscribed on the UNESCO World Heritage List · {anniversary}",
           "km": "បូជនីយដ្ឋាន​ចងចាំ​នៃ​កម្ពុជា៖ ពីទីតាំង​ឧក្រិដ្ឋកម្ម មកជា​មណ្ឌល​ផ្សះផ្សា និង​សន្តិភាព ត្រូវ​បាន​ចុះ​ក្នុង​បញ្ជី​បេតិកភណ្ឌ​ពិភពលោក​របស់​អង្គការ​យូណេស្កូ ខួបលើកទី{anniversary}"
         },
         "sourceIds": [
@@ -1992,7 +1992,7 @@
         "id": "national_culture_day",
         "kind": "observance",
         "names": {
-          "en": "National Culture Day",
+          "en": "National Culture Day · {anniversary}",
           "km": "ទិវា​វប្ប​ធម៌​ជាតិ ខួបលើកទី{anniversary}"
         },
         "sourceIds": [
@@ -2058,7 +2058,7 @@
         "id": "national_mine_awareness_day",
         "kind": "observance",
         "names": {
-          "en": "National Mine Awareness Day",
+          "en": "National Mine Awareness Day · {anniversary}",
           "km": "ទិវា​ជាតិ​យល់​ដឹង​ពី​មីន ខួបលើកទី{anniversary}"
         },
         "sourceIds": [
@@ -2124,7 +2124,7 @@
         "id": "ozone_layer_preservation_day",
         "kind": "observance",
         "names": {
-          "en": "International Day for the Preservation of the Ozone Layer",
+          "en": "International Day for the Preservation of the Ozone Layer · {anniversary}",
           "km": "ទិវា​អន្តរ​ជាតិ​ការពារ​ស្រទាប់​អូ​ហ្សូន ខួបលើកទី{anniversary}"
         },
         "sourceIds": [
@@ -2212,7 +2212,7 @@
         "id": "preah_vihear_unesco",
         "kind": "observance",
         "names": {
-          "en": "Temple of Preah Vihear was inscribed on the UNESCO World Heritage List",
+          "en": "Temple of Preah Vihear was inscribed on the UNESCO World Heritage List · {anniversary}",
           "km": "ប្រាសាទ​ព្រះ​វិហារ ត្រូវ​បាន​ចុះ​ក្នុង​បញ្ជី​បេតិក​ភណ្ឌ​ពិភពលោករបស់អង្គការយូណេស្កូ ខួបលើកទី{anniversary}"
         },
         "sourceIds": [
@@ -2256,7 +2256,7 @@
         "id": "royal_ballet_unesco",
         "kind": "observance",
         "names": {
-          "en": "Royal Ballet of Cambodia inscribed on the Representative List of the Intangible Cultural Heritage of Humanity",
+          "en": "Royal Ballet of Cambodia inscribed on the Representative List of the Intangible Cultural Heritage of Humanity · {anniversary}",
           "km": "របាំ​ព្រះ​រាជ​ទ្រព្យ ត្រូវ​បាន​ចុះ​ក្នុង​បញ្ជី​បេតិ​កភណ្ឌ​វប្បធម៌អរូបីនៃមនុស្សជាតិ ខួបលើកទី{anniversary}"
         },
         "sourceIds": [
@@ -2301,7 +2301,7 @@
         "id": "sambor_prei_kuk_unesco",
         "kind": "observance",
         "names": {
-          "en": "Temple Zone of Sambor Prei Kuk was inscribed on the UNESCO World Heritage List",
+          "en": "Temple Zone of Sambor Prei Kuk was inscribed on the UNESCO World Heritage List · {anniversary}",
           "km": "តំបន់​ប្រាសាទ​សំបូរ​ព្រៃ​គុក ត្រូវ​បាន​ចុះ​ក្នុង​បញ្ជី​បេតិក​ភណ្ឌ​ពិភពលោករបស់អង្គការយូណេស្កូ ខួបលើកទី{anniversary}"
         },
         "sourceIds": [
@@ -2721,7 +2721,7 @@
         "id": "tug_of_war_unesco",
         "kind": "observance",
         "names": {
-          "en": "Tug of War inscribed on the Representative List of the Intangible Cultural Heritage of Humanity",
+          "en": "Tug of War inscribed on the Representative List of the Intangible Cultural Heritage of Humanity · {anniversary}",
           "km": "ល្បែង​ទាញ​ព្រ័ត្រ ត្រូវ​បាន​ចុះ​ក្នុង​បញ្ជី​បេតិក​ភណ្ឌ​វប្បធម៌អរូបីនៃមនុស្សជាតិ ខួបលើកទី{anniversary}"
         },
         "sourceIds": [
@@ -2743,7 +2743,7 @@
         "id": "tuol_sleng_archives_unesco",
         "kind": "observance",
         "names": {
-          "en": "The archives of Tuol Sleng Genocide Museum are registered as part of the Memory of the World by UNESCO",
+          "en": "The archives of Tuol Sleng Genocide Museum are registered as part of the Memory of the World by UNESCO · {anniversary}",
           "km": "បណ្ណសារ​សារមន្ទីរ​ឧក្រិដ្ឋកម្ម​ប្រល័យ​ពូជសាសន៍​ទួល​ស្លែង ត្រូវ​បាន​ចុះ​ក្នុង​បញ្ជី​ស្មារតី​ចងចាំ​នៃ​ពិភព​លោក​របស់​យូណេស្កូ ខួបលើកទី{anniversary}"
         },
         "sourceIds": [
@@ -2786,7 +2786,7 @@
         "id": "victory_over_genocide",
         "kind": "observance",
         "names": {
-          "en": "Victory Over Genocide Day",
+          "en": "Victory Over Genocide Day · {anniversary}",
           "km": "ទិវា​ជ័យ​ជម្នះ​លើ​របប​ប្រល័យ​ពូជ​សាសន៍ ខួបលើកទី{anniversary}"
         },
         "sourceIds": [
@@ -2919,7 +2919,7 @@
         "id": "world_day_against_child_labour",
         "kind": "observance",
         "names": {
-          "en": "Happy World Day Against Child Labour",
+          "en": "Happy World Day Against Child Labour · {anniversary}",
           "km": "ទិវា​ពិភព​លោក​ប្រឆាំង​ពលកម្ម​កុមារ ខួបលើកទី{anniversary}"
         },
         "sourceIds": [
@@ -2941,7 +2941,7 @@
         "id": "world_environment_day",
         "kind": "observance",
         "names": {
-          "en": "National and World Environment Day",
+          "en": "National and World Environment Day · {anniversary}",
           "km": "ទិវា​បរិ​ស្ថាន​ជាតិ និង​បរិ​ស្ថាន​ពិភព​លោក ខួបលើកទី{anniversary}"
         },
         "sourceIds": [
@@ -3029,7 +3029,7 @@
         "id": "world_press_freedom_day",
         "kind": "observance",
         "names": {
-          "en": "World Press Freedom Day",
+          "en": "World Press Freedom Day · {anniversary}",
           "km": "ទិវា​សេរី​ភាព​សារព័ត៌មាន​ពិភព​លោក ខួបលើកទី{anniversary}"
         },
         "sourceIds": [
@@ -3051,7 +3051,7 @@
         "id": "world_ranger_day",
         "kind": "observance",
         "names": {
-          "en": "World Ranger Day",
+          "en": "World Ranger Day · {anniversary}",
           "km": "ទិវា​ឧទ្យានុ​រក្សពិភពលោក ខួបលើកទី{anniversary}"
         },
         "sourceIds": [
@@ -3110,7 +3110,7 @@
         "id": "world_safety_and_health_at_work",
         "kind": "observance",
         "names": {
-          "en": "World Day for Safety and Health at Work",
+          "en": "World Day for Safety and Health at Work · {anniversary}",
           "km": "ទិវា​ពិភព​លោក ដើម្បីសុវត្ថិភាព និងសុខភាពការងារ ខួបលើកទី{anniversary}"
         },
         "sourceIds": [
@@ -44557,6 +44557,188 @@
         {
           "section": "New Year arrival",
           "id": "2026",
+          "action": "changed"
+        }
+      ]
+    },
+    {
+      "revision": 22,
+      "at": "2026-09-21T15:52:13.131Z",
+      "note": "Add {anniversary} to the English names of all 34 anniversary events (e.g. \"Victory Over Genocide Day · {anniversary}\" rendering as \"· 47th\"), matching the Khmer ខួបលើកទី count; consumers substitute year - anniversaryBase with an English ordinal.",
+      "changes": [
+        {
+          "section": "Version",
+          "id": "0.4.1",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "angkor_wat_unesco",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "birth_of_national_police",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "cambodia_joined_asean",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "cambodia_joined_un",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "cambodia_joined_unesco",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "cambodian_older_persons_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "chapei_dang_veng_unesco",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "constitution_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "icj_preah_vihear_ownership",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "independence_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "international_children_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "international_human_rights_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "international_labor_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "international_women_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "khmer_shadow_theatre_unesco",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "koh_ker_unesco",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "krama_unesco",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "kun_lbokator_unesco",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "lkhon_khol_wat_svay_andet_unesco",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "m13_tuol_sleng_choeung_ek_unesco",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "national_culture_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "national_mine_awareness_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "ozone_layer_preservation_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "preah_vihear_unesco",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "royal_ballet_unesco",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "sambor_prei_kuk_unesco",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "tug_of_war_unesco",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "tuol_sleng_archives_unesco",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "victory_over_genocide",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "world_day_against_child_labour",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "world_environment_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "world_press_freedom_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "world_ranger_day",
+          "action": "changed"
+        },
+        {
+          "section": "Event",
+          "id": "world_safety_and_health_at_work",
           "action": "changed"
         }
       ]
