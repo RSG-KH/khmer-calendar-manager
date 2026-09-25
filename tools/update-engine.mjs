@@ -28,7 +28,7 @@ assert.equal(matches.length, 1, 'Expected exactly one package checksum');
 const sha256 = createHash('sha256').update(archive).digest('hex');
 assert.equal(sha256, matches[0][0], 'Engine release checksum mismatch');
 assert.ok(process.env.npm_execpath, 'Run this helper through npm run engine:update');
-const install = spawnSync(process.execPath, [process.env.npm_execpath, 'install', '--save-exact', '--ignore-scripts', url], { cwd: root, stdio: 'inherit' });
+const install = spawnSync(process.execPath, [process.env.npm_execpath, 'install', '--save-exact', '--ignore-scripts', '--allow-remote=all', url], { cwd: root, stdio: 'inherit' });
 if (install.error) throw install.error;
 if (install.status !== 0) throw new Error(`npm install failed (${install.status})`);
 const lock = JSON.parse(await readFile(new URL('../package-lock.json', import.meta.url), 'utf8'));

@@ -1,8 +1,8 @@
 {
-  "revision": 25,
+  "revision": 26,
   "data": {
     "schemaVersion": 3,
-    "dataVersion": "0.4.4",
+    "dataVersion": "0.4.5",
     "sources": [
       {
         "id": "arrival-s02",
@@ -45452,6 +45452,18 @@
         {
           "section": "Holiday",
           "id": "2027/2027_pchum_ben_festival_3",
+          "action": "changed"
+        }
+      ]
+    },
+    {
+      "revision": 26,
+      "at": "2026-09-25T14:17:10.194Z",
+      "note": "Adopt khmer-calendar-engine v0.5.1 and event knowledge companion (139 entries)",
+      "changes": [
+        {
+          "section": "Version",
+          "id": "0.4.5",
           "action": "changed"
         }
       ]

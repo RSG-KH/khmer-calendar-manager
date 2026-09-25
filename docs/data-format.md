@@ -1,4 +1,4 @@
-﻿# Data format — version 3
+# Data format — version 3
 
 The manager owns the catalog schema. Recurrence configurations use the engine's public rule contract. Unknown fields, duplicate IDs/dates, invalid dates and missing source references are rejected.
 
@@ -95,7 +95,7 @@ An official holiday requires government sources, dates within its calendar year,
 {
   "provenance": {
     "note": "Knowledge checked and written by Gemini 3.8 Flash Extended and GPT5.6 Sol High on 2026-09-22.",
-    "catalogDataVersion": "0.4.4"
+    "catalogDataVersion": "0.4.5"
   },
   "entries": [
     {

@@ -6,27 +6,15 @@ A developer web app for maintaining events, historical facts, translations, sour
 
 ## Status
 
-**Event knowledge companion.** `data/knowledge.json` carries one curated bilingual knowledge entry per catalog event (139 entries), keyed by catalog id and credited in its `provenance` block to Gemini 3.8 Flash Extended and GPT5.6 Sol High (2026-09-22). `tests/knowledge.test.ts` enforces the lockstep — adding or removing an event fails the suite until the knowledge matches. See [docs/data-format.md](docs/data-format.md#event-knowledge-companion).
+The canonical catalog (`data/workspace.json`) is on **Schema v3 / Data v0.4.5**, verified against **[Khmer Calendar Engine v0.5.1](https://github.com/RSG-KH/khmer-calendar-engine/releases/tag/v0.5.1)**:
+- **139 Curated Events**: 113 recurrence rules evaluated dynamically for any year (1800–2200), 26 static date-backed milestones, and 22 reviewed corrections.
+- **Event Knowledge Companion**: `data/knowledge.json` carries one curated bilingual entry per catalog event (139 entries), enforced in 1-to-1 lockstep with the catalog via `tests/knowledge.test.ts`. See [docs/data-format.md](docs/data-format.md#event-knowledge-companion).
+- **New Year Arrival Evidence (Schema v3)**: 19 evidenced Moha Sangkran arrival time records (1997, 2009, 2010–2026 unbroken) anchored by National Television of Cambodia (TVK) broadcasts and AKP government releases, with arrival estimates computed by the engine.
+- **Official Holiday Calendars (2016–2027)**: 12 consecutive years of official government public holidays (283 off-days) transcribed, confirmed, and mathematically aligned from Royal Government Sub-Decrees with document numbers and signatories.
+- **Retired `eventCalendars`**: Legacy duplicate occurrences retired (`[]`), reducing export payload by 90% (~108 KB uncompressed, ~15 KB gzip).
 
-**0.4.5 — Calculated Post Pchum Ben Festival.** The travel-bonus day after the 15 រោច climax is now its own calculated event (khmer_lunar day 15, offset +1), so years without a sub-decree (1800–2015, 2028–2200) list it again as the former 3-day block did; the 2016–2027 bonus-day holiday entries link to it. 139 events. Reproduce with `node tools/seed-post-pchum.ts`.
+For a complete history of releases, data revisions, and engine upgrades, see **[CHANGELOG.md](CHANGELOG.md)**.
 
-**0.4.4 — Traditional Pchum Ben structure, per-day titles and calculated Post day.** The Kan Ben series runs 1–15 រោច: Ben 14 (១៤ រោច) is its own day, pchum_ben_festival is the single 15 រោច climax, and Post Pchum Ben Festival (ក្រោយពិធីបុណ្យភ្ជុំបិណ្ឌ, khmer_lunar day 15 offset +1) is calculated so sub-decree-less years (1800–2015, 2028–2200) list the travel-bonus day. The three government leave days carry deliberate per-day titles, each entry noting the Anukret lists all three as ពិធីបុណ្យភ្ជុំបិណ្ឌ — do not override them back. 139 events. Reproduce with `node tools/seed-pchum-titles.ts` then `node tools/seed-post-pchum.ts`.
-
-**0.4.3 — Traditional Pchum Ben structure.** The Kan Ben series now runs 1–15 រោច as printed: Ben 14 (១៤ រោច) is its own day, pchum_ben_festival is the single 15 រោច climax (previously a 3-day block from 14 រោច), and each official calendar links its first Pchum holiday day to ben_14. The government's three-day leave (14 រោច, 15 រោច, travel bonus) remains in the holiday layer. 138 events. Reproduce with `node tools/seed-pchum-structure.ts`.
-
-**0.4.2 — Holiday English anniversary counts.** The 68 official holiday entries (2016–2027) linked to `anniversaryBase` events now carry ` · {anniversary}` in English too, aligned with their Khmer side (58 placeholder entries + 10 baked 2025–2026 counts). The preview substitutes holiday placeholders via the linked event's base, so no raw `{anniversary}` tokens appear in any preview row. Reproduce the seed with `node tools/seed-anniversary-holidays-en.ts`.
-
-**0.4.1 — English anniversary counts.** All 34 `anniversaryBase` events now carry the `{anniversary}` placeholder in **both** names (e.g. `Victory Over Genocide Day · {anniversary}` / `ទិវាជ័យជម្នះលើរបបប្រល័យពូជសាសន៍ ខួបលើកទី{anniversary}`). Consumers substitute `year - anniversaryBase` themselves: Khmer renders Khmer numerals (ខួបលើកទី៤៧), English renders an ordinal (· 47th) — the manager preview matches this. Client-side special cases appending the count (Android's hardcoded `victory_over_genocide` fallback) can be removed once apps adopt 0.4.1. Reproduce the seed with `node tools/seed-anniversary-en.ts`.
-
-**0.4.0 — Moha Sangkran arrival-time evidence (schema v3).** The default workspace (`data/workspace.json`) is fully seeded with 137 events (111 engine recurrence rules + 26 static date-backed events), 22 corrections (15 King Sihamoni birthday overrides 2005–2019, 3 Chinese festival archive-parity dates, and 4 documented International Day of Peace observance exceptions 1998–2001), and 12 officially confirmed government public holiday calendars (2016–2027) backed by Royal Government of Cambodia Sub-Decrees (Anukret) with document symbols and verified signatories in English and Khmer.
-
-Catalog schema **v3** adds the `newYearArrivals` evidence section, seeded from the 18 September 2026 arrival-time research package: 22 arrival sources (`arrival-s02`…`arrival-s29`) and 12 per-year records — ten evidenced clocks (2011–2016, 2018, 2022, and the A-grade 2025 04:48 / 2026 10:48 from AKP government news) plus the disputed 2020 and 2024 quarantines, which preserve their competing published clock forms rather than picking a side. Validation rejects an evidenced arrival whose date disagrees with the engine's validated festival start; such years must be recorded as disputed. The 2025/2026 `khmer_new_year_1` holiday names no longer embed "at 04:48/10:48 AM" — clock times belong to the arrival records, never to titles. Reproduce the seed with `node tools/seed-arrivals.ts`.
-
-The 2000–2030 legacy archive (3,246 duplicate entries) has been streamlined: all 349 unlinked occurrences were extracted into 24 first-class date-backed events (9 Chinese traditional festivals across 31 years and 15 UNESCO/historical milestones), allowing `eventCalendars` to be retired (`[]`). This drops the uncompressed export payload by 90% down to ~108 KB (~15 KB gzipped) while ensuring zero data loss and simple downstream consumption in Android and PWA.
-
-Historical commemorations no longer inherit the legacy 2000 cutoff: anniversary rules start at `anniversaryBase + 1` (Victory Day counts ខួបលើកទី១ from 1980, Independence Day from 1954, Labor Day from 1887, etc.), the Paris Peace Agreement starts at its 1991 signing and the Win-Win Policy at 1998, commemorated yearly through 2023 before its renaming to Peace Day in Cambodia as a national holiday from 2024-12-29, and 10 additional static milestones carry the original dates (Victory Day 1979-01-07, Independence 1953-11-09, Constitution 1993-09-24, Angkor's UNESCO inscription 1992-12-14, ICJ Preah Vihear judgment 1962-06-15, UN membership 1955-12-14, UNESCO membership 1951-07-03, National Police founding 1945-05-16, Labor Day 1886-05-01, Human Rights Day 1948-12-10). Royal commemorations use their true start years: Coronation Day since the coronation on 2004-10-29 and the King-Father commemoration since its first observance on 2013-10-15.
-
-A further 23 observances follow researched first-observance years ([docs/research](docs/research/), rounds 1–2 with primary-source citations): international days from 1948–1994 (Cambodia-first for Teachers' Day 1997, Indigenous Peoples' 2005 and Persons with Disabilities' 1999), National Day of Remembrance from its 2018 statute with a 1984 Day of Hatred milestone, Arbor Day from its 1992 revival, Fish Day 2003, Anti-Corruption 2004, Anti-Human-Trafficking 2007, Environmental Sanitation from Sub-decree No. 47 of 12 June 1995, International Buddhist Day from its first Cambodian observance on 2024-04-08, and Queen Mother's Birthday from 1994, the restored Kingdom's first holiday calendar (maintainer-attested unbroken observance). World Water Day (22 March, since 1993) and World Meteorological Day (23 March, since 1961) are separate events, and the pre-2002 International Day of Peace follows the General Assembly's actual opening days (third Tuesday of September by default, with documented exceptions on 9 September 1998, 14 September 1999, 5 September 2000 and 14 September 2001 recorded as corrections).
 
 Implemented:
 
@@ -110,7 +98,7 @@ The calendar's **Import** button opens a JSON/CSV popup with a change review bef
 [`data/migrations/android-archive-and-rules.json`](data/migrations/android-archive-and-rules.json) is the raw transitional migration import containing the 3,246 recorded occurrences for 2000–2030 in `eventCalendars`. The migration pins SHA-256 hashes for each Android input and is verified by tests (`npm test` and `npm run migrate:android:check`).
 
 In the canonical catalog (`data/workspace.json`), this archive has been fully streamlined for Schema v3:
-- **111 Recurrence Rules**: Evaluated dynamically for any year (1800–2200) via `khmer-calendar-engine`.
+- **113 Recurrence Rules**: Evaluated dynamically for any year (1800–2200) via `khmer-calendar-engine` (139 events total).
 - **26 Static Date-Backed Events**: the 15 UNESCO/historical milestones (Preah Vihear, Kun Lbokator, Royal Ballet, Tuol Sleng, Krama, etc.) plus 11 origin milestones (Victory Day 1979, Independence 1953, Constitution 1993, Angkor 1992, ICJ Preah Vihear 1962, UN 1955, UNESCO 1951, National Police 1945, Labor Day 1886, Human Rights Day 1948, Day of Hatred 1984) are explicit date-backed events in `events`.
 - **Retired `eventCalendars`**: Kept empty (`[]`), eliminating runtime archive-vs-engine precedence conflicts and shrinking the export bundle by 90% (~108 KB).
 - **New Year Arrival Evidence (Schema v3)**: 19 evidenced Moha Sangkran arrival time records (1997, 2009, 2010–2026 unbroken), anchored by National Television of Cambodia (TVK, ទូរទស្សន៍ជាតិកម្ពុជា) broadcasts, AKP government releases, and inspected contemporary sources. Resolves historical disputes (2020 at 13 Apr 20:48; 2024 at 13 Apr 22:17:24) and corrects 2015 to 14:01 per primary announcements.
@@ -131,14 +119,14 @@ Each exported version is immutable within the local export history: changed cont
 
 ## Engine dependency
 
-Local development installs the compiled JavaScript package from the engine's [GitHub release v0.2.0](https://github.com/RSG-KH/khmer-calendar-engine/releases/tag/v0.2.0). `package.json` pins the versioned release URL, and `package-lock.json` records the archive's integrity hash. `npm ci` downloads that exact package during setup or CI. The Pages deployment workflow then selects its requested engine release and tests it before publication.
+Local development installs the compiled JavaScript package from the engine's [GitHub release v0.5.1](https://github.com/RSG-KH/khmer-calendar-engine/releases/tag/v0.5.1). `package.json` pins the versioned release URL, and `package-lock.json` records the archive's integrity hash. `npm ci` downloads that exact package during setup or CI. The Pages deployment workflow then selects its requested engine release and tests it before publication.
 
 All calendar formulas stay in the engine; the manager owns data validation, import, editing and export. Each deployed build uses one verified engine version. If that version changes, previously exported data versions remain protected: increase the data version before exporting with the new engine.
 
-The adopted package comes from engine commit [`2abd6fd`](https://github.com/RSG-KH/khmer-calendar-engine/commit/2abd6fde383bcf3d62ea09c063cf224855268c17). Its SHA-256 matches the release's `SHA256SUMS`:
+The adopted package comes from engine commit [`a18f448`](https://github.com/RSG-KH/khmer-calendar-engine/commit/a18f448be4d4590368d42f8208f02fff0f8fb572). Its SHA-256 matches the release's `SHA256SUMS`:
 
 ```text
-585b5130ac620a549b67e2b997db27e7be00da536e1ac85e287f3fde43c4a022
+a7176798767962419b3a0f0f7043f65be946bab635d5b508745d2e0da0c49ceb
 ```
 
 ### Adopt a newer engine release
