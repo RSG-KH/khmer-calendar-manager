@@ -51,7 +51,13 @@ test('an exported version cannot be reused for different content', async () => {
 });
 test('HTTP rejects foreign-origin writes and validates save revisions', async () => {
   const app = await createApp({ root: resolve('.'), dataDirectory: await mkdtemp(join(tmpdir(), 'calendar-http-test-')) });
-  await new Promise<void>(ok => app.server.listen(0, '127.0.0.1', ok));
+  const badPorts = new Set([1, 7, 9, 11, 13, 15, 17, 19, 20, 21, 22, 23, 25, 37, 42, 43, 53, 77, 79, 87, 95, 101, 102, 103, 104, 109, 110, 111, 113, 115, 117, 119, 123, 135, 139, 143, 179, 389, 427, 465, 512, 513, 514, 515, 526, 530, 531, 532, 540, 548, 556, 563, 587, 601, 636, 993, 995, 2049, 3659, 4045, 6000, 6665, 6666, 6667, 6668, 6669, 6697]);
+  while (true) {
+    await new Promise<void>(ok => app.server.listen(0, '127.0.0.1', ok));
+    const address = app.server.address(); assert.ok(address && typeof address !== 'string');
+    if (!badPorts.has(address.port)) break;
+    await new Promise<void>(ok => app.server.close(() => ok()));
+  }
   const address = app.server.address(); assert.ok(address && typeof address !== 'string');
   const url = `http://127.0.0.1:${address.port}`;
   try {

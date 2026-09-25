@@ -1,6 +1,6 @@
 {
   "name": "khmer-calendar-manager",
-  "version": "0.4.5",
+  "version": "0.5.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -19,7 +19,7 @@
     "test:pages": "node tools/test-pages.mjs"
   },
   "dependencies": {
-    "khmer-calendar-engine": "https://github.com/RSG-KH/khmer-calendar-engine/releases/download/v0.5.1/khmer-calendar-engine-0.5.1.tgz",
+    "khmer-calendar-engine": "https://github.com/RSG-KH/khmer-calendar-engine/releases/download/v0.6.0/khmer-calendar-engine-0.6.0.tgz",
     "react": "19.3.0",
     "react-dom": "19.3.0"
   },

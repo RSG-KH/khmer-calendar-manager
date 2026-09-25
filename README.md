@@ -6,7 +6,7 @@ A developer web app for maintaining events, historical facts, translations, sour
 
 ## Status
 
-The canonical catalog (`data/workspace.json`) is on **Schema v3 / Data v0.4.5**, verified against **[Khmer Calendar Engine v0.5.1](https://github.com/RSG-KH/khmer-calendar-engine/releases/tag/v0.5.1)**:
+The canonical catalog (`data/workspace.json`) is on **Schema v3 / Data v0.5.0**, verified against **[Khmer Calendar Engine v0.6.0](https://github.com/RSG-KH/khmer-calendar-engine/releases/tag/v0.6.0)**:
 - **139 Curated Events**: 113 recurrence rules evaluated dynamically for any year (1800–2200), 26 static date-backed milestones, and 22 reviewed corrections.
 - **Event Knowledge Companion**: `data/knowledge.json` carries one curated bilingual entry per catalog event (139 entries), enforced in 1-to-1 lockstep with the catalog via `tests/knowledge.test.ts`. See [docs/data-format.md](docs/data-format.md#event-knowledge-companion).
 - **New Year Arrival Evidence (Schema v3)**: 19 evidenced Moha Sangkran arrival time records (1997, 2009, 2010–2026 unbroken) anchored by National Television of Cambodia (TVK) broadcasts and AKP government releases, with arrival estimates computed by the engine.
@@ -119,14 +119,14 @@ Each exported version is immutable within the local export history: changed cont
 
 ## Engine dependency
 
-Local development installs the compiled JavaScript package from the engine's [GitHub release v0.5.1](https://github.com/RSG-KH/khmer-calendar-engine/releases/tag/v0.5.1). `package.json` pins the versioned release URL, and `package-lock.json` records the archive's integrity hash. `npm ci` downloads that exact package during setup or CI. The Pages deployment workflow then selects its requested engine release and tests it before publication.
+Local development installs the compiled JavaScript package from the engine's [GitHub release v0.6.0](https://github.com/RSG-KH/khmer-calendar-engine/releases/tag/v0.6.0). `package.json` pins the versioned release URL, and `package-lock.json` records the archive's integrity hash. `npm ci` downloads that exact package during setup or CI. The Pages deployment workflow then selects its requested engine release and tests it before publication.
 
 All calendar formulas stay in the engine; the manager owns data validation, import, editing and export. Each deployed build uses one verified engine version. If that version changes, previously exported data versions remain protected: increase the data version before exporting with the new engine.
 
-The adopted package comes from engine commit [`a18f448`](https://github.com/RSG-KH/khmer-calendar-engine/commit/a18f448be4d4590368d42f8208f02fff0f8fb572). Its SHA-256 matches the release's `SHA256SUMS`:
+The adopted package comes from engine commit [`2a416d6`](https://github.com/RSG-KH/khmer-calendar-engine/commit/2a416d63167465a5cfdbc1c1292e0caf566441f4). Its SHA-256 matches the release's `SHA256SUMS`:
 
 ```text
-a7176798767962419b3a0f0f7043f65be946bab635d5b508745d2e0da0c49ceb
+137cc96f96c7511dacbda089da0f53921d689167870712c438095139ab8e7fe8
 ```
 
 ### Adopt a newer engine release

@@ -1,7 +1,7 @@
 {
-  "version": "0.5.1",
-  "tag": "v0.5.1",
-  "release": "https://github.com/RSG-KH/khmer-calendar-engine/releases/tag/v0.5.1",
-  "package": "https://github.com/RSG-KH/khmer-calendar-engine/releases/download/v0.5.1/khmer-calendar-engine-0.5.1.tgz",
-  "sha256": "a7176798767962419b3a0f0f7043f65be946bab635d5b508745d2e0da0c49ceb"
+  "version": "0.6.0",
+  "tag": "v0.6.0",
+  "release": "https://github.com/RSG-KH/khmer-calendar-engine/releases/tag/v0.6.0",
+  "package": "https://github.com/RSG-KH/khmer-calendar-engine/releases/download/v0.6.0/khmer-calendar-engine-0.6.0.tgz",
+  "sha256": "137cc96f96c7511dacbda089da0f53921d689167870712c438095139ab8e7fe8"
 }

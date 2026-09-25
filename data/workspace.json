@@ -1,8 +1,8 @@
 {
-  "revision": 26,
+  "revision": 27,
   "data": {
     "schemaVersion": 3,
-    "dataVersion": "0.4.5",
+    "dataVersion": "0.5.0",
     "sources": [
       {
         "id": "arrival-s02",
@@ -45464,6 +45464,18 @@
         {
           "section": "Version",
           "id": "0.4.5",
+          "action": "changed"
+        }
+      ]
+    },
+    {
+      "revision": 27,
+      "at": "2026-09-25T22:20:00.000Z",
+      "note": "Adopt khmer-calendar-engine v0.6.0 (Western astrology engine, Sun/Moon/Ascendant/MC)",
+      "changes": [
+        {
+          "section": "Version",
+          "id": "0.5.0",
           "action": "changed"
         }
       ]

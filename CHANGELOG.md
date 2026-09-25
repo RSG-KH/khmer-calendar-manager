@@ -2,6 +2,28 @@
 
 All notable changes to Khmer Calendar Manager and its canonical event data catalog are documented in this file.
 
+## 0.5.0 — 2026-09-26
+
+### Engine & Dependencies
+- **Adopt `khmer-calendar-engine` v0.6.0**:
+  - Adds Western natal astrology ("Big 3" + Angles: Sun, Moon, Ascendant, Midheaven) continuous-time celestial coordinates via standalone `WesternZodiacCalculator` (1800–2200).
+  - Implementation based on Jean Meeus algorithms (*Astronomical Algorithms*, 2nd ed.) and Espenak & Meeus piecewise Delta-T polynomials.
+  - High-precision Ascendant computation with singularity detection (`CALCULATED`, `POLAR_NON_RISING`, `COINCIDENT_PLANES`, `DEGENERATE_POLE`).
+  - Bilingual zodiac signs (`WesternZodiacSign`: Aries/មេស .. Pisces/មីន) with symbols, elements, and modalities.
+  - Ergonomic options-object and positional wrappers: `calculateHoroscope` and `calculateHoroscopeUtc`.
+- Package pinned to engine release `v0.6.0` commit [`2a416d6`](https://github.com/RSG-KH/khmer-calendar-engine/commit/2a416d63167465a5cfdbc1c1292e0caf566441f4) with verified SHA-256 (`137cc96f...`).
+
+### Catalog & Knowledge
+- Bump catalog and manager to **Data v0.5.0** / **Workspace Revision 27**.
+- Canonical catalog export: generated `data/exports/khmer-calendar-data-0.5.0.json` stamped with `engineVersion: "0.6.0"`.
+- Synchronized `data/knowledge.json` and documentation to Data v0.5.0.
+
+### Verification
+- Added `tests/western-horoscope.test.ts` verifying Big 3 + Angles calculation, bilingual sign names, and UTC synchronization against engine 0.6.0.
+- Hardened server test against ephemeral port collision with fetch-restricted ports on Windows.
+
+---
+
 ## 0.4.5 — 2026-09-25
 
 ### Engine & Dependencies
